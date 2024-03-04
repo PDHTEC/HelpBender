@@ -1,20 +1,15 @@
-extends Spatial
+extends KinematicBody
 
 export var max_health : float = 20
 export var food_value : float = 2
+export var movement_speed : float = 2
+export var max_speed : float = 20
 
-var food
-var health
+var food : float
+var health : float
 var infected : bool
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+var velocity : Vector3
 
 func change_health(amount):
 	set_health(health+amount)

@@ -4,10 +4,18 @@ extends "res://Creature.gd"
 func _ready():
 	pass # Replace with function body.
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	movement(delta)
+func _process(_delta):
+	movement()
 
-func movement(delta):
+func movement():
 	if Input.is_action_pressed("forward"):
-		translation += $Camera.forward*delta*10
+		velocity += $Camera.forward*movement_speed
+	if Input.is_action_pressed("back"):
+		velocity += $Camera.forward*-movement_speed
+	if Input.is_action_pressed("left"):
+		velocity += $Camera.left*movement_speed
+	if Input.is_action_pressed("right"):
+		velocity += $Camera.left*-movement_speed
+	velocity *= 0.9
+	velocity = velocity.limit_length(max_speed)
+	velocity = move_and_slide(velocity,Vector3.ZERO)

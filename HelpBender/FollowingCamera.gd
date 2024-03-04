@@ -6,6 +6,8 @@ export var mouse_sens : float = 15
 
 var player
 var forward : Vector3
+var left : Vector3
+var up : Vector3
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -23,4 +25,9 @@ func _input(event):
 			rotation_degrees.x = max_look
 		elif rotation_degrees.x<-max_look:
 			rotation_degrees.x = -max_look
-		forward = $Camera.global_translation.direction_to(player.global_translation)
+		var cam = $Camera
+		forward = cam.global_translation.direction_to(player.global_translation)
+		cam.translation.x += 1
+		var tmp = cam.global_translation
+		cam.translation.x -= 1
+		left = cam.global_translation-tmp
