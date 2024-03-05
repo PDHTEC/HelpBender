@@ -3,7 +3,7 @@ extends KinematicBody
 export var max_health : float = 20
 export var max_food : float = 20
 export var food_value : float = 2
-export var movement_speed : float = 2
+export var movement_speed : float = 1
 export var max_speed : float = 20
 export var attack_power : float = 5
 
