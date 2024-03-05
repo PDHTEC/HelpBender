@@ -9,7 +9,6 @@ var forward : Vector3
 var left : Vector3
 var up : Vector3
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	player = $".."
 	$Camera.translation.z = distance
@@ -27,7 +26,7 @@ func _input(event):
 			rotation_degrees.x = -max_look
 		var cam = $Camera
 		forward = cam.global_translation.direction_to(player.global_translation)
-		cam.translation.x += 1
+		cam.translation.x += 0.01
 		var tmp = cam.global_translation
-		cam.translation.x -= 1
-		left = cam.global_translation-tmp
+		cam.translation.x -= 0.01
+		left = (cam.global_translation-tmp).normalized()
