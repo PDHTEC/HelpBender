@@ -6,9 +6,9 @@ func attempt_attack():
 		if collider.has_method("attack"):
 			collider.attack(self, attack_power)
 
-func _process(delta):
+func _process(_delta):
 	movement()
-	if Input.is_action_just_pressed("ui_accept"):
+	if Input.is_action_just_pressed("left_click"):
 		attempt_attack()
 
 func movement():
@@ -27,3 +27,4 @@ func movement():
 	velocity *= 0.9
 	velocity = velocity.limit_length(max_speed)
 	velocity = move_and_slide(velocity,-gravity_vector)
+	
