@@ -19,6 +19,7 @@ func attempt_attack():
 			collider.attack(self, attack_power)
 
 var forward : Vector3
+var left : Vector3
 func movement(delta):
 	#adds gravity. Uncertain of whether this should be a thing.
 	#if !is_on_floor():
@@ -26,7 +27,11 @@ func movement(delta):
 	var cam = $Camera
 	var forwardx = cos(deg2rad(-rotation_degrees.y)-PI/2) * cos(deg2rad(-rotation_degrees.x))
 	var forwardz = sin(deg2rad(-rotation_degrees.y)-PI/2) * cos(deg2rad(-rotation_degrees.x))
-	forward = Vector3(forwardx,cam.forward.y*0.5,forwardz)
+	forward = Vector3(forwardx,cam.forward.y*0.25,forwardz)
+	var leftx = cos(deg2rad(-rotation_degrees.y)) * cos(deg2rad(-rotation_degrees.x))
+	var leftz = sin(deg2rad(-rotation_degrees.y)) * cos(deg2rad(-rotation_degrees.x))
+	left = Vector3(leftx,0,leftz)
+	
 	var cam_rotation = cam.rotation_degrees.y
 	#if abs(cam_rotation-rotation_degrees.y)>180:
 	#	if abs(cam_rotation-(rotation_degrees.y-360))<180:
@@ -39,8 +44,9 @@ func movement(delta):
 		acceleration += forward*movement_speed
 		rotation_velocity.y += cam_rotation
 	if Input.is_action_pressed("back"):
-		acceleration += forward*-movement_speed*0.25
-		rotation_velocity.y -= cam_rotation*0.25
+		acceleration += forward*movement_speed
+		acceleration.y -= forward.y*movement_speed*2
+		rotation_velocity.y -= cam_rotation
 	if Input.is_action_pressed("left"):
 		#velocity += cam.left*movement_speed
 		#rotation_velocity.y += 45
