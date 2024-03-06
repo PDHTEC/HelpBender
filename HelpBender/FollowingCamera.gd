@@ -1,6 +1,6 @@
 extends Spatial
 
-export var distance : float = 5
+export var distance : float = 8
 export var max_look : float = 50
 export var mouse_sens : float = 0.5
 
@@ -14,6 +14,22 @@ func _ready():
 	$Camera.translation.z = distance
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	var cam = $Camera
+	#forward = cam.global_translation.direction_to(player.global_translation)
+	cam.translation.x += 0.01
+	var tmp = cam.global_translation
+	cam.translation.x -= 0.01
+	left = (cam.global_translation-tmp).normalized()
+
+func _process(delta):
+	var forwardx = cos(deg2rad(rotation_degrees.y)-PI/2) * cos(deg2rad(rotation_degrees.x))
+	var forwardy = sin(deg2rad(rotation_degrees.x))
+	var forwardz = sin(deg2rad(rotation_degrees.y)-PI/2) * cos(deg2rad(rotation_degrees.x))
+	forward = Vector3(forwardx,forwardy,forwardz)
+	if rotation_degrees.y>180:
+		rotation_degrees.y -= 360
+	elif rotation_degrees.y<-180:
+		rotation_degrees.y += 360
 
 func _input(event):
 	if event is InputEventMouseMotion:
@@ -24,9 +40,3 @@ func _input(event):
 			rotation_degrees.x = max_look
 		elif rotation_degrees.x<-max_look:
 			rotation_degrees.x = -max_look
-		var cam = $Camera
-		forward = cam.global_translation.direction_to(player.global_translation)
-		cam.translation.x += 0.01
-		var tmp = cam.global_translation
-		cam.translation.x -= 0.01
-		left = (cam.global_translation-tmp).normalized()

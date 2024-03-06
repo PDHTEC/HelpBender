@@ -3,8 +3,8 @@ extends KinematicBody
 export var max_health : float = 20
 export var max_food : float = 20
 export var food_value : float = 2
-export var movement_speed : float = 2
-export var max_speed : float = 20
+export var movement_speed : float = 1
+export var attack_speed : float = 1
 export var attack_power : float = 5
 
 var food : float
@@ -13,6 +13,7 @@ var infected : bool
 var dead : bool
 
 var velocity : Vector3
+var rotation_velocity : Vector3
 
 var gravity_vector : Vector3 = ProjectSettings.get_setting("physics/3d/default_gravity_vector")
 var gravity_magnitude : int = ProjectSettings.get_setting("physics/3d/default_gravity")
