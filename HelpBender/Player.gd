@@ -1,5 +1,9 @@
 extends "res://Creature.gd"
 
+var animation_player
+func _ready():
+	animation_player = $Hellbender/AnimationPlayer
+
 func _process(delta):
 	if rotation_degrees.y>180:
 		rotation_degrees.y -= 360
@@ -10,6 +14,7 @@ func _process(delta):
 		attempt_attack()
 
 func attempt_attack():
+	animation_player.play("Attack")
 	$AttackTimer.start(attack_speed)
 	velocity += forward*10
 	can_attack = false
@@ -48,8 +53,9 @@ func movement(delta):
 		acceleration.y -= forward.y*movement_speed*2
 		rotation_velocity.y -= cam_rotation
 	if Input.is_action_pressed("left"):
-		#velocity += cam.left*movement_speed
-		#rotation_velocity.y += 45
+		acceleration += forward*movement_speed
+		acceleration.y -= forward.y*movement_speed*2
+		rotation_velocity.y -= cam_rotation
 		pass
 	if Input.is_action_pressed("right"):
 		#velocity += cam.left*-movement_speed
@@ -59,6 +65,9 @@ func movement(delta):
 	acceleration = acceleration.limit_length(movement_speed)
 	velocity += acceleration
 	velocity = move_and_slide(velocity,-gravity_vector)
+	
+	if velocity.length()>10 && !animation_player.is_playing():
+		animation_player.play("Swim")
 	
 	rotation_velocity *= 0.9
 	if is_on_floor():

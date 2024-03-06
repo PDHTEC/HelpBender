@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://FollowingCamera.gd" type="Script" id=1]
 [ext_resource path="res://Player.gd" type="Script" id=2]
 [ext_resource path="res://Creature.gd" type="Script" id=3]
+[ext_resource path="res://3D models/Scenes/Hellbender.tscn" type="PackedScene" id=4]
 
 [sub_resource type="CylinderShape" id=6]
 
@@ -58,6 +59,7 @@ transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0
 shape = SubResource( 6 )
 
 [node name="Mesh" type="MeshInstance" parent="Player/Body"]
+visible = false
 mesh = SubResource( 5 )
 skeleton = NodePath("../..")
 
@@ -66,9 +68,13 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1 )
 shape = SubResource( 7 )
 
 [node name="Mesh" type="MeshInstance" parent="Player/Head"]
+visible = false
 mesh = SubResource( 8 )
 
 [node name="AttackTimer" type="Timer" parent="Player"]
+
+[node name="Hellbender" parent="Player" instance=ExtResource( 4 )]
+transform = Transform( -0.25, 0, -2.18557e-08, 0, 0.25, 0, 2.18557e-08, 0, -0.25, 0, 0, 0 )
 
 [node name="Test_creature" type="KinematicBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10 )
@@ -92,3 +98,5 @@ shape = SubResource( 11 )
 mesh = SubResource( 10 )
 
 [connection signal="timeout" from="Player/AttackTimer" to="Player" method="_on_AttackTimer_timeout"]
+
+[editable path="Player/Hellbender"]
