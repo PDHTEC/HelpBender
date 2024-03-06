@@ -26,6 +26,10 @@ func _process(delta):
 	var forwardy = sin(deg2rad(rotation_degrees.x))
 	var forwardz = sin(deg2rad(rotation_degrees.y)-PI/2) * cos(deg2rad(rotation_degrees.x))
 	forward = Vector3(forwardx,forwardy,forwardz)
+	if rotation_degrees.y>180:
+		rotation_degrees.y -= 360
+	elif rotation_degrees.y<-180:
+		rotation_degrees.y += 360
 
 func _input(event):
 	if event is InputEventMouseMotion:
