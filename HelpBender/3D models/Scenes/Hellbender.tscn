@@ -124,7 +124,7 @@ bind/32/pose = Transform( 0.975306, 0.190237, -0.112194, 0.149496, -0.194719, 0.
 [sub_resource type="Animation" id=3]
 resource_name = "Attack"
 length = 0.416667
-step = 0.04
+step = 0.0416667
 tracks/0/type = "transform"
 tracks/0/path = NodePath("Armature/Skeleton:fore_arm.L")
 tracks/0/interp = 1
@@ -179,6 +179,7 @@ tracks/6/keys = PoolRealArray( 0, 1, 0, 0, 0, 0, 0, 3.37141e-16, 1, 1, 1, 1, 0.0
 resource_name = "Falling"
 length = 1.25
 loop = true
+step = 0.0416667
 tracks/0/type = "transform"
 tracks/0/path = NodePath("Armature/Skeleton:fore_arm.L")
 tracks/0/interp = 1
@@ -415,6 +416,7 @@ tracks/32/keys = PoolRealArray( 0, 1, 0, 0, 0, 2.32831e-10, 1.29247e-26, 5.55112
 resource_name = "Idle_stand"
 length = 1.66667
 loop = true
+step = 0.0416667
 tracks/0/type = "transform"
 tracks/0/path = NodePath("Armature/Skeleton:fore_arm.L")
 tracks/0/interp = 1
@@ -1200,18 +1202,18 @@ states/Walk/node = SubResource( 25 )
 states/Walk/position = Vector2( 615, 73 )
 transitions = [ "Idle_stand", "Walk", SubResource( 26 ), "Walk", "Idle_stand", SubResource( 27 ), "Walk", "Swim", SubResource( 32 ), "Swim", "Walk", SubResource( 33 ), "Swim", "Falling", SubResource( 34 ), "Falling", "Swim", SubResource( 35 ), "Falling", "Idle_stand", SubResource( 36 ), "Falling", "Walk", SubResource( 38 ), "Swim", "Idle_stand", SubResource( 41 ), "Idle_stand", "Swim", SubResource( 42 ), "Idle_stand", "Falling", SubResource( 37 ), "Walk", "Falling", SubResource( 43 ) ]
 start_node = "Idle_stand"
-graph_offset = Vector2( -107, -46 )
+graph_offset = Vector2( -134, -23 )
 
 [sub_resource type="AnimationNodeBlendTree" id=9]
-graph_offset = Vector2( -420.727, 45.9625 )
+graph_offset = Vector2( -434.094, 42.8802 )
 nodes/Attack/node = SubResource( 19 )
 nodes/Attack/position = Vector2( 40, 260 )
-nodes/OneShot/node = SubResource( 40 )
-nodes/OneShot/position = Vector2( 260, 120 )
+nodes/Attack_shot/node = SubResource( 40 )
+nodes/Attack_shot/position = Vector2( 260, 120 )
 nodes/movement/node = SubResource( 28 )
 nodes/movement/position = Vector2( -160, 140 )
 nodes/output/position = Vector2( 480, 140 )
-node_connections = [ "output", 0, "OneShot", "OneShot", 0, "movement", "OneShot", 1, "Attack" ]
+node_connections = [ "output", 0, "Attack_shot", "Attack_shot", 0, "movement", "Attack_shot", 1, "Attack" ]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=29]
 
@@ -1403,7 +1405,7 @@ anims/Walk = SubResource( 7 )
 tree_root = SubResource( 9 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
-parameters/OneShot/active = false
+parameters/Attack_shot/active = false
 parameters/movement/playback = SubResource( 29 )
 parameters/movement/conditions/falling = false
 parameters/movement/conditions/idle_stand = false
