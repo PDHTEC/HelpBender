@@ -1,4 +1,4 @@
-extends "res://Creature.gd"
+extends "res://Scripts/Creature.gd"
 
 var animation_player
 func _ready():

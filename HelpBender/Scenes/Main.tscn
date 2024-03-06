@@ -1,17 +1,14 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=14 format=2]
 
-[ext_resource path="res://FollowingCamera.gd" type="Script" id=1]
-[ext_resource path="res://Player.gd" type="Script" id=2]
-[ext_resource path="res://Creature.gd" type="Script" id=3]
-[ext_resource path="res://3D models/Scenes/Hellbender.tscn" type="PackedScene" id=4]
+[ext_resource path="res://3D models/Scenes/Hellbender.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scripts/FollowingCamera.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/Player.gd" type="Script" id=3]
+[ext_resource path="res://Scripts/Prey.gd" type="Script" id=4]
 
-[sub_resource type="CylinderShape" id=6]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=15]
 
-[sub_resource type="CylinderMesh" id=5]
-
-[sub_resource type="SphereShape" id=7]
-
-[sub_resource type="SphereMesh" id=8]
+[sub_resource type="BoxShape" id=16]
+extents = Vector3( 0.4, 0.2, 1.7 )
 
 [sub_resource type="CylinderMesh" id=2]
 
@@ -40,10 +37,10 @@ size = Vector2( 500, 500 )
 [node name="Spatial" type="Spatial"]
 
 [node name="Player" type="KinematicBody" parent="."]
-script = ExtResource( 2 )
+script = ExtResource( 3 )
 
 [node name="Camera" type="Spatial" parent="Player"]
-script = ExtResource( 1 )
+script = ExtResource( 2 )
 
 [node name="Camera" type="Camera" parent="Player/Camera"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4 )
@@ -54,31 +51,22 @@ transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0
 enabled = true
 cast_to = Vector3( 0, -5, 0 )
 
-[node name="Body" type="CollisionShape" parent="Player"]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
-shape = SubResource( 6 )
-
-[node name="Mesh" type="MeshInstance" parent="Player/Body"]
-visible = false
-mesh = SubResource( 5 )
-skeleton = NodePath("../..")
-
-[node name="Head" type="CollisionShape" parent="Player"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1 )
-shape = SubResource( 7 )
-
-[node name="Mesh" type="MeshInstance" parent="Player/Head"]
-visible = false
-mesh = SubResource( 8 )
-
 [node name="AttackTimer" type="Timer" parent="Player"]
 
-[node name="Hellbender" parent="Player" instance=ExtResource( 4 )]
+[node name="Hellbender" parent="Player" instance=ExtResource( 1 )]
 transform = Transform( -0.25, 0, -2.18557e-08, 0, 0.25, 0, 2.18557e-08, 0, -0.25, 0, 0, 0 )
+
+[node name="AnimationTree" parent="Player/Hellbender" index="2"]
+parameters/playback = SubResource( 15 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Player"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0166664, 0.224451, -0.368498 )
+shape = SubResource( 16 )
 
 [node name="Test_creature" type="KinematicBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10 )
-script = ExtResource( 3 )
+script = ExtResource( 4 )
+movement_speed = 0.75
 
 [node name="MeshInstance" type="MeshInstance" parent="Test_creature"]
 mesh = SubResource( 2 )
