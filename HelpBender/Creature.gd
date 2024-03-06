@@ -13,6 +13,7 @@ var infected : bool
 var dead : bool
 
 var velocity : Vector3
+var rotation_velocity : Vector3
 
 var gravity_vector : Vector3 = ProjectSettings.get_setting("physics/3d/default_gravity_vector")
 var gravity_magnitude : int = ProjectSettings.get_setting("physics/3d/default_gravity")

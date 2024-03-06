@@ -21,17 +21,24 @@ func movement(delta):
 	var forward = Vector3(forwardx,cam.forward.y*0.5,forwardz)
 	if Input.is_action_pressed("forward"):
 		velocity += forward*movement_speed
-		rotation_degrees.y += cam.rotation_degrees.y*delta*2
-		cam.rotation_degrees.y -= cam.rotation_degrees.y*delta*2
+		rotation_velocity.y += cam.rotation_degrees.y
 	if Input.is_action_pressed("back"):
 		velocity += forward*-movement_speed*0.25
 	if Input.is_action_pressed("left"):
 		#velocity += cam.left*movement_speed
-		rotation_degrees.y += delta*90
+		#rotation_velocity.y += 45
+		pass
 	if Input.is_action_pressed("right"):
 		#velocity += cam.left*-movement_speed
-		rotation_degrees.y -= delta*90
+		#rotation_velocity.y -= 45
+		pass
 	velocity *= 0.97
 	velocity = velocity.limit_length(max_speed)
 	velocity = move_and_slide(velocity,-gravity_vector)
+	
+	rotation_velocity *= 0.9
+	if is_on_floor():
+		rotation_velocity*=0.9
+	rotation_degrees += rotation_velocity*delta
+	cam.rotation_degrees.y -= rotation_velocity.y*delta
 	
