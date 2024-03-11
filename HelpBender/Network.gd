@@ -1,6 +1,4 @@
 extends Control
-
-
 # Declare member variables here. Examples:
 var http_request : HTTPRequest = HTTPRequest.new()
 const SERVER_URL = "https://rupelume.dk/db_test.php"
@@ -9,12 +7,12 @@ const SECRET_KEY = 1234567890
 var nonce = null
 var request_queue : Array = []
 var is_requesting : bool = false
-var Player = "bo"
-var score = 0
-var Month = 0
-var Year = 0
-var Hunger = 0
-var Health = 0
+var Player
+var score 
+var Month 
+var Year
+var Hunger 
+var Health
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -103,11 +101,11 @@ func _http_request_completed(_result, _response_code, _headers, _body):
 	if response['response']['size'] > 0:
 		for n in (response['response']['size']):
 			Player = String(response['response'][String(n)]['Player'])
-			score = String(response['response'][String(n)]['score'])
-			Month = String(response['response'][String(n)]['Month'])
-			Year = String(response['response'][String(n)]['Year'])
-			Hunger = String(response['response'][String(n)]['Hunger'])
-			Health = String(response['response'][String(n)]['Health'])
+			score = int(String(response['response'][String(n)]['score']))
+			Month = int(String(response['response'][String(n)]['Month']))
+			Year = int(String(response['response'][String(n)]['Year']))
+			Hunger = int(String(response['response'][String(n)]['Hunger']))
+			Health = int(String(response['response'][String(n)]['Health']))
 
 	
 	
