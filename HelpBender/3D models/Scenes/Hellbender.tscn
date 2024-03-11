@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://3D models/GLB/hellbender.material" type="Material" id=1]
 [ext_resource path="res://3D models/Materialer/Hellbender.tres" type="Material" id=2]
@@ -1132,6 +1132,8 @@ filter_enabled = true
 filters = [ "Armature/Skeleton:head", "Armature/Skeleton:neck" ]
 fadein_time = 0.2
 
+[sub_resource type="AnimationNodeTimeScale" id=44]
+
 [sub_resource type="AnimationNodeAnimation" id=30]
 animation = "Falling"
 
@@ -1206,15 +1208,17 @@ start_node = "Idle_stand"
 graph_offset = Vector2( -134, -23 )
 
 [sub_resource type="AnimationNodeBlendTree" id=9]
-graph_offset = Vector2( -569.655, 73.1608 )
+graph_offset = Vector2( -268.968, 18.8711 )
 nodes/Attack/node = SubResource( 19 )
 nodes/Attack/position = Vector2( 40, 260 )
 nodes/Attack_shot/node = SubResource( 40 )
 nodes/Attack_shot/position = Vector2( 260, 120 )
+nodes/animation_speed/node = SubResource( 44 )
+nodes/animation_speed/position = Vector2( 60, 110 )
 nodes/movement/node = SubResource( 28 )
 nodes/movement/position = Vector2( -160, 140 )
 nodes/output/position = Vector2( 480, 140 )
-node_connections = [ "output", 0, "Attack_shot", "Attack_shot", 0, "movement", "Attack_shot", 1, "Attack" ]
+node_connections = [ "Attack_shot", 0, "animation_speed", "Attack_shot", 1, "Attack", "animation_speed", 0, "movement", "output", 0, "Attack_shot" ]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=29]
 
@@ -1408,6 +1412,7 @@ tree_root = SubResource( 9 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/Attack_shot/active = false
+parameters/animation_speed/scale = 1.0
 parameters/movement/playback = SubResource( 29 )
 parameters/movement/conditions/falling = false
 parameters/movement/conditions/idle_stand = false

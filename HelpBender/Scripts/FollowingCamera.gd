@@ -13,7 +13,7 @@ func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	$RayCast.cast_to.z = distance
 
-func _process(delta):
+func _process(_delta):
 	var cam = $Camera
 	cam.translation.z = distance
 	if $RayCast.is_colliding():

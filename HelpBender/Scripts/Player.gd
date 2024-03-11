@@ -32,9 +32,6 @@ var forward : Vector3
 var left : Vector3
 var on_ground : bool
 func movement(delta):
-	#adds gravity. Uncertain of whether this should be a thing.
-	#if on_ground:
-	#	velocity += gravity_vector*gravity_magnitude*0.005
 	var cam = $Camera
 	var forwardx = cos(deg2rad(-rotation_degrees.y)-PI/2) * cos(deg2rad(-rotation_degrees.x))
 	var forwardz = sin(deg2rad(-rotation_degrees.y)-PI/2) * cos(deg2rad(-rotation_degrees.x))
@@ -43,39 +40,50 @@ func movement(delta):
 	var leftz = sin(deg2rad(-rotation_degrees.y)) * cos(deg2rad(-rotation_degrees.x))
 	left = Vector3(leftx,0,leftz)
 	
+	var real_rot_speed = rotation_speed
+	if on_ground:
+		real_rot_speed *= 5
 	var cam_rotation = cam.rotation_degrees.y
 	var acceleration = Vector3.ZERO
 	if Input.is_action_pressed("forward"):
 		acceleration += forward*movement_speed
-		rotation_velocity.y += cam_rotation
+		rotation_velocity.y += cam_rotation*real_rot_speed
 	if Input.is_action_pressed("back"):
 		acceleration += forward*movement_speed
 		acceleration.y -= forward.y*movement_speed*2
-		rotation_velocity.y -= cam_rotation
+		rotation_velocity.y -= cam_rotation*real_rot_speed
 	if Input.is_action_pressed("left"):
-		#acceleration += forward*movement_speed
-		#acceleration.y -= forward.y*movement_speed*2
-		#rotation_velocity.y -= cam_rotation
+		acceleration += forward*movement_speed
+		acceleration.y -= forward.y*movement_speed
+		rotation_velocity.y += (cam_rotation+90)*real_rot_speed
 		pass
 	if Input.is_action_pressed("right"):
-		#velocity += cam.left*-movement_speed
-		#rotation_velocity.y -= 45
+		acceleration += forward*movement_speed
+		acceleration.y -= forward.y*movement_speed
+		rotation_velocity.y += (cam_rotation-90)*real_rot_speed
 		pass
 	
 	on_ground = $DownRay.is_colliding()
+	var accel_length = acceleration.length()
 	
 	if on_ground:
 		rotation_velocity*=0.6
-		velocity *= 0.97
+		velocity *= 0.85
+	
+	#adds gravity. Uncertain of whether this should be a thing.
+	if !on_ground && accel_length<=0:
+		velocity += gravity_vector*gravity_magnitude*0.01
 	
 	if on_ground:
-		if acceleration.length()>0:
-			animations.set_animation("walk")
+		if accel_length>0:
+			animations.set_animation("walk",2)
 		else:
 			animations.set_animation("idle_stand")
 	else:
-		if acceleration.length()>0:
+		if accel_length>0:
 			animations.set_animation("swim")
+		else:
+			animations.set_animation("falling")
 	
 	velocity *= 0.97
 	acceleration = acceleration.limit_length(movement_speed)
@@ -83,7 +91,6 @@ func movement(delta):
 	velocity = move_and_slide(velocity,-gravity_vector)
 	
 	rotation_velocity *= 0.9
-	rotation_velocity = rotation_velocity.limit_length(rotation_speed)
 	rotation_degrees += rotation_velocity*delta
 	cam.rotation_degrees.y -= rotation_velocity.y*delta
 
