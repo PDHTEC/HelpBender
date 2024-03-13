@@ -15,11 +15,10 @@ func _process(delta):
 	if Input.is_action_just_pressed("left_click") && can_attack:
 		attempt_attack()
 	if attacking:
-		var collider = $FrontRay.get_collider()
-		if collider!=null:
-			if collider.has_method("attack"):
-				collider.attack(self, attack_power)
-			_on_AttackTimer_timeout()
+		for body in $AttackArea.get_overlapping_bodies():
+			if body.has_method("attack") && body != self:
+				body.attack(self, attack_power)
+				_on_AttackTimer_timeout()
 
 func attempt_attack():
 	$AttackTimer.start(attack_time)

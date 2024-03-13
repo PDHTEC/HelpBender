@@ -20,7 +20,7 @@ noise = SubResource( 18 )
 extents = Vector3( 0.4, 0.2, 1.7 )
 
 [sub_resource type="BoxShape" id=23]
-extents = Vector3( 0.4, 0.2, 0.2 )
+extents = Vector3( 0.4, 0.2, 0.3 )
 
 [sub_resource type="CylinderMesh" id=2]
 
@@ -208,7 +208,7 @@ shape = SubResource( 16 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.24533 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Player/AttackArea"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.017, 0, -0.02 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.017, 0, -0.126675 )
 shape = SubResource( 23 )
 
 [node name="Test_creature" type="KinematicBody" parent="."]
