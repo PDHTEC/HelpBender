@@ -5,3 +5,6 @@ export var vision_range : float = 50
 
 func random_movement():
 	pass
+
+func flee():
+	pass

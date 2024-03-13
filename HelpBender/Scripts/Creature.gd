@@ -5,9 +5,9 @@ export var max_food : float = 20
 export var food_value : float = 2
 export var movement_speed : float = 1
 export var rotation_speed : float = 0.5
-export var attack_speed : float = 1
+export var attack_speed : float = 2
 export var attack_power : float = 5
-export var attack_time : float = 0.5
+export var attack_time : float = 1
 export var creature_level : int = 1
 
 var food : float
