@@ -1,8 +1,7 @@
 extends "res://Scripts/Creature.gd"
 
-var animations
 func _ready():
-	animations = $Hellbender
+	randomize()
 
 func _process(delta):
 	if rotation_degrees.y>180:
@@ -27,8 +26,6 @@ func attempt_attack():
 	can_attack = false
 	attacking = true
 
-var forward : Vector3
-var on_ground : bool
 func movement(delta):
 	var cam = $Camera
 	var forwardx = cos(deg2rad(-rotation_degrees.y)-PI/2) * cos(deg2rad(-rotation_degrees.x))
@@ -78,10 +75,6 @@ func movement(delta):
 		rotation_velocity*=0.6
 		velocity *= 0.9
 	
-	#adds gravity. Uncertain of whether this should be a thing.
-	if !on_ground && velocity.length()<=10:
-		velocity += gravity_vector*gravity_magnitude*0.01
-	
 	if on_ground:
 		if accel_length>0:
 			animations.set_animation("walk",2)
@@ -92,6 +85,8 @@ func movement(delta):
 			animations.set_animation("swim")
 		else:
 			animations.set_animation("falling")
+	
+	._update()
 	
 	velocity *= 0.97
 	acceleration = acceleration.limit_length(movement_speed)

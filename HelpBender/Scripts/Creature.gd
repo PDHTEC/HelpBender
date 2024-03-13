@@ -9,11 +9,15 @@ export var attack_speed : float = 2
 export var attack_power : float = 5
 export var attack_time : float = 1
 export var creature_level : int = 1
+export var animations_path : NodePath
 
+var animations : Spatial
 var food : float
 var health : float
 var infected : bool
 var dead : bool
+var forward : Vector3
+var on_ground : bool
 
 var velocity : Vector3
 var rotation_velocity : Vector3
@@ -23,6 +27,13 @@ var gravity_magnitude : int = ProjectSettings.get_setting("physics/3d/default_gr
 
 func _ready():
 	health = max_health
+	if str(animations_path).length()>0:
+		animations = get_node(animations_path)
+
+func _update():
+	#Gravity
+	if !on_ground && velocity.length()<=10:
+		velocity += gravity_vector*gravity_magnitude*0.01
 
 func attack(attacker, damage):
 	change_health(-damage)
