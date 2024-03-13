@@ -1208,7 +1208,7 @@ start_node = "Idle_stand"
 graph_offset = Vector2( -134, -23 )
 
 [sub_resource type="AnimationNodeBlendTree" id=9]
-graph_offset = Vector2( -268.968, 18.8711 )
+graph_offset = Vector2( -206, 56 )
 nodes/Attack/node = SubResource( 19 )
 nodes/Attack/position = Vector2( 40, 260 )
 nodes/Attack_shot/node = SubResource( 40 )
@@ -1218,7 +1218,7 @@ nodes/animation_speed/position = Vector2( 60, 110 )
 nodes/movement/node = SubResource( 28 )
 nodes/movement/position = Vector2( -160, 140 )
 nodes/output/position = Vector2( 480, 140 )
-node_connections = [ "Attack_shot", 0, "animation_speed", "Attack_shot", 1, "Attack", "animation_speed", 0, "movement", "output", 0, "Attack_shot" ]
+node_connections = [ "output", 0, "Attack_shot", "Attack_shot", 0, "animation_speed", "Attack_shot", 1, "Attack", "animation_speed", 0, "movement" ]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=29]
 
