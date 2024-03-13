@@ -1,0 +1,126 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://3D models/Scenes/Hellbender.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scripts/FollowingCamera.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/Player.gd" type="Script" id=3]
+[ext_resource path="res://Scripts/Prey.gd" type="Script" id=4]
+[ext_resource path="res://Scripts/Overlay.gd" type="Script" id=5]
+[ext_resource path="res://Shaders/Acaustic.tres" type="Material" id=6]
+
+[sub_resource type="OpenSimplexNoise" id=18]
+octaves = 2
+
+[sub_resource type="NoiseTexture" id=19]
+seamless = true
+noise = SubResource( 18 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=17]
+
+[sub_resource type="BoxShape" id=16]
+extents = Vector3( 0.4, 0.2, 1.7 )
+
+[sub_resource type="CylinderMesh" id=2]
+material = ExtResource( 6 )
+
+[sub_resource type="CylinderShape" id=4]
+
+[sub_resource type="BoxShape" id=11]
+
+[sub_resource type="OpenSimplexNoise" id=12]
+lacunarity = 4.0
+
+[sub_resource type="NoiseTexture" id=13]
+width = 2056
+height = 2056
+noise = SubResource( 12 )
+
+[sub_resource type="SpatialMaterial" id=14]
+next_pass = ExtResource( 6 )
+albedo_color = Color( 0.341176, 0.223529, 0.101961, 1 )
+normal_enabled = true
+normal_scale = 7.97
+normal_texture = SubResource( 13 )
+
+[sub_resource type="PlaneMesh" id=10]
+material = SubResource( 14 )
+size = Vector2( 500, 500 )
+
+[node name="Root" type="Spatial"]
+
+[node name="Overlay" type="Node2D" parent="."]
+script = ExtResource( 5 )
+movement = Vector2( 50, -50 )
+
+[node name="Water" type="Polygon2D" parent="Overlay"]
+color = Color( 0.27451, 0.67451, 0.941176, 0.196078 )
+texture = SubResource( 19 )
+polygon = PoolVector2Array( 0, 0, 1028, 0, 1028, 600, 0, 600 )
+
+[node name="Player" type="KinematicBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.05921, 0 )
+script = ExtResource( 3 )
+
+[node name="Camera" type="Spatial" parent="Player"]
+script = ExtResource( 2 )
+distance = 10.0
+
+[node name="RayCast" type="RayCast" parent="Player/Camera"]
+enabled = true
+cast_to = Vector3( 0, 0, 4 )
+
+[node name="Camera" type="Camera" parent="Player/Camera"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4 )
+current = true
+
+[node name="DownRay" type="RayCast" parent="Player"]
+enabled = true
+cast_to = Vector3( 0, -0.25, 0 )
+
+[node name="FrontRay" type="RayCast" parent="Player"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
+enabled = true
+cast_to = Vector3( 0, -4, 0 )
+
+[node name="AttackTimer" type="Timer" parent="Player"]
+
+[node name="Hellbender" parent="Player" instance=ExtResource( 1 )]
+transform = Transform( -0.25, 0, -2.18557e-08, 0, 0.25, 0, 2.18557e-08, 0, -0.25, 0, -0.224, 0 )
+
+[node name="Hellbender" parent="Player/Hellbender/Armature/Skeleton" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.277149, 0.0908451, -0.59409 )
+
+[node name="AnimationTree" parent="Player/Hellbender" index="2"]
+parameters/movement/playback = SubResource( 17 )
+parameters/movement/conditions/idle_stand = true
+
+[node name="CollisionShape" type="CollisionShape" parent="Player"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.017, 0, -0.368 )
+shape = SubResource( 16 )
+
+[node name="Test_creature" type="KinematicBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10 )
+script = ExtResource( 4 )
+max_health = 5.0
+movement_speed = 0.75
+
+[node name="MeshInstance" type="MeshInstance" parent="Test_creature"]
+mesh = SubResource( 2 )
+skeleton = NodePath("../..")
+
+[node name="CollisionShape" type="CollisionShape" parent="Test_creature"]
+shape = SubResource( 4 )
+
+[node name="StaticBody" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.26016, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
+transform = Transform( 250, 0, 0, 0, 1, 0, 0, 0, 250, 0, -1, 0 )
+shape = SubResource( 11 )
+
+[node name="MeshInstance" type="MeshInstance" parent="StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.00491, 0.0532837, -3.50921 )
+mesh = SubResource( 10 )
+
+[connection signal="timeout" from="Player/AttackTimer" to="Player" method="_on_AttackTimer_timeout"]
+
+[editable path="Player/Hellbender"]
