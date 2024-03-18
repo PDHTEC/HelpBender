@@ -47,5 +47,5 @@ func movement(delta):
 func random_movement():
 	rotation_acceleration.y += rand_range(-rotation_speed,rotation_speed)
 
-func flee(creature):
+func flee(_creature):
 	pass

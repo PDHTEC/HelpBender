@@ -15,11 +15,12 @@ func _process(delta):
 		attempt_attack()
 	if attacking:
 		for body in $AttackArea.get_overlapping_bodies():
-			if body.has_method("attack") && body != self:
+			if body.has_method("attack") && body != self && attacking:
 				body.attack(self, attack_power)
 				_on_AttackTimer_timeout()
 
 func attempt_attack():
+	$AttackArea.monitoring = true
 	$AttackTimer.start(attack_time)
 	animations.set_attacking(true)
 	velocity += forward*10
@@ -65,7 +66,7 @@ func movement(delta):
 		rotation_velocity.y += (cam_rotation_right)*real_rot_speed
 	if Input.is_action_pressed("up"):
 		acceleration.y += movement_speed*0.5
-	if Input.is_action_pressed("down"):
+	if Input.is_action_pressed("down") && !on_ground:
 		acceleration.y -= movement_speed*0.5
 	
 	on_ground = $DownRay.is_colliding()
@@ -101,6 +102,7 @@ var can_attack : bool = true
 var attacking : bool = false
 func _on_AttackTimer_timeout():
 	if attacking:
+		$AttackArea.monitoring = false
 		attacking = false
 		animations.set_attacking(false)
 		$AttackTimer.start(attack_speed)

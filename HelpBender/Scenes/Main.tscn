@@ -1,11 +1,10 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://3D models/Scenes/Hellbender.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/FollowingCamera.gd" type="Script" id=2]
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=3]
-[ext_resource path="res://Scripts/Prey.gd" type="Script" id=4]
+[ext_resource path="res://Scenes/Creatures/Worm.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scripts/Overlay.gd" type="Script" id=5]
-[ext_resource path="res://3D models/Scenes/Worm.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Shader/WaterShader.tres" type="Material" id=7]
 
 [sub_resource type="ProceduralSky" id=25]
@@ -27,11 +26,6 @@ extents = Vector3( 0.4, 0.2, 1.7 )
 
 [sub_resource type="BoxShape" id=23]
 extents = Vector3( 0.4, 0.2, 0.3 )
-
-[sub_resource type="CylinderShape" id=4]
-radius = 0.1
-
-[sub_resource type="SphereShape" id=24]
 
 [sub_resource type="BoxShape" id=11]
 
@@ -65,7 +59,7 @@ script = ExtResource( 5 )
 movement = Vector2( 50, -50 )
 
 [node name="Water" type="Polygon2D" parent="Overlay"]
-color = Color( 0.27451, 0.67451, 0.941176, 0.0980392 )
+color = Color( 0, 0.564, 0.94, 0.0980392 )
 polygon = PoolVector2Array( 0, 0, 1028, 0, 1028, 600, 0, 600 )
 
 [node name="Player" type="KinematicBody" parent="."]
@@ -117,35 +111,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.24533 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.017, 0, -0.126675 )
 shape = SubResource( 23 )
 
-[node name="Test_creature" type="KinematicBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.1182, -10 )
-script = ExtResource( 4 )
-max_health = 5.0
-movement_speed = 0.05
-cowers = false
-blind = true
-grounded = true
-max_spin = 2.0
-
-[node name="Worm" parent="Test_creature" instance=ExtResource( 6 )]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Test_creature"]
-transform = Transform( -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0 )
-shape = SubResource( 4 )
-
-[node name="VisionArea" type="Area" parent="Test_creature"]
-
-[node name="CollisionShape" type="CollisionShape" parent="Test_creature/VisionArea"]
-shape = SubResource( 24 )
-
-[node name="Vision" type="RayCast" parent="Test_creature"]
-visible = false
-enabled = true
-
-[node name="DownRay" type="RayCast" parent="Test_creature"]
-enabled = true
-cast_to = Vector3( 0, -0.11, 0 )
+[node name="Worm" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.17312, -27.2522 )
 
 [node name="StaticBody" type="StaticBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.26016, 0 )
@@ -160,6 +127,8 @@ mesh = SubResource( 10 )
 [node name="MeshInstance" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, 200, 0, 0, 0, 1000, -258.225, 188.199, 0 )
 mesh = SubResource( 27 )
+
+[node name="KinematicBody" type="KinematicBody" parent="."]
 
 [connection signal="timeout" from="Player/AttackTimer" to="Player" method="_on_AttackTimer_timeout"]
 

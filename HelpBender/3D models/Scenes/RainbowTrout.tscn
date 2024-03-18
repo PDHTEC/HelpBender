@@ -1,6 +1,7 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://3D models/GLB/Material_001.material" type="Material" id=1]
+[ext_resource path="res://Scripts/RainbowTroutAnimations.gd" type="Script" id=2]
 
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "rov_fisk_Cube001"
@@ -580,7 +581,7 @@ start_node = "Idle"
 graph_offset = Vector2( -319, -6 )
 
 [sub_resource type="AnimationNodeBlendTree" id=8]
-graph_offset = Vector2( -708.379, -55.2724 )
+graph_offset = Vector2( -411.861, -51.2569 )
 nodes/Attack/node = SubResource( 10 )
 nodes/Attack/position = Vector2( -320, 180 )
 nodes/Attack_shot/node = SubResource( 12 )
@@ -594,11 +595,12 @@ nodes/animation_speed/position = Vector2( -340, -20 )
 nodes/movement/node = SubResource( 17 )
 nodes/movement/position = Vector2( -580, -40 )
 nodes/output/position = Vector2( 300, 120 )
-node_connections = [ "output", 0, "Hurt_shot", "Attack_shot", 0, "animation_speed", "Attack_shot", 1, "Attack", "animation_speed", 0, "movement", "Hurt_shot", 0, "Attack_shot", "Hurt_shot", 1, "Hurt" ]
+node_connections = [ "Attack_shot", 0, "animation_speed", "Attack_shot", 1, "Attack", "animation_speed", 0, "movement", "Hurt_shot", 0, "Attack_shot", "Hurt_shot", 1, "Hurt", "output", 0, "Hurt_shot" ]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=18]
 
-[node name="Rainbow_trout" type="Spatial"]
+[node name="RainbowTrout" type="Spatial"]
+script = ExtResource( 2 )
 
 [node name="Armature" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.590909, 1.17815 )

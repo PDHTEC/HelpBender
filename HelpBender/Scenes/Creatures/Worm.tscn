@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://3D models/Scenes/Worm.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scripts/Prey.gd" type="Script" id=2]
+
+[sub_resource type="CylinderShape" id=4]
+radius = 0.1
+
+[sub_resource type="SphereShape" id=24]
+
+[node name="Worm" type="KinematicBody"]
+script = ExtResource( 2 )
+max_health = 5.0
+movement_speed = 0.05
+cowers = false
+blind = true
+grounded = true
+max_spin = 2.0
+
+[node name="Worm" parent="." instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="VisionArea" type="Area" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="VisionArea"]
+shape = SubResource( 24 )
+
+[node name="Vision" type="RayCast" parent="."]
+visible = false
+enabled = true
+
+[node name="DownRay" type="RayCast" parent="."]
+enabled = true
+cast_to = Vector3( 0, -0.11, 0 )
