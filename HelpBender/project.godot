@@ -8,10 +8,20 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Node2D",
+"class": "MainMenu",
+"language": "GDScript",
+"path": "res://Scripts/MenuMain.gd"
+} ]
+_global_script_class_icons={
+"MainMenu": ""
+}
+
 [application]
 
 config/name="HelpBender"
-run/main_scene="res://Scenes/Main.tscn"
+run/main_scene="res://Scenes/MenuMain.tscn"
 config/icon="res://icon.png"
 
 [gui]
