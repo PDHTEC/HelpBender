@@ -17,6 +17,13 @@ func _process(delta):
 	elif rotation_degrees.y<-180:
 		rotation_degrees.y += 360
 	
+	if blind:
+		$VisionArea.monitoring = false
+		$Vision.enabled = false
+	else:
+		$VisionArea.monitoring = true
+		$Vision.enabled = true
+	
 	movement(delta)
 
 var rotation_acceleration : Vector3
@@ -43,9 +50,15 @@ func movement(delta):
 	rotation_velocity += rotation_acceleration
 	rotation_velocity *= 0.9
 	rotation_degrees += rotation_velocity*delta
+	
+	if animations != null:
+		if acceleration.length()>0:
+			animations.set_animation("swim")
+		else:
+			animations.set_animation("idle")
 
 func random_movement():
 	rotation_acceleration.y += rand_range(-rotation_speed,rotation_speed)
 
-func flee(_creature):
+func move_from(_creature):
 	pass

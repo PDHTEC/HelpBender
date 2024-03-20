@@ -30,8 +30,6 @@ shape = SubResource( 4 )
 shape = SubResource( 24 )
 
 [node name="Vision" type="RayCast" parent="."]
-visible = false
-enabled = true
 
 [node name="DownRay" type="RayCast" parent="."]
 enabled = true
