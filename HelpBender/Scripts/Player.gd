@@ -70,6 +70,16 @@ func movement(delta):
 		acceleration.y -= movement_speed*0.5
 	
 	on_ground = $DownRay.is_colliding()
+	var ground_normal := Vector3.ZERO
+	if on_ground:
+		ground_normal = $DownRay.get_collision_normal()
+		#rotation_degrees.x = acos(ground_normal.x)
+		#rotation_degrees.z = acos(ground_normal.z)
+	else:
+		#rotation_degrees.x = 0
+		#rotation_degrees.z = 0
+		pass
+	
 	var accel_length = acceleration.length()
 	
 	if on_ground:

@@ -1,11 +1,13 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://3D models/Scenes/Hellbender.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/FollowingCamera.gd" type="Script" id=2]
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=3]
 [ext_resource path="res://Scenes/Creatures/Worm.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Scripts/Overlay.gd" type="Script" id=5]
-[ext_resource path="res://Shader/WaterShader.tres" type="Material" id=7]
+[ext_resource path="res://3D models/Scenes/Map_1.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Underwater_earth.tres" type="Material" id=6]
+[ext_resource path="res://Scripts/Overlay.gd" type="Script" id=7]
+[ext_resource path="res://Scripts/TEST.gd" type="Script" id=8]
 
 [sub_resource type="ProceduralSky" id=25]
 
@@ -29,33 +31,23 @@ extents = Vector3( 0.4, 0.2, 0.3 )
 
 [sub_resource type="BoxShape" id=11]
 
-[sub_resource type="OpenSimplexNoise" id=12]
-persistence = 0.75
-lacunarity = 4.0
-
-[sub_resource type="NoiseTexture" id=13]
-width = 2056
-height = 2056
-seamless = true
-noise = SubResource( 12 )
-
-[sub_resource type="SpatialMaterial" id=14]
-next_pass = ExtResource( 7 )
-albedo_color = Color( 0.341176, 0.219608, 0.101961, 1 )
-normal_enabled = true
-normal_scale = 10.14
-normal_texture = SubResource( 13 )
-
 [sub_resource type="PlaneMesh" id=10]
-material = SubResource( 14 )
+material = ExtResource( 6 )
 size = Vector2( 500, 500 )
 
 [sub_resource type="CubeMesh" id=27]
 
+[sub_resource type="CubeMesh" id=31]
+
+[sub_resource type="CubeMesh" id=29]
+
+[sub_resource type="BoxShape" id=30]
+extents = Vector3( 2, 0.2, 2 )
+
 [node name="Main" type="Spatial"]
 
 [node name="Overlay" type="Node2D" parent="."]
-script = ExtResource( 5 )
+script = ExtResource( 7 )
 movement = Vector2( 50, -50 )
 
 [node name="Water" type="Polygon2D" parent="Overlay"]
@@ -84,7 +76,7 @@ far = 1000.0
 
 [node name="DownRay" type="RayCast" parent="Player"]
 enabled = true
-cast_to = Vector3( 0, -0.25, 0 )
+cast_to = Vector3( 0, -0.5, 0 )
 
 [node name="FrontRay" type="RayCast" parent="Player"]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
@@ -94,7 +86,7 @@ cast_to = Vector3( 0, -4, 0 )
 [node name="AttackTimer" type="Timer" parent="Player"]
 
 [node name="Hellbender" parent="Player" instance=ExtResource( 1 )]
-transform = Transform( -0.25, 0, -2.18557e-08, 0, 0.25, 0, 2.18557e-08, 0, -0.25, 0, -0.224, 0 )
+transform = Transform( -0.25, 0, -3.7749e-08, 0, 0.25, 0, 3.7749e-08, 0, -0.25, 0, -0.224, 0 )
 
 [node name="AnimationTree" parent="Player/Hellbender" index="2"]
 parameters/movement/playback = SubResource( 17 )
@@ -112,10 +104,10 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.017, 0, -0.126675 )
 shape = SubResource( 23 )
 
 [node name="Worm" parent="." instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.17312, -27.2522 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.46664, -27.2522 )
 
 [node name="StaticBody" type="StaticBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.26016, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9999, -4.26, 0 )
 
 [node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
 transform = Transform( 250, 0, 0, 0, 1, 0, 0, 0, 250, 0, -1, 0 )
@@ -124,11 +116,34 @@ shape = SubResource( 11 )
 [node name="MeshInstance" type="MeshInstance" parent="StaticBody"]
 mesh = SubResource( 10 )
 
-[node name="MeshInstance" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, 200, 0, 0, 0, 1000, -258.225, 188.199, 0 )
+[node name="MeshInstance2" type="MeshInstance" parent="StaticBody"]
+transform = Transform( 1, 0, 0, 0, 200, 0, 0, 0, 1000, -258.225, 192.459, 0 )
 mesh = SubResource( 27 )
+skeleton = NodePath("../..")
 
-[node name="KinematicBody" type="KinematicBody" parent="."]
+[node name="Map_1" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 184.404, 74.9089, 150.669 )
+
+[node name="TEST" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -25.344, 6.41929, 10.5538 )
+script = ExtResource( 8 )
+
+[node name="MeshInstance" type="MeshInstance" parent="TEST"]
+mesh = SubResource( 31 )
+
+[node name="RayCast" type="RayCast" parent="TEST"]
+enabled = true
+cast_to = Vector3( 0, -10, 0 )
+
+[node name="StaticBody2" type="StaticBody" parent="."]
+transform = Transform( 0.731691, 0.678486, -0.0654685, -0.681077, 0.723815, -0.110573, -0.0276354, 0.125495, 0.991709, -25.272, 3.15064, 10.6937 )
+
+[node name="MeshInstance" type="MeshInstance" parent="StaticBody2"]
+transform = Transform( 2, 0, 0, 0, 0.2, 0, 0, 0, 2, 0, 0, 0 )
+mesh = SubResource( 29 )
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody2"]
+shape = SubResource( 30 )
 
 [connection signal="timeout" from="Player/AttackTimer" to="Player" method="_on_AttackTimer_timeout"]
 

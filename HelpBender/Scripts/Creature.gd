@@ -1,14 +1,14 @@
 extends KinematicBody
 
-export var max_health : float = 20
-export var max_food : float = 20
-export var food_value : float = 2
-export var movement_speed : float = 1
-export var rotation_speed : float = 0.5
-export var attack_speed : float = 2
-export var attack_power : float = 5
-export var attack_time : float = 1
-export var creature_level : int = 1
+export var max_health := 20.0
+export var max_food := 20.0
+export var food_value := 2.0
+export var movement_speed := 1.0
+export var rotation_speed := 0.5
+export var attack_speed := 2.0
+export var attack_power := 5.0
+export var attack_time := 1.0
+export var creature_level := 1
 export var animations_path : NodePath
 
 var animations : Spatial
