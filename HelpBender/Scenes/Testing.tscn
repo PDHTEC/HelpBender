@@ -3,17 +3,39 @@
 [ext_resource path="res://3D models/Scenes/Hellbender.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/FollowingCamera.gd" type="Script" id=2]
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=3]
-[ext_resource path="res://Scenes/Creatures/Worm.tscn" type="PackedScene" id=4]
-[ext_resource path="res://3D models/Scenes/Map_1.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Underwater_earth.tres" type="Material" id=6]
-[ext_resource path="res://Scripts/Overlay.gd" type="Script" id=7]
-[ext_resource path="res://Scenes/Creatures/RainbowTrout.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scenes/Creatures/RainbowTrout.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scripts/TEST.gd" type="Script" id=5]
 
-[sub_resource type="ProceduralSky" id=32]
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 50, 0.5, 50 )
 
-[sub_resource type="Environment" id=33]
+[sub_resource type="OpenSimplexNoise" id=35]
+persistence = 1.0
+lacunarity = 4.0
+
+[sub_resource type="NoiseTexture" id=36]
+noise = SubResource( 35 )
+
+[sub_resource type="SpatialMaterial" id=37]
+albedo_texture = SubResource( 36 )
+
+[sub_resource type="CubeMesh" id=2]
+material = SubResource( 37 )
+size = Vector3( 100, 1, 100 )
+
+[sub_resource type="CubeMesh" id=38]
+
+[sub_resource type="BoxShape" id=39]
+extents = Vector3( 5, 0.25, 5 )
+
+[sub_resource type="CubeMesh" id=40]
+size = Vector3( 10, 0.5, 10 )
+
+[sub_resource type="ProceduralSky" id=51]
+
+[sub_resource type="Environment" id=41]
 background_mode = 2
-background_sky = SubResource( 32 )
+background_sky = SubResource( 51 )
 fog_enabled = true
 fog_color = Color( 0.298039, 0.392157, 0.466667, 1 )
 fog_depth_begin = 30.0
@@ -21,10 +43,10 @@ fog_height_enabled = true
 fog_height_min = 30.0
 fog_height_max = 100.0
 
-[sub_resource type="BoxShape" id=34]
+[sub_resource type="BoxShape" id=49]
 extents = Vector3( 0.4, 0.2, 1.7 )
 
-[sub_resource type="Animation" id=35]
+[sub_resource type="Animation" id=42]
 resource_name = "Attack"
 length = 0.416667
 step = 0.0416667
@@ -78,7 +100,7 @@ tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = PoolRealArray( 0, 1, 0, 0, 0, 0, 0, 3.37141e-16, 1, 1, 1, 1, 0.0666667, 1, 0, 0, 0, -0.0141993, 7.64296e-12, -2.5563e-14, 0.999899, 1, 1, 1, 0.133333, 1, 0, 0, 0, -0.0467913, -2.91327e-11, -1.11882e-08, 0.998905, 1, 1, 1, 0.2, 1, 0, 0, 0, -0.0392926, -1.01905e-11, -1.15575e-08, 0.999228, 1, 1, 1, 0.333333, 1, 0, 0, 0, -0.00938189, -1.27333e-11, -1.11764e-08, 0.999956, 1, 1, 1, 0.4, 1, 0, 0, 0, -0.00104844, 4.33681e-18, -4.47037e-09, 0.999999, 1, 1, 1, 0.416667, 1, 0, 0, 0, 0, 0, 3.37141e-16, 1, 1, 1, 1 )
 
-[sub_resource type="Animation" id=36]
+[sub_resource type="Animation" id=43]
 resource_name = "Falling"
 length = 1.25
 loop = true
@@ -315,7 +337,7 @@ tracks/32/imported = false
 tracks/32/enabled = true
 tracks/32/keys = PoolRealArray( 0, 1, 0, 0, 0, 2.32831e-10, 1.29247e-26, 5.55112e-17, 1, 1, 1, 1, 1.25, 1, 0, 0, 0, 2.32831e-10, 1.29247e-26, 5.55112e-17, 1, 1, 1, 1 )
 
-[sub_resource type="Animation" id=37]
+[sub_resource type="Animation" id=44]
 resource_name = "Idle_stand"
 length = 1.66667
 loop = true
@@ -552,7 +574,7 @@ tracks/32/imported = false
 tracks/32/enabled = true
 tracks/32/keys = PoolRealArray( 0, 1, 0, 0, 0, 2.32831e-10, 1.29247e-26, 5.55112e-17, 1, 1, 1, 1, 1.66667, 1, 0, 0, 0, 2.32831e-10, 1.29247e-26, 5.55112e-17, 1, 1, 1, 1 )
 
-[sub_resource type="Animation" id=38]
+[sub_resource type="Animation" id=45]
 resource_name = "Swim"
 length = 1.25
 loop = true
@@ -789,7 +811,7 @@ tracks/32/imported = false
 tracks/32/enabled = true
 tracks/32/keys = PoolRealArray( 0, 1, -1.44932, 0, -3.39001e-07, 2.32831e-10, 1.29247e-26, 5.55112e-17, 1, 1, 1, 1, 0.0666667, 1, -1.35003, 0, -3.42727e-07, 2.32831e-10, 1.29247e-26, 5.55112e-17, 1, 1, 1, 1, 0.133333, 1, -1.10646, 0, -3.42727e-07, 2.32831e-10, 1.29247e-26, 5.55112e-17, 1, 1, 1, 1, 0.533333, 1, 1.27635, 0, -3.42727e-07, 7.88861e-31, 7.10543e-15, 1.11022e-16, 1, 1, 1, 1, 0.6, 1, 1.42716, 0, -3.39001e-07, 2.32831e-10, 1.29247e-26, 5.55112e-17, 1, 1, 1, 1, 0.666667, 1, 1.41239, 0, -3.39001e-07, 4.65661e-10, -7.10543e-15, 1.11022e-16, 1, 1, 1, 1, 0.733333, 1, 1.2121, 0, -3.42727e-07, 4.65661e-10, -7.10543e-15, 1.11022e-16, 1, 1, 1, 1, 0.8, 1, 0.892265, 0, -3.42727e-07, 4.65661e-10, -7.10543e-15, 1.11022e-16, 1, 1, 1, 1, 1.13333, 1, -1.17998, 0, -3.42727e-07, 2.32831e-10, 1.29247e-26, 5.55112e-17, 1, 1, 1, 1, 1.2, 1, -1.3916, 0, -3.42727e-07, 2.32831e-10, 1.29247e-26, 5.55112e-17, 1, 1, 1, 1 )
 
-[sub_resource type="Animation" id=39]
+[sub_resource type="Animation" id=46]
 resource_name = "Walk"
 length = 1.66667
 loop = true
@@ -1026,36 +1048,43 @@ tracks/32/imported = false
 tracks/32/enabled = true
 tracks/32/keys = PoolRealArray( 0, 1, 0, 0, 0, 2.32831e-10, 1.29247e-26, 5.55112e-17, 1, 1, 1, 1 )
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=40]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=47]
 
-[sub_resource type="BoxShape" id=41]
+[sub_resource type="BoxShape" id=50]
 extents = Vector3( 0.4, 0.2, 0.3 )
 
-[sub_resource type="BoxShape" id=11]
+[node name="Testing" type="Spatial"]
 
-[sub_resource type="PlaneMesh" id=10]
-material = ExtResource( 6 )
-size = Vector2( 500, 500 )
+[node name="Ground" type="StaticBody" parent="."]
 
-[sub_resource type="CubeMesh" id=27]
+[node name="CollisionShape" type="CollisionShape" parent="Ground"]
+shape = SubResource( 1 )
 
-[sub_resource type="CubeMesh" id=29]
+[node name="MeshInstance" type="MeshInstance" parent="Ground"]
+mesh = SubResource( 2 )
 
-[sub_resource type="BoxShape" id=30]
-extents = Vector3( 2, 0.2, 2 )
+[node name="RainbowTrout" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.6393, 3.21373, 7.67697 )
 
-[node name="Main" type="Spatial"]
+[node name="TEST" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10.3131, 2.32739, -1.12693 )
+script = ExtResource( 5 )
 
-[node name="Overlay" type="Node2D" parent="."]
-script = ExtResource( 7 )
-movement = Vector2( 50, -50 )
+[node name="MeshInstance" type="MeshInstance" parent="TEST"]
+mesh = SubResource( 38 )
 
-[node name="Water" type="Polygon2D" parent="Overlay"]
-color = Color( 0, 0.564, 0.94, 0.0980392 )
-polygon = PoolVector2Array( 0, 0, 1028, 0, 1028, 600, 0, 600 )
+[node name="RayCast" type="RayCast" parent="TEST"]
+enabled = true
+cast_to = Vector3( 0, -10, 0 )
 
-[node name="Worm" parent="." instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.46664, -27.2522 )
+[node name="StaticBody" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.988751, 0.14957, 0, -0.14957, 0.988751, -10.1933, 0.693635, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
+shape = SubResource( 39 )
+
+[node name="CSGMesh" type="CSGMesh" parent="StaticBody"]
+mesh = SubResource( 40 )
 
 [node name="Player" type="KinematicBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.35611, 0 )
@@ -1073,7 +1102,7 @@ cast_to = Vector3( 0, 0, 4 )
 
 [node name="Camera" type="Camera" parent="Player/Camera"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4 )
-environment = SubResource( 33 )
+environment = SubResource( 41 )
 current = true
 far = 1000.0
 
@@ -1090,7 +1119,7 @@ cast_to = Vector3( 0, -4, 0 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Player"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.017, 0, -0.368 )
-shape = SubResource( 34 )
+shape = SubResource( 49 )
 
 [node name="Hellbender" parent="Player" instance=ExtResource( 1 )]
 transform = Transform( -0.25, 0, 2.18557e-08, 0, 0.25, 0, -2.18557e-08, 0, -0.25, 0, -0.224, 0 )
@@ -1099,14 +1128,14 @@ transform = Transform( -0.25, 0, 2.18557e-08, 0, 0.25, 0, -2.18557e-08, 0, -0.25
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
 
 [node name="AnimationPlayer" parent="Player/Hellbender" index="1"]
-anims/Attack = SubResource( 35 )
-anims/Falling = SubResource( 36 )
-anims/Idle_stand = SubResource( 37 )
-anims/Swim = SubResource( 38 )
-anims/Walk = SubResource( 39 )
+anims/Attack = SubResource( 42 )
+anims/Falling = SubResource( 43 )
+anims/Idle_stand = SubResource( 44 )
+anims/Swim = SubResource( 45 )
+anims/Walk = SubResource( 46 )
 
 [node name="AnimationTree" parent="Player/Hellbender" index="2"]
-parameters/movement/playback = SubResource( 40 )
+parameters/movement/playback = SubResource( 47 )
 parameters/movement/conditions/idle_stand = true
 
 [node name="AttackArea" type="Area" parent="Player"]
@@ -1114,40 +1143,9 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.24533 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Player/AttackArea"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.017, 0, -0.126675 )
-shape = SubResource( 41 )
+shape = SubResource( 50 )
 
 [node name="GroundTransform" type="Spatial" parent="Player"]
-
-[node name="StaticBody" type="StaticBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9999, -4.26, 0 )
-
-[node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
-transform = Transform( 250, 0, 0, 0, 1, 0, 0, 0, 250, 0, -1, 0 )
-shape = SubResource( 11 )
-
-[node name="MeshInstance" type="MeshInstance" parent="StaticBody"]
-mesh = SubResource( 10 )
-
-[node name="MeshInstance2" type="MeshInstance" parent="StaticBody"]
-transform = Transform( 1, 0, 0, 0, 200, 0, 0, 0, 1000, -258.225, 192.459, 0 )
-mesh = SubResource( 27 )
-skeleton = NodePath("../..")
-
-[node name="Map_1" parent="." instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 184.404, 74.9089, 150.669 )
-
-[node name="StaticBody2" type="StaticBody" parent="."]
-transform = Transform( 0.731691, 0.678486, -0.0654685, -0.681077, 0.723815, -0.110573, -0.0276354, 0.125495, 0.991709, -25.272, 3.15064, 10.6937 )
-
-[node name="MeshInstance" type="MeshInstance" parent="StaticBody2"]
-transform = Transform( 2, 0, 0, 0, 0.2, 0, 0, 0, 2, 0, 0, 0 )
-mesh = SubResource( 29 )
-
-[node name="CollisionShape" type="CollisionShape" parent="StaticBody2"]
-shape = SubResource( 30 )
-
-[node name="RainbowTrout" parent="." instance=ExtResource( 9 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.36473, 6.85348, -9.49228 )
 
 [connection signal="timeout" from="Player/AttackTimer" to="Player" method="_on_AttackTimer_timeout"]
 

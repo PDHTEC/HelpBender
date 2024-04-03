@@ -32,8 +32,9 @@ func _ready():
 
 func _update():
 	#Gravity
-	if !on_ground && velocity.length()<=10:
-		velocity += gravity_vector*gravity_magnitude*0.01
+	#if velocity.length()<=10:
+	#	velocity += gravity_vector*gravity_magnitude*0.01
+	velocity += gravity_vector*gravity_magnitude*0.01
 
 func attack(attacker, damage):
 	change_health(-damage)

@@ -30,8 +30,8 @@ func movement(delta):
 	acceleration = acceleration.limit_length(movement_speed)
 	velocity += acceleration
 	velocity = move_and_slide(velocity,-gravity_vector)
-	
-	random_movement()
+	move_to($"../Player".translation)
+	#random_movement()
 	rotation_acceleration = rotation_acceleration.limit_length(max_spin)
 	rotation_velocity += rotation_acceleration
 	rotation_velocity *= 0.9
@@ -52,5 +52,7 @@ func random_movement():
 		rotation_acceleration.y += -rotation_speed
 
 func move_to(target : Vector3):
-	var targeting_angle : Vector2
-	pass
+	var targeting_angle := Vector2.ZERO
+	var b_squared = Vector2(target.x,target.z).length_squared()
+	var a_squared = Vector2(-target.x,1-target.z).length_squared()
+	targeting_angle.x = acos((b_squared+1-a_squared)/(2*sqrt(a_squared)))

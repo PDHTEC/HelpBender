@@ -70,16 +70,15 @@ func movement(delta):
 		acceleration.y -= movement_speed*0.5
 	
 	on_ground = $DownRay.is_colliding()
-	var ground_normal := Vector3.ZERO
 	if on_ground:
-		ground_normal = $DownRay.get_collision_normal()
-		#rotation_degrees.x = acos(ground_normal.x)
-		#rotation_degrees.z = acos(ground_normal.z)
+		var ground_normal : Vector3 = $DownRay.get_collision_normal()
+		var xform = align_with_y($Hellbender.global_transform, ground_normal)
+		$Hellbender.global_transform = $Hellbender.global_transform.interpolate_with(xform, 0.2)
+		$CollisionShape.global_transform.interpolate_with(xform, 0.2)
+		$Hellbender.scale = Vector3(0.25,0.25,0.25)
 	else:
-		#rotation_degrees.x = 0
-		#rotation_degrees.z = 0
-		pass
-	
+		rotate_to(Vector2(0,0))
+		$CollisionShape.rotation_degrees = Vector3(0,0,0)
 	var accel_length = acceleration.length()
 	
 	if on_ground:
@@ -107,6 +106,16 @@ func movement(delta):
 	rotation_velocity *= 0.9
 	rotation_degrees += rotation_velocity*delta
 	cam.rotation_degrees.y -= rotation_velocity.y*delta
+
+func rotate_to(rotation_target : Vector2):
+	$Hellbender.rotation_degrees.x = rotation_target.x
+	$Hellbender.rotation_degrees.z = rotation_target.y
+
+func align_with_y(xform, new_y):
+	xform.basis.y = new_y
+	xform.basis.x = -xform.basis.z.cross(new_y)
+	xform.basis = xform.basis.orthonormalized()
+	return xform
 
 var can_attack : bool = true
 var attacking : bool = false
