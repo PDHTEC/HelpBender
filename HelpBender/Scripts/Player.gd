@@ -1,8 +1,7 @@
 extends "res://Scripts/Creature.gd"
 
-var animations
 func _ready():
-	animations = $Hellbender
+	randomize()
 
 func _process(delta):
 	if rotation_degrees.y>180:
@@ -16,19 +15,18 @@ func _process(delta):
 		attempt_attack()
 	if attacking:
 		for body in $AttackArea.get_overlapping_bodies():
-			if body.has_method("attack") && body != self:
+			if body.has_method("attack") && body != self && attacking:
 				body.attack(self, attack_power)
 				_on_AttackTimer_timeout()
 
 func attempt_attack():
+	$AttackArea.monitoring = true
 	$AttackTimer.start(attack_time)
 	animations.set_attacking(true)
 	velocity += forward*10
 	can_attack = false
 	attacking = true
 
-var forward : Vector3
-var on_ground : bool
 func movement(delta):
 	var cam = $Camera
 	var forwardx = cos(deg2rad(-rotation_degrees.y)-PI/2) * cos(deg2rad(-rotation_degrees.x))
@@ -68,19 +66,24 @@ func movement(delta):
 		rotation_velocity.y += (cam_rotation_right)*real_rot_speed
 	if Input.is_action_pressed("up"):
 		acceleration.y += movement_speed*0.5
-	if Input.is_action_pressed("down"):
+	if Input.is_action_pressed("down") && !on_ground:
 		acceleration.y -= movement_speed*0.5
 	
 	on_ground = $DownRay.is_colliding()
+	if on_ground:
+		var ground_normal : Vector3 = $DownRay.get_collision_normal()
+		var xform = align_with_y($Hellbender.global_transform, ground_normal)
+		$Hellbender.global_transform = $Hellbender.global_transform.interpolate_with(xform, 0.2)
+		$CollisionShape.global_transform.interpolate_with(xform, 0.2)
+		$Hellbender.scale = Vector3(0.25,0.25,0.25)
+	else:
+		rotate_to(Vector2(0,0))
+		$CollisionShape.rotation_degrees = Vector3(0,0,0)
 	var accel_length = acceleration.length()
 	
 	if on_ground:
 		rotation_velocity*=0.6
 		velocity *= 0.9
-	
-	#adds gravity. Uncertain of whether this should be a thing.
-	if !on_ground && velocity.length()<=10:
-		velocity += gravity_vector*gravity_magnitude*0.01
 	
 	if on_ground:
 		if accel_length>0:
@@ -93,6 +96,8 @@ func movement(delta):
 		else:
 			animations.set_animation("falling")
 	
+	._update()
+	
 	velocity *= 0.97
 	acceleration = acceleration.limit_length(movement_speed)
 	velocity += acceleration
@@ -102,10 +107,21 @@ func movement(delta):
 	rotation_degrees += rotation_velocity*delta
 	cam.rotation_degrees.y -= rotation_velocity.y*delta
 
+func rotate_to(rotation_target : Vector2):
+	$Hellbender.rotation_degrees.x = rotation_target.x
+	$Hellbender.rotation_degrees.z = rotation_target.y
+
+func align_with_y(xform, new_y):
+	xform.basis.y = new_y
+	xform.basis.x = -xform.basis.z.cross(new_y)
+	xform.basis = xform.basis.orthonormalized()
+	return xform
+
 var can_attack : bool = true
 var attacking : bool = false
 func _on_AttackTimer_timeout():
 	if attacking:
+		$AttackArea.monitoring = false
 		attacking = false
 		animations.set_attacking(false)
 		$AttackTimer.start(attack_speed)
