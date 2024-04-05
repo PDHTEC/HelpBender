@@ -14,6 +14,12 @@ func _ready():
 	$RayCast.cast_to.z = distance
 
 func _process(_delta):
+	if Input.is_action_just_pressed("ui_cancel"):
+		if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		else:
+			Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	var cam = $Camera
 	cam.translation.z = distance
 	if $RayCast.is_colliding():

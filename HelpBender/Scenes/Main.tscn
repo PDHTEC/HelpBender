@@ -1061,6 +1061,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.46664, -27.2522 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.35611, 0 )
 script = ExtResource( 3 )
 movement_speed = 0.5
+creature_level = 3
 animations_path = NodePath("Hellbender")
 
 [node name="Camera" type="Spatial" parent="Player"]

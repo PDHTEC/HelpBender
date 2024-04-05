@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://3D models/Scenes/Hellbender.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/FollowingCamera.gd" type="Script" id=2]
@@ -1053,6 +1053,8 @@ tracks/32/keys = PoolRealArray( 0, 1, 0, 0, 0, 2.32831e-10, 1.29247e-26, 5.55112
 [sub_resource type="BoxShape" id=50]
 extents = Vector3( 0.4, 0.2, 0.3 )
 
+[sub_resource type="ParticlesMaterial" id=52]
+
 [node name="Testing" type="Spatial"]
 
 [node name="Ground" type="StaticBody" parent="."]
@@ -1064,7 +1066,7 @@ shape = SubResource( 1 )
 mesh = SubResource( 2 )
 
 [node name="RainbowTrout" parent="." instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.6393, 3.21373, 7.67697 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.6393, 3.21373, 24.1754 )
 
 [node name="TEST" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10.3131, 2.32739, -1.12693 )
@@ -1087,7 +1089,7 @@ shape = SubResource( 39 )
 mesh = SubResource( 40 )
 
 [node name="Player" type="KinematicBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.35611, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.52845, 1.35611, -25.4795 )
 script = ExtResource( 3 )
 movement_speed = 0.5
 animations_path = NodePath("Hellbender")
@@ -1146,6 +1148,11 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.017, 0, -0.126675 )
 shape = SubResource( 50 )
 
 [node name="GroundTransform" type="Spatial" parent="Player"]
+
+[node name="Particles" type="Particles" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.21047, 0 )
+amount = 200
+process_material = SubResource( 52 )
 
 [connection signal="timeout" from="Player/AttackTimer" to="Player" method="_on_AttackTimer_timeout"]
 

@@ -4,6 +4,9 @@ func _ready():
 	randomize()
 
 func _process(delta):
+	if dead:
+		get_tree().quit()
+	
 	if rotation_degrees.y>180:
 		rotation_degrees.y -= 360
 	elif rotation_degrees.y<-180:
