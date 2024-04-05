@@ -27,7 +27,6 @@ _global_script_class_icons={
 [application]
 
 config/name="HelpBender"
-run/main_scene="res://Scenes/MenuMain.tscn"
 config/icon="res://icon.png"
 
 [gui]
