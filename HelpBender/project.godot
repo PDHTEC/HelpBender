@@ -8,10 +8,25 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Control",
+"class": "MainMenu",
+"language": "GDScript",
+"path": "res://Scripts/MenuMain.gd"
+}, {
+"base": "Control",
+"class": "settingsMenu",
+"language": "GDScript",
+"path": "res://Scenes/settingsMenu.gd"
+} ]
+_global_script_class_icons={
+"MainMenu": "",
+"settingsMenu": ""
+}
+
 [application]
 
 config/name="HelpBender"
-run/main_scene="res://Scenes/Main.tscn"
 config/icon="res://icon.png"
 
 [display]
