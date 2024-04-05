@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://3D models/Scenes/Hellbender.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/FollowingCamera.gd" type="Script" id=2]
@@ -6,8 +6,41 @@
 [ext_resource path="res://Scenes/Creatures/Worm.tscn" type="PackedScene" id=4]
 [ext_resource path="res://3D models/Scenes/Map_1.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Underwater_earth.tres" type="Material" id=6]
-[ext_resource path="res://Scripts/Main.gd" type="Script" id=8]
+[ext_resource path="res://Scripts/Overlay.gd" type="Script" id=7]
+[ext_resource path="res://Scripts/Particle overlay.gd" type="Script" id=8]
 [ext_resource path="res://Scenes/Creatures/RainbowTrout.tscn" type="PackedScene" id=9]
+
+[sub_resource type="ParticlesMaterial" id=42]
+emission_shape = 1
+emission_sphere_radius = 5.0
+gravity = Vector3( 0, 1, 0 )
+scale_random = 1.0
+hue_variation = 1.0
+hue_variation_random = 1.0
+
+[sub_resource type="SpatialMaterial" id=44]
+flags_transparent = true
+albedo_color = Color( 0.152941, 0.266667, 0.0392157, 0.537255 )
+metallic_specular = 0.0
+roughness = 0.0
+emission_enabled = true
+emission = Color( 0.643137, 0.866667, 0.411765, 1 )
+emission_energy = 0.04
+emission_operator = 0
+emission_on_uv2 = false
+rim_enabled = true
+rim = 1.0
+rim_tint = 1.0
+clearcoat_enabled = true
+clearcoat = 1.0
+clearcoat_gloss = 0.5
+
+[sub_resource type="SphereMesh" id=43]
+material = SubResource( 44 )
+radius = 0.2
+height = 0.4
+radial_segments = 10
+rings = 10
 
 [sub_resource type="ProceduralSky" id=32]
 
@@ -1039,11 +1072,25 @@ size = Vector2( 500, 500 )
 
 [sub_resource type="CubeMesh" id=27]
 
+[sub_resource type="CubeMesh" id=29]
+
+[sub_resource type="BoxShape" id=30]
+extents = Vector3( 2, 0.2, 2 )
+
 [node name="Main" type="Spatial"]
+
+[node name="ParticleOverlay" type="Spatial" parent="."]
 script = ExtResource( 8 )
-water_height = 67.0
+
+[node name="WaterPollution" type="Particles" parent="ParticleOverlay"]
+cast_shadow = 0
+amount = 15
+process_material = SubResource( 42 )
+draw_pass_1 = SubResource( 43 )
 
 [node name="Overlay" type="Node2D" parent="."]
+script = ExtResource( 7 )
+movement = Vector2( 50, -50 )
 
 [node name="Water" type="Polygon2D" parent="Overlay"]
 color = Color( 0, 0.564, 0.94, 0.0980392 )
@@ -1131,6 +1178,16 @@ skeleton = NodePath("../..")
 
 [node name="Map_1" parent="." instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 184.404, 74.9089, 150.669 )
+
+[node name="StaticBody2" type="StaticBody" parent="."]
+transform = Transform( 0.731691, 0.678486, -0.0654685, -0.681077, 0.723815, -0.110573, -0.0276354, 0.125495, 0.991709, -25.272, 3.15064, 10.6937 )
+
+[node name="MeshInstance" type="MeshInstance" parent="StaticBody2"]
+transform = Transform( 2, 0, 0, 0, 0.2, 0, 0, 0, 2, 0, 0, 0 )
+mesh = SubResource( 29 )
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody2"]
+shape = SubResource( 30 )
 
 [node name="RainbowTrout" parent="." instance=ExtResource( 9 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.36473, 6.85348, -9.49228 )
