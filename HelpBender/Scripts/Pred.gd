@@ -31,7 +31,7 @@ func movement(delta):
 	velocity += acceleration
 	velocity = move_and_slide(velocity,-gravity_vector)
 	move_to($"../Player".translation)
-	random_movement()
+	#random_movement()
 	rotation_acceleration = rotation_acceleration.limit_length(max_spin)
 	rotation_velocity += rotation_acceleration
 	rotation_velocity *= 0.9
