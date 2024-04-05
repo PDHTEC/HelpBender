@@ -1,8 +1,4 @@
-[gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://Misrow.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://Scripts/MenuMain.gd" type="Script" id=3]
-[ext_resource path="res://Scenes/settingsMenu.tscn" type="PackedScene" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 64
@@ -11,35 +7,7 @@ font_data = ExtResource( 2 )
 [sub_resource type="Theme" id=2]
 default_font = SubResource( 1 )
 
-[node name="Node2D" type="Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-script = ExtResource( 3 )
 
-[node name="Knapper" type="Control" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
-
-[node name="start" type="Button" parent="Knapper"]
-margin_left = 47.0
-margin_top = 375.0
-margin_right = 110.0
-margin_bottom = 415.0
-action_mode = 0
-text = "Start"
-
-[node name="settings" type="Button" parent="Knapper"]
-margin_left = 47.0
-margin_top = 445.0
-margin_right = 110.0
-margin_bottom = 485.0
-text = "Settings"
-
-[node name="quit" type="Button" parent="Knapper"]
-margin_left = 47.0
-margin_top = 510.0
-margin_right = 110.0
-margin_bottom = 550.0
 text = "Quit"
 
 [node name="Title" type="RichTextLabel" parent="."]
@@ -51,6 +19,3 @@ theme = SubResource( 2 )
 text = "Helpbender
 "
 scroll_active = false
-
-[node name="settingsMenu" parent="." instance=ExtResource( 4 )]
-visible = false

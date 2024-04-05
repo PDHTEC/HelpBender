@@ -1218,7 +1218,7 @@ nodes/animation_speed/position = Vector2( 60, 110 )
 nodes/movement/node = SubResource( 28 )
 nodes/movement/position = Vector2( -160, 140 )
 nodes/output/position = Vector2( 480, 140 )
-node_connections = [ "Attack_shot", 0, "animation_speed", "Attack_shot", 1, "Attack", "animation_speed", 0, "movement", "output", 0, "Attack_shot" ]
+node_connections = [ "output", 0, "Attack_shot", "animation_speed", 0, "movement", "Attack_shot", 0, "animation_speed", "Attack_shot", 1, "Attack" ]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=29]
 
@@ -1226,7 +1226,6 @@ node_connections = [ "Attack_shot", 0, "animation_speed", "Attack_shot", 1, "Att
 script = ExtResource( 3 )
 
 [node name="Armature" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 0, 0 )
 
 [node name="Skeleton" type="Skeleton" parent="Armature"]
 bones/0/name = "root"
