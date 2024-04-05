@@ -110,7 +110,6 @@ func _http_request_completed(_result, _response_code, _headers, _body):
 	
 	
 
-	
 func _submit_score():
 	var command = "add_Player"
 	var data = {"Player" : Player, "score" : score, "Month" : Month, "Year" : Year, "Hunger" : Hunger, "Health" : Health}
