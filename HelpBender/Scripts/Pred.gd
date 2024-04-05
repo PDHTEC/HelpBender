@@ -30,7 +30,6 @@ func movement(delta):
 	
 	if target!= null && !$VisionArea.get_overlapping_bodies().has(target):
 		target = null
-		print("Target lost!")
 	if target!=null:
 		move_to(target.translation)
 	else:
@@ -77,10 +76,8 @@ func _on_body_entered_VisionArea(body):
 		$Vision.force_raycast_update()
 		if $Vision.get_collider() == body && body.creature_level < creature_level:
 			if target != null:
-				print("new target: "+body.name)
 				target = closest_body(target,body)
 			else:
-				print("target set: "+body.name)
 				target = body
 
 func closest_body(body_1, body_2):

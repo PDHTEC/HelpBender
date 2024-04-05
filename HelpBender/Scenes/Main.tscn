@@ -6,7 +6,7 @@
 [ext_resource path="res://Scenes/Creatures/Worm.tscn" type="PackedScene" id=4]
 [ext_resource path="res://3D models/Scenes/Map_1.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Underwater_earth.tres" type="Material" id=6]
-[ext_resource path="res://Scripts/Overlay.gd" type="Script" id=7]
+[ext_resource path="res://Scripts/Main.gd" type="Script" id=8]
 [ext_resource path="res://Scenes/Creatures/RainbowTrout.tscn" type="PackedScene" id=9]
 
 [sub_resource type="ProceduralSky" id=32]
@@ -1045,10 +1045,10 @@ size = Vector2( 500, 500 )
 extents = Vector3( 2, 0.2, 2 )
 
 [node name="Main" type="Spatial"]
+script = ExtResource( 8 )
+water_height = 67.0
 
 [node name="Overlay" type="Node2D" parent="."]
-script = ExtResource( 7 )
-movement = Vector2( 50, -50 )
 
 [node name="Water" type="Polygon2D" parent="Overlay"]
 color = Color( 0, 0.564, 0.94, 0.0980392 )

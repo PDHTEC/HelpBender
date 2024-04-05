@@ -33,6 +33,8 @@ func _ready():
 func _update():
 	if velocity.length()<=10:
 		velocity += gravity_vector*gravity_magnitude*0.01
+	if global_translation.y > get_tree().get_root().get_node("Main").water_height:
+		velocity += gravity_vector*gravity_magnitude
 
 func attack(attacker, damage):
 	change_health(-damage)
