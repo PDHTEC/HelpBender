@@ -16,6 +16,7 @@ func _process(delta):
 	
 	if Input.is_action_just_pressed("left_click") && can_attack:
 		attempt_attack()
+	
 	if attacking:
 		for body in $AttackArea.get_overlapping_bodies():
 			if body.has_method("attack") && body != self && attacking:
@@ -79,7 +80,9 @@ func movement(delta):
 		$Hellbender.global_transform = $Hellbender.global_transform.interpolate_with(xform, 0.2)
 		$CollisionShape.global_transform.interpolate_with(xform, 0.2)
 		$Hellbender.scale = Vector3(0.25,0.25,0.25)
+		$Hellbender.rotation_degrees.y = 180
 	else:
+		process_priority
 		rotate_to(Vector2(0,0))
 		$CollisionShape.rotation_degrees = Vector3(0,0,0)
 	var accel_length = acceleration.length()

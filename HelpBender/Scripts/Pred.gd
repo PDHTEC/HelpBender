@@ -1,7 +1,8 @@
 extends "res://Scripts/Creature.gd"
 
 export var vision_scale : float = 1
-export var max_spin : float = 5
+export var max_vertical_acc : float = 0.2
+export var max_spin : float = 10
 var target : Spatial
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -9,6 +10,9 @@ func _process(delta):
 	movement(delta)
 	if animations != null:
 		pass
+
+func scale_vision(set_scale : float):
+	$VisionArea/CollisionShape.scale = Vector3(set_scale,set_scale,set_scale)
 
 var x_heading : float
 var acceleration : Vector3
@@ -23,16 +27,17 @@ func movement(delta):
 	._update()
 	velocity *= 0.97
 	acceleration = forward * movement_speed
-	acceleration = acceleration.limit_length(movement_speed)
-	velocity += acceleration
 	
-	if !$VisionArea.get_overlapping_bodies().has(target):
+	if target!= null && !$VisionArea.get_overlapping_bodies().has(target):
 		target = null
+		print("Target lost!")
 	if target!=null:
 		move_to(target.translation)
 	else:
 		random_movement()
 	
+	acceleration = acceleration.limit_length(movement_speed)
+	velocity += acceleration
 	velocity = move_and_slide(velocity,-gravity_vector)
 	
 	rotation_acceleration = rotation_acceleration.limit_length(max_spin)
@@ -64,7 +69,7 @@ func move_to(target : Vector3):
 		if $LocalTarget.translation.x>0:
 			target_angle_y *= -1
 	rotation_acceleration.y = target_angle_y
-	acceleration.y += (target.y - translation.y)*10
+	acceleration.y += clamp(target.y - translation.y,-max_vertical_acc,max_vertical_acc)
 
 func _on_body_entered_VisionArea(body):
 	if body!=self && "creature_level" in body:
@@ -72,9 +77,10 @@ func _on_body_entered_VisionArea(body):
 		$Vision.force_raycast_update()
 		if $Vision.get_collider() == body && body.creature_level < creature_level:
 			if target != null:
-				print("target changed")
+				print("new target: "+body.name)
 				target = closest_body(target,body)
 			else:
+				print("target set: "+body.name)
 				target = body
 
 func closest_body(body_1, body_2):
