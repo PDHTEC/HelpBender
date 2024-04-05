@@ -29,7 +29,9 @@ func movement(delta):
 	acceleration = forward * movement_speed
 	
 	if target!= null && !$VisionArea.get_overlapping_bodies().has(target):
-		target = null
+		$Vision.force_raycast_update()
+		if $Vision.get_collider() != target:
+			target = null
 	if target!=null:
 		move_to(target.translation)
 	else:

@@ -19,7 +19,7 @@ func _process(delta):
 	
 	if attacking:
 		for body in $AttackArea.get_overlapping_bodies():
-			if body.has_method("attack") && body != self && attacking:
+			if body.has_method("attack") && body != self && attacking && body.creature_level<=creature_level:
 				body.attack(self, attack_power)
 				_on_AttackTimer_timeout()
 
@@ -82,7 +82,6 @@ func movement(delta):
 		$Hellbender.scale = Vector3(0.25,0.25,0.25)
 		$Hellbender.rotation_degrees.y = 180
 	else:
-		process_priority
 		rotate_to(Vector2(0,0))
 		$CollisionShape.rotation_degrees = Vector3(0,0,0)
 	var accel_length = acceleration.length()
