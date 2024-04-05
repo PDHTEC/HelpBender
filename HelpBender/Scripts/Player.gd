@@ -27,7 +27,10 @@ func attempt_attack():
 	can_attack = false
 	attacking = true
 
+var acceleration = Vector3.ZERO
+
 func movement(delta):
+	
 	var cam = $Camera
 	var forwardx = cos(deg2rad(-rotation_degrees.y)-PI/2) * cos(deg2rad(-rotation_degrees.x))
 	var forwardz = sin(deg2rad(-rotation_degrees.y)-PI/2) * cos(deg2rad(-rotation_degrees.x))
@@ -37,7 +40,7 @@ func movement(delta):
 	if on_ground:
 		real_rot_speed *= 5
 	var cam_rotation = cam.rotation_degrees.y
-	var acceleration = Vector3.ZERO
+	acceleration = Vector3.ZERO
 	if Input.is_action_pressed("forward"):
 		acceleration += forward*movement_speed
 		rotation_velocity.y += cam_rotation*real_rot_speed
