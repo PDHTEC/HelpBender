@@ -20,7 +20,6 @@ func _ready():
 	add_child(http_request)
 	http_request.connect("request_completed",self,"_http_request_completed")
 
-
 func _process(_delta):
 	
 	if is_requesting:
@@ -35,8 +34,7 @@ func _process(_delta):
 		request_nonce()
 	else:
 		_send_request(request_queue.pop_front())
-	
-	
+
 func request_nonce():
 	var client = HTTPClient.new()
 	var data = client.query_string_from_dict({"data" : JSON.print({})})
@@ -49,8 +47,7 @@ func request_nonce():
 		return
 		
 	print("Requeste nonce")
-	
-		
+
 func _send_request(request: Dictionary):
 	var client = HTTPClient.new()
 	var data = client.query_string_from_dict({"data" : JSON.print(request['data'])})
@@ -74,8 +71,7 @@ func _send_request(request: Dictionary):
 		
 	#$TextEdit.set_text(body)
 	print("Requesting...\n\tCommand: " + request['command'] + "\n\tBody: " + body)
-	
-	
+
 func _http_request_completed(_result, _response_code, _headers, _body):
 	is_requesting = false
 	if _result != http_request.RESULT_SUCCESS:
@@ -88,7 +84,7 @@ func _http_request_completed(_result, _response_code, _headers, _body):
 	#$TextEdit.set_text(response_body)
 	var response = parse_json(response_body)
 	print(response_body)
-
+	
 	if response['error'] != "none":
 		printerr("We returned error: " + response['error'])
 		return
@@ -107,7 +103,6 @@ func _http_request_completed(_result, _response_code, _headers, _body):
 			Hunger = int(String(response['response'][String(n)]['Hunger']))
 			Health = int(String(response['response'][String(n)]['Health']))
 
-	
 func _submit_score():
 	var command = "add_Player"
 	var data = {"Player" : Player, "score" : score, "Month" : Month, "Year" : Year, "Hunger" : Hunger, "Health" : Health}
@@ -117,6 +112,3 @@ func _get_player():
 	var command = "get_player"
 	var data = {"Player" : Player}
 	request_queue.push_back({"command" : command, "data" : data})
-
-
-
