@@ -1093,6 +1093,8 @@ water_height = 67.0
 [node name="Overlay" type="Node2D" parent="."]
 
 [node name="Water" type="Polygon2D" parent="Overlay"]
+position = Vector2( -276, -311 )
+scale = Vector2( 3.92607, 4.83333 )
 color = Color( 0, 0.564, 0.94, 0.0980392 )
 polygon = PoolVector2Array( 0, 0, 1028, 0, 1028, 600, 0, 600 )
 
@@ -1104,6 +1106,7 @@ creature_level = 3
 animations_path = NodePath("Hellbender")
 
 [node name="Camera" type="Spatial" parent="Player"]
+transform = Transform( 0.939693, 0, 0.34202, 0, 1, 0, -0.34202, 0, 0.939693, 0, 0, 0 )
 script = ExtResource( 2 )
 distance = 10.0
 
@@ -1219,6 +1222,12 @@ transform = Transform( -0.576732, 0, 0.816934, 0, 1, 0, -0.816934, 0, -0.576732,
 
 [node name="Worm3" parent="Prey" instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24.6472, -10.4584, 91.6731 )
+
+[node name="Worm4" parent="Prey" instance=ExtResource( 4 )]
+transform = Transform( 0.884622, 0, -0.466309, 0, 1, 0, 0.466309, 0, 0.884622, -86.2482, -9.69185, 148.15 )
+
+[node name="Worm5" parent="Prey" instance=ExtResource( 4 )]
+transform = Transform( 0.957551, 0, -0.288263, 0, 1, 0, 0.288263, 0, 0.957551, -73.127, -15.6929, 203.279 )
 
 [node name="CrayFish" parent="Prey" instance=ExtResource( 14 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 28.688, 1.66875, -68.2422 )
