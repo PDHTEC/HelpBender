@@ -1097,7 +1097,7 @@ color = Color( 0, 0.564, 0.94, 0.0980392 )
 polygon = PoolVector2Array( 0, 0, 1028, 0, 1028, 600, 0, 600 )
 
 [node name="Player" type="KinematicBody" parent="."]
-transform = Transform( 0.999036, 0.0100727, 0.0427274, -0.00737662, 0.997999, -0.0627942, -0.0432744, 0.0624185, 0.997111, 41.167, -5.40901, 12.3373 )
+transform = Transform( 0.999083, 0, 0.0428173, 0, 1, 0, -0.0428173, 0, 0.999082, 41.167, -5.40901, 12.3373 )
 script = ExtResource( 3 )
 movement_speed = 0.5
 creature_level = 3
