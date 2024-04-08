@@ -1,4 +1,5 @@
 extends Control
+onready var start_button = $Knapper/resumeButton as Button
 onready var settings_button = $Knapper/settingsButton as Button
 onready var quit_button = $Knapper/exitButton as Button
 onready var settings_menu = $settingsMenu as Control
@@ -18,13 +19,18 @@ func _unhandled_input(event):
 func set_is_paused(value):
 	is_paused = value
 	get_tree().paused = is_paused
-	self.visible =is_paused
+	visible =is_paused
 
 func handle_connecting_signals():
-	#start_button.connect("pressed",self,"_on_start_button_down")
+	start_button.connect("pressed",self,"_on_start_button_down")
 	settings_button.connect("pressed",self,"_on_settings_button_down")
 	quit_button.connect("pressed",self,"_on_quit_button_down")
 	settings_menu.connect("exit_settings_menu",self,"on_exit_options_menu")
+
+func _on_start_button_down():
+	get_tree().paused = false
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	self.is_paused = !is_paused
 
 func _on_settings_button_down():
 	Knapper.visible = false

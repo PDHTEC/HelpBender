@@ -8,7 +8,6 @@
 pause_mode = 2
 script = ExtResource( 2 )
 
-[node name="pauseScreen" type="Control" parent="." instance=ExtResource( 3 )]
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="pauseScreen" parent="." instance=ExtResource( 3 )]
+visible = true
 script = ExtResource( 1 )

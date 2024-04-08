@@ -14,7 +14,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/MenuMain.gd"
 }, {
-"base": "Reference",
+"base": "Control",
 "class": "settingsMenu",
 "language": "GDScript",
 "path": "res://Scripts/settingsMenu.gd"

@@ -4,6 +4,7 @@
 [ext_resource path="res://Scripts/pauseScreen.gd" type="Script" id=2]
 
 [node name="pauseScreen" type="Control"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 2 )
@@ -34,4 +35,5 @@ margin_bottom = 340.0
 text = "Quit to menu"
 
 [node name="settingsMenu" parent="." instance=ExtResource( 1 )]
+pause_mode = 2
 visible = false

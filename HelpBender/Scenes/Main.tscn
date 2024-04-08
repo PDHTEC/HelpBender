@@ -6,8 +6,8 @@
 [ext_resource path="res://Scenes/Creatures/Worm.tscn" type="PackedScene" id=4]
 [ext_resource path="res://3D models/Scenes/Map_1.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Underwater_earth.tres" type="Material" id=6]
-[ext_resource path="res://Scripts/Overlay.gd" type="Script" id=7]
-[ext_resource path="res://Scenes/CanvasLayer.gd" type="Script" id=8]
+[ext_resource path="res://Scripts/Main.gd" type="Script" id=7]
+[ext_resource path="res://Scripts/Particle overlay.gd" type="Script" id=8]
 [ext_resource path="res://Scenes/Creatures/RainbowTrout.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Scenes/NyPause.tscn" type="PackedScene" id=10]
 
@@ -1075,6 +1075,7 @@ size = Vector2( 500, 500 )
 
 [node name="Main" type="Spatial"]
 script = ExtResource( 7 )
+water_height = 67.0
 
 [node name="ParticleOverlay" type="Spatial" parent="."]
 script = ExtResource( 8 )
@@ -1093,6 +1094,12 @@ polygon = PoolVector2Array( 0, 0, 1028, 0, 1028, 600, 0, 600 )
 
 [node name="Worm" parent="." instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.46664, -27.2522 )
+max_health = 20.0
+movement_speed = 1.0
+cowers = true
+blind = false
+grounded = false
+max_spin = 5.0
 
 [node name="Player" type="KinematicBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.35611, 0 )
