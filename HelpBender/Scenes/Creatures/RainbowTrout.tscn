@@ -64,6 +64,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.61395 )
 shape = SubResource( 36 )
 
 [node name="Vision" type="RayCast" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.48576 )
 enabled = true
 
 [node name="DownRay" type="RayCast" parent="."]

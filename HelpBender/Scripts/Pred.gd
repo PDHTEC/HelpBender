@@ -36,7 +36,6 @@ func movement(delta):
 	if target!= null && !$VisionArea.get_overlapping_bodies().has(target):
 		$Vision.force_raycast_update()
 		if $Vision.get_collider() != target:
-			print(target.name+" is no longer targeted")
 			target = null
 	if target!=null:
 		move_to(target.translation)

@@ -112,6 +112,9 @@ func movement(delta):
 	rotation_degrees += rotation_velocity*delta
 	cam.rotation_degrees.y -= rotation_velocity.y*delta
 
+func _additional_attack():
+	pass
+
 func rotate_to(rotation_target : Vector2):
 	$Hellbender.rotation_degrees.x = rotation_target.x
 	$Hellbender.rotation_degrees.z = rotation_target.y
