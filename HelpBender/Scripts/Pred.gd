@@ -10,6 +10,11 @@ func _process(delta):
 	movement(delta)
 	if animations != null:
 		pass
+	if attacking:
+		for body in $AttackArea.get_overlapping_bodies():
+			if body.has_method("attack") && body != self && attacking && body.creature_level<=creature_level:
+				body.attack(self, attack_power)
+				_on_AttackTimer_timeout()
 
 func scale_vision(set_scale : float):
 	$VisionArea/CollisionShape.scale = Vector3(set_scale,set_scale,set_scale)
@@ -31,6 +36,7 @@ func movement(delta):
 	if target!= null && !$VisionArea.get_overlapping_bodies().has(target):
 		$Vision.force_raycast_update()
 		if $Vision.get_collider() != target:
+			print(target.name+" is no longer targeted")
 			target = null
 	if target!=null:
 		move_to(target.translation)
@@ -60,23 +66,27 @@ func random_movement():
 	else:
 		rotation_acceleration.y += -rotation_speed
 
-func move_to(target : Vector3):
-	$LocalTarget.global_translation = target
+func move_to(target_pos : Vector3):
+	$LocalTarget.global_translation = target_pos
 	var target_angle_y : float = 0
-	var a_squared = Vector2((target-(translation+forward)).x,(target-(translation+forward)).z).length_squared()
-	var b_squared = Vector2((target-translation).x,(target-translation).z).length_squared()
+	var a_squared = Vector2((target_pos-(translation+forward)).x,(target_pos-(translation+forward)).z).length_squared()
+	var b_squared = Vector2((target_pos-translation).x,(target_pos-translation).z).length_squared()
 	if !is_nan(acos((b_squared+1-a_squared)/(2*sqrt(b_squared)))):
 		target_angle_y = rad2deg(acos((b_squared+1-a_squared)/(2*sqrt(b_squared))))
 		if $LocalTarget.translation.x>0:
 			target_angle_y *= -1
 	rotation_acceleration.y = target_angle_y
-	acceleration.y += clamp(target.y - translation.y,-max_vertical_acc,max_vertical_acc)
+	acceleration.y += clamp(target_pos.y - translation.y,-max_vertical_acc,max_vertical_acc)
 
 func _on_body_entered_VisionArea(body):
 	if body!=self && "creature_level" in body:
-		$Vision.cast_to = body.translation-translation
+		$Vision.rotation.y = -rotation.y
+		$Vision.cast_to = body.global_translation-$Vision.global_translation
 		$Vision.force_raycast_update()
+		#if $Vision.get_collider() != null:
+		#	print($Vision.get_collider().name)
 		if $Vision.get_collider() == body && body.creature_level < creature_level:
+			print(body.name)
 			if target != null:
 				target = closest_body(target,body)
 			else:
@@ -90,9 +100,15 @@ var can_attack : bool = true
 var attacking : bool = false
 func _on_AttackTimer_timeout():
 	if attacking:
-		$AttackArea.monitoring = false
 		attacking = false
 		animations.set_attacking(false)
 		$AttackTimer.start(attack_speed)
 	else:
 		can_attack = true
+
+func _on_AttackArea_body_entered(body):
+	if can_attack && body.has_method("attack"):
+		$AttackTimer.start(attack_time)
+		animations.set_attacking(true)
+		can_attack = false
+		attacking = true

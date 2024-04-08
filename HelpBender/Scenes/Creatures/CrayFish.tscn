@@ -4,6 +4,7 @@
 [ext_resource path="res://Scripts/Prey.gd" type="Script" id=2]
 
 [sub_resource type="CapsuleShape" id=25]
+height = 1.4
 
 [sub_resource type="SphereShape" id=24]
 
@@ -20,7 +21,7 @@ max_spin = 2.0
 [node name="CrayFish" parent="." instance=ExtResource( 1 )]
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 0.252, 0, 0, 0, 0.197, 0, 0, 0, 0.335, 0, 0.127, 0.085 )
+transform = Transform( 0.252, 0, 0, 0, 0.197, 0, 0, 0, 0.335, 0, 0.158999, -0.098637 )
 shape = SubResource( 25 )
 
 [node name="VisionArea" type="Area" parent="."]

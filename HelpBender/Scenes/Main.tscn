@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://3D models/Scenes/Hellbender.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/FollowingCamera.gd" type="Script" id=2]
@@ -10,11 +10,18 @@
 [ext_resource path="res://Scripts/Particle overlay.gd" type="Script" id=8]
 [ext_resource path="res://Scenes/Creatures/RainbowTrout.tscn" type="PackedScene" id=9]
 
+[sub_resource type="Curve" id=45]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=46]
+curve = SubResource( 45 )
+
 [sub_resource type="ParticlesMaterial" id=42]
 emission_shape = 1
 emission_sphere_radius = 5.0
 gravity = Vector3( 0, 1, 0 )
-scale_random = 1.0
+scale_random = 0.5
+scale_curve = SubResource( 46 )
 hue_variation = 1.0
 hue_variation_random = 1.0
 
@@ -1082,6 +1089,7 @@ script = ExtResource( 8 )
 [node name="WaterPollution" type="Particles" parent="ParticleOverlay"]
 cast_shadow = 0
 amount = 15
+lifetime = 4.0
 process_material = SubResource( 42 )
 draw_pass_1 = SubResource( 43 )
 
