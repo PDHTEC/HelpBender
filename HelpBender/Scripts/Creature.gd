@@ -31,16 +31,20 @@ func _ready():
 		animations = get_node(animations_path)
 
 func _update():
-	#Gravity
-	#if velocity.length()<=10:
-	#	velocity += gravity_vector*gravity_magnitude*0.01
-	velocity += gravity_vector*gravity_magnitude*0.01
+	if velocity.length()<=10:
+		velocity += gravity_vector*gravity_magnitude*0.01
+	if global_translation.y > get_tree().get_root().get_node("Main").water_height:
+		velocity += gravity_vector*gravity_magnitude
 
 func attack(attacker, damage):
 	change_health(-damage)
+	_additional_attack()
 	if dead:
 		attacker.change_food(food_value)
 		queue_free()
+
+func _additional_attack():
+	pass
 
 func change_food(amount):
 	set_food(food+amount)

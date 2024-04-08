@@ -8,16 +8,34 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Control",
+"class": "MainMenu",
+"language": "GDScript",
+"path": "res://Scripts/MenuMain.gd"
+}, {
+"base": "Control",
+"class": "settingsMenu",
+"language": "GDScript",
+"path": "res://Scenes/settingsMenu.gd"
+} ]
+_global_script_class_icons={
+"MainMenu": "",
+"settingsMenu": ""
+}
+
 [application]
 
 config/name="HelpBender"
-run/main_scene="res://Scenes/Main.tscn"
+run/main_scene="res://Scenes/MenuMain.tscn"
 config/icon="res://icon.png"
 
 [display]
 
-window/size/borderless=true
-window/size/fullscreen=true
+
+window/stretch/mode="viewport"
+window/stretch/aspect="keep"
+
 
 [gui]
 
@@ -72,4 +90,5 @@ common/enable_pause_aware_picking=true
 
 [rendering]
 
+quality/filters/msaa=1
 environment/default_environment="res://default_env.tres"
