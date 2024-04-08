@@ -1,5 +1,6 @@
 extends "res://Scripts/Creature.gd"
 
+export var mesh_path : NodePath
 export var cowers : bool = true
 export var blind : bool = false
 export var grounded : bool = false
@@ -7,9 +8,12 @@ export var vision_range : float = 20
 export var max_spin : float = 5
 
 var y_heading : float
+var mesh : Spatial
 
 func _ready():
 	$VisionArea/CollisionShape.shape.radius = vision_range
+	if str(mesh_path).length()>0:
+		mesh = get_node(mesh_path)
 
 func _process(delta):
 	if rotation_degrees.y>180:
@@ -23,6 +27,11 @@ func _process(delta):
 	else:
 		$VisionArea.monitoring = true
 		$Vision.enabled = true
+	
+	if on_ground && grounded && mesh != null:
+		var ground_normal : Vector3 = $DownRay.get_collision_normal()
+		var xform = align_with_y(mesh.global_transform, ground_normal)
+		mesh.global_transform = mesh.global_transform.interpolate_with(xform, 0.2)
 	
 	movement(delta)
 
@@ -62,3 +71,9 @@ func random_movement():
 
 func move_from(_creature):
 	pass
+
+func align_with_y(xform, new_y):
+	xform.basis.y = new_y
+	xform.basis.x = -xform.basis.z.cross(new_y)
+	xform.basis = xform.basis.orthonormalized()
+	return xform

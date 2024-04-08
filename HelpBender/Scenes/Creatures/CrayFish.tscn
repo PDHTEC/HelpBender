@@ -4,7 +4,6 @@
 [ext_resource path="res://Scripts/Prey.gd" type="Script" id=2]
 
 [sub_resource type="CapsuleShape" id=25]
-height = 1.4
 
 [sub_resource type="SphereShape" id=24]
 
@@ -12,25 +11,30 @@ height = 1.4
 script = ExtResource( 2 )
 max_health = 5.0
 food_value = 4.0
-movement_speed = 0.01
+movement_speed = 0.02
 rotation_speed = 2.0
+mesh_path = NodePath("CrayFish")
 cowers = false
 grounded = true
 max_spin = 2.0
 
 [node name="CrayFish" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.167388, 0 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 0.252, 0, 0, 0, 0.197, 0, 0, 0, 0.335, 0, 0.158999, -0.098637 )
+transform = Transform( 0.252, 0, 0, 0, 0.197, 0, 0, 0, 0.335, 0, 0.00877184, -0.026098 )
 shape = SubResource( 25 )
 
 [node name="VisionArea" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.167388, 0 )
 
 [node name="CollisionShape" type="CollisionShape" parent="VisionArea"]
 shape = SubResource( 24 )
 
 [node name="Vision" type="RayCast" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.167388, 0 )
 
 [node name="DownRay" type="RayCast" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.167388, 0 )
 enabled = true
 cast_to = Vector3( 0, -0.11, 0 )

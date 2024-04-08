@@ -8,8 +8,6 @@ var target : Spatial
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	movement(delta)
-	if animations != null:
-		pass
 	if attacking:
 		for body in $AttackArea.get_overlapping_bodies():
 			if body.has_method("attack") && body != self && attacking && body.creature_level<=creature_level:
