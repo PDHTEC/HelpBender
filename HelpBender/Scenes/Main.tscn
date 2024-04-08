@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://3D models/Scenes/Hellbender.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/FollowingCamera.gd" type="Script" id=2]
@@ -7,12 +7,7 @@
 [ext_resource path="res://3D models/Scenes/Map_1.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Underwater_earth.tres" type="Material" id=6]
 [ext_resource path="res://Scripts/Overlay.gd" type="Script" id=7]
-[ext_resource path="res://Scenes/Sound.gd" type="Script" id=8]
 [ext_resource path="res://Scenes/Creatures/RainbowTrout.tscn" type="PackedScene" id=9]
-[ext_resource path="res://SFX/underwater-movement- v3.mp3" type="AudioStream" id=10]
-[ext_resource path="res://SFX/punch-boxingv2.mp3" type="AudioStream" id=11]
-[ext_resource path="res://SFX/Water ambient.mp3" type="AudioStream" id=12]
-[ext_resource path="res://SFX/bones-breaking-v1.mp3" type="AudioStream" id=13]
 
 [sub_resource type="ProceduralSky" id=32]
 
@@ -1122,24 +1117,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.017, 0, -0.126675 )
 shape = SubResource( 41 )
 
 [node name="GroundTransform" type="Spatial" parent="Player"]
-
-[node name="sound" type="Spatial" parent="Player"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.35611, 0 )
-script = ExtResource( 8 )
-
-[node name="GetHit SFX" type="AudioStreamPlayer" parent="Player/sound"]
-stream = ExtResource( 13 )
-
-[node name="Hit SFX" type="AudioStreamPlayer" parent="Player/sound"]
-stream = ExtResource( 11 )
-
-[node name="Water Ambient SFX" type="AudioStreamPlayer" parent="Player/sound"]
-stream = ExtResource( 12 )
-volume_db = -10.0
-
-[node name="Movment SFX" type="AudioStreamPlayer" parent="Player/sound"]
-stream = ExtResource( 10 )
-volume_db = -15.0
 
 [node name="StaticBody" type="StaticBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9999, -4.26, 0 )
