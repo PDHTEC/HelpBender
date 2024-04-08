@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/underwater-movement- v3.mp3-5989055414cd8691e374311329c67cf2.mp3str"
+
+[deps]
+
+source_file="res://SFX/underwater-movement- v3.mp3"
+dest_files=[ "res://.import/underwater-movement- v3.mp3-5989055414cd8691e374311329c67cf2.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

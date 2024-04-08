@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Water ambient.mp3-6e6e1d05102b3c473f86dc747995dc43.mp3str"
+
+[deps]
+
+source_file="res://SFX/Water ambient.mp3"
+dest_files=[ "res://.import/Water ambient.mp3-6e6e1d05102b3c473f86dc747995dc43.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
