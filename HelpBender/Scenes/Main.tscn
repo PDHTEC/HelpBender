@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://3D models/Scenes/Hellbender.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/FollowingCamera.gd" type="Script" id=2]
@@ -7,15 +7,38 @@
 [ext_resource path="res://3D models/Scenes/Map_1.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Underwater_earth.tres" type="Material" id=6]
 [ext_resource path="res://Scripts/Main.gd" type="Script" id=7]
-[ext_resource path="res://Scripts/Particle overlay.gd" type="Script" id=8]
+[ext_resource path="res://Sound.gd" type="Script" id=8]
 [ext_resource path="res://Scenes/Creatures/RainbowTrout.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Scenes/NyPause.tscn" type="PackedScene" id=10]
+[ext_resource path="res://SFX/Water ambientv3.mp3" type="AudioStream" id=10]
+[ext_resource path="res://SFX/underwater-movement- v3.mp3" type="AudioStream" id=11]
+[ext_resource path="res://SFX/bones-breaking-v1.mp3" type="AudioStream" id=12]
+[ext_resource path="res://SFX/punch-boxingv2.mp3" type="AudioStream" id=13]
+[ext_resource path="res://Scenes/Creatures/CrayFish.tscn" type="PackedScene" id=14]
+
+[sub_resource type="ProceduralSky" id=32]
+
+[sub_resource type="Environment" id=33]
+background_mode = 2
+background_sky = SubResource( 32 )
+fog_enabled = true
+fog_color = Color( 0.298039, 0.392157, 0.466667, 1 )
+fog_depth_begin = 30.0
+fog_height_enabled = true
+fog_height_min = 30.0
+fog_height_max = 100.0
+
+[sub_resource type="Curve" id=45]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=46]
+curve = SubResource( 45 )
 
 [sub_resource type="ParticlesMaterial" id=42]
 emission_shape = 1
 emission_sphere_radius = 5.0
 gravity = Vector3( 0, 1, 0 )
-scale_random = 1.0
+scale_random = 0.5
+scale_curve = SubResource( 46 )
 hue_variation = 1.0
 hue_variation_random = 1.0
 
@@ -42,18 +65,6 @@ radius = 0.2
 height = 0.4
 radial_segments = 10
 rings = 10
-
-[sub_resource type="ProceduralSky" id=32]
-
-[sub_resource type="Environment" id=33]
-background_mode = 2
-background_sky = SubResource( 32 )
-fog_enabled = true
-fog_color = Color( 0.298039, 0.392157, 0.466667, 1 )
-fog_depth_begin = 30.0
-fog_height_enabled = true
-fog_height_min = 30.0
-fog_height_max = 100.0
 
 [sub_resource type="BoxShape" id=34]
 extents = Vector3( 0.4, 0.2, 1.7 )
@@ -1078,13 +1089,6 @@ script = ExtResource( 7 )
 water_height = 67.0
 
 [node name="ParticleOverlay" type="Spatial" parent="."]
-script = ExtResource( 8 )
-
-[node name="WaterPollution" type="Particles" parent="ParticleOverlay"]
-cast_shadow = 0
-amount = 15
-process_material = SubResource( 42 )
-draw_pass_1 = SubResource( 43 )
 
 [node name="Overlay" type="Node2D" parent="."]
 
@@ -1092,17 +1096,8 @@ draw_pass_1 = SubResource( 43 )
 color = Color( 0, 0.564, 0.94, 0.0980392 )
 polygon = PoolVector2Array( 0, 0, 1028, 0, 1028, 600, 0, 600 )
 
-[node name="Worm" parent="." instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.46664, -27.2522 )
-max_health = 20.0
-movement_speed = 1.0
-cowers = true
-blind = false
-grounded = false
-max_spin = 5.0
-
 [node name="Player" type="KinematicBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.35611, 0 )
+transform = Transform( 0.999036, 0.0100727, 0.0427274, -0.00737662, 0.997999, -0.0627942, -0.0432744, 0.0624185, 0.997111, 41.167, -5.40901, 12.3373 )
 script = ExtResource( 3 )
 movement_speed = 0.5
 creature_level = 3
@@ -1121,6 +1116,14 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4 )
 environment = SubResource( 33 )
 current = true
 far = 1000.0
+
+[node name="WaterPollution" type="Particles" parent="Player/Camera/Camera"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.35611, -4 )
+cast_shadow = 0
+amount = 15
+lifetime = 4.0
+process_material = SubResource( 42 )
+draw_pass_1 = SubResource( 43 )
 
 [node name="DownRay" type="RayCast" parent="Player"]
 enabled = true
@@ -1163,6 +1166,26 @@ shape = SubResource( 41 )
 
 [node name="GroundTransform" type="Spatial" parent="Player"]
 
+[node name="sound" type="Spatial" parent="Player"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.35611, 0 )
+script = ExtResource( 8 )
+
+[node name="GetHit SFX" type="AudioStreamPlayer" parent="Player/sound"]
+stream = ExtResource( 12 )
+volume_db = 5.0
+
+[node name="Hit SFX" type="AudioStreamPlayer" parent="Player/sound"]
+stream = ExtResource( 13 )
+volume_db = 5.0
+
+[node name="Water Ambient SFX" type="AudioStreamPlayer" parent="Player/sound"]
+stream = ExtResource( 10 )
+volume_db = -10.0
+
+[node name="Movment SFX" type="AudioStreamPlayer" parent="Player/sound"]
+stream = ExtResource( 11 )
+volume_db = -15.0
+
 [node name="StaticBody" type="StaticBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9999, -4.26, 0 )
 
@@ -1181,10 +1204,42 @@ skeleton = NodePath("../..")
 [node name="Map_1" parent="." instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 184.404, 74.9089, 150.669 )
 
-[node name="RainbowTrout" parent="." instance=ExtResource( 9 )]
+[node name="Predators" type="Spatial" parent="."]
+
+[node name="RainbowTrout" parent="Predators" instance=ExtResource( 9 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.36473, 6.85348, -9.49228 )
 
-[node name="CanvasLayer" parent="." instance=ExtResource( 10 )]
+[node name="Prey" type="Spatial" parent="."]
+
+[node name="Worm" parent="Prey" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.84854, -1.18549, -29.0635 )
+
+[node name="Worm2" parent="Prey" instance=ExtResource( 4 )]
+transform = Transform( -0.576732, 0, 0.816934, 0, 1, 0, -0.816934, 0, -0.576732, -42.6973, -8.04569, 62.0962 )
+
+[node name="Worm3" parent="Prey" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24.6472, -10.4584, 91.6731 )
+
+[node name="CrayFish" parent="Prey" instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 28.688, 1.66875, -68.2422 )
+
+[node name="CrayFish2" parent="Prey" instance=ExtResource( 14 )]
+transform = Transform( -0.95586, 0, 0.293823, 0, 1, 0, -0.293823, 0, -0.95586, 27.3567, 1.56176, -66.5399 )
+
+[node name="CrayFish3" parent="Prey" instance=ExtResource( 14 )]
+transform = Transform( -0.776761, 0, -0.629795, 0, 1, 0, 0.629795, 0, -0.776761, 28.7788, 1.60751, -66.9064 )
+
+[node name="CrayFish4" parent="Prey" instance=ExtResource( 14 )]
+transform = Transform( -0.857131, 0, -0.515098, 0, 1, 0, 0.515098, 0, -0.857131, 28.3041, 1.56176, -66.041 )
+
+[node name="CrayFish5" parent="Prey" instance=ExtResource( 14 )]
+transform = Transform( -0.847576, 0, 0.530674, 0, 1, 0, -0.530674, 0, -0.847576, 26.5697, 1.88668, -68.2947 )
+
+[node name="CrayFish6" parent="Prey" instance=ExtResource( 14 )]
+transform = Transform( -0.993164, 0, -0.116723, 0, 1, 0, 0.116723, 0, -0.993164, 27.9371, 1.78572, -67.7497 )
+
+[node name="CrayFish7" parent="Prey" instance=ExtResource( 14 )]
+transform = Transform( 0.910099, 0, 0.414391, 0, 1, 0, -0.414391, 0, 0.910099, -15.6545, -20.7787, 176.679 )
 
 [connection signal="timeout" from="Player/AttackTimer" to="Player" method="_on_AttackTimer_timeout"]
 

@@ -8,30 +8,15 @@ onready var settings_menu = $settingsMenu as Control
 onready var Knapper = $Knapper 
 
 export var start_level = preload("res://Scenes/Main.tscn")
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	handle_connecting_signals()
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pas
-
-
 
 func handle_connecting_signals():
 	start_button.connect("pressed",self,"_on_start_button_down")
 	settings_button.connect("pressed",self,"_on_settings_button_down")
 	quit_button.connect("pressed",self,"_on_quit_button_down")
 	settings_menu.connect("exit_settings_menu",self,"on_exit_options_menu")
-	
-	pass
-	
 
 func _on_start_button_down():
 	get_tree().change_scene("res://Scenes/Main.tscn")

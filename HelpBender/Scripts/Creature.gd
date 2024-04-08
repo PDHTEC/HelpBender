@@ -38,9 +38,13 @@ func _update():
 
 func attack(attacker, damage):
 	change_health(-damage)
+	_additional_attack()
 	if dead:
 		attacker.change_food(food_value)
 		queue_free()
+
+func _additional_attack():
+	pass
 
 func change_food(amount):
 	set_food(food+amount)
