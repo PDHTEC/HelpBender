@@ -4,6 +4,9 @@ func _ready():
 	randomize()
 
 func _process(delta):
+	if dead:
+		get_tree().quit()
+	
 	if rotation_degrees.y>180:
 		rotation_degrees.y -= 360
 	elif rotation_degrees.y<-180:
@@ -13,9 +16,10 @@ func _process(delta):
 	
 	if Input.is_action_just_pressed("left_click") && can_attack:
 		attempt_attack()
+	
 	if attacking:
 		for body in $AttackArea.get_overlapping_bodies():
-			if body.has_method("attack") && body != self && attacking:
+			if body.has_method("attack") && body != self && attacking && body.creature_level<=creature_level:
 				body.attack(self, attack_power)
 				_on_AttackTimer_timeout()
 
@@ -76,6 +80,7 @@ func movement(delta):
 		$Hellbender.global_transform = $Hellbender.global_transform.interpolate_with(xform, 0.2)
 		$CollisionShape.global_transform.interpolate_with(xform, 0.2)
 		$Hellbender.scale = Vector3(0.25,0.25,0.25)
+		$Hellbender.rotation_degrees.y = 180
 	else:
 		rotate_to(Vector2(0,0))
 		$CollisionShape.rotation_degrees = Vector3(0,0,0)
