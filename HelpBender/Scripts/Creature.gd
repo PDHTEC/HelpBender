@@ -30,6 +30,7 @@ var gravity_vector : Vector3 = ProjectSettings.get_setting("physics/3d/default_g
 var gravity_magnitude : int = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func _ready():
+	food = max_food
 	health = max_health
 	if str(animations_path).length()>0:
 		animations = get_node(animations_path)

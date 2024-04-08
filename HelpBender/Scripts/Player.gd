@@ -8,6 +8,7 @@ func _process(delta):
 	if food>=heal_threshold:
 		change_health(delta*heal_speed)
 	elif food <= 0:
+		print("uhoh")
 		change_health(-delta*hunger_damage)
 	
 	if dead:
@@ -93,6 +94,7 @@ func movement(delta):
 	else:
 		rotate_to(Vector2(0,0))
 		$CollisionShape.rotation_degrees = Vector3(0,0,0)
+		$Hellbender.rotation_degrees.x = velocity.y*-2
 	var accel_length = acceleration.length()
 	
 	if on_ground:
