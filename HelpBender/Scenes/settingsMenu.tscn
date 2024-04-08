@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Scenes/settingsMenu.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/settingsMenu.gd" type="Script" id=1]
 [ext_resource path="res://Misrow.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://Scenes/settings tab container.tscn" type="PackedScene" id=3]
 

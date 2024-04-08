@@ -17,6 +17,7 @@ export var start_level = preload("res://Scenes/Main.tscn")
 func _ready():
 	handle_connecting_signals()
 
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pas
