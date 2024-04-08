@@ -117,6 +117,7 @@ func movement(delta):
 	cam.rotation_degrees.y -= rotation_velocity.y*delta
 
 func _additional_attack():
+	$"sound/GetHit SFX".play()
 	pass
 
 func rotate_to(rotation_target : Vector2):
