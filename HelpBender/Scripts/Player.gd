@@ -1,9 +1,12 @@
 extends "res://Scripts/Creature.gd"
 
+var start_scale =0.039
+
 func _ready():
 	randomize()
 
 func _process(delta):
+
 	if dead:
 		get_tree().quit()
 	
