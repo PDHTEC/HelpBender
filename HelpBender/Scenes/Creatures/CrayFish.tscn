@@ -10,7 +10,7 @@
 [node name="CrayFish" type="KinematicBody"]
 script = ExtResource( 2 )
 max_health = 5.0
-food_value = 4.0
+food_value = 1.0
 movement_speed = 0.02
 rotation_speed = 2.0
 mesh_path = NodePath("CrayFish")
