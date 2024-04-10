@@ -7,6 +7,13 @@ func _ready():
 
 func _process(delta):
 
+	change_food(-delta*food_drain)
+	if food>=heal_threshold:
+		change_health(delta*heal_speed)
+	elif food <= 0:
+		print("uhoh")
+		change_health(-delta*hunger_damage)
+
 	if dead:
 		get_tree().quit()
 	
@@ -38,7 +45,6 @@ func attempt_attack():
 var acceleration = Vector3.ZERO
 
 func movement(delta):
-	
 	var cam = $Camera
 	var forwardx = cos(deg2rad(-rotation_degrees.y)-PI/2) * cos(deg2rad(-rotation_degrees.x))
 	var forwardz = sin(deg2rad(-rotation_degrees.y)-PI/2) * cos(deg2rad(-rotation_degrees.x))
@@ -91,6 +97,7 @@ func movement(delta):
 	else:
 		rotate_to(Vector2(0,0))
 		$CollisionShape.rotation_degrees = Vector3(0,0,0)
+		$Hellbender.rotation_degrees.x = velocity.y*-2
 	var accel_length = acceleration.length()
 	
 	if on_ground:
@@ -119,9 +126,12 @@ func movement(delta):
 	rotation_degrees += rotation_velocity*delta
 	cam.rotation_degrees.y -= rotation_velocity.y*delta
 
-func _additional_attack():
+func attack(attacker, damage : float):
 	$"sound/GetHit SFX".play()
-	pass
+	.attack(attacker, damage)
+
+func health_set(amount : float):
+	.health_set(amount)
 
 func rotate_to(rotation_target : Vector2):
 	$Hellbender.rotation_degrees.x = rotation_target.x

@@ -1,38 +1,21 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://3D models/Scenes/Hellbender.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/FollowingCamera.gd" type="Script" id=2]
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=3]
-[ext_resource path="res://Scripts/Main.gd" type="Script" id=5]
-[ext_resource path="res://Scenes/Creatures/CrayFish.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Scripts/Sound.gd" type="Script" id=7]
-[ext_resource path="res://SFX/Water ambientv3.mp3" type="AudioStream" id=8]
-[ext_resource path="res://SFX/underwater-movement- v3.mp3" type="AudioStream" id=9]
-[ext_resource path="res://SFX/bones-breaking-v1.mp3" type="AudioStream" id=10]
-[ext_resource path="res://SFX/punch-boxingv2.mp3" type="AudioStream" id=11]
+[ext_resource path="res://Scenes/Creatures/Worm.tscn" type="PackedScene" id=4]
+[ext_resource path="res://3D models/Scenes/Map_1.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Underwater_earth.tres" type="Material" id=6]
+[ext_resource path="res://Scripts/Overlay.gd" type="Script" id=7]
+[ext_resource path="res://Scripts/Main.gd" type="Script" id=8]
+[ext_resource path="res://Scenes/Creatures/RainbowTrout.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scenes/pauseScreen.tscn" type="PackedScene" id=10]
 
-[sub_resource type="BoxShape" id=1]
-extents = Vector3( 50, 0.5, 50 )
+[sub_resource type="ProceduralSky" id=32]
 
-[sub_resource type="OpenSimplexNoise" id=35]
-persistence = 1.0
-lacunarity = 4.0
-
-[sub_resource type="NoiseTexture" id=36]
-noise = SubResource( 35 )
-
-[sub_resource type="SpatialMaterial" id=37]
-albedo_texture = SubResource( 36 )
-
-[sub_resource type="CubeMesh" id=2]
-material = SubResource( 37 )
-size = Vector3( 100, 1, 100 )
-
-[sub_resource type="ProceduralSky" id=51]
-
-[sub_resource type="Environment" id=41]
+[sub_resource type="Environment" id=33]
 background_mode = 2
-background_sky = SubResource( 51 )
+background_sky = SubResource( 32 )
 fog_enabled = true
 fog_color = Color( 0.298039, 0.392157, 0.466667, 1 )
 fog_depth_begin = 30.0
@@ -40,10 +23,10 @@ fog_height_enabled = true
 fog_height_min = 30.0
 fog_height_max = 100.0
 
-[sub_resource type="BoxShape" id=49]
+[sub_resource type="BoxShape" id=34]
 extents = Vector3( 0.4, 0.2, 1.7 )
 
-[sub_resource type="Animation" id=42]
+[sub_resource type="Animation" id=35]
 resource_name = "Attack"
 length = 0.416667
 step = 0.0416667
@@ -97,7 +80,7 @@ tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = PoolRealArray( 0, 1, 0, 0, 0, 0, 0, 3.37141e-16, 1, 1, 1, 1, 0.0666667, 1, 0, 0, 0, -0.0141993, 7.64296e-12, -2.5563e-14, 0.999899, 1, 1, 1, 0.133333, 1, 0, 0, 0, -0.0467913, -2.91327e-11, -1.11882e-08, 0.998905, 1, 1, 1, 0.2, 1, 0, 0, 0, -0.0392926, -1.01905e-11, -1.15575e-08, 0.999228, 1, 1, 1, 0.333333, 1, 0, 0, 0, -0.00938189, -1.27333e-11, -1.11764e-08, 0.999956, 1, 1, 1, 0.4, 1, 0, 0, 0, -0.00104844, 4.33681e-18, -4.47037e-09, 0.999999, 1, 1, 1, 0.416667, 1, 0, 0, 0, 0, 0, 3.37141e-16, 1, 1, 1, 1 )
 
-[sub_resource type="Animation" id=43]
+[sub_resource type="Animation" id=36]
 resource_name = "Falling"
 length = 1.25
 loop = true
@@ -334,7 +317,7 @@ tracks/32/imported = false
 tracks/32/enabled = true
 tracks/32/keys = PoolRealArray( 0, 1, 0, 0, 0, 2.32831e-10, 1.29247e-26, 5.55112e-17, 1, 1, 1, 1, 1.25, 1, 0, 0, 0, 2.32831e-10, 1.29247e-26, 5.55112e-17, 1, 1, 1, 1 )
 
-[sub_resource type="Animation" id=44]
+[sub_resource type="Animation" id=37]
 resource_name = "Idle_stand"
 length = 1.66667
 loop = true
@@ -571,7 +554,7 @@ tracks/32/imported = false
 tracks/32/enabled = true
 tracks/32/keys = PoolRealArray( 0, 1, 0, 0, 0, 2.32831e-10, 1.29247e-26, 5.55112e-17, 1, 1, 1, 1, 1.66667, 1, 0, 0, 0, 2.32831e-10, 1.29247e-26, 5.55112e-17, 1, 1, 1, 1 )
 
-[sub_resource type="Animation" id=45]
+[sub_resource type="Animation" id=38]
 resource_name = "Swim"
 length = 1.25
 loop = true
@@ -808,7 +791,7 @@ tracks/32/imported = false
 tracks/32/enabled = true
 tracks/32/keys = PoolRealArray( 0, 1, -1.44932, 0, -3.39001e-07, 2.32831e-10, 1.29247e-26, 5.55112e-17, 1, 1, 1, 1, 0.0666667, 1, -1.35003, 0, -3.42727e-07, 2.32831e-10, 1.29247e-26, 5.55112e-17, 1, 1, 1, 1, 0.133333, 1, -1.10646, 0, -3.42727e-07, 2.32831e-10, 1.29247e-26, 5.55112e-17, 1, 1, 1, 1, 0.533333, 1, 1.27635, 0, -3.42727e-07, 7.88861e-31, 7.10543e-15, 1.11022e-16, 1, 1, 1, 1, 0.6, 1, 1.42716, 0, -3.39001e-07, 2.32831e-10, 1.29247e-26, 5.55112e-17, 1, 1, 1, 1, 0.666667, 1, 1.41239, 0, -3.39001e-07, 4.65661e-10, -7.10543e-15, 1.11022e-16, 1, 1, 1, 1, 0.733333, 1, 1.2121, 0, -3.42727e-07, 4.65661e-10, -7.10543e-15, 1.11022e-16, 1, 1, 1, 1, 0.8, 1, 0.892265, 0, -3.42727e-07, 4.65661e-10, -7.10543e-15, 1.11022e-16, 1, 1, 1, 1, 1.13333, 1, -1.17998, 0, -3.42727e-07, 2.32831e-10, 1.29247e-26, 5.55112e-17, 1, 1, 1, 1, 1.2, 1, -1.3916, 0, -3.42727e-07, 2.32831e-10, 1.29247e-26, 5.55112e-17, 1, 1, 1, 1 )
 
-[sub_resource type="Animation" id=46]
+[sub_resource type="Animation" id=39]
 resource_name = "Walk"
 length = 1.66667
 loop = true
@@ -1045,119 +1028,140 @@ tracks/32/imported = false
 tracks/32/enabled = true
 tracks/32/keys = PoolRealArray( 0, 1, 0, 0, 0, 2.32831e-10, 1.29247e-26, 5.55112e-17, 1, 1, 1, 1 )
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=47]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=40]
 
-[sub_resource type="BoxShape" id=50]
+[sub_resource type="BoxShape" id=41]
 extents = Vector3( 0.4, 0.2, 0.3 )
 
-[sub_resource type="CubeMesh" id=52]
-size = Vector3( 10, 1, 10 )
+[sub_resource type="BoxShape" id=11]
 
-[sub_resource type="BoxShape" id=53]
-extents = Vector3( 5, 0.5, 5 )
+[sub_resource type="PlaneMesh" id=10]
+material = ExtResource( 6 )
+size = Vector2( 500, 500 )
+
+[sub_resource type="CubeMesh" id=27]
+
+[sub_resource type="CubeMesh" id=29]
+
+[sub_resource type="BoxShape" id=30]
+extents = Vector3( 2, 0.2, 2 )
 
 [node name="Main" type="Spatial"]
-script = ExtResource( 5 )
-water_height = 100.0
+script = ExtResource( 8 )
 
-[node name="Cray fish" type="Node" parent="."]
+[node name="level" type="Spatial" parent="."]
+pause_mode = 1
 
-[node name="CrayFish" parent="Cray fish" instance=ExtResource( 6 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.953842, -7.20549 )
+[node name="Overlay" type="Node2D" parent="level"]
+script = ExtResource( 7 )
+movement = Vector2( 50, -50 )
 
-[node name="CrayFish2" parent="Cray fish" instance=ExtResource( 6 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.6193, 0.953842, 1.70075 )
+[node name="Water" type="Polygon2D" parent="level/Overlay"]
+color = Color( 0, 0.564, 0.94, 0.0980392 )
+polygon = PoolVector2Array( 0, 0, 1028, 0, 1028, 600, 0, 600 )
 
-[node name="CrayFish3" parent="Cray fish" instance=ExtResource( 6 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.47093, 0.953842, -5.48809 )
+[node name="Worm" parent="level" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.46664, -27.2522 )
 
-[node name="CrayFish4" parent="Cray fish" instance=ExtResource( 6 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.961489, 0.953842, -8.69973 )
-
-[node name="CrayFish5" parent="Cray fish" instance=ExtResource( 6 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.72036, 0.953842, -8.25488 )
-
-[node name="CrayFish6" parent="Cray fish" instance=ExtResource( 6 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.16344, 0.953842, -7.48082 )
-
-[node name="Ground" type="StaticBody" parent="."]
-
-[node name="CollisionShape" type="CollisionShape" parent="Ground"]
-shape = SubResource( 1 )
-
-[node name="MeshInstance" type="MeshInstance" parent="Ground"]
-mesh = SubResource( 2 )
-
-[node name="Player" type="KinematicBody" parent="."]
+[node name="Player" type="KinematicBody" parent="level"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.35611, 0 )
 script = ExtResource( 3 )
 movement_speed = 0.5
 animations_path = NodePath("Hellbender")
 
-[node name="Camera" type="Spatial" parent="Player"]
+[node name="Camera" type="Spatial" parent="level/Player"]
 script = ExtResource( 2 )
 distance = 10.0
 
-[node name="RayCast" type="RayCast" parent="Player/Camera"]
+[node name="RayCast" type="RayCast" parent="level/Player/Camera"]
 enabled = true
 cast_to = Vector3( 0, 0, 4 )
 
-[node name="Camera" type="Camera" parent="Player/Camera"]
+[node name="Camera" type="Camera" parent="level/Player/Camera"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4 )
-environment = SubResource( 41 )
+environment = SubResource( 33 )
 current = true
 far = 1000.0
 
-[node name="DownRay" type="RayCast" parent="Player"]
+[node name="DownRay" type="RayCast" parent="level/Player"]
 enabled = true
 cast_to = Vector3( 0, -0.75, 0 )
 
-[node name="FrontRay" type="RayCast" parent="Player"]
+[node name="FrontRay" type="RayCast" parent="level/Player"]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
 enabled = true
 cast_to = Vector3( 0, -4, 0 )
 
-[node name="AttackTimer" type="Timer" parent="Player"]
+[node name="AttackTimer" type="Timer" parent="level/Player"]
 
-[node name="CollisionShape" type="CollisionShape" parent="Player"]
+[node name="CollisionShape" type="CollisionShape" parent="level/Player"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.017, 0, -0.368 )
-shape = SubResource( 49 )
+shape = SubResource( 34 )
 
-[node name="Hellbender" parent="Player" instance=ExtResource( 1 )]
+[node name="Hellbender" parent="level/Player" instance=ExtResource( 1 )]
 transform = Transform( -0.25, 0, 2.18557e-08, 0, 0.25, 0, -2.18557e-08, 0, -0.25, 0, -0.224, 0 )
 
-[node name="Armature" parent="Player/Hellbender" index="0"]
+[node name="Armature" parent="level/Player/Hellbender" index="0"]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
 
-[node name="AnimationPlayer" parent="Player/Hellbender" index="1"]
-anims/Attack = SubResource( 42 )
-anims/Falling = SubResource( 43 )
-anims/Idle_stand = SubResource( 44 )
-anims/Swim = SubResource( 45 )
-anims/Walk = SubResource( 46 )
+[node name="AnimationPlayer" parent="level/Player/Hellbender" index="1"]
+anims/Attack = SubResource( 35 )
+anims/Falling = SubResource( 36 )
+anims/Idle_stand = SubResource( 37 )
+anims/Swim = SubResource( 38 )
+anims/Walk = SubResource( 39 )
 
-[node name="AnimationTree" parent="Player/Hellbender" index="2"]
-parameters/movement/playback = SubResource( 47 )
+[node name="AnimationTree" parent="level/Player/Hellbender" index="2"]
+parameters/movement/playback = SubResource( 40 )
 parameters/movement/conditions/idle_stand = true
 
-[node name="AttackArea" type="Area" parent="Player"]
+[node name="AttackArea" type="Area" parent="level/Player"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.24533 )
 
-[node name="CollisionShape" type="CollisionShape" parent="Player/AttackArea"]
+[node name="CollisionShape" type="CollisionShape" parent="level/Player/AttackArea"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.017, 0, -0.126675 )
-shape = SubResource( 50 )
+shape = SubResource( 41 )
 
-[node name="GroundTransform" type="Spatial" parent="Player"]
+[node name="GroundTransform" type="Spatial" parent="level/Player"]
 
-[node name="StaticBody" type="StaticBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.985214, -0.171327, 0, 0.171327, 0.985214, 13.9501, 0.612205, 0 )
+[node name="StaticBody" type="StaticBody" parent="level"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9999, -4.26, 0 )
 
-[node name="MeshInstance" type="MeshInstance" parent="StaticBody"]
-mesh = SubResource( 52 )
+[node name="CollisionShape" type="CollisionShape" parent="level/StaticBody"]
+transform = Transform( 250, 0, 0, 0, 1, 0, 0, 0, 250, 0, -1, 0 )
+shape = SubResource( 11 )
 
-[node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
-shape = SubResource( 53 )
+[node name="MeshInstance" type="MeshInstance" parent="level/StaticBody"]
+mesh = SubResource( 10 )
 
-[connection signal="timeout" from="Player/AttackTimer" to="Player" method="_on_AttackTimer_timeout"]
+[node name="MeshInstance2" type="MeshInstance" parent="level/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 200, 0, 0, 0, 1000, -258.225, 192.459, 0 )
+mesh = SubResource( 27 )
+skeleton = NodePath("../../..")
 
-[editable path="Player/Hellbender"]
+[node name="Map_1" parent="level" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 184.404, 74.9089, 150.669 )
+
+[node name="StaticBody2" type="StaticBody" parent="level"]
+transform = Transform( 0.731691, 0.678486, -0.0654685, -0.681077, 0.723815, -0.110573, -0.0276354, 0.125495, 0.991709, -25.272, 3.15064, 10.6937 )
+
+[node name="MeshInstance" type="MeshInstance" parent="level/StaticBody2"]
+transform = Transform( 2, 0, 0, 0, 0.2, 0, 0, 0, 2, 0, 0, 0 )
+mesh = SubResource( 29 )
+
+[node name="CollisionShape" type="CollisionShape" parent="level/StaticBody2"]
+shape = SubResource( 30 )
+
+[node name="RainbowTrout" parent="level" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.36473, 6.85348, -9.49228 )
+
+[node name="Control" type="Control" parent="."]
+pause_mode = 2
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="pauseScreen" parent="Control" instance=ExtResource( 10 )]
+
+[connection signal="timeout" from="level/Player/AttackTimer" to="level/Player" method="_on_AttackTimer_timeout"]
+
+[editable path="level/Player/Hellbender"]

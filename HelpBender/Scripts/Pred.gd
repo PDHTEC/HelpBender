@@ -8,11 +8,9 @@ var target : Spatial
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	movement(delta)
-	if animations != null:
-		pass
 	if attacking:
 		for body in $AttackArea.get_overlapping_bodies():
-			if body.has_method("attack") && body != self && attacking && body.creature_level<=creature_level:
+			if body.has_method("attack") && body != self && attacking && body.creature_level<creature_level:
 				body.attack(self, attack_power)
 				_on_AttackTimer_timeout()
 
@@ -66,6 +64,11 @@ func random_movement():
 		rotation_acceleration.y += -rotation_speed
 
 func move_to(target_pos : Vector3):
+	var collision_ahead : bool = $ForwardRay.is_colliding()
+	if collision_ahead && !"creature_level" in $ForwardRay.get_collider():
+		rotation_acceleration.y += -rotation_speed
+		return
+	
 	$LocalTarget.global_translation = target_pos
 	var target_angle_y : float = 0
 	var a_squared = Vector2((target_pos-(translation+forward)).x,(target_pos-(translation+forward)).z).length_squared()
