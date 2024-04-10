@@ -106,11 +106,6 @@ bind/27/name = "front_fin_helper_1.L"
 bind/27/bone = -1
 bind/27/pose = Transform( 0.945108, -0.0859647, 0.315247, 0.326594, 0.279035, -0.903037, -0.0103355, 0.956425, 0.291793, -1.15638, 2.04402, -0.171047 )
 
-[sub_resource type="SpatialMaterial" id=22]
-albedo_texture = ExtResource( 3 )
-metallic_specular = 0.6
-roughness = 0.32
-
 [sub_resource type="Animation" id=3]
 resource_name = "Attack"
 length = 0.708333
@@ -600,7 +595,7 @@ nodes/animation_speed/position = Vector2( -340, -20 )
 nodes/movement/node = SubResource( 17 )
 nodes/movement/position = Vector2( -580, -40 )
 nodes/output/position = Vector2( 300, 120 )
-node_connections = [ "Attack_shot", 0, "animation_speed", "Attack_shot", 1, "Attack", "animation_speed", 0, "movement", "Hurt_shot", 0, "Attack_shot", "Hurt_shot", 1, "Hurt", "output", 0, "Hurt_shot" ]
+node_connections = [ "output", 0, "Hurt_shot", "Attack_shot", 0, "animation_speed", "Attack_shot", 1, "Attack", "animation_speed", 0, "movement", "Hurt_shot", 0, "Attack_shot", "Hurt_shot", 1, "Hurt" ]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=18]
 
@@ -753,10 +748,8 @@ bones/27/enabled = true
 bones/27/bound_children = [  ]
 
 [node name="Cube" type="MeshInstance" parent="Armature/Skeleton"]
-generate_lightmap = false
-mesh = SubResource( 20 )
-skin = SubResource( 21 )
-material/0 = SubResource( 22 )
+mesh = SubResource( 1 )
+skin = SubResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Attack = SubResource( 3 )
