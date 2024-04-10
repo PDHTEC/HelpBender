@@ -1,37 +1,46 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scenes/settingsMenu.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/pauseScreen.gd" type="Script" id=2]
 
+[sub_resource type="Theme" id=1]
+
 [node name="pauseScreen" type="Control"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 2 )
 
 [node name="Knapper" type="Control" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
+margin_right = 80.0
+margin_bottom = 80.0
+rect_scale = Vector2( 2, 2 )
 
 [node name="resumeButton" type="Button" parent="Knapper"]
-margin_left = 400.0
-margin_top = 100.0
-margin_right = 650.0
-margin_bottom = 140.0
+anchor_right = 24.004
+anchor_bottom = 13.389
+margin_left = 351.5
+margin_top = 126.5
+margin_right = -1318.82
+margin_bottom = -904.62
+theme = SubResource( 1 )
 text = "Resume"
 
 [node name="settingsButton" type="Button" parent="Knapper"]
-margin_left = 400.0
-margin_top = 200.0
-margin_right = 650.0
-margin_bottom = 240.0
+anchor_right = 23.959
+anchor_bottom = 13.53
+margin_left = 351.5
+margin_top = 242.5
+margin_right = -1315.22
+margin_bottom = -799.9
 text = "settings"
 
 [node name="exitButton" type="Button" parent="Knapper"]
-margin_left = 400.0
-margin_top = 300.0
-margin_right = 650.0
-margin_bottom = 340.0
+anchor_right = 23.984
+anchor_bottom = 13.48
+margin_left = 351.5
+margin_top = 342.5
+margin_right = -1317.22
+margin_bottom = -695.9
 text = "Quit to menu"
 
 [node name="settingsMenu" parent="." instance=ExtResource( 1 )]
