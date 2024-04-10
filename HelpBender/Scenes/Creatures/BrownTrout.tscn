@@ -41,7 +41,7 @@ points = PoolVector3Array( -0.144889, -0.379639, -5.45793, -0.0857087, 1.15841, 
 
 [node name="BrownTrout" type="KinematicBody"]
 script = ExtResource( 2 )
-movement_speed = 0.5
+movement_speed = 0.4
 creature_level = 5
 animations_path = NodePath("BrownTrout")
 

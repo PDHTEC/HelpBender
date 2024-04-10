@@ -1361,6 +1361,19 @@ transform = Transform( -0.782173, 0, -0.623061, 0, 1, 0, 0.623061, 0, -0.782173,
 [node name="RainbowTrout13" parent="Creatures/Predators" instance=ExtResource( 9 )]
 transform = Transform( 0.983527, 0, 0.18076, 0, 1, 0, -0.18076, 0, 0.983527, 361.625, 0.485654, -597.71 )
 
+[node name="RainbowTrout14" parent="Creatures/Predators" instance=ExtResource( 9 )]
+transform = Transform( -0.452777, 0, -0.891624, 0, 1, 0, 0.891624, 0, -0.452777, 344.966, 50.8397, -632.637 )
+
+[node name="BrownTrout11" parent="Creatures/Predators" instance=ExtResource( 24 )]
+transform = Transform( 0.662672, 0, -0.748909, 0, 1, 0, 0.748909, 0, 0.662672, 378.446, 47.3656, -510.879 )
+animations_path = NodePath("")
+
+[node name="RainbowTrout15" parent="Creatures/Predators" instance=ExtResource( 9 )]
+transform = Transform( -0.782173, 0, -0.623061, 0, 1, 0, 0.623061, 0, -0.782173, 333.185, 32.6657, -453.29 )
+
+[node name="RainbowTrout16" parent="Creatures/Predators" instance=ExtResource( 9 )]
+transform = Transform( 0.983527, 0, 0.18076, 0, 1, 0, -0.18076, 0, 0.983527, 361.625, 59.7465, -716.236 )
+
 [node name="Prey" type="Spatial" parent="Creatures"]
 
 [node name="Worm" parent="Creatures/Prey" instance=ExtResource( 4 )]
@@ -1399,10 +1412,73 @@ transform = Transform( -0.993164, 0, -0.116723, 0, 1, 0, 0.116723, 0, -0.993164,
 [node name="CrayFish7" parent="Creatures/Prey" instance=ExtResource( 14 )]
 transform = Transform( 0.910099, 0, 0.414391, 0, 1, 0, -0.414391, 0, 0.910099, -15.6545, -20.7787, 176.679 )
 
+[node name="Worm6" parent="Creatures/Prey" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 166.813, 16.7377, -261.288 )
+
+[node name="Worm7" parent="Creatures/Prey" instance=ExtResource( 4 )]
+transform = Transform( -0.576732, 0, 0.816934, 0, 1, 0, -0.816934, 0, -0.576732, 270.248, 4.69736, -309.044 )
+
+[node name="Worm8" parent="Creatures/Prey" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 235.739, 11.7781, -355.34 )
+
+[node name="Worm9" parent="Creatures/Prey" instance=ExtResource( 4 )]
+transform = Transform( 0.884622, 0, -0.466309, 0, 1, 0, 0.466309, 0, 0.884622, 353.354, 12.3671, -499.026 )
+
+[node name="Worm10" parent="Creatures/Prey" instance=ExtResource( 4 )]
+transform = Transform( 0.957551, 0, -0.288263, 0, 1, 0, 0.288263, 0, 0.957551, -73.127, -15.6929, 203.279 )
+
+[node name="CrayFish8" parent="Creatures/Prey" instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 270.584, 11.0025, -336.904 )
+
+[node name="CrayFish9" parent="Creatures/Prey" instance=ExtResource( 14 )]
+transform = Transform( -0.95586, 0, 0.293823, 0, 1, 0, -0.293823, 0, -0.95586, 436.432, 15.8686, -751.387 )
+
+[node name="CrayFish10" parent="Creatures/Prey" instance=ExtResource( 14 )]
+transform = Transform( -0.776761, 0, -0.629795, 0, 1, 0, 0.629795, 0, -0.776761, 337.211, 11.4036, -475.202 )
+
+[node name="CrayFish11" parent="Creatures/Prey" instance=ExtResource( 14 )]
+transform = Transform( -0.857131, 0, -0.515098, 0, 1, 0, 0.515098, 0, -0.857131, 294.612, 1.7328, -349.125 )
+
+[node name="CrayFish12" parent="Creatures/Prey" instance=ExtResource( 14 )]
+transform = Transform( -0.847576, 0, 0.530674, 0, 1, 0, -0.530674, 0, -0.847576, 398.016, 16.4505, -721.32 )
+
+[node name="CrayFish13" parent="Creatures/Prey" instance=ExtResource( 14 )]
+transform = Transform( -0.993164, 0, -0.116723, 0, 1, 0, 0.116723, 0, -0.993164, -88.188, -1.62308, 435.796 )
+
+[node name="CrayFish14" parent="Creatures/Prey" instance=ExtResource( 14 )]
+transform = Transform( 0.910099, 0, 0.414391, 0, 1, 0, -0.414391, 0, 0.910099, 34.5665, -8.86514, 450.405 )
+
+[node name="Worm11" parent="Creatures/Prey" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 258.492, 32.7428, 756.856 )
+
+[node name="Worm12" parent="Creatures/Prey" instance=ExtResource( 4 )]
+transform = Transform( -0.576732, 0, 0.816934, 0, 1, 0, -0.816934, 0, -0.576732, 303.384, 29.2955, 721.104 )
+
+[node name="Worm13" parent="Creatures/Prey" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 324.346, 29.4732, 774.865 )
+
+[node name="Worm14" parent="Creatures/Prey" instance=ExtResource( 4 )]
+transform = Transform( 0.884622, 0, -0.466309, 0, 1, 0, 0.466309, 0, 0.884622, 435.97, 12.0497, 775.004 )
+
+[node name="Worm15" parent="Creatures/Prey" instance=ExtResource( 4 )]
+transform = Transform( 0.957551, 0, -0.288263, 0, 1, 0, 0.288263, 0, 0.957551, 464.459, 8.07081, 817.655 )
+
+[node name="CrayFish15" parent="Creatures/Prey" instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 88.5517, 19.8987, 634.242 )
+
+[node name="CrayFish16" parent="Creatures/Prey" instance=ExtResource( 14 )]
+transform = Transform( -0.95586, 0, 0.293823, 0, 1, 0, -0.293823, 0, -0.95586, 550.06, 11.0213, 1026.12 )
+
+[node name="CrayFish17" parent="Creatures/Prey" instance=ExtResource( 14 )]
+transform = Transform( -0.776761, 0, -0.629795, 0, 1, 0, 0.629795, 0, -0.776761, 550.834, 27.0295, 1125.73 )
+
+[node name="CrayFish18" parent="Creatures/Prey" instance=ExtResource( 14 )]
+transform = Transform( -0.857131, 0, -0.515098, 0, 1, 0, 0.515098, 0, -0.857131, 556.478, 8.73449, 973.712 )
+
 [node name="CanvasLayer" parent="." instance=ExtResource( 15 )]
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 3e+09
 autostart = true
 
 [connection signal="timeout" from="Player/AttackTimer" to="Player" method="_on_AttackTimer_timeout"]
