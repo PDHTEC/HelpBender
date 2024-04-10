@@ -1,5 +1,7 @@
 extends "res://Scripts/Creature.gd"
 
+var start_scale =0.039
+
 func _ready():
 	randomize()
 
