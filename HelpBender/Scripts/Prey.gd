@@ -9,13 +9,17 @@ export var max_spin : float = 5
 
 var y_heading : float
 var mesh : Spatial
+onready var main = get_tree().get_root().get_node("Main")
 
+# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _ready():
 	$VisionArea/CollisionShape.shape.radius = vision_range
 	if str(mesh_path).length()>0:
 		mesh = get_node(mesh_path)
 
 func _process(delta):
+	if main.get_node("Player").translation.distance_squared_to(translation)>main.load_dist:
+		return
 	if rotation_degrees.y>180:
 		rotation_degrees.y -= 360
 	elif rotation_degrees.y<-180:

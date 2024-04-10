@@ -9,21 +9,26 @@ onready var label = $Label
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	load_season()
+	change_season()
 	
 	pass # Replace with function body.
 
-func load_season():
+func change_season():
 	match Global.season:
-		"spring":
+		"Summer":
+			Global.season = "Fall"
 			season.region.rect.x=0
 			label=Global.season
-		"summer":
+		"Fall":
+			Global.season = "Winter"
 			season.region.rect.x=240
 			label=Global.season
-		"fall":
+		"Winter":
+			Global.year += 1
+			Global.season = "Spring"
 			season.region.rect.x=480
 			label=Global.season
-		"winter":
+		"Spring":
+			Global.season = "Summer"
 			season.region.rect.x=720
 			label=Global.season
