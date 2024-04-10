@@ -30,10 +30,15 @@ config/name="HelpBender"
 run/main_scene="res://Scenes/Main.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Global="*res://Scripts/Global.gd"
+
 [display]
 
 window/size/width=1920
 window/size/height=1080
+
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
 
