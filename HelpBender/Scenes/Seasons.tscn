@@ -33,3 +33,4 @@ margin_right = 1915.0
 margin_bottom = 381.0
 custom_fonts/font = SubResource( 1 )
 text = "asdfgbh"
+align = 1
