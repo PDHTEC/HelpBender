@@ -1,16 +1,19 @@
 extends "res://Scripts/Creature.gd"
 
+var start_scale =0.039
+
 func _ready():
 	randomize()
 
 func _process(delta):
+
 	change_food(-delta*food_drain)
 	if food>=heal_threshold:
 		change_health(delta*heal_speed)
 	elif food <= 0:
 		print("uhoh")
 		change_health(-delta*hunger_damage)
-	
+
 	if dead:
 		get_tree().quit()
 	
