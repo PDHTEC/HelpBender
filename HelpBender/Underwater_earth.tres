@@ -18,7 +18,3 @@ albedo_color = Color( 0.341176, 0.219608, 0.101961, 1 )
 normal_enabled = true
 normal_scale = 10.14
 normal_texture = SubResource( 13 )
-ao_enabled = true
-ao_light_affect = 0.0
-ao_on_uv2 = false
-ao_texture_channel = 0

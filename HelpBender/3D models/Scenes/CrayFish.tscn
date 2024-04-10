@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://3D models/GLB/krebs.material" type="Material" id=1]
 
@@ -104,10 +104,6 @@ bind/26/pose = Transform( -0.0907942, 0.175317, 0.980317, 0.952801, -0.271068, 0
 bind/27/name = "fin.R"
 bind/27/bone = -1
 bind/27/pose = Transform( -0.0907942, -0.175317, -0.980317, -0.952801, -0.271068, 0.136723, -0.289702, 0.94646, -0.142431, -0.61506, 0.131522, -0.239798 )
-
-[sub_resource type="SpatialMaterial" id=4]
-albedo_color = Color( 0.792157, 0.4, 0.223529, 1 )
-roughness = 0.5
 
 [sub_resource type="Animation" id=3]
 resource_name = "Idle"
@@ -460,10 +456,8 @@ bones/27/enabled = true
 bones/27/bound_children = [  ]
 
 [node name="Plane" type="MeshInstance" parent="Armature/Skeleton"]
-transform = Transform( 1, 0, 7.10543e-15, 0, 1, 0, -7.10543e-15, 0, 1, 0, 0, 0 )
 mesh = SubResource( 1 )
 skin = SubResource( 2 )
-material/0 = SubResource( 4 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Idle = SubResource( 3 )
