@@ -21,6 +21,7 @@ func _ready():
 	http_request.connect("request_completed",self,"_http_request_completed")
 
 func _process(_delta):
+	Player = $Name
 	
 	if is_requesting:
 		return
@@ -112,3 +113,4 @@ func _get_player():
 	var command = "get_player"
 	var data = {"Player" : Player}
 	request_queue.push_back({"command" : command, "data" : data})
+
