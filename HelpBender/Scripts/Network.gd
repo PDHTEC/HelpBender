@@ -9,7 +9,7 @@ var request_queue : Array = []
 var is_requesting : bool = false
 onready var Player = $Name.text
 var score = 0
-var Month = 0
+var Season = 0
 var Year = 0
 
 
@@ -98,14 +98,15 @@ func _http_request_completed(_result, _response_code, _headers, _body):
 		for n in (response['response']['size']):
 			Player = String(response['response'][String(n)]['Player'])
 			score = int(String(response['response'][String(n)]['score']))
-			Month = int(String(response['response'][String(n)]['Month']))
+			Season = int(String(response['response'][String(n)]['Season']))
 			Year = int(String(response['response'][String(n)]['Year']))
 
 
 func _submit_score():
 	var command = "add_Player"
-	var data = {"Player" : Player, "score" : score, "Month" : Month, "Year" : Year }
+	var data = {"Player" : Player, "score" : score, "Season" : Season, "Year" : Year }
 	request_queue.push_back({"command" : command, "data" : data})
+	get_tree().change_scene_to(load("res://Scenes/MenuMain.tscn"))
 
 func _get_player():
 	var command = "get_player"

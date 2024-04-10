@@ -15,7 +15,7 @@
 [ext_resource path="res://SFX/punch-boxingv2.mp3" type="AudioStream" id=13]
 [ext_resource path="res://Scenes/Creatures/CrayFish.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Scenes/NyPause.tscn" type="PackedScene" id=15]
-[ext_resource path="res://UI.gd" type="Script" id=16]
+[ext_resource path="res://Scripts/UI.gd" type="Script" id=16]
 [ext_resource path="res://UI Textures/not hunger.png" type="Texture" id=17]
 [ext_resource path="res://UI Textures/hunger bar.png" type="Texture" id=18]
 [ext_resource path="res://UI Textures/hui helpbender.png" type="Texture" id=19]
