@@ -12,7 +12,7 @@ func _ready():
 	pass 
 
 func _process(_delta):
-	#$Control/Label.text = (insert hazzrad here path)+"%"
+	
 	
 
 	pass

@@ -1,34 +1,41 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://UI.gd" type="Script" id=1]
 [ext_resource path="res://UI Textures/hui helpbender.png" type="Texture" id=2]
 [ext_resource path="res://UI Textures/hunger bar.png" type="Texture" id=3]
 [ext_resource path="res://UI Textures/health bar.png" type="Texture" id=4]
 [ext_resource path="res://Misrow.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://UI Textures/not eye.png" type="Texture" id=6]
+[ext_resource path="res://UI Textures/not hunger.png" type="Texture" id=7]
+[ext_resource path="res://UI Textures/not slow.png" type="Texture" id=8]
 
 [sub_resource type="DynamicFont" id=1]
-size = 32
+size = 48
 font_data = ExtResource( 5 )
 
 [sub_resource type="Theme" id=2]
 default_font = SubResource( 1 )
 
 [node name="test ui" type="Node2D"]
+__meta__ = {
+"_edit_vertical_guides_": [  ]
+}
 
 [node name="UI" type="Node2D" parent="."]
+scale = Vector2( 2.06467, 1.77304 )
 script = ExtResource( 1 )
 
 [node name="Empty UI" type="Node2D" parent="UI"]
 
 [node name="Sprite" type="Sprite" parent="UI/Empty UI"]
-position = Vector2( 138, 503 )
+position = Vector2( 147.693, 487.473 )
 scale = Vector2( 0.159594, 0.159594 )
 texture = ExtResource( 2 )
 
 [node name="Health bar" type="Node2D" parent="UI"]
 
 [node name="Health" type="Sprite" parent="UI/Health bar"]
-position = Vector2( 72, 517 )
+position = Vector2( 81.6933, 501.473 )
 scale = Vector2( 0.038805, 0.0388798 )
 texture = ExtResource( 4 )
 centered = false
@@ -36,21 +43,35 @@ centered = false
 [node name="Hunger bar" type="Node2D" parent="UI"]
 
 [node name="Hunger" type="Sprite" parent="UI/Hunger bar"]
-position = Vector2( 72, 557 )
+position = Vector2( 81.6934, 541.473 )
 scale = Vector2( 0.0386243, 0.0386386 )
 texture = ExtResource( 3 )
 centered = false
 
-[node name="Control" type="Control" parent="UI"]
-margin_left = 73.0
-margin_top = 469.0
-margin_right = 157.0
-margin_bottom = 511.0
+[node name="Hazard icons" type="Node2D" parent="UI"]
 
-[node name="Label" type="Label" parent="UI/Control"]
-margin_left = 6.0
-margin_top = 5.0
-margin_right = 60.0
-margin_bottom = 38.0
+[node name="slow icon" type="Sprite" parent="UI/Hazard icons"]
+position = Vector2( 230.512, 474.617 )
+scale = Vector2( 0.0720253, 0.0720253 )
+texture = ExtResource( 8 )
+
+[node name="hungering icon" type="Sprite" parent="UI/Hazard icons"]
+position = Vector2( 174.846, 474.889 )
+scale = Vector2( 0.218841, 0.218841 )
+texture = ExtResource( 7 )
+
+[node name="cant see icon" type="Sprite" parent="UI/Hazard icons"]
+position = Vector2( 118.179, 474.889 )
+scale = Vector2( 0.0987492, 0.0987492 )
+texture = ExtResource( 6 )
+
+[node name="Control" type="Control" parent="UI"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="season" type="Label" parent="UI/Control"]
+margin_left = 94.446
+margin_top = 406.645
+margin_right = 257.446
+margin_bottom = 451.645
 theme = SubResource( 2 )
-text = "32%"
