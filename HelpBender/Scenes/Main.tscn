@@ -1117,6 +1117,9 @@ polygon = PoolVector2Array( 0, 0, 1028, 0, 1028, 600, 0, 600 )
 [node name="Player" type="KinematicBody" parent="."]
 transform = Transform( 0.999083, 0, 0.0428172, 0, 1, 0, -0.0428173, 0, 0.999082, 2.97213, -3.36284, 29.4365 )
 script = ExtResource( 3 )
+heal_speed = 0.5
+food_drain = 0.2
+hunger_damage = 0.4
 movement_speed = 0.5
 creature_level = 3
 animations_path = NodePath("Hellbender")
@@ -1289,7 +1292,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 37.2774, 8.67035, -59.6374 )
 transform = Transform( 0.983527, 0, 0.18076, 0, 1, 0, -0.18076, 0, 0.983527, -22.7649, 0.485654, 169.568 )
 
 [node name="RainbowTrout3" parent="Creatures/Predators" instance=ExtResource( 9 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.39866, -4.82168, 55.0959 )
+transform = Transform( -0.534338, 0, 0.845271, 0, 1, 0, -0.845271, 0, -0.534338, 1.39867, -4.82168, 177.829 )
 
 [node name="Prey" type="Spatial" parent="Creatures"]
 
@@ -1332,7 +1335,7 @@ transform = Transform( 0.910099, 0, 0.414391, 0, 1, 0, -0.414391, 0, 0.910099, -
 [node name="CanvasLayer" parent="." instance=ExtResource( 15 )]
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 300.0
 autostart = true
 
 [connection signal="timeout" from="Player/AttackTimer" to="Player" method="_on_AttackTimer_timeout"]
