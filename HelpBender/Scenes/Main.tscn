@@ -1115,7 +1115,7 @@ color = Color( 0, 0.564, 0.94, 0.0980392 )
 polygon = PoolVector2Array( 0, 0, 1028, 0, 1028, 600, 0, 600 )
 
 [node name="Player" type="KinematicBody" parent="."]
-transform = Transform( 0.999083, 0, 0.0428172, 0, 1, 0, -0.0428173, 0, 0.999082, 41.167, -5.40901, 12.3373 )
+transform = Transform( 0.999083, 0, 0.0428172, 0, 1, 0, -0.0428173, 0, 0.999082, 2.97213, -3.36284, 29.4365 )
 script = ExtResource( 3 )
 movement_speed = 0.5
 creature_level = 3
@@ -1278,54 +1278,64 @@ skeleton = NodePath("../..")
 [node name="Map_1" parent="." instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 184.404, 74.9089, 150.669 )
 
-[node name="Predators" type="Spatial" parent="."]
+[node name="Creatures" type="Spatial" parent="."]
 
-[node name="RainbowTrout" parent="Predators" instance=ExtResource( 9 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.36473, 6.85348, -9.49228 )
+[node name="Predators" type="Spatial" parent="Creatures"]
 
-[node name="RainbowTrout2" parent="Predators" instance=ExtResource( 9 )]
-transform = Transform( 0.355401, 0, -0.934714, 0, 1, 0, 0.934714, 0, 0.355401, 6.95817, 0.48565, 68.0815 )
+[node name="RainbowTrout" parent="Creatures/Predators" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 37.2774, 8.67035, -59.6374 )
 
-[node name="Prey" type="Spatial" parent="."]
+[node name="RainbowTrout2" parent="Creatures/Predators" instance=ExtResource( 9 )]
+transform = Transform( 0.983527, 0, 0.18076, 0, 1, 0, -0.18076, 0, 0.983527, -22.7649, 0.485654, 169.568 )
 
-[node name="Worm" parent="Prey" instance=ExtResource( 4 )]
+[node name="RainbowTrout3" parent="Creatures/Predators" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.39866, -4.82168, 55.0959 )
+
+[node name="Prey" type="Spatial" parent="Creatures"]
+
+[node name="Worm" parent="Creatures/Prey" instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.84854, -1.18549, -29.0635 )
 
-[node name="Worm2" parent="Prey" instance=ExtResource( 4 )]
+[node name="Worm2" parent="Creatures/Prey" instance=ExtResource( 4 )]
 transform = Transform( -0.576732, 0, 0.816934, 0, 1, 0, -0.816934, 0, -0.576732, -42.6973, -8.04569, 62.0962 )
 
-[node name="Worm3" parent="Prey" instance=ExtResource( 4 )]
+[node name="Worm3" parent="Creatures/Prey" instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24.6472, -10.4584, 91.6731 )
 
-[node name="Worm4" parent="Prey" instance=ExtResource( 4 )]
+[node name="Worm4" parent="Creatures/Prey" instance=ExtResource( 4 )]
 transform = Transform( 0.884622, 0, -0.466309, 0, 1, 0, 0.466309, 0, 0.884622, -86.2482, -9.69185, 148.15 )
 
-[node name="Worm5" parent="Prey" instance=ExtResource( 4 )]
+[node name="Worm5" parent="Creatures/Prey" instance=ExtResource( 4 )]
 transform = Transform( 0.957551, 0, -0.288263, 0, 1, 0, 0.288263, 0, 0.957551, -73.127, -15.6929, 203.279 )
 
-[node name="CrayFish" parent="Prey" instance=ExtResource( 14 )]
+[node name="CrayFish" parent="Creatures/Prey" instance=ExtResource( 14 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 28.688, 1.66875, -68.2422 )
 
-[node name="CrayFish2" parent="Prey" instance=ExtResource( 14 )]
+[node name="CrayFish2" parent="Creatures/Prey" instance=ExtResource( 14 )]
 transform = Transform( -0.95586, 0, 0.293823, 0, 1, 0, -0.293823, 0, -0.95586, 27.3567, 1.56176, -66.5399 )
 
-[node name="CrayFish3" parent="Prey" instance=ExtResource( 14 )]
+[node name="CrayFish3" parent="Creatures/Prey" instance=ExtResource( 14 )]
 transform = Transform( -0.776761, 0, -0.629795, 0, 1, 0, 0.629795, 0, -0.776761, 28.7788, 1.60751, -66.9064 )
 
-[node name="CrayFish4" parent="Prey" instance=ExtResource( 14 )]
+[node name="CrayFish4" parent="Creatures/Prey" instance=ExtResource( 14 )]
 transform = Transform( -0.857131, 0, -0.515098, 0, 1, 0, 0.515098, 0, -0.857131, 28.3041, 1.56176, -66.041 )
 
-[node name="CrayFish5" parent="Prey" instance=ExtResource( 14 )]
+[node name="CrayFish5" parent="Creatures/Prey" instance=ExtResource( 14 )]
 transform = Transform( -0.847576, 0, 0.530674, 0, 1, 0, -0.530674, 0, -0.847576, 26.5697, 1.88668, -68.2947 )
 
-[node name="CrayFish6" parent="Prey" instance=ExtResource( 14 )]
+[node name="CrayFish6" parent="Creatures/Prey" instance=ExtResource( 14 )]
 transform = Transform( -0.993164, 0, -0.116723, 0, 1, 0, 0.116723, 0, -0.993164, 27.9371, 1.78572, -67.7497 )
 
-[node name="CrayFish7" parent="Prey" instance=ExtResource( 14 )]
+[node name="CrayFish7" parent="Creatures/Prey" instance=ExtResource( 14 )]
 transform = Transform( 0.910099, 0, 0.414391, 0, 1, 0, -0.414391, 0, 0.910099, -15.6545, -20.7787, 176.679 )
 
 [node name="CanvasLayer" parent="." instance=ExtResource( 15 )]
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 300.0
+autostart = true
+
 [connection signal="timeout" from="Player/AttackTimer" to="Player" method="_on_AttackTimer_timeout"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 
 [editable path="Player/Hellbender"]

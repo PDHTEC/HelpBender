@@ -1,8 +1,13 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/Seasons.gd" type="Script" id=1]
 [ext_resource path="res://hui_helpbender.png" type="Texture" id=2]
 [ext_resource path="res://seasons.png" type="Texture" id=3]
+[ext_resource path="res://Misrow.ttf" type="DynamicFontData" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 200
+font_data = ExtResource( 4 )
 
 [node name="Seasons" type="Node2D"]
 script = ExtResource( 1 )
@@ -22,7 +27,9 @@ region_enabled = true
 region_rect = Rect2( 0, 0, 330, 330 )
 
 [node name="Label" type="Label" parent="."]
-margin_left = 268.0
-margin_top = 33.0
-margin_right = 888.0
-margin_bottom = 344.0
+margin_left = -1.0
+margin_top = 50.0
+margin_right = 1915.0
+margin_bottom = 381.0
+custom_fonts/font = SubResource( 1 )
+text = "asdfgbh"
