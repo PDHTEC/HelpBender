@@ -9,4 +9,4 @@ func _ready():
 func _on_Timer_timeout():
 	var player = $Player
 	Global.score += player.health+player.food
-	print("Tiem ti changelang sesoon")
+	get_tree().change_scene("res://Scenes/Seasons.tscn")

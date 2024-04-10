@@ -1380,7 +1380,7 @@ transform = Transform( 0.910099, 0, 0.414391, 0, 1, 0, -0.414391, 0, 0.910099, -
 [node name="CanvasLayer" parent="." instance=ExtResource( 15 )]
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 300.0
+wait_time = 5.0
 autostart = true
 
 [connection signal="timeout" from="Player/AttackTimer" to="Player" method="_on_AttackTimer_timeout"]
