@@ -1278,66 +1278,18 @@ skeleton = NodePath("../..")
 [node name="Map_1" parent="." instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 184.404, 74.9089, 150.669 )
 
-[node name="CanvasLayer" parent="." instance=ExtResource( 15 )]
-
 [node name="Creatures" type="Spatial" parent="."]
 
 [node name="Predators" type="Spatial" parent="Creatures"]
 
 [node name="RainbowTrout" parent="Creatures/Predators" instance=ExtResource( 9 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 225.846, 35.1138, -272.975 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 37.2774, 8.67035, -59.6374 )
 
 [node name="RainbowTrout2" parent="Creatures/Predators" instance=ExtResource( 9 )]
-transform = Transform( 0.355401, 0, -0.934714, 0, 1, 0, 0.934714, 0, 0.355401, 6.95817, 0.48565, 68.0815 )
-
-[node name="BrownTrout" parent="Creatures/Predators" instance=ExtResource( 16 )]
-transform = Transform( -0.894451, 0, -0.447166, 0, 1, 0, 0.447166, 0, -0.894451, 0, 9.99703, -87.3466 )
-
-[node name="BrownTrout2" parent="Creatures/Predators" instance=ExtResource( 16 )]
-transform = Transform( 0.969923, 0, -0.243412, 0, 1, 0, 0.243412, 0, 0.969923, 159.398, 19.9941, -180.139 )
+transform = Transform( 0.983527, 0, 0.18076, 0, 1, 0, -0.18076, 0, 0.983527, -22.7649, 0.485654, 169.568 )
 
 [node name="RainbowTrout3" parent="Creatures/Predators" instance=ExtResource( 9 )]
-transform = Transform( -0.74738, 0, -0.664397, 0, 1, 0, 0.664397, 0, -0.74738, -54.2056, 0.9713, 98.7816 )
-animations_path = NodePath("../RainbowTrout2/RainbowTrout")
-
-[node name="BrownTrout3" parent="Creatures/Predators" instance=ExtResource( 16 )]
-transform = Transform( -0.763424, 0, 0.645898, 0, 1, 0, -0.645898, 0, -0.763424, 395.888, 37.9866, -529.387 )
-
-[node name="RainbowTrout4" parent="Creatures/Predators" instance=ExtResource( 9 )]
-transform = Transform( 0.761595, 0, 0.648053, 0, 1, 0, -0.648053, 0, 0.761595, -136.674, 35.1138, 148.28 )
-
-[node name="BrownTrout4" parent="Creatures/Predators" instance=ExtResource( 16 )]
-transform = Transform( 0.527831, 0, 0.84935, 0, 1, 0, -0.84935, 0, 0.527831, -24.5586, 9.99701, 317.381 )
-
-[node name="BrownTrout5" parent="Creatures/Predators" instance=ExtResource( 16 )]
-transform = Transform( -0.894451, 0, -0.447166, 0, 1, 0, 0.447166, 0, -0.894451, -115.449, 24.5096, 394.313 )
-
-[node name="BrownTrout6" parent="Creatures/Predators" instance=ExtResource( 16 )]
-transform = Transform( 0.414153, 0, 0.910207, 0, 1, 0, -0.910207, 0, 0.414153, 25.4503, 24.5096, 489.84 )
-
-[node name="RainbowTrout5" parent="Creatures/Predators" instance=ExtResource( 9 )]
-transform = Transform( 0.355401, 0, -0.934714, 0, 1, 0, 0.934714, 0, 0.355401, 186.332, 40.9939, 671.389 )
-
-[node name="RainbowTrout6" parent="Creatures/Predators" instance=ExtResource( 9 )]
-transform = Transform( 0.835318, 0, 0.549767, 0, 1, 0, -0.549767, 0, 0.835318, 492.184, 40.9939, 870.6 )
-
-[node name="RainbowTrout7" parent="Creatures/Predators" instance=ExtResource( 9 )]
-transform = Transform( -0.543072, 0, 0.839686, 0, 1, 0, -0.839686, 0, -0.543072, 275.747, 42.023, 681.679 )
-
-[node name="BrownTrout7" parent="Creatures/Predators" instance=ExtResource( 16 )]
-transform = Transform( -0.894451, 0, -0.447166, 0, 1, 0, 0.447166, 0, -0.894451, 107.57, 22.8536, -87.3466 )
-
-[node name="BrownTrout8" parent="Creatures/Predators" instance=ExtResource( 16 )]
-transform = Transform( 0.969923, 0, -0.243412, 0, 1, 0, 0.243412, 0, 0.969923, 285.652, 19.9941, -406.93 )
-
-[node name="BrownTrout9" parent="Creatures/Predators" instance=ExtResource( 16 )]
-transform = Transform( 0.527831, 0, 0.84935, 0, 1, 0, -0.84935, 0, 0.527831, -122.955, 9.99701, 229.413 )
-
-[node name="BrownTrout10" parent="Creatures/Predators" instance=ExtResource( 16 )]
-transform = Transform( 0.527831, 0, 0.84935, 0, 1, 0, -0.84935, 0, 0.527831, -21.5682, 9.99701, 207.11 )
-
-[node name="BrownTrout11" parent="Creatures/Predators" instance=ExtResource( 16 )]
-transform = Transform( 0.969923, 0, -0.243412, 0, 1, 0, 0.243412, 0, 0.969923, 429.02, 53.9205, -754.055 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.39866, -4.82168, 55.0959 )
 
 [node name="Prey" type="Spatial" parent="Creatures"]
 
