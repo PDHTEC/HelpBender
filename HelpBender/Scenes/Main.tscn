@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=2]
+[gd_scene load_steps=45 format=2]
 
 [ext_resource path="res://3D models/Scenes/Hellbender.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/FollowingCamera.gd" type="Script" id=2]
@@ -23,6 +23,7 @@
 [ext_resource path="res://UI Textures/health bar.png" type="Texture" id=21]
 [ext_resource path="res://UI Textures/not eye.png" type="Texture" id=22]
 [ext_resource path="res://Misrow.ttf" type="DynamicFontData" id=23]
+[ext_resource path="res://Scenes/Creatures/BrownTrout.tscn" type="PackedScene" id=24]
 
 [sub_resource type="ProceduralSky" id=32]
 
@@ -1290,6 +1291,75 @@ transform = Transform( 0.983527, 0, 0.18076, 0, 1, 0, -0.18076, 0, 0.983527, -22
 
 [node name="RainbowTrout3" parent="Creatures/Predators" instance=ExtResource( 9 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.39866, -4.82168, 55.0959 )
+
+[node name="BrownTrout" parent="Creatures/Predators" instance=ExtResource( 24 )]
+transform = Transform( 0.270936, 0, 0.962597, 0, 1, 0, -0.962597, 0, 0.270936, -56.8644, 14.9534, -10.3888 )
+
+[node name="RainbowTrout4" parent="Creatures/Predators" instance=ExtResource( 9 )]
+transform = Transform( -0.782173, 0, -0.623061, 0, 1, 0, 0.623061, 0, -0.782173, -73.4413, 8.67035, 195.475 )
+
+[node name="RainbowTrout5" parent="Creatures/Predators" instance=ExtResource( 9 )]
+transform = Transform( 0.983527, 0, 0.18076, 0, 1, 0, -0.18076, 0, 0.983527, 117.088, 0.485654, -108.744 )
+
+[node name="RainbowTrout6" parent="Creatures/Predators" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.48247, -4.82168, 270.066 )
+
+[node name="BrownTrout2" parent="Creatures/Predators" instance=ExtResource( 24 )]
+transform = Transform( 0.270936, 0, 0.962597, 0, 1, 0, -0.962597, 0, 0.270936, -63.4932, 2.16151, 289.845 )
+animations_path = NodePath("")
+
+[node name="BrownTrout3" parent="Creatures/Predators" instance=ExtResource( 24 )]
+transform = Transform( 0.270936, 0, 0.962597, 0, 1, 0, -0.962597, 0, 0.270936, 27.7259, 2.16151, 396.806 )
+animations_path = NodePath("")
+
+[node name="BrownTrout4" parent="Creatures/Predators" instance=ExtResource( 24 )]
+transform = Transform( 0.656388, 0, -0.754423, 0, 1, 0, 0.754423, 0, 0.656388, -63.4932, 2.16151, 441.903 )
+animations_path = NodePath("")
+
+[node name="RainbowTrout7" parent="Creatures/Predators" instance=ExtResource( 9 )]
+transform = Transform( 0.983527, 0, 0.18076, 0, 1, 0, -0.18076, 0, 0.983527, -152.445, 29.0831, 350.311 )
+
+[node name="RainbowTrout8" parent="Creatures/Predators" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.94816, 49.4742, 544.707 )
+
+[node name="BrownTrout5" parent="Creatures/Predators" instance=ExtResource( 24 )]
+transform = Transform( 0.270936, 0, 0.962597, 0, 1, 0, -0.962597, 0, 0.270936, 106.138, 57.1554, 651.151 )
+animations_path = NodePath("")
+
+[node name="BrownTrout6" parent="Creatures/Predators" instance=ExtResource( 24 )]
+transform = Transform( 0.270936, 0, 0.962597, 0, 1, 0, -0.962597, 0, 0.270936, 274.468, 40.1186, 667.273 )
+animations_path = NodePath("")
+
+[node name="BrownTrout7" parent="Creatures/Predators" instance=ExtResource( 24 )]
+transform = Transform( 0.656388, 0, -0.754423, 0, 1, 0, 0.754423, 0, 0.656388, 397.433, 36.4871, 769.213 )
+animations_path = NodePath("")
+
+[node name="BrownTrout8" parent="Creatures/Predators" instance=ExtResource( 24 )]
+transform = Transform( 0.270936, 0, 0.962597, 0, 1, 0, -0.962597, 0, 0.270936, 475.621, 47.1282, 893.476 )
+animations_path = NodePath("")
+
+[node name="BrownTrout9" parent="Creatures/Predators" instance=ExtResource( 24 )]
+transform = Transform( 0.656388, 0, -0.754423, 0, 1, 0, 0.754423, 0, 0.656388, 598.587, 59.8215, 995.416 )
+animations_path = NodePath("")
+
+[node name="RainbowTrout9" parent="Creatures/Predators" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 153.002, 25.8854, -182.057 )
+
+[node name="RainbowTrout10" parent="Creatures/Predators" instance=ExtResource( 9 )]
+transform = Transform( -0.521843, 0, -0.853041, 0, 1, 0, 0.853041, 0, -0.521843, 252.292, 29.0235, -372.924 )
+
+[node name="RainbowTrout11" parent="Creatures/Predators" instance=ExtResource( 9 )]
+transform = Transform( -0.452777, 0, -0.891624, 0, 1, 0, 0.891624, 0, -0.452777, 110.332, 35.1001, -259.03 )
+
+[node name="BrownTrout10" parent="Creatures/Predators" instance=ExtResource( 24 )]
+transform = Transform( 0.270936, 0, 0.962597, 0, 1, 0, -0.962597, 0, 0.270936, 219.269, 2.16151, -268.616 )
+animations_path = NodePath("")
+
+[node name="RainbowTrout12" parent="Creatures/Predators" instance=ExtResource( 9 )]
+transform = Transform( -0.782173, 0, -0.623061, 0, 1, 0, 0.623061, 0, -0.782173, 372.556, 32.6657, -475.769 )
+
+[node name="RainbowTrout13" parent="Creatures/Predators" instance=ExtResource( 9 )]
+transform = Transform( 0.983527, 0, 0.18076, 0, 1, 0, -0.18076, 0, 0.983527, 361.625, 0.485654, -597.71 )
 
 [node name="Prey" type="Spatial" parent="Creatures"]
 
