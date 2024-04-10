@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://3D models/Scenes/Hellbender.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/FollowingCamera.gd" type="Script" id=2]
@@ -15,7 +15,6 @@
 [ext_resource path="res://SFX/punch-boxingv2.mp3" type="AudioStream" id=13]
 [ext_resource path="res://Scenes/Creatures/CrayFish.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Scenes/NyPause.tscn" type="PackedScene" id=15]
-[ext_resource path="res://Scenes/Creatures/BrownTrout.tscn" type="PackedScene" id=16]
 
 [sub_resource type="ProceduralSky" id=32]
 
@@ -1216,9 +1215,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.36473, 6.85348, -9.49228 )
 
 [node name="RainbowTrout2" parent="Predators" instance=ExtResource( 9 )]
 transform = Transform( 0.355401, 0, -0.934714, 0, 1, 0, 0.934714, 0, 0.355401, 6.95817, 0.48565, 68.0815 )
-
-[node name="BrownTrout" parent="Predators" instance=ExtResource( 16 )]
-transform = Transform( -0.948141, 0, 0.317851, 0, 1, 0, -0.317851, 0, -0.948141, 0, 0, -48.7043 )
 
 [node name="Prey" type="Spatial" parent="."]
 
