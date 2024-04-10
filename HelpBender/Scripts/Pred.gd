@@ -4,9 +4,12 @@ export var vision_scale : float = 1
 export var max_vertical_acc : float = 0.2
 export var max_spin : float = 10
 var target : Spatial
+onready var main = get_tree().get_root().get_node("Main")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if main.get_node("Player").translation.distance_squared_to(translation)>main.load_dist:
+		return
 	movement(delta)
 	if attacking:
 		for body in $AttackArea.get_overlapping_bodies():
@@ -88,7 +91,6 @@ func _on_body_entered_VisionArea(body):
 		#if $Vision.get_collider() != null:
 		#	print($Vision.get_collider().name)
 		if $Vision.get_collider() == body && body.creature_level < creature_level:
-			print(body.name)
 			if target != null:
 				target = closest_body(target,body)
 			else:

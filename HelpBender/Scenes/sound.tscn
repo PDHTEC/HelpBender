@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://Sound.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Sound.gd" type="Script" id=1]
 [ext_resource path="res://SFX/Water ambientv3.mp3" type="AudioStream" id=2]
 [ext_resource path="res://SFX/underwater-movement- v3.mp3" type="AudioStream" id=3]
 [ext_resource path="res://SFX/bones-breaking-v1.mp3" type="AudioStream" id=4]

@@ -12,7 +12,6 @@ func _process(delta):
 	elif food <= 0:
 		print("uhoh")
 		change_health(-delta*hunger_damage)
-	
 	if dead:
 		get_tree().quit()
 	
