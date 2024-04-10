@@ -15,15 +15,15 @@ func _ready():
 
 func load_season():
 	match Global.season:
-		"spring":
+		"Spring":
 			season.region.rect.x=0
 			label=Global.season
-		"summer":
+		"Summer":
 			season.region.rect.x=240
 			label=Global.season
-		"fall":
+		"Fall":
 			season.region.rect.x=480
 			label=Global.season
-		"winter":
+		"Winter":
 			season.region.rect.x=720
 			label=Global.season

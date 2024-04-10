@@ -7,12 +7,11 @@ const SECRET_KEY = 1234567890
 var nonce = null
 var request_queue : Array = []
 var is_requesting : bool = false
-var Player
-var score 
-var Month 
-var Year
-var Hunger 
-var Health
+onready var Player = $Name.text
+var score = 0
+var Month = 0
+var Year = 0
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -21,7 +20,7 @@ func _ready():
 	http_request.connect("request_completed",self,"_http_request_completed")
 
 func _process(_delta):
-	Player = $Name
+	Player = $Name.text
 	
 	if is_requesting:
 		return
@@ -101,12 +100,11 @@ func _http_request_completed(_result, _response_code, _headers, _body):
 			score = int(String(response['response'][String(n)]['score']))
 			Month = int(String(response['response'][String(n)]['Month']))
 			Year = int(String(response['response'][String(n)]['Year']))
-			Hunger = int(String(response['response'][String(n)]['Hunger']))
-			Health = int(String(response['response'][String(n)]['Health']))
+
 
 func _submit_score():
 	var command = "add_Player"
-	var data = {"Player" : Player, "score" : score, "Month" : Month, "Year" : Year, "Hunger" : Hunger, "Health" : Health}
+	var data = {"Player" : Player, "score" : score, "Month" : Month, "Year" : Year }
 	request_queue.push_back({"command" : command, "data" : data})
 
 func _get_player():

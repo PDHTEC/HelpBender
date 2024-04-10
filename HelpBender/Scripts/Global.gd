@@ -1,2 +1,2 @@
 extends Node
-var season : String
+var season : String = "Spring"
