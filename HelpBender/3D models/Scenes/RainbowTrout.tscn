@@ -1,9 +1,10 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://3D models/GLB/Material_001.material" type="Material" id=1]
 [ext_resource path="res://Scripts/AnimationHandlers/RainbowTroutAnimations.gd" type="Script" id=2]
+[ext_resource path="res://3D models/textures/rainbow_trout.png" type="Texture" id=3]
 
-[sub_resource type="ArrayMesh" id=1]
+[sub_resource type="ArrayMesh" id=20]
 resource_name = "rov_fisk_Cube001"
 surfaces/0 = {
 "aabb": AABB( -0.825202, -1.88818, -6.72958, 1.6504, 4.02946, 11.1216 ),
@@ -18,7 +19,7 @@ surfaces/0 = {
 "vertex_count": 965
 }
 
-[sub_resource type="Skin" id=2]
+[sub_resource type="Skin" id=21]
 resource_name = "Skin"
 bind_count = 28
 bind/0/name = "spine_1"
@@ -105,6 +106,9 @@ bind/26/pose = Transform( 0.981594, 0.0299396, 0.18862, 2.98023e-08, -0.987636, 
 bind/27/name = "front_fin_helper_1.L"
 bind/27/bone = -1
 bind/27/pose = Transform( 0.945108, -0.0859647, 0.315247, 0.326594, 0.279035, -0.903037, -0.0103355, 0.956425, 0.291793, -1.15638, 2.04402, -0.171047 )
+
+[sub_resource type="SpatialMaterial" id=22]
+albedo_texture = ExtResource( 3 )
 
 [sub_resource type="Animation" id=3]
 resource_name = "Attack"
@@ -748,8 +752,9 @@ bones/27/enabled = true
 bones/27/bound_children = [  ]
 
 [node name="Cube" type="MeshInstance" parent="Armature/Skeleton"]
-mesh = SubResource( 1 )
-skin = SubResource( 2 )
+mesh = SubResource( 20 )
+skin = SubResource( 21 )
+material/0 = SubResource( 22 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Attack = SubResource( 3 )

@@ -1,9 +1,16 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://3D models/Scenes/BrownTrout.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/Pred.gd" type="Script" id=2]
 
-[sub_resource type="SphereShape" id=24]
+[sub_resource type="ConvexPolygonShape" id=34]
+points = PoolVector3Array( 0, 0, 0, 36, 24, -48, -36, 24, -48, -36, -24, -48, 36, -24, -48 )
+
+[sub_resource type="SphereShape" id=35]
+radius = 12.0
+
+[sub_resource type="SphereShape" id=36]
+radius = 3.5
 
 [sub_resource type="ConvexPolygonShape" id=25]
 points = PoolVector3Array( 0.0917404, 1.57257, -0.311133, -0.0265629, 1.09925, -2.08574, 0.0325714, 1.09925, -2.08574, -0.0265629, 2.16409, -1.19803, -0.0911284, 1.06687, 0.0477291, 0.0974649, 1.0649, 0.0515558, 0.0917404, 2.10478, -1.19803, -0.0857319, 2.10478, -1.0213, -0.0857319, 1.09925, -2.02636, 0.0917404, 1.09925, -1.67148, -0.0265629, 1.33607, -0.0152299, 0.0325714, 2.16409, -1.0213, -0.0857319, 1.92727, -0.666014, 0.0917404, 1.33607, -1.78984, -0.0857319, 2.04568, -1.25741, 0.0325714, 1.15845, -2.08574, -0.0265629, 1.15845, -2.08574, 0.0917404, 2.04568, -0.902939, -0.0857319, 1.27686, -0.0152299, 0.0325714, 1.33607, -0.0152299, 0.0917404, 1.69077, -0.429494, 0.0325714, 2.16409, -1.19803 )
@@ -32,9 +39,10 @@ points = PoolVector3Array( 0.0325656, -0.971335, -2.73647, -0.0265571, -1.74031,
 [sub_resource type="ConvexPolygonShape" id=33]
 points = PoolVector3Array( -0.144889, -0.379639, -5.45793, -0.0857087, 1.15841, -6.58149, 0.0917173, -0.912056, -6.58149, 0.0917173, 1.15841, -6.52239, 0.150898, -0.379639, -4.86633, -0.0857087, -0.971259, -6.6997, -0.144889, -0.497838, -4.92562, -0.144889, 0.507584, -4.92562, 0.150898, 0.448172, -4.86633, 0.0917173, 1.0992, -6.04917, 0.0325656, -0.793648, -6.75918, 0.0917173, -0.852852, -5.98988, 0.150898, 0.330181, -5.39883, -0.0857087, 1.0992, -6.04917, -0.144889, 0.388968, -5.51704, -0.144889, -0.438842, -4.86633, 0.150898, -0.497838, -5.04383, -0.0857087, -0.852852, -5.93078, -0.0857087, 0.744191, -6.6406, -0.144889, 0.448172, -4.86633, 0.150898, -0.0838283, -5.39883, 0.0917173, -0.912056, -6.22649, -0.0265571, -0.793648, -6.75918, -0.144889, 0.566788, -5.28043, -0.0857087, 1.15841, -6.34488, 0.150898, 0.507584, -5.22133, -0.0857087, -0.912056, -6.16738, 0.150898, -0.438842, -5.22133 )
 
-[node name="BrownTrout" type="KinematicBody"]
+[node name="RainbowTrout" type="KinematicBody"]
 script = ExtResource( 2 )
 movement_speed = 0.5
+attack_power = 10.0
 creature_level = 5
 
 [node name="BrownTrout" parent="." instance=ExtResource( 1 )]
@@ -43,10 +51,19 @@ transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0
 [node name="VisionArea" type="Area" parent="."]
 
 [node name="CollisionShape" type="CollisionShape" parent="VisionArea"]
-shape = SubResource( 24 )
+shape = SubResource( 34 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="VisionArea"]
+shape = SubResource( 35 )
+
+[node name="AttackArea" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.61395 )
+
+[node name="CollisionShape" type="CollisionShape" parent="AttackArea"]
+shape = SubResource( 36 )
 
 [node name="Vision" type="RayCast" parent="."]
-visible = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.48576 )
 enabled = true
 
 [node name="DownRay" type="RayCast" parent="."]
@@ -94,3 +111,12 @@ shape = SubResource( 32 )
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
 shape = SubResource( 33 )
+
+[node name="LocalTarget" type="Spatial" parent="."]
+
+[node name="AttackTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="body_entered" from="VisionArea" to="." method="_on_body_entered_VisionArea"]
+[connection signal="body_entered" from="AttackArea" to="." method="_on_AttackArea_body_entered"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_AttackTimer_timeout"]
