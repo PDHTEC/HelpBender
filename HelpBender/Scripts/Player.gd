@@ -13,7 +13,7 @@ func _process(delta):
 		print("uhoh")
 		change_health(-delta*hunger_damage)
 	if dead:
-		get_tree().quit()
+		get_tree().change_scene("res://Scenes/end game scene.tscn")
 	
 	if rotation_degrees.y>180:
 		rotation_degrees.y -= 360
