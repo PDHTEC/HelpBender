@@ -13,7 +13,7 @@ func _process(delta):
 		print("uhoh")
 		change_health(-delta*hunger_damage)
 	if dead:
-		get_tree().quit()
+		get_tree().change_scene("res://Scenes/end game scene.tscn")
 	
 	if rotation_degrees.y>180:
 		rotation_degrees.y -= 360
@@ -29,8 +29,8 @@ func _process(delta):
 		for body in $AttackArea.get_overlapping_bodies():
 			if body.has_method("attack") && body != self && attacking && body.creature_level<=creature_level:
 				body.attack(self, attack_power)
-				$"sound/Hit SFX".play()
 				_on_AttackTimer_timeout()
+				$"sound/Hit SFX".play()
 
 func attempt_attack():
 	$AttackArea.monitoring = true
