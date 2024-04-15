@@ -29,24 +29,32 @@ margin_bottom = 40.0
 script = ExtResource( 2 )
 
 [node name="Name" type="LineEdit" parent="GameOver/Control"]
-margin_left = 408.0
-margin_top = 307.0
-margin_right = 609.0
-margin_bottom = 369.0
+margin_left = 406.412
+margin_top = 370.966
+margin_right = 607.412
+margin_bottom = 432.966
 
-[node name="Button" type="Button" parent="GameOver/Control"]
-margin_left = 439.0
-margin_top = 393.0
-margin_right = 569.0
-margin_bottom = 432.0
+[node name="Submit" type="Button" parent="GameOver/Control"]
+margin_left = 437.412
+margin_top = 456.966
+margin_right = 567.412
+margin_bottom = 495.966
 text = "Submit"
 
 [node name="Label" type="Label" parent="GameOver/Control"]
-margin_left = 398.0
-margin_top = 250.0
-margin_right = 629.0
-margin_bottom = 298.0
+margin_left = 396.412
+margin_top = 313.966
+margin_right = 627.412
+margin_bottom = 361.966
 theme = SubResource( 2 )
 text = "Insert Name"
 
-[connection signal="pressed" from="GameOver/Control/Button" to="GameOver/Control" method="_submit_score"]
+[node name="Main Menu" type="Button" parent="GameOver/Control"]
+margin_left = 435.571
+margin_top = 512.006
+margin_right = 565.571
+margin_bottom = 551.006
+text = "Submit"
+
+[connection signal="pressed" from="GameOver/Control/Submit" to="GameOver/Control" method="_submit_score"]
+[connection signal="pressed" from="GameOver/Control/Main Menu" to="GameOver/Control" method="_submit_score"]

@@ -8,6 +8,8 @@ onready var main = get_tree().get_root().get_node("Main")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if dead:
+		queue_free()
 	if main.get_node("Player") == null:
 		return
 	if main.get_node("Player").translation.distance_squared_to(translation)>main.load_dist:

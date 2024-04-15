@@ -1,9 +1,11 @@
 extends "res://Scripts/Creature.gd"
+var const_dmg : float
 
 func _ready():
 	randomize()
 
 func _process(delta):
+	change_health(-delta*const_dmg)
 	change_food(-delta*food_drain)
 	if food>=heal_threshold:
 		change_health(delta*heal_speed)
