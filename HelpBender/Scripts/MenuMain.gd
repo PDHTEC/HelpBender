@@ -12,6 +12,7 @@ export var start_level = preload("res://Scenes/Main.tscn")
 
 func _ready():
 	handle_connecting_signals()
+	Global.score = 0
 
 func handle_connecting_signals():
 	start_button.connect("pressed",self,"_on_start_button_down")
@@ -21,6 +22,7 @@ func handle_connecting_signals():
 
 func _on_start_button_down():
 	Global.year = -1
+	Global.score = 0
 	Global.season  = "Winter"
 	get_tree().change_scene("res://Scenes/Seasons.tscn")
 

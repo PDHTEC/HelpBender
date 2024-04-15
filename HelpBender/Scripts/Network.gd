@@ -7,7 +7,6 @@ const SECRET_KEY = 1234567890
 var nonce = null
 var request_queue : Array = []
 var is_requesting : bool = false
-var score = 0
 var Season = 0
 var Year = 0
 
@@ -31,8 +30,6 @@ func _process(_delta):
 		request_nonce()
 	else:
 		_send_request(request_queue.pop_front())
-	
-
 
 func request_nonce():
 	var client = HTTPClient.new()
@@ -102,11 +99,10 @@ func _http_request_completed(_result, _response_code, _headers, _body):
 		for n in (response['response']['size']):
 			text_felt.add_text(String(response['response'][String(n)]['Player']) + "\t\t\t\t" + String(response['response'][String(n)]['score']) + "\n")
 
-
 func _submit_score():
 	var Player = $Name.text
 	var command = "add_Player"
-	var data = {"Player" : Player, "score" : score, "Season" : Season, "Year" : Year }
+	var data = {"Player" : Player, "score" : Global.score, "Season" : Season, "Year" : Year }
 	request_queue.push_back({"command" : command, "data" : data})
 
 func _get_player():

@@ -54,7 +54,16 @@ margin_left = 435.571
 margin_top = 512.006
 margin_right = 565.571
 margin_bottom = 551.006
-text = "Submit"
+text = "Main Menu"
+
+[node name="Score" type="Label" parent="GameOver/Control"]
+margin_left = 304.685
+margin_top = 251.173
+margin_right = 715.685
+margin_bottom = 299.173
+theme = SubResource( 2 )
+text = "Score: 0"
+align = 1
 
 [connection signal="pressed" from="GameOver/Control/Submit" to="GameOver/Control" method="_submit_score"]
-[connection signal="pressed" from="GameOver/Control/Main Menu" to="GameOver/Control" method="_submit_score"]
+[connection signal="pressed" from="GameOver/Control/Main Menu" to="GameOver" method="_on_Main_Menu_pressed"]
