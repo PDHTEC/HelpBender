@@ -13,13 +13,14 @@ font_data = ExtResource( 4 )
 default_font = SubResource( 1 )
 
 [node name="end game scene" type="Node2D"]
+scale = Vector2( 1.86422, 1.86326 )
 
 [node name="GameOver" type="Node2D" parent="."]
 script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="GameOver"]
-position = Vector2( 508, 288 )
-scale = Vector2( 1.64722, 1.64722 )
+position = Vector2( 512.996, 290.371 )
+scale = Vector2( 1.63161, 1.63405 )
 texture = ExtResource( 3 )
 
 [node name="Control" type="Control" parent="GameOver"]

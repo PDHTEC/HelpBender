@@ -12,7 +12,7 @@ func _process(delta):
 	else:
 		visible=false
 	if Input.is_action_just_pressed("ui_cancel"):
-		if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+		if get_tree().paused:
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-		elif Input.mouse_mode==Input.MOUSE_MODE_VISIBLE:
+		else:
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)

@@ -6,7 +6,7 @@
 [ext_resource path="res://Scenes/settingsMenu.tscn" type="PackedScene" id=4]
 
 [sub_resource type="DynamicFont" id=1]
-size = 64
+size = 164
 font_data = ExtResource( 2 )
 
 [sub_resource type="Theme" id=2]
@@ -14,33 +14,35 @@ default_font = SubResource( 1 )
 
 [node name="Node2D" type="Control"]
 pause_mode = 2
-anchor_right = 1.0
+anchor_right = 0.968
 anchor_bottom = 1.0
+margin_right = 61.4399
 script = ExtResource( 3 )
 
 [node name="Hellbendymainmenu" type="Sprite" parent="."]
-position = Vector2( 510, 299 )
-scale = Vector2( 1.7, 1.99333 )
+position = Vector2( 967, 566 )
+scale = Vector2( 3.21806, 3.77333 )
 texture = ExtResource( 1 )
 
 [node name="Knapper" type="Control" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0
+rect_scale = Vector2( 2.67182, 2.67182 )
 
 [node name="start" type="Button" parent="Knapper"]
-margin_left = 47.0
-margin_top = 375.0
-margin_right = 110.0
-margin_bottom = 415.0
+margin_left = 44.1646
+margin_top = 76.7266
+margin_right = 107.165
+margin_bottom = 116.727
 action_mode = 0
 text = "Start"
 
 [node name="settings" type="Button" parent="Knapper"]
 pause_mode = 2
-margin_left = 47.0
-margin_top = 445.0
-margin_right = 110.0
-margin_bottom = 485.0
+margin_left = 44.1646
+margin_top = 146.727
+margin_right = 107.165
+margin_bottom = 186.727
 text = "Settings"
 
 [node name="quit" type="Button" parent="Knapper"]
@@ -52,10 +54,10 @@ margin_bottom = 550.0
 text = "Quit"
 
 [node name="Title" type="RichTextLabel" parent="."]
-margin_left = 686.0
-margin_top = 84.0
-margin_right = 990.0
-margin_bottom = 161.0
+margin_left = 1064.0
+margin_top = 128.0
+margin_right = 1846.0
+margin_bottom = 281.0
 theme = SubResource( 2 )
 text = "Helpbender
 "
