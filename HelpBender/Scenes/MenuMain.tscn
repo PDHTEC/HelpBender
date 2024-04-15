@@ -19,7 +19,7 @@ default_font = SubResource( 1 )
 default_font = ExtResource( 5 )
 
 [sub_resource type="DynamicFont" id=4]
-size = 38
+size = 33
 font_data = ExtResource( 2 )
 
 [sub_resource type="Theme" id=5]
@@ -43,19 +43,20 @@ margin_bottom = 40.0
 rect_scale = Vector2( 2.67182, 2.67182 )
 
 [node name="start" type="Button" parent="Knapper"]
-margin_left = 44.1646
-margin_top = 76.7266
-margin_right = 107.165
-margin_bottom = 116.727
+margin_left = 44.0
+margin_top = 77.0
+margin_right = 119.0
+margin_bottom = 117.0
 action_mode = 0
 text = "Start"
 
 [node name="settings" type="Button" parent="Knapper"]
 pause_mode = 2
-margin_left = 44.1646
-margin_top = 146.727
-margin_right = 107.165
-margin_bottom = 186.727
+margin_left = 44.0
+margin_top = 147.0
+margin_right = 119.0
+margin_bottom = 187.0
+action_mode = 0
 text = "Settings"
 
 [node name="quit" type="Button" parent="Knapper"]
@@ -65,6 +66,14 @@ margin_top = 510.0
 margin_right = 110.0
 margin_bottom = 550.0
 text = "Quit"
+
+[node name="refresh" type="Button" parent="Knapper"]
+margin_left = 230.929
+margin_top = 30.3164
+margin_right = 290.929
+margin_bottom = 50.3164
+action_mode = 0
+text = "Refresh"
 
 [node name="Title" type="RichTextLabel" parent="."]
 margin_left = 1064.0
@@ -108,10 +117,31 @@ margin_bottom = 235.0
 theme = SubResource( 3 )
 text = "Global Leaderboard"
 
-[node name="List" type="RichTextLabel" parent="Leaderboard"]
+[node name="ListLables" type="RichTextLabel" parent="Leaderboard"]
 margin_left = 490.0
 margin_top = 242.0
-margin_right = 939.0
-margin_bottom = 946.0
+margin_right = 941.0
+margin_bottom = 287.0
+focus_mode = 2
+theme = SubResource( 5 )
+text = "Name						Score"
+selection_enabled = true
+
+[node name="NameList" type="RichTextLabel" parent="Leaderboard"]
+margin_left = 490.0
+margin_top = 299.0
+margin_right = 771.0
+margin_bottom = 971.0
+focus_mode = 2
 theme = SubResource( 5 )
 text = "Loading..."
+selection_enabled = true
+
+[node name="ScoreList" type="RichTextLabel" parent="Leaderboard"]
+margin_left = 770.0
+margin_top = 301.0
+margin_right = 1782.0
+margin_bottom = 970.0
+focus_mode = 2
+theme = SubResource( 5 )
+selection_enabled = true

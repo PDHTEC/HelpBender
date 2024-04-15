@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Scripts/Seasons.gd" type="Script" id=1]
 [ext_resource path="res://hui_helpbender.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://UI Textures/not hunger.png" type="Texture" id=7]
 [ext_resource path="res://Roboto-Regular.ttf" type="DynamicFontData" id=8]
 [ext_resource path="res://Roboto-Bold.ttf" type="DynamicFontData" id=9]
+[ext_resource path="res://UI Textures/hazard-1.png" type="Texture" id=10]
 
 [sub_resource type="DynamicFont" id=1]
 size = 200
@@ -82,10 +83,10 @@ custom_fonts/font = SubResource( 3 )
 text = "A combination of many different pollutions that are now found in the water cause damage to DNA and internal organs"
 autowrap = true
 
-[node name="cant see icon" type="Sprite" parent="Hazard icons/Pollution"]
-position = Vector2( -102.578, 16.2414 )
-scale = Vector2( 0.0987492, 0.0987492 )
-texture = ExtResource( 5 )
+[node name="Hazard-1" type="Sprite" parent="Hazard icons/Pollution"]
+position = Vector2( -102.889, 19.5555 )
+scale = Vector2( 0.15, 0.15 )
+texture = ExtResource( 10 )
 
 [node name="Visibility" type="Node2D" parent="Hazard icons"]
 visible = false
