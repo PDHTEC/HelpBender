@@ -94,9 +94,9 @@ func _http_request_completed(_result, _response_code, _headers, _body):
 	
 	if response['response']['size'] > 0:
 		var text_felt = $"../List"
-		text_felt.set_text("")
+		text_felt.set_text("Name \t\t\tScore\n\n")
 		for n in (response['response']['size']):
-			text_felt.add_text(String(response['response'][String(n)]['Player']) + "\t\t" + String(response['response'][String(n)]['score']) + "\n")
+			text_felt.add_text(String(response['response'][String(n)]['Player']) + "\t\t\t\t" + String(response['response'][String(n)]['score']) + "\n")
 
 
 func _submit_score():

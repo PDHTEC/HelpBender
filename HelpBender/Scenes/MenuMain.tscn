@@ -95,7 +95,8 @@ margin_bottom = 988.0
 color = Color( 0.858824, 0.835294, 0.709804, 0.498039 )
 
 [node name="Line2D" type="Line2D" parent="Leaderboard"]
-points = PoolVector2Array( 477, 238, 921, 238 )
+position = Vector2( 0, 50 )
+points = PoolVector2Array( 477, 238, 541.213, 238, 921, 238 )
 width = 2.0
 default_color = Color( 1, 1, 1, 1 )
 
@@ -108,9 +109,9 @@ theme = SubResource( 3 )
 text = "Global Leaderboard"
 
 [node name="List" type="RichTextLabel" parent="Leaderboard"]
-margin_left = 498.0
-margin_top = 256.0
-margin_right = 947.0
-margin_bottom = 960.0
+margin_left = 490.0
+margin_top = 242.0
+margin_right = 939.0
+margin_bottom = 946.0
 theme = SubResource( 5 )
 text = "Loading..."
