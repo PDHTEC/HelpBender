@@ -1,10 +1,9 @@
-[gd_scene load_steps=42 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://3D models/Scenes/Hellbender.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/FollowingCamera.gd" type="Script" id=2]
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=3]
 [ext_resource path="res://3D models/Scenes/Map_1.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Underwater_earth.tres" type="Material" id=6]
 [ext_resource path="res://Scripts/Main.gd" type="Script" id=7]
 [ext_resource path="res://Scripts/Sound.gd" type="Script" id=8]
 [ext_resource path="res://SFX/Water ambientv3.mp3" type="AudioStream" id=10]
@@ -1090,14 +1089,6 @@ font_data = ExtResource( 23 )
 [sub_resource type="Theme" id=47]
 default_font = SubResource( 48 )
 
-[sub_resource type="BoxShape" id=11]
-
-[sub_resource type="PlaneMesh" id=10]
-material = ExtResource( 6 )
-size = Vector2( 500, 500 )
-
-[sub_resource type="CubeMesh" id=27]
-
 [node name="Main" type="Spatial"]
 script = ExtResource( 7 )
 water_height = 67.0
@@ -1267,21 +1258,6 @@ margin_top = 406.645
 margin_right = 257.446
 margin_bottom = 451.645
 theme = SubResource( 47 )
-
-[node name="StaticBody" type="StaticBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9999, -4.26, 0 )
-
-[node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
-transform = Transform( 250, 0, 0, 0, 1, 0, 0, 0, 250, 0, -1, 0 )
-shape = SubResource( 11 )
-
-[node name="MeshInstance" type="MeshInstance" parent="StaticBody"]
-mesh = SubResource( 10 )
-
-[node name="MeshInstance2" type="MeshInstance" parent="StaticBody"]
-transform = Transform( 1, 0, 0, 0, 200, 0, 0, 0, 1000, -258.225, 192.459, 0 )
-mesh = SubResource( 27 )
-skeleton = NodePath("../..")
 
 [node name="Map_1" parent="." instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 184.404, 74.9089, 150.669 )
