@@ -24,13 +24,15 @@ func _process(_delta):
 		
 	if request_queue.empty():
 		return
-		
+	
 	is_requesting = true
 	
 	if nonce == null:
 		request_nonce()
 	else:
 		_send_request(request_queue.pop_front())
+	
+
 
 func request_nonce():
 	var client = HTTPClient.new()
@@ -82,6 +84,9 @@ func _http_request_completed(_result, _response_code, _headers, _body):
 	var response = parse_json(response_body)
 	print(response_body)
 	
+	if response['command'] =="add_Player":
+		get_tree().change_scene_to(load("res://Scenes/MenuMain.tscn"))
+	
 	if response['error'] != "none":
 		printerr("We returned error: " + response['error'])
 		return
@@ -89,12 +94,11 @@ func _http_request_completed(_result, _response_code, _headers, _body):
 	if response['command'] == "get_nonce":
 		nonce = response['response']['nonce']
 		print("Get nonce: " + response['response']['nonce'])
-		return	
+		return
 	
 	if response['response']['size'] > 0:
 		for n in (response['response']['size']):
-			Player = String(response['response'][String(n)]['Player'])
-			score = int(String(response['response'][String(n)]['score']))
+			pass
 
 func _submit_score():
 	var Player = $Name.text
