@@ -19,7 +19,9 @@ func handle_connecting_signals():
 	settings_menu.connect("exit_settings_menu",self,"on_exit_options_menu")
 
 func _on_start_button_down():
-	get_tree().change_scene("res://Scenes/Main.tscn")
+	Global.year = -1
+	Global.season  = "Winter"
+	get_tree().change_scene("res://Scenes/Seasons.tscn")
 
 func _on_settings_button_down():
 	Knapper.visible = false

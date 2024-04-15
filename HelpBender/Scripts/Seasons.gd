@@ -11,6 +11,7 @@ func _ready():
 func change_season():
 	match Global.season:
 		"Winter":
+			Global.year += 1
 			Global.season = "Spring"
 			season.region_rect.position.x=0
 			label.text = Global.season
@@ -19,7 +20,6 @@ func change_season():
 			season.region_rect.position.x=240
 			label.text = Global.season
 		"Summer":
-			Global.year += 1
 			Global.season = "Fall"
 			season.region_rect.position.x=480
 			label.text = Global.season

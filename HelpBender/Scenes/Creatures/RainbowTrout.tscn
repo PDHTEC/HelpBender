@@ -10,7 +10,7 @@ points = PoolVector3Array( 0, 0, 0, 36, 24, -48, -36, 24, -48, -36, -24, -48, 36
 radius = 12.0
 
 [sub_resource type="SphereShape" id=36]
-radius = 3.5
+radius = 2.5
 
 [sub_resource type="ConvexPolygonShape" id=25]
 points = PoolVector3Array( 0.0917404, 1.57257, -0.311133, -0.0265629, 1.09925, -2.08574, 0.0325714, 1.09925, -2.08574, -0.0265629, 2.16409, -1.19803, -0.0911284, 1.06687, 0.0477291, 0.0974649, 1.0649, 0.0515558, 0.0917404, 2.10478, -1.19803, -0.0857319, 2.10478, -1.0213, -0.0857319, 1.09925, -2.02636, 0.0917404, 1.09925, -1.67148, -0.0265629, 1.33607, -0.0152299, 0.0325714, 2.16409, -1.0213, -0.0857319, 1.92727, -0.666014, 0.0917404, 1.33607, -1.78984, -0.0857319, 2.04568, -1.25741, 0.0325714, 1.15845, -2.08574, -0.0265629, 1.15845, -2.08574, 0.0917404, 2.04568, -0.902939, -0.0857319, 1.27686, -0.0152299, 0.0325714, 1.33607, -0.0152299, 0.0917404, 1.69077, -0.429494, 0.0325714, 2.16409, -1.19803 )
@@ -41,7 +41,7 @@ points = PoolVector3Array( -0.144889, -0.379639, -5.45793, -0.0857087, 1.15841, 
 
 [node name="RainbowTrout" type="KinematicBody"]
 script = ExtResource( 2 )
-movement_speed = 0.5
+movement_speed = 0.4
 attack_power = 10.0
 creature_level = 5
 animations_path = NodePath("RainbowTrout")
@@ -58,7 +58,7 @@ shape = SubResource( 34 )
 shape = SubResource( 35 )
 
 [node name="AttackArea" type="Area" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.61395 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.33623 )
 
 [node name="CollisionShape" type="CollisionShape" parent="AttackArea"]
 shape = SubResource( 36 )

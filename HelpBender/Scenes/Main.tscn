@@ -1087,12 +1087,12 @@ tracks/32/keys = PoolRealArray( 0, 1, 0, 0, 0, 2.32831e-10, 1.29247e-26, 5.55112
 [sub_resource type="BoxShape" id=41]
 extents = Vector3( 0.4, 0.2, 0.3 )
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=48]
 size = 48
 font_data = ExtResource( 23 )
 
 [sub_resource type="Theme" id=47]
-default_font = SubResource( 1 )
+default_font = SubResource( 48 )
 
 [sub_resource type="BoxShape" id=11]
 
@@ -1117,7 +1117,7 @@ color = Color( 0, 0.564, 0.94, 0.0980392 )
 polygon = PoolVector2Array( 0, 0, 1028, 0, 1028, 600, 0, 600 )
 
 [node name="Player" type="KinematicBody" parent="."]
-transform = Transform( 0.999083, 0, 0.0428172, 0, 1, 0, -0.0428173, 0, 0.999082, 2.97213, -3.36284, 29.4365 )
+transform = Transform( 0.841652, 0, 0.54002, 0, 1, 0, -0.54002, 0, 0.841651, 40.1944, -5.30016, 12.12 )
 script = ExtResource( 3 )
 heal_speed = 0.5
 food_drain = 0.2
@@ -1292,127 +1292,985 @@ skeleton = NodePath("../..")
 [node name="Map_1" parent="." instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 184.404, 74.9089, 150.669 )
 
-[node name="Creatures" type="Spatial" parent="."]
+[node name="CanvasLayer" parent="." instance=ExtResource( 15 )]
 
-[node name="Predators" type="Spatial" parent="Creatures"]
+[node name="CreatureCollections" type="Node" parent="."]
 
-[node name="RainbowTrout" parent="Creatures/Predators" instance=ExtResource( 9 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 37.2774, 8.67035, -59.6374 )
+[node name="Spring" type="Spatial" parent="CreatureCollections"]
+visible = false
 
-[node name="RainbowTrout2" parent="Creatures/Predators" instance=ExtResource( 9 )]
-transform = Transform( 0.983527, 0, 0.18076, 0, 1, 0, -0.18076, 0, 0.983527, -22.7649, 0.485654, 169.568 )
+[node name="Predators" type="Spatial" parent="CreatureCollections/Spring"]
 
-[node name="RainbowTrout3" parent="Creatures/Predators" instance=ExtResource( 9 )]
-transform = Transform( -0.534338, 0, 0.845271, 0, 1, 0, -0.845271, 0, -0.534338, 1.39867, -4.82168, 177.829 )
+[node name="RainbowTrout" parent="CreatureCollections/Spring/Predators" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 36.6754, 10.6999, -60.0224 )
 
-[node name="BrownTrout" parent="Creatures/Predators" instance=ExtResource( 24 )]
+[node name="BrownTrout" parent="CreatureCollections/Spring/Predators" instance=ExtResource( 24 )]
 transform = Transform( 0.270936, 0, 0.962597, 0, 1, 0, -0.962597, 0, 0.270936, -56.8644, 14.9534, -10.3888 )
 
-[node name="RainbowTrout4" parent="Creatures/Predators" instance=ExtResource( 9 )]
+[node name="RainbowTrout4" parent="CreatureCollections/Spring/Predators" instance=ExtResource( 9 )]
 transform = Transform( -0.782173, 0, -0.623061, 0, 1, 0, 0.623061, 0, -0.782173, -73.4413, 8.67035, 195.475 )
 
-[node name="RainbowTrout5" parent="Creatures/Predators" instance=ExtResource( 9 )]
-transform = Transform( 0.983527, 0, 0.18076, 0, 1, 0, -0.18076, 0, 0.983527, 117.088, 0.485654, -108.744 )
-
-[node name="RainbowTrout6" parent="Creatures/Predators" instance=ExtResource( 9 )]
+[node name="RainbowTrout6" parent="CreatureCollections/Spring/Predators" instance=ExtResource( 9 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.48247, -4.82168, 270.066 )
 
-[node name="BrownTrout2" parent="Creatures/Predators" instance=ExtResource( 24 )]
-transform = Transform( 0.270936, 0, 0.962597, 0, 1, 0, -0.962597, 0, 0.270936, -63.4932, 2.16151, 289.845 )
-animations_path = NodePath("")
-
-[node name="BrownTrout3" parent="Creatures/Predators" instance=ExtResource( 24 )]
-transform = Transform( 0.270936, 0, 0.962597, 0, 1, 0, -0.962597, 0, 0.270936, 27.7259, 2.16151, 396.806 )
-animations_path = NodePath("")
-
-[node name="BrownTrout4" parent="Creatures/Predators" instance=ExtResource( 24 )]
+[node name="BrownTrout4" parent="CreatureCollections/Spring/Predators" instance=ExtResource( 24 )]
 transform = Transform( 0.656388, 0, -0.754423, 0, 1, 0, 0.754423, 0, 0.656388, -63.4932, 2.16151, 441.903 )
 animations_path = NodePath("")
 
-[node name="RainbowTrout7" parent="Creatures/Predators" instance=ExtResource( 9 )]
+[node name="RainbowTrout7" parent="CreatureCollections/Spring/Predators" instance=ExtResource( 9 )]
 transform = Transform( 0.983527, 0, 0.18076, 0, 1, 0, -0.18076, 0, 0.983527, -152.445, 29.0831, 350.311 )
 
-[node name="RainbowTrout8" parent="Creatures/Predators" instance=ExtResource( 9 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.94816, 49.4742, 544.707 )
-
-[node name="BrownTrout5" parent="Creatures/Predators" instance=ExtResource( 24 )]
+[node name="BrownTrout5" parent="CreatureCollections/Spring/Predators" instance=ExtResource( 24 )]
 transform = Transform( 0.270936, 0, 0.962597, 0, 1, 0, -0.962597, 0, 0.270936, 106.138, 57.1554, 651.151 )
 animations_path = NodePath("")
 
-[node name="BrownTrout6" parent="Creatures/Predators" instance=ExtResource( 24 )]
-transform = Transform( 0.270936, 0, 0.962597, 0, 1, 0, -0.962597, 0, 0.270936, 274.468, 40.1186, 667.273 )
-animations_path = NodePath("")
-
-[node name="BrownTrout7" parent="Creatures/Predators" instance=ExtResource( 24 )]
+[node name="BrownTrout7" parent="CreatureCollections/Spring/Predators" instance=ExtResource( 24 )]
 transform = Transform( 0.656388, 0, -0.754423, 0, 1, 0, 0.754423, 0, 0.656388, 397.433, 36.4871, 769.213 )
 animations_path = NodePath("")
 
-[node name="BrownTrout8" parent="Creatures/Predators" instance=ExtResource( 24 )]
+[node name="BrownTrout8" parent="CreatureCollections/Spring/Predators" instance=ExtResource( 24 )]
 transform = Transform( 0.270936, 0, 0.962597, 0, 1, 0, -0.962597, 0, 0.270936, 475.621, 47.1282, 893.476 )
 animations_path = NodePath("")
 
-[node name="BrownTrout9" parent="Creatures/Predators" instance=ExtResource( 24 )]
+[node name="BrownTrout9" parent="CreatureCollections/Spring/Predators" instance=ExtResource( 24 )]
 transform = Transform( 0.656388, 0, -0.754423, 0, 1, 0, 0.754423, 0, 0.656388, 598.587, 59.8215, 995.416 )
 animations_path = NodePath("")
 
-[node name="RainbowTrout9" parent="Creatures/Predators" instance=ExtResource( 9 )]
+[node name="RainbowTrout9" parent="CreatureCollections/Spring/Predators" instance=ExtResource( 9 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 153.002, 25.8854, -182.057 )
 
-[node name="RainbowTrout10" parent="Creatures/Predators" instance=ExtResource( 9 )]
-transform = Transform( -0.521843, 0, -0.853041, 0, 1, 0, 0.853041, 0, -0.521843, 252.292, 29.0235, -372.924 )
-
-[node name="RainbowTrout11" parent="Creatures/Predators" instance=ExtResource( 9 )]
-transform = Transform( -0.452777, 0, -0.891624, 0, 1, 0, 0.891624, 0, -0.452777, 110.332, 35.1001, -259.03 )
-
-[node name="BrownTrout10" parent="Creatures/Predators" instance=ExtResource( 24 )]
-transform = Transform( 0.270936, 0, 0.962597, 0, 1, 0, -0.962597, 0, 0.270936, 219.269, 2.16151, -268.616 )
+[node name="BrownTrout10" parent="CreatureCollections/Spring/Predators" instance=ExtResource( 24 )]
+transform = Transform( 0.270936, 0, 0.962597, 0, 1, 0, -0.962597, 0, 0.270936, 219.269, 12.3131, -268.616 )
 animations_path = NodePath("")
 
-[node name="RainbowTrout12" parent="Creatures/Predators" instance=ExtResource( 9 )]
-transform = Transform( -0.782173, 0, -0.623061, 0, 1, 0, 0.623061, 0, -0.782173, 372.556, 32.6657, -475.769 )
+[node name="RainbowTrout13" parent="CreatureCollections/Spring/Predators" instance=ExtResource( 9 )]
+transform = Transform( 0.983527, 0, 0.18076, 0, 1, 0, -0.18076, 0, 0.983527, 361.625, 15.6809, -597.71 )
 
-[node name="RainbowTrout13" parent="Creatures/Predators" instance=ExtResource( 9 )]
-transform = Transform( 0.983527, 0, 0.18076, 0, 1, 0, -0.18076, 0, 0.983527, 361.625, 0.485654, -597.71 )
+[node name="RainbowTrout15" parent="CreatureCollections/Spring/Predators" instance=ExtResource( 9 )]
+transform = Transform( -0.782173, 0, -0.623061, 0, 1, 0, 0.623061, 0, -0.782173, 333.185, 32.6657, -453.29 )
 
-[node name="Prey" type="Spatial" parent="Creatures"]
+[node name="RainbowTrout16" parent="CreatureCollections/Spring/Predators" instance=ExtResource( 9 )]
+transform = Transform( 0.983527, 0, 0.18076, 0, 1, 0, -0.18076, 0, 0.983527, 361.625, 59.7465, -716.236 )
 
-[node name="Worm" parent="Creatures/Prey" instance=ExtResource( 4 )]
+[node name="Prey" type="Spatial" parent="CreatureCollections/Spring"]
+
+[node name="Worm" parent="CreatureCollections/Spring/Prey" instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.84854, -1.18549, -29.0635 )
 
-[node name="Worm2" parent="Creatures/Prey" instance=ExtResource( 4 )]
+[node name="Worm2" parent="CreatureCollections/Spring/Prey" instance=ExtResource( 4 )]
 transform = Transform( -0.576732, 0, 0.816934, 0, 1, 0, -0.816934, 0, -0.576732, -42.6973, -8.04569, 62.0962 )
 
-[node name="Worm3" parent="Creatures/Prey" instance=ExtResource( 4 )]
+[node name="Worm3" parent="CreatureCollections/Spring/Prey" instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24.6472, -10.4584, 91.6731 )
 
-[node name="Worm4" parent="Creatures/Prey" instance=ExtResource( 4 )]
+[node name="Worm4" parent="CreatureCollections/Spring/Prey" instance=ExtResource( 4 )]
 transform = Transform( 0.884622, 0, -0.466309, 0, 1, 0, 0.466309, 0, 0.884622, -86.2482, -9.69185, 148.15 )
 
-[node name="Worm5" parent="Creatures/Prey" instance=ExtResource( 4 )]
+[node name="Worm5" parent="CreatureCollections/Spring/Prey" instance=ExtResource( 4 )]
 transform = Transform( 0.957551, 0, -0.288263, 0, 1, 0, 0.288263, 0, 0.957551, -73.127, -15.6929, 203.279 )
 
-[node name="CrayFish" parent="Creatures/Prey" instance=ExtResource( 14 )]
+[node name="CrayFish" parent="CreatureCollections/Spring/Prey" instance=ExtResource( 14 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 28.688, 1.66875, -68.2422 )
 
-[node name="CrayFish2" parent="Creatures/Prey" instance=ExtResource( 14 )]
+[node name="CrayFish2" parent="CreatureCollections/Spring/Prey" instance=ExtResource( 14 )]
 transform = Transform( -0.95586, 0, 0.293823, 0, 1, 0, -0.293823, 0, -0.95586, 27.3567, 1.56176, -66.5399 )
 
-[node name="CrayFish3" parent="Creatures/Prey" instance=ExtResource( 14 )]
+[node name="CrayFish3" parent="CreatureCollections/Spring/Prey" instance=ExtResource( 14 )]
 transform = Transform( -0.776761, 0, -0.629795, 0, 1, 0, 0.629795, 0, -0.776761, 28.7788, 1.60751, -66.9064 )
 
-[node name="CrayFish4" parent="Creatures/Prey" instance=ExtResource( 14 )]
+[node name="CrayFish4" parent="CreatureCollections/Spring/Prey" instance=ExtResource( 14 )]
 transform = Transform( -0.857131, 0, -0.515098, 0, 1, 0, 0.515098, 0, -0.857131, 28.3041, 1.56176, -66.041 )
 
-[node name="CrayFish5" parent="Creatures/Prey" instance=ExtResource( 14 )]
+[node name="CrayFish5" parent="CreatureCollections/Spring/Prey" instance=ExtResource( 14 )]
 transform = Transform( -0.847576, 0, 0.530674, 0, 1, 0, -0.530674, 0, -0.847576, 26.5697, 1.88668, -68.2947 )
 
-[node name="CrayFish6" parent="Creatures/Prey" instance=ExtResource( 14 )]
+[node name="CrayFish6" parent="CreatureCollections/Spring/Prey" instance=ExtResource( 14 )]
 transform = Transform( -0.993164, 0, -0.116723, 0, 1, 0, 0.116723, 0, -0.993164, 27.9371, 1.78572, -67.7497 )
 
-[node name="CrayFish7" parent="Creatures/Prey" instance=ExtResource( 14 )]
+[node name="CrayFish7" parent="CreatureCollections/Spring/Prey" instance=ExtResource( 14 )]
 transform = Transform( 0.910099, 0, 0.414391, 0, 1, 0, -0.414391, 0, 0.910099, -15.6545, -20.7787, 176.679 )
 
-[node name="CanvasLayer" parent="." instance=ExtResource( 15 )]
+[node name="Worm6" parent="CreatureCollections/Spring/Prey" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 166.813, 16.7377, -261.288 )
+
+[node name="Worm7" parent="CreatureCollections/Spring/Prey" instance=ExtResource( 4 )]
+transform = Transform( -0.576732, 0, 0.816934, 0, 1, 0, -0.816934, 0, -0.576732, 270.248, 4.69736, -309.044 )
+
+[node name="Worm8" parent="CreatureCollections/Spring/Prey" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 235.739, 11.7781, -355.34 )
+
+[node name="Worm9" parent="CreatureCollections/Spring/Prey" instance=ExtResource( 4 )]
+transform = Transform( 0.884622, 0, -0.466309, 0, 1, 0, 0.466309, 0, 0.884622, 353.354, 12.3671, -499.026 )
+
+[node name="Worm10" parent="CreatureCollections/Spring/Prey" instance=ExtResource( 4 )]
+transform = Transform( 0.957551, 0, -0.288263, 0, 1, 0, 0.288263, 0, 0.957551, -73.127, -15.6929, 203.279 )
+
+[node name="CrayFish8" parent="CreatureCollections/Spring/Prey" instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 270.584, 11.0025, -336.904 )
+
+[node name="CrayFish9" parent="CreatureCollections/Spring/Prey" instance=ExtResource( 14 )]
+transform = Transform( -0.95586, 0, 0.293823, 0, 1, 0, -0.293823, 0, -0.95586, 436.432, 15.8686, -751.387 )
+
+[node name="CrayFish10" parent="CreatureCollections/Spring/Prey" instance=ExtResource( 14 )]
+transform = Transform( -0.776761, 0, -0.629795, 0, 1, 0, 0.629795, 0, -0.776761, 337.211, 11.4036, -475.202 )
+
+[node name="CrayFish11" parent="CreatureCollections/Spring/Prey" instance=ExtResource( 14 )]
+transform = Transform( -0.857131, 0, -0.515098, 0, 1, 0, 0.515098, 0, -0.857131, 294.612, 1.7328, -349.125 )
+
+[node name="CrayFish12" parent="CreatureCollections/Spring/Prey" instance=ExtResource( 14 )]
+transform = Transform( -0.847576, 0, 0.530674, 0, 1, 0, -0.530674, 0, -0.847576, 398.016, 16.4505, -721.32 )
+
+[node name="CrayFish13" parent="CreatureCollections/Spring/Prey" instance=ExtResource( 14 )]
+transform = Transform( -0.993164, 0, -0.116723, 0, 1, 0, 0.116723, 0, -0.993164, -88.188, -1.62308, 435.796 )
+
+[node name="CrayFish14" parent="CreatureCollections/Spring/Prey" instance=ExtResource( 14 )]
+transform = Transform( 0.910099, 0, 0.414391, 0, 1, 0, -0.414391, 0, 0.910099, 34.5665, -8.86514, 450.405 )
+
+[node name="Worm11" parent="CreatureCollections/Spring/Prey" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 258.492, 32.7428, 756.856 )
+
+[node name="Worm12" parent="CreatureCollections/Spring/Prey" instance=ExtResource( 4 )]
+transform = Transform( -0.576732, 0, 0.816934, 0, 1, 0, -0.816934, 0, -0.576732, 303.384, 29.2955, 721.104 )
+
+[node name="Worm13" parent="CreatureCollections/Spring/Prey" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 324.346, 29.4732, 774.865 )
+
+[node name="Worm14" parent="CreatureCollections/Spring/Prey" instance=ExtResource( 4 )]
+transform = Transform( 0.884622, 0, -0.466309, 0, 1, 0, 0.466309, 0, 0.884622, 435.97, 12.0497, 775.004 )
+
+[node name="Worm15" parent="CreatureCollections/Spring/Prey" instance=ExtResource( 4 )]
+transform = Transform( 0.957551, 0, -0.288263, 0, 1, 0, 0.288263, 0, 0.957551, 464.459, 8.07081, 817.655 )
+
+[node name="CrayFish15" parent="CreatureCollections/Spring/Prey" instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 88.5517, 19.8987, 634.242 )
+
+[node name="CrayFish16" parent="CreatureCollections/Spring/Prey" instance=ExtResource( 14 )]
+transform = Transform( -0.95586, 0, 0.293823, 0, 1, 0, -0.293823, 0, -0.95586, 550.06, 11.0213, 1026.12 )
+
+[node name="CrayFish17" parent="CreatureCollections/Spring/Prey" instance=ExtResource( 14 )]
+transform = Transform( -0.776761, 0, -0.629795, 0, 1, 0, 0.629795, 0, -0.776761, 550.834, 27.0295, 1125.73 )
+
+[node name="CrayFish18" parent="CreatureCollections/Spring/Prey" instance=ExtResource( 14 )]
+transform = Transform( -0.857131, 0, -0.515098, 0, 1, 0, 0.515098, 0, -0.857131, 556.478, 8.73449, 973.712 )
+
+[node name="Worm16" parent="CreatureCollections/Spring/Prey" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 264.129, 6.13985, -271.145 )
+
+[node name="Worm17" parent="CreatureCollections/Spring/Prey" instance=ExtResource( 4 )]
+transform = Transform( -0.576732, 0, 0.816934, 0, 1, 0, -0.816934, 0, -0.576732, 119.67, 17.9318, -226.027 )
+
+[node name="Worm18" parent="CreatureCollections/Spring/Prey" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 267.467, 9.51419, -373.682 )
+
+[node name="Worm19" parent="CreatureCollections/Spring/Prey" instance=ExtResource( 4 )]
+transform = Transform( 0.884622, 0, -0.466309, 0, 1, 0, 0.466309, 0, 0.884622, 378.3, 12.858, -435.359 )
+
+[node name="Worm20" parent="CreatureCollections/Spring/Prey" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.16132, -2.47437, -32.7025 )
+
+[node name="Worm21" parent="CreatureCollections/Spring/Prey" instance=ExtResource( 4 )]
+transform = Transform( -0.576732, 0, 0.816934, 0, 1, 0, -0.816934, 0, -0.576732, -35.6874, -9.33457, 58.4572 )
+
+[node name="Worm22" parent="CreatureCollections/Spring/Prey" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 31.6571, -11.7473, 88.0341 )
+
+[node name="Worm23" parent="CreatureCollections/Spring/Prey" instance=ExtResource( 4 )]
+transform = Transform( 0.884622, 0, -0.466309, 0, 1, 0, 0.466309, 0, 0.884622, -79.2383, -10.9807, 144.511 )
+
+[node name="Worm24" parent="CreatureCollections/Spring/Prey" instance=ExtResource( 4 )]
+transform = Transform( 0.957551, 0, -0.288263, 0, 1, 0, 0.288263, 0, 0.957551, -66.1171, -16.9818, 199.64 )
+
+[node name="CrayFish19" parent="CreatureCollections/Spring/Prey" instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 35.6979, 0.379871, -71.8812 )
+
+[node name="CrayFish20" parent="CreatureCollections/Spring/Prey" instance=ExtResource( 14 )]
+transform = Transform( -0.95586, 0, 0.293823, 0, 1, 0, -0.293823, 0, -0.95586, 34.3666, 0.272881, -70.1789 )
+
+[node name="CrayFish21" parent="CreatureCollections/Spring/Prey" instance=ExtResource( 14 )]
+transform = Transform( -0.776761, 0, -0.629795, 0, 1, 0, 0.629795, 0, -0.776761, 35.7887, 0.318631, -70.5454 )
+
+[node name="CrayFish22" parent="CreatureCollections/Spring/Prey" instance=ExtResource( 14 )]
+transform = Transform( -0.857131, 0, -0.515098, 0, 1, 0, 0.515098, 0, -0.857131, 35.314, 0.272881, -69.68 )
+
+[node name="CrayFish23" parent="CreatureCollections/Spring/Prey" instance=ExtResource( 14 )]
+transform = Transform( -0.847576, 0, 0.530674, 0, 1, 0, -0.530674, 0, -0.847576, 33.5796, 0.597801, -71.9337 )
+
+[node name="CrayFish24" parent="CreatureCollections/Spring/Prey" instance=ExtResource( 14 )]
+transform = Transform( -0.993164, 0, -0.116723, 0, 1, 0, 0.116723, 0, -0.993164, 34.947, 0.496841, -71.3887 )
+
+[node name="CrayFish25" parent="CreatureCollections/Spring/Prey" instance=ExtResource( 14 )]
+transform = Transform( 0.910099, 0, 0.414391, 0, 1, 0, -0.414391, 0, 0.910099, -8.64464, -22.0676, 173.04 )
+
+[node name="Worm25" parent="CreatureCollections/Spring/Prey" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 173.823, 15.4488, -264.927 )
+
+[node name="Worm26" parent="CreatureCollections/Spring/Prey" instance=ExtResource( 4 )]
+transform = Transform( -0.576732, 0, 0.816934, 0, 1, 0, -0.816934, 0, -0.576732, 277.258, 3.40848, -312.683 )
+
+[node name="Worm27" parent="CreatureCollections/Spring/Prey" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 242.749, 10.4892, -358.979 )
+
+[node name="Worm28" parent="CreatureCollections/Spring/Prey" instance=ExtResource( 4 )]
+transform = Transform( 0.884622, 0, -0.466309, 0, 1, 0, 0.466309, 0, 0.884622, 360.364, 11.0782, -502.665 )
+
+[node name="Worm29" parent="CreatureCollections/Spring/Prey" instance=ExtResource( 4 )]
+transform = Transform( 0.957551, 0, -0.288263, 0, 1, 0, 0.288263, 0, 0.957551, -66.1171, -16.9818, 199.64 )
+
+[node name="CrayFish26" parent="CreatureCollections/Spring/Prey" instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 277.594, 9.71362, -340.543 )
+
+[node name="CrayFish27" parent="CreatureCollections/Spring/Prey" instance=ExtResource( 14 )]
+transform = Transform( -0.95586, 0, 0.293823, 0, 1, 0, -0.293823, 0, -0.95586, 443.442, 14.5797, -755.026 )
+
+[node name="CrayFish28" parent="CreatureCollections/Spring/Prey" instance=ExtResource( 14 )]
+transform = Transform( -0.776761, 0, -0.629795, 0, 1, 0, 0.629795, 0, -0.776761, 344.221, 10.1147, -478.841 )
+
+[node name="CrayFish29" parent="CreatureCollections/Spring/Prey" instance=ExtResource( 14 )]
+transform = Transform( -0.857131, 0, -0.515098, 0, 1, 0, 0.515098, 0, -0.857131, 301.622, 0.443921, -352.764 )
+
+[node name="CrayFish30" parent="CreatureCollections/Spring/Prey" instance=ExtResource( 14 )]
+transform = Transform( -0.847576, 0, 0.530674, 0, 1, 0, -0.530674, 0, -0.847576, 405.026, 15.1616, -724.959 )
+
+[node name="CrayFish31" parent="CreatureCollections/Spring/Prey" instance=ExtResource( 14 )]
+transform = Transform( -0.993164, 0, -0.116723, 0, 1, 0, 0.116723, 0, -0.993164, -81.1781, -2.91196, 432.157 )
+
+[node name="CrayFish32" parent="CreatureCollections/Spring/Prey" instance=ExtResource( 14 )]
+transform = Transform( 0.910099, 0, 0.414391, 0, 1, 0, -0.414391, 0, 0.910099, 41.5764, -10.154, 446.766 )
+
+[node name="Worm30" parent="CreatureCollections/Spring/Prey" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 265.502, 31.4539, 753.217 )
+
+[node name="Worm31" parent="CreatureCollections/Spring/Prey" instance=ExtResource( 4 )]
+transform = Transform( -0.576732, 0, 0.816934, 0, 1, 0, -0.816934, 0, -0.576732, 310.394, 28.0066, 717.465 )
+
+[node name="Worm32" parent="CreatureCollections/Spring/Prey" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 331.356, 28.1843, 771.226 )
+
+[node name="Worm33" parent="CreatureCollections/Spring/Prey" instance=ExtResource( 4 )]
+transform = Transform( 0.884622, 0, -0.466309, 0, 1, 0, 0.466309, 0, 0.884622, 442.98, 10.7608, 771.365 )
+
+[node name="Worm34" parent="CreatureCollections/Spring/Prey" instance=ExtResource( 4 )]
+transform = Transform( 0.957551, 0, -0.288263, 0, 1, 0, 0.288263, 0, 0.957551, 471.469, 6.78193, 814.016 )
+
+[node name="CrayFish33" parent="CreatureCollections/Spring/Prey" instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 95.5616, 18.6098, 630.603 )
+
+[node name="CrayFish34" parent="CreatureCollections/Spring/Prey" instance=ExtResource( 14 )]
+transform = Transform( -0.95586, 0, 0.293823, 0, 1, 0, -0.293823, 0, -0.95586, 557.07, 9.73242, 1022.48 )
+
+[node name="CrayFish35" parent="CreatureCollections/Spring/Prey" instance=ExtResource( 14 )]
+transform = Transform( -0.776761, 0, -0.629795, 0, 1, 0, 0.629795, 0, -0.776761, 557.844, 25.7406, 1122.09 )
+
+[node name="CrayFish36" parent="CreatureCollections/Spring/Prey" instance=ExtResource( 14 )]
+transform = Transform( -0.857131, 0, -0.515098, 0, 1, 0, 0.515098, 0, -0.857131, 563.488, 7.44561, 970.073 )
+
+[node name="Worm35" parent="CreatureCollections/Spring/Prey" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 271.139, 4.85097, -274.784 )
+
+[node name="Worm36" parent="CreatureCollections/Spring/Prey" instance=ExtResource( 4 )]
+transform = Transform( -0.576732, 0, 0.816934, 0, 1, 0, -0.816934, 0, -0.576732, 126.68, 16.643, -229.666 )
+
+[node name="Worm37" parent="CreatureCollections/Spring/Prey" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 274.476, 8.22531, -377.321 )
+
+[node name="Worm38" parent="CreatureCollections/Spring/Prey" instance=ExtResource( 4 )]
+transform = Transform( 0.884622, 0, -0.466309, 0, 1, 0, 0.466309, 0, 0.884622, 385.31, 11.5691, -438.998 )
+
+[node name="Summer" type="Spatial" parent="CreatureCollections"]
+visible = false
+
+[node name="Predators" type="Spatial" parent="CreatureCollections/Summer"]
+
+[node name="RainbowTrout" parent="CreatureCollections/Summer/Predators" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 37.2774, 8.67035, -59.6374 )
+
+[node name="RainbowTrout2" parent="CreatureCollections/Summer/Predators" instance=ExtResource( 9 )]
+transform = Transform( 0.983527, 0, 0.18076, 0, 1, 0, -0.18076, 0, 0.983527, -22.7649, 0.485654, 169.568 )
+
+[node name="RainbowTrout3" parent="CreatureCollections/Summer/Predators" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.39866, -4.82168, 55.0959 )
+
+[node name="BrownTrout" parent="CreatureCollections/Summer/Predators" instance=ExtResource( 24 )]
+transform = Transform( 0.270936, 0, 0.962597, 0, 1, 0, -0.962597, 0, 0.270936, -56.8644, 14.9534, -10.3888 )
+
+[node name="RainbowTrout4" parent="CreatureCollections/Summer/Predators" instance=ExtResource( 9 )]
+transform = Transform( -0.782173, 0, -0.623061, 0, 1, 0, 0.623061, 0, -0.782173, -73.4413, 8.67035, 195.475 )
+
+[node name="RainbowTrout5" parent="CreatureCollections/Summer/Predators" instance=ExtResource( 9 )]
+transform = Transform( 0.983527, 0, 0.18076, 0, 1, 0, -0.18076, 0, 0.983527, 117.088, 13.2221, -108.744 )
+
+[node name="RainbowTrout6" parent="CreatureCollections/Summer/Predators" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.48247, -4.82168, 270.066 )
+
+[node name="BrownTrout2" parent="CreatureCollections/Summer/Predators" instance=ExtResource( 24 )]
+transform = Transform( 0.270936, 0, 0.962597, 0, 1, 0, -0.962597, 0, 0.270936, -63.4932, 2.16151, 289.845 )
+animations_path = NodePath("")
+
+[node name="BrownTrout3" parent="CreatureCollections/Summer/Predators" instance=ExtResource( 24 )]
+transform = Transform( 0.270936, 0, 0.962597, 0, 1, 0, -0.962597, 0, 0.270936, 27.7259, 2.16151, 396.806 )
+animations_path = NodePath("")
+
+[node name="BrownTrout4" parent="CreatureCollections/Summer/Predators" instance=ExtResource( 24 )]
+transform = Transform( 0.656388, 0, -0.754423, 0, 1, 0, 0.754423, 0, 0.656388, -63.4932, 2.16151, 441.903 )
+animations_path = NodePath("")
+
+[node name="RainbowTrout7" parent="CreatureCollections/Summer/Predators" instance=ExtResource( 9 )]
+transform = Transform( 0.983527, 0, 0.18076, 0, 1, 0, -0.18076, 0, 0.983527, -152.445, 29.0831, 350.311 )
+
+[node name="RainbowTrout8" parent="CreatureCollections/Summer/Predators" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.94816, 49.4742, 544.707 )
+
+[node name="BrownTrout5" parent="CreatureCollections/Summer/Predators" instance=ExtResource( 24 )]
+transform = Transform( 0.270936, 0, 0.962597, 0, 1, 0, -0.962597, 0, 0.270936, 106.138, 57.1554, 651.151 )
+animations_path = NodePath("")
+
+[node name="BrownTrout6" parent="CreatureCollections/Summer/Predators" instance=ExtResource( 24 )]
+transform = Transform( 0.270936, 0, 0.962597, 0, 1, 0, -0.962597, 0, 0.270936, 274.468, 40.1186, 667.273 )
+animations_path = NodePath("")
+
+[node name="BrownTrout7" parent="CreatureCollections/Summer/Predators" instance=ExtResource( 24 )]
+transform = Transform( 0.656388, 0, -0.754423, 0, 1, 0, 0.754423, 0, 0.656388, 397.433, 36.4871, 769.213 )
+animations_path = NodePath("")
+
+[node name="BrownTrout8" parent="CreatureCollections/Summer/Predators" instance=ExtResource( 24 )]
+transform = Transform( 0.270936, 0, 0.962597, 0, 1, 0, -0.962597, 0, 0.270936, 475.621, 47.1282, 893.476 )
+animations_path = NodePath("")
+
+[node name="BrownTrout9" parent="CreatureCollections/Summer/Predators" instance=ExtResource( 24 )]
+transform = Transform( 0.656388, 0, -0.754423, 0, 1, 0, 0.754423, 0, 0.656388, 598.587, 59.8215, 995.416 )
+animations_path = NodePath("")
+
+[node name="RainbowTrout9" parent="CreatureCollections/Summer/Predators" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 153.002, 25.8854, -182.057 )
+
+[node name="RainbowTrout10" parent="CreatureCollections/Summer/Predators" instance=ExtResource( 9 )]
+transform = Transform( -0.521843, 0, -0.853041, 0, 1, 0, 0.853041, 0, -0.521843, 252.292, 29.0235, -372.924 )
+
+[node name="RainbowTrout11" parent="CreatureCollections/Summer/Predators" instance=ExtResource( 9 )]
+transform = Transform( -0.452777, 0, -0.891624, 0, 1, 0, 0.891624, 0, -0.452777, 110.332, 35.1001, -259.03 )
+
+[node name="BrownTrout10" parent="CreatureCollections/Summer/Predators" instance=ExtResource( 24 )]
+transform = Transform( 0.270936, 0, 0.962597, 0, 1, 0, -0.962597, 0, 0.270936, 219.269, 12.3131, -268.616 )
+animations_path = NodePath("")
+
+[node name="RainbowTrout12" parent="CreatureCollections/Summer/Predators" instance=ExtResource( 9 )]
+transform = Transform( -0.782173, 0, -0.623061, 0, 1, 0, 0.623061, 0, -0.782173, 372.556, 32.6657, -475.769 )
+
+[node name="RainbowTrout13" parent="CreatureCollections/Summer/Predators" instance=ExtResource( 9 )]
+transform = Transform( 0.983527, 0, 0.18076, 0, 1, 0, -0.18076, 0, 0.983527, 361.625, 15.6809, -597.71 )
+
+[node name="RainbowTrout14" parent="CreatureCollections/Summer/Predators" instance=ExtResource( 9 )]
+transform = Transform( -0.452777, 0, -0.891624, 0, 1, 0, 0.891624, 0, -0.452777, 344.966, 50.8397, -632.637 )
+
+[node name="BrownTrout11" parent="CreatureCollections/Summer/Predators" instance=ExtResource( 24 )]
+transform = Transform( 0.662672, 0, -0.748909, 0, 1, 0, 0.748909, 0, 0.662672, 378.446, 47.3656, -510.879 )
+animations_path = NodePath("")
+
+[node name="RainbowTrout15" parent="CreatureCollections/Summer/Predators" instance=ExtResource( 9 )]
+transform = Transform( -0.782173, 0, -0.623061, 0, 1, 0, 0.623061, 0, -0.782173, 333.185, 32.6657, -453.29 )
+
+[node name="RainbowTrout16" parent="CreatureCollections/Summer/Predators" instance=ExtResource( 9 )]
+transform = Transform( 0.983527, 0, 0.18076, 0, 1, 0, -0.18076, 0, 0.983527, 361.625, 59.7465, -716.236 )
+
+[node name="Prey" type="Spatial" parent="CreatureCollections/Summer"]
+
+[node name="Worm" parent="CreatureCollections/Summer/Prey" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.84854, -1.18549, -29.0635 )
+
+[node name="Worm2" parent="CreatureCollections/Summer/Prey" instance=ExtResource( 4 )]
+transform = Transform( -0.576732, 0, 0.816934, 0, 1, 0, -0.816934, 0, -0.576732, -42.6973, -8.04569, 62.0962 )
+
+[node name="Worm3" parent="CreatureCollections/Summer/Prey" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24.6472, -10.4584, 91.6731 )
+
+[node name="Worm4" parent="CreatureCollections/Summer/Prey" instance=ExtResource( 4 )]
+transform = Transform( 0.884622, 0, -0.466309, 0, 1, 0, 0.466309, 0, 0.884622, -86.2482, -9.69185, 148.15 )
+
+[node name="Worm5" parent="CreatureCollections/Summer/Prey" instance=ExtResource( 4 )]
+transform = Transform( 0.957551, 0, -0.288263, 0, 1, 0, 0.288263, 0, 0.957551, -73.127, -15.6929, 203.279 )
+
+[node name="CrayFish" parent="CreatureCollections/Summer/Prey" instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 28.688, 1.66875, -68.2422 )
+
+[node name="CrayFish2" parent="CreatureCollections/Summer/Prey" instance=ExtResource( 14 )]
+transform = Transform( -0.95586, 0, 0.293823, 0, 1, 0, -0.293823, 0, -0.95586, 27.3567, 1.56176, -66.5399 )
+
+[node name="CrayFish3" parent="CreatureCollections/Summer/Prey" instance=ExtResource( 14 )]
+transform = Transform( -0.776761, 0, -0.629795, 0, 1, 0, 0.629795, 0, -0.776761, 28.7788, 1.60751, -66.9064 )
+
+[node name="CrayFish4" parent="CreatureCollections/Summer/Prey" instance=ExtResource( 14 )]
+transform = Transform( -0.857131, 0, -0.515098, 0, 1, 0, 0.515098, 0, -0.857131, 28.3041, 1.56176, -66.041 )
+
+[node name="CrayFish5" parent="CreatureCollections/Summer/Prey" instance=ExtResource( 14 )]
+transform = Transform( -0.847576, 0, 0.530674, 0, 1, 0, -0.530674, 0, -0.847576, 26.5697, 1.88668, -68.2947 )
+
+[node name="CrayFish6" parent="CreatureCollections/Summer/Prey" instance=ExtResource( 14 )]
+transform = Transform( -0.993164, 0, -0.116723, 0, 1, 0, 0.116723, 0, -0.993164, 27.9371, 1.78572, -67.7497 )
+
+[node name="CrayFish7" parent="CreatureCollections/Summer/Prey" instance=ExtResource( 14 )]
+transform = Transform( 0.910099, 0, 0.414391, 0, 1, 0, -0.414391, 0, 0.910099, -15.6545, -20.7787, 176.679 )
+
+[node name="Worm6" parent="CreatureCollections/Summer/Prey" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 166.813, 16.7377, -261.288 )
+
+[node name="Worm7" parent="CreatureCollections/Summer/Prey" instance=ExtResource( 4 )]
+transform = Transform( -0.576732, 0, 0.816934, 0, 1, 0, -0.816934, 0, -0.576732, 270.248, 4.69736, -309.044 )
+
+[node name="Worm8" parent="CreatureCollections/Summer/Prey" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 235.739, 11.7781, -355.34 )
+
+[node name="Worm9" parent="CreatureCollections/Summer/Prey" instance=ExtResource( 4 )]
+transform = Transform( 0.884622, 0, -0.466309, 0, 1, 0, 0.466309, 0, 0.884622, 353.354, 12.3671, -499.026 )
+
+[node name="Worm10" parent="CreatureCollections/Summer/Prey" instance=ExtResource( 4 )]
+transform = Transform( 0.957551, 0, -0.288263, 0, 1, 0, 0.288263, 0, 0.957551, -73.127, -15.6929, 203.279 )
+
+[node name="CrayFish8" parent="CreatureCollections/Summer/Prey" instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 270.584, 11.0025, -336.904 )
+
+[node name="CrayFish9" parent="CreatureCollections/Summer/Prey" instance=ExtResource( 14 )]
+transform = Transform( -0.95586, 0, 0.293823, 0, 1, 0, -0.293823, 0, -0.95586, 436.432, 15.8686, -751.387 )
+
+[node name="CrayFish10" parent="CreatureCollections/Summer/Prey" instance=ExtResource( 14 )]
+transform = Transform( -0.776761, 0, -0.629795, 0, 1, 0, 0.629795, 0, -0.776761, 337.211, 11.4036, -475.202 )
+
+[node name="CrayFish11" parent="CreatureCollections/Summer/Prey" instance=ExtResource( 14 )]
+transform = Transform( -0.857131, 0, -0.515098, 0, 1, 0, 0.515098, 0, -0.857131, 294.612, 1.7328, -349.125 )
+
+[node name="CrayFish12" parent="CreatureCollections/Summer/Prey" instance=ExtResource( 14 )]
+transform = Transform( -0.847576, 0, 0.530674, 0, 1, 0, -0.530674, 0, -0.847576, 398.016, 16.4505, -721.32 )
+
+[node name="CrayFish13" parent="CreatureCollections/Summer/Prey" instance=ExtResource( 14 )]
+transform = Transform( -0.993164, 0, -0.116723, 0, 1, 0, 0.116723, 0, -0.993164, -88.188, -1.62308, 435.796 )
+
+[node name="CrayFish14" parent="CreatureCollections/Summer/Prey" instance=ExtResource( 14 )]
+transform = Transform( 0.910099, 0, 0.414391, 0, 1, 0, -0.414391, 0, 0.910099, 34.5665, -8.86514, 450.405 )
+
+[node name="Worm11" parent="CreatureCollections/Summer/Prey" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 258.492, 32.7428, 756.856 )
+
+[node name="Worm12" parent="CreatureCollections/Summer/Prey" instance=ExtResource( 4 )]
+transform = Transform( -0.576732, 0, 0.816934, 0, 1, 0, -0.816934, 0, -0.576732, 303.384, 29.2955, 721.104 )
+
+[node name="Worm13" parent="CreatureCollections/Summer/Prey" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 324.346, 29.4732, 774.865 )
+
+[node name="Worm14" parent="CreatureCollections/Summer/Prey" instance=ExtResource( 4 )]
+transform = Transform( 0.884622, 0, -0.466309, 0, 1, 0, 0.466309, 0, 0.884622, 435.97, 12.0497, 775.004 )
+
+[node name="Worm15" parent="CreatureCollections/Summer/Prey" instance=ExtResource( 4 )]
+transform = Transform( 0.957551, 0, -0.288263, 0, 1, 0, 0.288263, 0, 0.957551, 464.459, 8.07081, 817.655 )
+
+[node name="CrayFish15" parent="CreatureCollections/Summer/Prey" instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 88.5517, 19.8987, 634.242 )
+
+[node name="CrayFish16" parent="CreatureCollections/Summer/Prey" instance=ExtResource( 14 )]
+transform = Transform( -0.95586, 0, 0.293823, 0, 1, 0, -0.293823, 0, -0.95586, 550.06, 11.0213, 1026.12 )
+
+[node name="CrayFish17" parent="CreatureCollections/Summer/Prey" instance=ExtResource( 14 )]
+transform = Transform( -0.776761, 0, -0.629795, 0, 1, 0, 0.629795, 0, -0.776761, 550.834, 27.0295, 1125.73 )
+
+[node name="CrayFish18" parent="CreatureCollections/Summer/Prey" instance=ExtResource( 14 )]
+transform = Transform( -0.857131, 0, -0.515098, 0, 1, 0, 0.515098, 0, -0.857131, 556.478, 8.73449, 973.712 )
+
+[node name="Worm16" parent="CreatureCollections/Summer/Prey" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 264.129, 6.13985, -271.145 )
+
+[node name="Worm17" parent="CreatureCollections/Summer/Prey" instance=ExtResource( 4 )]
+transform = Transform( -0.576732, 0, 0.816934, 0, 1, 0, -0.816934, 0, -0.576732, 119.67, 17.9318, -226.027 )
+
+[node name="Worm18" parent="CreatureCollections/Summer/Prey" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 267.467, 9.51419, -373.682 )
+
+[node name="Worm19" parent="CreatureCollections/Summer/Prey" instance=ExtResource( 4 )]
+transform = Transform( 0.884622, 0, -0.466309, 0, 1, 0, 0.466309, 0, 0.884622, 378.3, 12.858, -435.359 )
+
+[node name="Worm20" parent="CreatureCollections/Summer/Prey" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.16132, -2.47437, -32.7025 )
+
+[node name="Worm21" parent="CreatureCollections/Summer/Prey" instance=ExtResource( 4 )]
+transform = Transform( -0.576732, 0, 0.816934, 0, 1, 0, -0.816934, 0, -0.576732, -35.6874, -9.33457, 58.4572 )
+
+[node name="Worm22" parent="CreatureCollections/Summer/Prey" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 31.6571, -11.7473, 88.0341 )
+
+[node name="Worm23" parent="CreatureCollections/Summer/Prey" instance=ExtResource( 4 )]
+transform = Transform( 0.884622, 0, -0.466309, 0, 1, 0, 0.466309, 0, 0.884622, -79.2383, -10.9807, 144.511 )
+
+[node name="Worm24" parent="CreatureCollections/Summer/Prey" instance=ExtResource( 4 )]
+transform = Transform( 0.957551, 0, -0.288263, 0, 1, 0, 0.288263, 0, 0.957551, -66.1171, -16.9818, 199.64 )
+
+[node name="CrayFish19" parent="CreatureCollections/Summer/Prey" instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 35.6979, 0.379871, -71.8812 )
+
+[node name="CrayFish20" parent="CreatureCollections/Summer/Prey" instance=ExtResource( 14 )]
+transform = Transform( -0.95586, 0, 0.293823, 0, 1, 0, -0.293823, 0, -0.95586, 34.3666, 0.272881, -70.1789 )
+
+[node name="CrayFish21" parent="CreatureCollections/Summer/Prey" instance=ExtResource( 14 )]
+transform = Transform( -0.776761, 0, -0.629795, 0, 1, 0, 0.629795, 0, -0.776761, 35.7887, 0.318631, -70.5454 )
+
+[node name="CrayFish22" parent="CreatureCollections/Summer/Prey" instance=ExtResource( 14 )]
+transform = Transform( -0.857131, 0, -0.515098, 0, 1, 0, 0.515098, 0, -0.857131, 35.314, 0.272881, -69.68 )
+
+[node name="CrayFish23" parent="CreatureCollections/Summer/Prey" instance=ExtResource( 14 )]
+transform = Transform( -0.847576, 0, 0.530674, 0, 1, 0, -0.530674, 0, -0.847576, 33.5796, 0.597801, -71.9337 )
+
+[node name="CrayFish24" parent="CreatureCollections/Summer/Prey" instance=ExtResource( 14 )]
+transform = Transform( -0.993164, 0, -0.116723, 0, 1, 0, 0.116723, 0, -0.993164, 34.947, 0.496841, -71.3887 )
+
+[node name="CrayFish25" parent="CreatureCollections/Summer/Prey" instance=ExtResource( 14 )]
+transform = Transform( 0.910099, 0, 0.414391, 0, 1, 0, -0.414391, 0, 0.910099, -8.64464, -22.0676, 173.04 )
+
+[node name="Worm25" parent="CreatureCollections/Summer/Prey" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 173.823, 15.4488, -264.927 )
+
+[node name="Worm26" parent="CreatureCollections/Summer/Prey" instance=ExtResource( 4 )]
+transform = Transform( -0.576732, 0, 0.816934, 0, 1, 0, -0.816934, 0, -0.576732, 277.258, 3.40848, -312.683 )
+
+[node name="Worm27" parent="CreatureCollections/Summer/Prey" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 242.749, 10.4892, -358.979 )
+
+[node name="Worm28" parent="CreatureCollections/Summer/Prey" instance=ExtResource( 4 )]
+transform = Transform( 0.884622, 0, -0.466309, 0, 1, 0, 0.466309, 0, 0.884622, 360.364, 11.0782, -502.665 )
+
+[node name="Worm29" parent="CreatureCollections/Summer/Prey" instance=ExtResource( 4 )]
+transform = Transform( 0.957551, 0, -0.288263, 0, 1, 0, 0.288263, 0, 0.957551, -66.1171, -16.9818, 199.64 )
+
+[node name="CrayFish26" parent="CreatureCollections/Summer/Prey" instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 277.594, 9.71362, -340.543 )
+
+[node name="CrayFish27" parent="CreatureCollections/Summer/Prey" instance=ExtResource( 14 )]
+transform = Transform( -0.95586, 0, 0.293823, 0, 1, 0, -0.293823, 0, -0.95586, 443.442, 14.5797, -755.026 )
+
+[node name="CrayFish28" parent="CreatureCollections/Summer/Prey" instance=ExtResource( 14 )]
+transform = Transform( -0.776761, 0, -0.629795, 0, 1, 0, 0.629795, 0, -0.776761, 344.221, 10.1147, -478.841 )
+
+[node name="CrayFish29" parent="CreatureCollections/Summer/Prey" instance=ExtResource( 14 )]
+transform = Transform( -0.857131, 0, -0.515098, 0, 1, 0, 0.515098, 0, -0.857131, 301.622, 0.443921, -352.764 )
+
+[node name="CrayFish30" parent="CreatureCollections/Summer/Prey" instance=ExtResource( 14 )]
+transform = Transform( -0.847576, 0, 0.530674, 0, 1, 0, -0.530674, 0, -0.847576, 405.026, 15.1616, -724.959 )
+
+[node name="CrayFish31" parent="CreatureCollections/Summer/Prey" instance=ExtResource( 14 )]
+transform = Transform( -0.993164, 0, -0.116723, 0, 1, 0, 0.116723, 0, -0.993164, -81.1781, -2.91196, 432.157 )
+
+[node name="CrayFish32" parent="CreatureCollections/Summer/Prey" instance=ExtResource( 14 )]
+transform = Transform( 0.910099, 0, 0.414391, 0, 1, 0, -0.414391, 0, 0.910099, 41.5764, -10.154, 446.766 )
+
+[node name="Worm30" parent="CreatureCollections/Summer/Prey" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 265.502, 31.4539, 753.217 )
+
+[node name="Worm31" parent="CreatureCollections/Summer/Prey" instance=ExtResource( 4 )]
+transform = Transform( -0.576732, 0, 0.816934, 0, 1, 0, -0.816934, 0, -0.576732, 310.394, 28.0066, 717.465 )
+
+[node name="Worm32" parent="CreatureCollections/Summer/Prey" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 331.356, 28.1843, 771.226 )
+
+[node name="Worm33" parent="CreatureCollections/Summer/Prey" instance=ExtResource( 4 )]
+transform = Transform( 0.884622, 0, -0.466309, 0, 1, 0, 0.466309, 0, 0.884622, 442.98, 10.7608, 771.365 )
+
+[node name="Worm34" parent="CreatureCollections/Summer/Prey" instance=ExtResource( 4 )]
+transform = Transform( 0.957551, 0, -0.288263, 0, 1, 0, 0.288263, 0, 0.957551, 471.469, 6.78193, 814.016 )
+
+[node name="CrayFish33" parent="CreatureCollections/Summer/Prey" instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 95.5616, 18.6098, 630.603 )
+
+[node name="CrayFish34" parent="CreatureCollections/Summer/Prey" instance=ExtResource( 14 )]
+transform = Transform( -0.95586, 0, 0.293823, 0, 1, 0, -0.293823, 0, -0.95586, 557.07, 9.73242, 1022.48 )
+
+[node name="CrayFish35" parent="CreatureCollections/Summer/Prey" instance=ExtResource( 14 )]
+transform = Transform( -0.776761, 0, -0.629795, 0, 1, 0, 0.629795, 0, -0.776761, 557.844, 25.7406, 1122.09 )
+
+[node name="CrayFish36" parent="CreatureCollections/Summer/Prey" instance=ExtResource( 14 )]
+transform = Transform( -0.857131, 0, -0.515098, 0, 1, 0, 0.515098, 0, -0.857131, 563.488, 7.44561, 970.073 )
+
+[node name="Worm35" parent="CreatureCollections/Summer/Prey" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 271.139, 4.85097, -274.784 )
+
+[node name="Worm36" parent="CreatureCollections/Summer/Prey" instance=ExtResource( 4 )]
+transform = Transform( -0.576732, 0, 0.816934, 0, 1, 0, -0.816934, 0, -0.576732, 126.68, 16.643, -229.666 )
+
+[node name="Worm37" parent="CreatureCollections/Summer/Prey" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 274.476, 8.22531, -377.321 )
+
+[node name="Worm38" parent="CreatureCollections/Summer/Prey" instance=ExtResource( 4 )]
+transform = Transform( 0.884622, 0, -0.466309, 0, 1, 0, 0.466309, 0, 0.884622, 385.31, 11.5691, -438.998 )
+
+[node name="Fall" type="Spatial" parent="CreatureCollections"]
+visible = false
+
+[node name="Predators" type="Spatial" parent="CreatureCollections/Fall"]
+
+[node name="RainbowTrout" parent="CreatureCollections/Fall/Predators" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 36.6754, 10.6999, -60.0224 )
+
+[node name="BrownTrout" parent="CreatureCollections/Fall/Predators" instance=ExtResource( 24 )]
+transform = Transform( 0.270936, 0, 0.962597, 0, 1, 0, -0.962597, 0, 0.270936, -56.8644, 14.9534, -10.3888 )
+
+[node name="RainbowTrout4" parent="CreatureCollections/Fall/Predators" instance=ExtResource( 9 )]
+transform = Transform( -0.782173, 0, -0.623061, 0, 1, 0, 0.623061, 0, -0.782173, -73.4413, 8.67035, 195.475 )
+
+[node name="RainbowTrout6" parent="CreatureCollections/Fall/Predators" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.48247, -4.82168, 270.066 )
+
+[node name="BrownTrout4" parent="CreatureCollections/Fall/Predators" instance=ExtResource( 24 )]
+transform = Transform( 0.656388, 0, -0.754423, 0, 1, 0, 0.754423, 0, 0.656388, -63.4932, 2.16151, 441.903 )
+animations_path = NodePath("")
+
+[node name="RainbowTrout7" parent="CreatureCollections/Fall/Predators" instance=ExtResource( 9 )]
+transform = Transform( 0.983527, 0, 0.18076, 0, 1, 0, -0.18076, 0, 0.983527, -152.445, 29.0831, 350.311 )
+
+[node name="BrownTrout5" parent="CreatureCollections/Fall/Predators" instance=ExtResource( 24 )]
+transform = Transform( 0.270936, 0, 0.962597, 0, 1, 0, -0.962597, 0, 0.270936, 106.138, 57.1554, 651.151 )
+animations_path = NodePath("")
+
+[node name="BrownTrout7" parent="CreatureCollections/Fall/Predators" instance=ExtResource( 24 )]
+transform = Transform( 0.656388, 0, -0.754423, 0, 1, 0, 0.754423, 0, 0.656388, 397.433, 36.4871, 769.213 )
+animations_path = NodePath("")
+
+[node name="BrownTrout8" parent="CreatureCollections/Fall/Predators" instance=ExtResource( 24 )]
+transform = Transform( 0.270936, 0, 0.962597, 0, 1, 0, -0.962597, 0, 0.270936, 475.621, 47.1282, 893.476 )
+animations_path = NodePath("")
+
+[node name="BrownTrout9" parent="CreatureCollections/Fall/Predators" instance=ExtResource( 24 )]
+transform = Transform( 0.656388, 0, -0.754423, 0, 1, 0, 0.754423, 0, 0.656388, 598.587, 59.8215, 995.416 )
+animations_path = NodePath("")
+
+[node name="RainbowTrout9" parent="CreatureCollections/Fall/Predators" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 153.002, 25.8854, -182.057 )
+
+[node name="BrownTrout10" parent="CreatureCollections/Fall/Predators" instance=ExtResource( 24 )]
+transform = Transform( 0.270936, 0, 0.962597, 0, 1, 0, -0.962597, 0, 0.270936, 219.269, 12.3131, -268.616 )
+animations_path = NodePath("")
+
+[node name="RainbowTrout13" parent="CreatureCollections/Fall/Predators" instance=ExtResource( 9 )]
+transform = Transform( 0.983527, 0, 0.18076, 0, 1, 0, -0.18076, 0, 0.983527, 361.625, 15.6809, -597.71 )
+
+[node name="RainbowTrout15" parent="CreatureCollections/Fall/Predators" instance=ExtResource( 9 )]
+transform = Transform( -0.782173, 0, -0.623061, 0, 1, 0, 0.623061, 0, -0.782173, 333.185, 32.6657, -453.29 )
+
+[node name="RainbowTrout16" parent="CreatureCollections/Fall/Predators" instance=ExtResource( 9 )]
+transform = Transform( 0.983527, 0, 0.18076, 0, 1, 0, -0.18076, 0, 0.983527, 361.625, 59.7465, -716.236 )
+
+[node name="Prey" type="Spatial" parent="CreatureCollections/Fall"]
+
+[node name="Worm2" parent="CreatureCollections/Fall/Prey" instance=ExtResource( 4 )]
+transform = Transform( -0.576732, 0, 0.816934, 0, 1, 0, -0.816934, 0, -0.576732, -42.6973, -8.04569, 62.0962 )
+
+[node name="Worm3" parent="CreatureCollections/Fall/Prey" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24.6472, -10.4584, 91.6731 )
+
+[node name="Worm4" parent="CreatureCollections/Fall/Prey" instance=ExtResource( 4 )]
+transform = Transform( 0.884622, 0, -0.466309, 0, 1, 0, 0.466309, 0, 0.884622, -86.2482, -9.69185, 148.15 )
+
+[node name="Worm5" parent="CreatureCollections/Fall/Prey" instance=ExtResource( 4 )]
+transform = Transform( 0.957551, 0, -0.288263, 0, 1, 0, 0.288263, 0, 0.957551, -73.127, -15.6929, 203.279 )
+
+[node name="CrayFish" parent="CreatureCollections/Fall/Prey" instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 28.688, 1.66875, -68.2422 )
+
+[node name="CrayFish3" parent="CreatureCollections/Fall/Prey" instance=ExtResource( 14 )]
+transform = Transform( -0.776761, 0, -0.629795, 0, 1, 0, 0.629795, 0, -0.776761, 28.7788, 1.60751, -66.9064 )
+
+[node name="CrayFish4" parent="CreatureCollections/Fall/Prey" instance=ExtResource( 14 )]
+transform = Transform( -0.857131, 0, -0.515098, 0, 1, 0, 0.515098, 0, -0.857131, 28.3041, 1.56176, -66.041 )
+
+[node name="CrayFish5" parent="CreatureCollections/Fall/Prey" instance=ExtResource( 14 )]
+transform = Transform( -0.847576, 0, 0.530674, 0, 1, 0, -0.530674, 0, -0.847576, 26.5697, 1.88668, -68.2947 )
+
+[node name="CrayFish7" parent="CreatureCollections/Fall/Prey" instance=ExtResource( 14 )]
+transform = Transform( 0.910099, 0, 0.414391, 0, 1, 0, -0.414391, 0, 0.910099, -15.6545, -20.7787, 176.679 )
+
+[node name="Worm6" parent="CreatureCollections/Fall/Prey" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 166.813, 16.7377, -261.288 )
+
+[node name="Worm8" parent="CreatureCollections/Fall/Prey" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 235.739, 11.7781, -355.34 )
+
+[node name="Worm9" parent="CreatureCollections/Fall/Prey" instance=ExtResource( 4 )]
+transform = Transform( 0.884622, 0, -0.466309, 0, 1, 0, 0.466309, 0, 0.884622, 353.354, 12.3671, -499.026 )
+
+[node name="Worm10" parent="CreatureCollections/Fall/Prey" instance=ExtResource( 4 )]
+transform = Transform( 0.957551, 0, -0.288263, 0, 1, 0, 0.288263, 0, 0.957551, -73.127, -15.6929, 203.279 )
+
+[node name="CrayFish8" parent="CreatureCollections/Fall/Prey" instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 270.584, 11.0025, -336.904 )
+
+[node name="CrayFish9" parent="CreatureCollections/Fall/Prey" instance=ExtResource( 14 )]
+transform = Transform( -0.95586, 0, 0.293823, 0, 1, 0, -0.293823, 0, -0.95586, 436.432, 15.8686, -751.387 )
+
+[node name="CrayFish11" parent="CreatureCollections/Fall/Prey" instance=ExtResource( 14 )]
+transform = Transform( -0.857131, 0, -0.515098, 0, 1, 0, 0.515098, 0, -0.857131, 294.612, 1.7328, -349.125 )
+
+[node name="CrayFish12" parent="CreatureCollections/Fall/Prey" instance=ExtResource( 14 )]
+transform = Transform( -0.847576, 0, 0.530674, 0, 1, 0, -0.530674, 0, -0.847576, 398.016, 16.4505, -721.32 )
+
+[node name="CrayFish14" parent="CreatureCollections/Fall/Prey" instance=ExtResource( 14 )]
+transform = Transform( 0.910099, 0, 0.414391, 0, 1, 0, -0.414391, 0, 0.910099, 34.5665, -8.86514, 450.405 )
+
+[node name="Worm11" parent="CreatureCollections/Fall/Prey" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 258.492, 32.7428, 756.856 )
+
+[node name="Worm12" parent="CreatureCollections/Fall/Prey" instance=ExtResource( 4 )]
+transform = Transform( -0.576732, 0, 0.816934, 0, 1, 0, -0.816934, 0, -0.576732, 303.384, 29.2955, 721.104 )
+
+[node name="Worm13" parent="CreatureCollections/Fall/Prey" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 324.346, 29.4732, 774.865 )
+
+[node name="Worm14" parent="CreatureCollections/Fall/Prey" instance=ExtResource( 4 )]
+transform = Transform( 0.884622, 0, -0.466309, 0, 1, 0, 0.466309, 0, 0.884622, 435.97, 12.0497, 775.004 )
+
+[node name="CrayFish15" parent="CreatureCollections/Fall/Prey" instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 88.5517, 19.8987, 634.242 )
+
+[node name="CrayFish16" parent="CreatureCollections/Fall/Prey" instance=ExtResource( 14 )]
+transform = Transform( -0.95586, 0, 0.293823, 0, 1, 0, -0.293823, 0, -0.95586, 550.06, 11.0213, 1026.12 )
+
+[node name="CrayFish17" parent="CreatureCollections/Fall/Prey" instance=ExtResource( 14 )]
+transform = Transform( -0.776761, 0, -0.629795, 0, 1, 0, 0.629795, 0, -0.776761, 550.834, 27.0295, 1125.73 )
+
+[node name="Worm16" parent="CreatureCollections/Fall/Prey" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 264.129, 6.13985, -271.145 )
+
+[node name="Worm17" parent="CreatureCollections/Fall/Prey" instance=ExtResource( 4 )]
+transform = Transform( -0.576732, 0, 0.816934, 0, 1, 0, -0.816934, 0, -0.576732, 119.67, 17.9318, -226.027 )
+
+[node name="Worm18" parent="CreatureCollections/Fall/Prey" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 267.467, 9.51419, -373.682 )
+
+[node name="Worm20" parent="CreatureCollections/Fall/Prey" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.16132, -2.47437, -32.7025 )
+
+[node name="Worm21" parent="CreatureCollections/Fall/Prey" instance=ExtResource( 4 )]
+transform = Transform( -0.576732, 0, 0.816934, 0, 1, 0, -0.816934, 0, -0.576732, -35.6874, -9.33457, 58.4572 )
+
+[node name="Worm22" parent="CreatureCollections/Fall/Prey" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 31.6571, -11.7473, 88.0341 )
+
+[node name="Worm23" parent="CreatureCollections/Fall/Prey" instance=ExtResource( 4 )]
+transform = Transform( 0.884622, 0, -0.466309, 0, 1, 0, 0.466309, 0, 0.884622, -79.2383, -10.9807, 144.511 )
+
+[node name="CrayFish19" parent="CreatureCollections/Fall/Prey" instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 35.6979, 0.379871, -71.8812 )
+
+[node name="CrayFish20" parent="CreatureCollections/Fall/Prey" instance=ExtResource( 14 )]
+transform = Transform( -0.95586, 0, 0.293823, 0, 1, 0, -0.293823, 0, -0.95586, 34.3666, 0.272881, -70.1789 )
+
+[node name="CrayFish21" parent="CreatureCollections/Fall/Prey" instance=ExtResource( 14 )]
+transform = Transform( -0.776761, 0, -0.629795, 0, 1, 0, 0.629795, 0, -0.776761, 35.7887, 0.318631, -70.5454 )
+
+[node name="CrayFish22" parent="CreatureCollections/Fall/Prey" instance=ExtResource( 14 )]
+transform = Transform( -0.857131, 0, -0.515098, 0, 1, 0, 0.515098, 0, -0.857131, 35.314, 0.272881, -69.68 )
+
+[node name="CrayFish24" parent="CreatureCollections/Fall/Prey" instance=ExtResource( 14 )]
+transform = Transform( -0.993164, 0, -0.116723, 0, 1, 0, 0.116723, 0, -0.993164, 34.947, 0.496841, -71.3887 )
+
+[node name="CrayFish25" parent="CreatureCollections/Fall/Prey" instance=ExtResource( 14 )]
+transform = Transform( 0.910099, 0, 0.414391, 0, 1, 0, -0.414391, 0, 0.910099, -8.64464, -22.0676, 173.04 )
+
+[node name="Worm25" parent="CreatureCollections/Fall/Prey" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 173.823, 15.4488, -264.927 )
+
+[node name="Worm26" parent="CreatureCollections/Fall/Prey" instance=ExtResource( 4 )]
+transform = Transform( -0.576732, 0, 0.816934, 0, 1, 0, -0.816934, 0, -0.576732, 277.258, 3.40848, -312.683 )
+
+[node name="Worm27" parent="CreatureCollections/Fall/Prey" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 242.749, 10.4892, -358.979 )
+
+[node name="Worm28" parent="CreatureCollections/Fall/Prey" instance=ExtResource( 4 )]
+transform = Transform( 0.884622, 0, -0.466309, 0, 1, 0, 0.466309, 0, 0.884622, 360.364, 11.0782, -502.665 )
+
+[node name="Worm29" parent="CreatureCollections/Fall/Prey" instance=ExtResource( 4 )]
+transform = Transform( 0.957551, 0, -0.288263, 0, 1, 0, 0.288263, 0, 0.957551, -66.1171, -16.9818, 199.64 )
+
+[node name="CrayFish27" parent="CreatureCollections/Fall/Prey" instance=ExtResource( 14 )]
+transform = Transform( -0.95586, 0, 0.293823, 0, 1, 0, -0.293823, 0, -0.95586, 443.442, 14.5797, -755.026 )
+
+[node name="CrayFish28" parent="CreatureCollections/Fall/Prey" instance=ExtResource( 14 )]
+transform = Transform( -0.776761, 0, -0.629795, 0, 1, 0, 0.629795, 0, -0.776761, 344.221, 10.1147, -478.841 )
+
+[node name="CrayFish29" parent="CreatureCollections/Fall/Prey" instance=ExtResource( 14 )]
+transform = Transform( -0.857131, 0, -0.515098, 0, 1, 0, 0.515098, 0, -0.857131, 301.622, 0.443921, -352.764 )
+
+[node name="CrayFish31" parent="CreatureCollections/Fall/Prey" instance=ExtResource( 14 )]
+transform = Transform( -0.993164, 0, -0.116723, 0, 1, 0, 0.116723, 0, -0.993164, -81.1781, -2.91196, 432.157 )
+
+[node name="CrayFish32" parent="CreatureCollections/Fall/Prey" instance=ExtResource( 14 )]
+transform = Transform( 0.910099, 0, 0.414391, 0, 1, 0, -0.414391, 0, 0.910099, 41.5764, -10.154, 446.766 )
+
+[node name="Worm30" parent="CreatureCollections/Fall/Prey" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 265.502, 31.4539, 753.217 )
+
+[node name="Worm31" parent="CreatureCollections/Fall/Prey" instance=ExtResource( 4 )]
+transform = Transform( -0.576732, 0, 0.816934, 0, 1, 0, -0.816934, 0, -0.576732, 310.394, 28.0066, 717.465 )
+
+[node name="Worm33" parent="CreatureCollections/Fall/Prey" instance=ExtResource( 4 )]
+transform = Transform( 0.884622, 0, -0.466309, 0, 1, 0, 0.466309, 0, 0.884622, 442.98, 10.7608, 771.365 )
+
+[node name="Worm34" parent="CreatureCollections/Fall/Prey" instance=ExtResource( 4 )]
+transform = Transform( 0.957551, 0, -0.288263, 0, 1, 0, 0.288263, 0, 0.957551, 471.469, 6.78193, 814.016 )
+
+[node name="CrayFish33" parent="CreatureCollections/Fall/Prey" instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 95.5616, 18.6098, 630.603 )
+
+[node name="CrayFish34" parent="CreatureCollections/Fall/Prey" instance=ExtResource( 14 )]
+transform = Transform( -0.95586, 0, 0.293823, 0, 1, 0, -0.293823, 0, -0.95586, 557.07, 9.73242, 1022.48 )
+
+[node name="CrayFish36" parent="CreatureCollections/Fall/Prey" instance=ExtResource( 14 )]
+transform = Transform( -0.857131, 0, -0.515098, 0, 1, 0, 0.515098, 0, -0.857131, 563.488, 7.44561, 970.073 )
+
+[node name="Worm35" parent="CreatureCollections/Fall/Prey" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 271.139, 4.85097, -274.784 )
+
+[node name="Worm36" parent="CreatureCollections/Fall/Prey" instance=ExtResource( 4 )]
+transform = Transform( -0.576732, 0, 0.816934, 0, 1, 0, -0.816934, 0, -0.576732, 126.68, 16.643, -229.666 )
+
+[node name="Worm37" parent="CreatureCollections/Fall/Prey" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 274.476, 8.22531, -377.321 )
+
+[node name="Worm38" parent="CreatureCollections/Fall/Prey" instance=ExtResource( 4 )]
+transform = Transform( 0.884622, 0, -0.466309, 0, 1, 0, 0.466309, 0, 0.884622, 385.31, 11.5691, -438.998 )
+
+[node name="Winter" type="Spatial" parent="CreatureCollections"]
+visible = false
+
+[node name="Predators" type="Spatial" parent="CreatureCollections/Winter"]
+
+[node name="BrownTrout" parent="CreatureCollections/Winter/Predators" instance=ExtResource( 24 )]
+transform = Transform( 0.270936, 0, 0.962597, 0, 1, 0, -0.962597, 0, 0.270936, -56.8644, 14.9534, -10.3888 )
+
+[node name="RainbowTrout6" parent="CreatureCollections/Winter/Predators" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.48247, -4.82168, 270.066 )
+
+[node name="BrownTrout4" parent="CreatureCollections/Winter/Predators" instance=ExtResource( 24 )]
+transform = Transform( 0.656388, 0, -0.754423, 0, 1, 0, 0.754423, 0, 0.656388, -63.4932, 2.16151, 441.903 )
+animations_path = NodePath("")
+
+[node name="BrownTrout9" parent="CreatureCollections/Winter/Predators" instance=ExtResource( 24 )]
+transform = Transform( 0.656388, 0, -0.754423, 0, 1, 0, 0.754423, 0, 0.656388, 598.587, 59.8215, 995.416 )
+animations_path = NodePath("")
+
+[node name="RainbowTrout9" parent="CreatureCollections/Winter/Predators" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 153.002, 25.8854, -182.057 )
+
+[node name="RainbowTrout15" parent="CreatureCollections/Winter/Predators" instance=ExtResource( 9 )]
+transform = Transform( -0.782173, 0, -0.623061, 0, 1, 0, 0.623061, 0, -0.782173, 333.185, 32.6657, -453.29 )
+
+[node name="Prey" type="Spatial" parent="CreatureCollections/Winter"]
+
+[node name="Worm3" parent="CreatureCollections/Winter/Prey" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24.6472, -10.4584, 91.6731 )
+
+[node name="Worm5" parent="CreatureCollections/Winter/Prey" instance=ExtResource( 4 )]
+transform = Transform( 0.957551, 0, -0.288263, 0, 1, 0, 0.288263, 0, 0.957551, -73.127, -15.6929, 203.279 )
+
+[node name="CrayFish2" parent="CreatureCollections/Winter/Prey" instance=ExtResource( 14 )]
+transform = Transform( -0.95586, 0, 0.293823, 0, 1, 0, -0.293823, 0, -0.95586, 27.3567, 1.56176, -66.5399 )
+
+[node name="CrayFish3" parent="CreatureCollections/Winter/Prey" instance=ExtResource( 14 )]
+transform = Transform( -0.776761, 0, -0.629795, 0, 1, 0, 0.629795, 0, -0.776761, 28.7788, 1.60751, -66.9064 )
+
+[node name="CrayFish4" parent="CreatureCollections/Winter/Prey" instance=ExtResource( 14 )]
+transform = Transform( -0.857131, 0, -0.515098, 0, 1, 0, 0.515098, 0, -0.857131, 28.3041, 1.56176, -66.041 )
+
+[node name="CrayFish6" parent="CreatureCollections/Winter/Prey" instance=ExtResource( 14 )]
+transform = Transform( -0.993164, 0, -0.116723, 0, 1, 0, 0.116723, 0, -0.993164, 27.9371, 1.78572, -67.7497 )
+
+[node name="CrayFish7" parent="CreatureCollections/Winter/Prey" instance=ExtResource( 14 )]
+transform = Transform( 0.910099, 0, 0.414391, 0, 1, 0, -0.414391, 0, 0.910099, -15.6545, -20.7787, 176.679 )
+
+[node name="Worm7" parent="CreatureCollections/Winter/Prey" instance=ExtResource( 4 )]
+transform = Transform( -0.576732, 0, 0.816934, 0, 1, 0, -0.816934, 0, -0.576732, 270.248, 4.69736, -309.044 )
+
+[node name="Worm9" parent="CreatureCollections/Winter/Prey" instance=ExtResource( 4 )]
+transform = Transform( 0.884622, 0, -0.466309, 0, 1, 0, 0.466309, 0, 0.884622, 353.354, 12.3671, -499.026 )
+
+[node name="CrayFish8" parent="CreatureCollections/Winter/Prey" instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 270.584, 11.0025, -336.904 )
+
+[node name="CrayFish10" parent="CreatureCollections/Winter/Prey" instance=ExtResource( 14 )]
+transform = Transform( -0.776761, 0, -0.629795, 0, 1, 0, 0.629795, 0, -0.776761, 337.211, 11.4036, -475.202 )
+
+[node name="CrayFish12" parent="CreatureCollections/Winter/Prey" instance=ExtResource( 14 )]
+transform = Transform( -0.847576, 0, 0.530674, 0, 1, 0, -0.530674, 0, -0.847576, 398.016, 16.4505, -721.32 )
+
+[node name="CrayFish14" parent="CreatureCollections/Winter/Prey" instance=ExtResource( 14 )]
+transform = Transform( 0.910099, 0, 0.414391, 0, 1, 0, -0.414391, 0, 0.910099, 34.5665, -8.86514, 450.405 )
+
+[node name="Worm12" parent="CreatureCollections/Winter/Prey" instance=ExtResource( 4 )]
+transform = Transform( -0.576732, 0, 0.816934, 0, 1, 0, -0.816934, 0, -0.576732, 303.384, 29.2955, 721.104 )
+
+[node name="Worm13" parent="CreatureCollections/Winter/Prey" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 324.346, 29.4732, 774.865 )
+
+[node name="CrayFish16" parent="CreatureCollections/Winter/Prey" instance=ExtResource( 14 )]
+transform = Transform( -0.95586, 0, 0.293823, 0, 1, 0, -0.293823, 0, -0.95586, 550.06, 11.0213, 1026.12 )
+
+[node name="CrayFish17" parent="CreatureCollections/Winter/Prey" instance=ExtResource( 14 )]
+transform = Transform( -0.776761, 0, -0.629795, 0, 1, 0, 0.629795, 0, -0.776761, 550.834, 27.0295, 1125.73 )
+
+[node name="Worm16" parent="CreatureCollections/Winter/Prey" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 264.129, 6.13985, -271.145 )
+
+[node name="Worm17" parent="CreatureCollections/Winter/Prey" instance=ExtResource( 4 )]
+transform = Transform( -0.576732, 0, 0.816934, 0, 1, 0, -0.816934, 0, -0.576732, 119.67, 17.9318, -226.027 )
+
+[node name="Worm19" parent="CreatureCollections/Winter/Prey" instance=ExtResource( 4 )]
+transform = Transform( 0.884622, 0, -0.466309, 0, 1, 0, 0.466309, 0, 0.884622, 378.3, 12.858, -435.359 )
+
+[node name="Worm21" parent="CreatureCollections/Winter/Prey" instance=ExtResource( 4 )]
+transform = Transform( -0.576732, 0, 0.816934, 0, 1, 0, -0.816934, 0, -0.576732, -35.6874, -9.33457, 58.4572 )
+
+[node name="Worm23" parent="CreatureCollections/Winter/Prey" instance=ExtResource( 4 )]
+transform = Transform( 0.884622, 0, -0.466309, 0, 1, 0, 0.466309, 0, 0.884622, -79.2383, -10.9807, 144.511 )
+
+[node name="CrayFish19" parent="CreatureCollections/Winter/Prey" instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 35.6979, 0.379871, -71.8812 )
+
+[node name="CrayFish21" parent="CreatureCollections/Winter/Prey" instance=ExtResource( 14 )]
+transform = Transform( -0.776761, 0, -0.629795, 0, 1, 0, 0.629795, 0, -0.776761, 35.7887, 0.318631, -70.5454 )
+
+[node name="CrayFish24" parent="CreatureCollections/Winter/Prey" instance=ExtResource( 14 )]
+transform = Transform( -0.993164, 0, -0.116723, 0, 1, 0, 0.116723, 0, -0.993164, 34.947, 0.496841, -71.3887 )
+
+[node name="Worm25" parent="CreatureCollections/Winter/Prey" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 173.823, 15.4488, -264.927 )
+
+[node name="Worm27" parent="CreatureCollections/Winter/Prey" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 242.749, 10.4892, -358.979 )
+
+[node name="CrayFish26" parent="CreatureCollections/Winter/Prey" instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 277.594, 9.71362, -340.543 )
+
+[node name="CrayFish28" parent="CreatureCollections/Winter/Prey" instance=ExtResource( 14 )]
+transform = Transform( -0.776761, 0, -0.629795, 0, 1, 0, 0.629795, 0, -0.776761, 344.221, 10.1147, -478.841 )
+
+[node name="CrayFish29" parent="CreatureCollections/Winter/Prey" instance=ExtResource( 14 )]
+transform = Transform( -0.857131, 0, -0.515098, 0, 1, 0, 0.515098, 0, -0.857131, 301.622, 0.443921, -352.764 )
+
+[node name="CrayFish31" parent="CreatureCollections/Winter/Prey" instance=ExtResource( 14 )]
+transform = Transform( -0.993164, 0, -0.116723, 0, 1, 0, 0.116723, 0, -0.993164, -81.1781, -2.91196, 432.157 )
+
+[node name="CrayFish32" parent="CreatureCollections/Winter/Prey" instance=ExtResource( 14 )]
+transform = Transform( 0.910099, 0, 0.414391, 0, 1, 0, -0.414391, 0, 0.910099, 41.5764, -10.154, 446.766 )
+
+[node name="Worm32" parent="CreatureCollections/Winter/Prey" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 331.356, 28.1843, 771.226 )
+
+[node name="Worm33" parent="CreatureCollections/Winter/Prey" instance=ExtResource( 4 )]
+transform = Transform( 0.884622, 0, -0.466309, 0, 1, 0, 0.466309, 0, 0.884622, 442.98, 10.7608, 771.365 )
+
+[node name="CrayFish33" parent="CreatureCollections/Winter/Prey" instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 95.5616, 18.6098, 630.603 )
+
+[node name="CrayFish35" parent="CreatureCollections/Winter/Prey" instance=ExtResource( 14 )]
+transform = Transform( -0.776761, 0, -0.629795, 0, 1, 0, 0.629795, 0, -0.776761, 557.844, 25.7406, 1122.09 )
+
+[node name="CrayFish36" parent="CreatureCollections/Winter/Prey" instance=ExtResource( 14 )]
+transform = Transform( -0.857131, 0, -0.515098, 0, 1, 0, 0.515098, 0, -0.857131, 563.488, 7.44561, 970.073 )
+
+[node name="Worm37" parent="CreatureCollections/Winter/Prey" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 274.476, 8.22531, -377.321 )
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 300.0
