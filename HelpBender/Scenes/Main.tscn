@@ -1288,7 +1288,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 184.404, 74.9089, 150.669 )
 [node name="CreatureCollections" type="Node" parent="."]
 
 [node name="Spring" type="Spatial" parent="CreatureCollections"]
-visible = false
 
 [node name="Predators" type="Spatial" parent="CreatureCollections/Spring"]
 
