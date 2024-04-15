@@ -8,5 +8,5 @@ func _ready():
 
 func _on_Timer_timeout():
 	var player = $Player
-	Global.score += player.health+player.food
+	Global.score += player.kills*3+player.health*2+player.food
 	get_tree().change_scene("res://Scenes/Seasons.tscn")

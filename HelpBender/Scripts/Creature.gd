@@ -22,6 +22,7 @@ var infected : bool
 var dead : bool
 var forward : Vector3
 var on_ground : bool
+var kills : int
 
 var velocity : Vector3
 var rotation_velocity : Vector3
@@ -45,6 +46,7 @@ func attack(attacker, damage : float):
 	change_health(-damage)
 	if dead:
 		attacker.change_food(food_value)
+		attacker.kills += 1
 		queue_free()
 
 func change_food(amount : float):
