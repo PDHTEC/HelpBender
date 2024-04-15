@@ -18,6 +18,8 @@ func _ready():
 		mesh = get_node(mesh_path)
 
 func _process(delta):
+	if dead:
+		queue_free()
 	if main.get_node("Player") == null:
 		return
 	if main.get_node("Player").translation.distance_squared_to(translation)>main.load_dist:
