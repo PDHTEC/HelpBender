@@ -7,7 +7,6 @@ const SECRET_KEY = 1234567890
 var nonce = null
 var request_queue : Array = []
 var is_requesting : bool = false
-onready var Player = $Name.text
 var score = 0
 var Season = 0
 var Year = 0
@@ -20,20 +19,20 @@ func _ready():
 	http_request.connect("request_completed",self,"_http_request_completed")
 
 func _process(_delta):
-	Player = $Name.text
-	
 	if is_requesting:
 		return
 		
 	if request_queue.empty():
 		return
-		
+	
 	is_requesting = true
 	
 	if nonce == null:
 		request_nonce()
 	else:
 		_send_request(request_queue.pop_front())
+	
+
 
 func request_nonce():
 	var client = HTTPClient.new()
@@ -85,6 +84,9 @@ func _http_request_completed(_result, _response_code, _headers, _body):
 	var response = parse_json(response_body)
 	print(response_body)
 	
+	if response['command'] =="add_Player":
+		get_tree().change_scene_to(load("res://Scenes/MenuMain.tscn"))
+	
 	if response['error'] != "none":
 		printerr("We returned error: " + response['error'])
 		return
@@ -92,24 +94,23 @@ func _http_request_completed(_result, _response_code, _headers, _body):
 	if response['command'] == "get_nonce":
 		nonce = response['response']['nonce']
 		print("Get nonce: " + response['response']['nonce'])
-		return	
+		return
 	
 	if response['response']['size'] > 0:
+		var text_felt = $"../List"
+		text_felt.set_text("Name \t\t\tScore\n\n")
 		for n in (response['response']['size']):
-			Player = String(response['response'][String(n)]['Player'])
-			score = int(String(response['response'][String(n)]['score']))
-			Season = int(String(response['response'][String(n)]['Season']))
-			Year = int(String(response['response'][String(n)]['Year']))
+			text_felt.add_text(String(response['response'][String(n)]['Player']) + "\t\t\t\t" + String(response['response'][String(n)]['score']) + "\n")
 
 
 func _submit_score():
+	var Player = $Name.text
 	var command = "add_Player"
 	var data = {"Player" : Player, "score" : score, "Season" : Season, "Year" : Year }
 	request_queue.push_back({"command" : command, "data" : data})
-	get_tree().change_scene_to(load("res://Scenes/MenuMain.tscn"))
 
 func _get_player():
 	var command = "get_player"
-	var data = {"Player" : Player}
+	var data = {}
 	request_queue.push_back({"command" : command, "data" : data})
 
