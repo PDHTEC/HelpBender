@@ -6,6 +6,7 @@ onready var settings_button = $Knapper/settings as Button
 onready var quit_button = $Knapper/quit as Button
 onready var settings_menu = $settingsMenu as Control
 onready var Knapper = $Knapper 
+onready var leaderboard = $Leaderboard
 
 export var start_level = preload("res://Scenes/Main.tscn")
 
@@ -27,6 +28,7 @@ func _on_settings_button_down():
 	Knapper.visible = false
 	settings_menu.set_process(true)
 	settings_menu.visible = true
+	leaderboard.visible = false
 
 
 func _on_quit_button_down():
@@ -35,3 +37,4 @@ func _on_quit_button_down():
 func on_exit_options_menu():
 	Knapper.visible=true
 	settings_menu.visible=false
+	leaderboard.visible = true
