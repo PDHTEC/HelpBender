@@ -5,7 +5,7 @@
 [ext_resource path="res://Scenes/settings tab container.tscn" type="PackedScene" id=3]
 
 [sub_resource type="DynamicFont" id=1]
-size = 32
+size = 38
 outline_size = 4
 font_data = ExtResource( 2 )
 
@@ -29,9 +29,9 @@ valign = 1
 [node name="Control" parent="." instance=ExtResource( 3 )]
 
 [node name="exitButton" type="Button" parent="."]
-margin_left = 181.0
-margin_top = 926.0
-margin_right = 1205.0
-margin_bottom = 946.0
+margin_left = 183.0
+margin_top = 997.0
+margin_right = 1207.0
+margin_bottom = 1020.0
 rect_scale = Vector2( 1.5, 1.5 )
 text = "Exit"
