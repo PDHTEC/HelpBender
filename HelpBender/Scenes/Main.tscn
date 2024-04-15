@@ -1087,12 +1087,12 @@ tracks/32/keys = PoolRealArray( 0, 1, 0, 0, 0, 2.32831e-10, 1.29247e-26, 5.55112
 [sub_resource type="BoxShape" id=41]
 extents = Vector3( 0.4, 0.2, 0.3 )
 
-[sub_resource type="DynamicFont" id=48]
+[sub_resource type="DynamicFont" id=1]
 size = 48
 font_data = ExtResource( 23 )
 
 [sub_resource type="Theme" id=47]
-default_font = SubResource( 48 )
+default_font = SubResource( 1 )
 
 [sub_resource type="BoxShape" id=11]
 
