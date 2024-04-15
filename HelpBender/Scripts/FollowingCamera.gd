@@ -12,7 +12,6 @@ func _ready():
 	player = $".."
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	$RayCast.cast_to.z = distance
-	water_visibility(false)
 
 func _process(_delta):
 	

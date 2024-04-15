@@ -1080,7 +1080,7 @@ tracks/32/keys = PoolRealArray( 0, 1, 0, 0, 0, 2.32831e-10, 1.29247e-26, 5.55112
 [sub_resource type="AnimationNodeStateMachinePlayback" id=40]
 
 [sub_resource type="BoxShape" id=41]
-extents = Vector3( 0.4, 0.2, 0.3 )
+extents = Vector3( 0.45, 0.3, 0.3 )
 
 [sub_resource type="DynamicFont" id=48]
 size = 48
@@ -1092,6 +1092,7 @@ default_font = SubResource( 48 )
 [node name="Main" type="Spatial"]
 script = ExtResource( 7 )
 water_height = 67.0
+load_dist = 200.0
 
 [node name="Overlay" type="Node2D" parent="."]
 
@@ -1128,6 +1129,7 @@ far = 1000.0
 
 [node name="WaterPollution" type="Particles" parent="Player/Camera/Camera"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.35611, -4 )
+visible = false
 cast_shadow = 0
 amount = 15
 lifetime = 4.0
@@ -1170,7 +1172,7 @@ parameters/movement/conditions/idle_stand = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.24533 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Player/AttackArea"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.017, 0, -0.126675 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0170021, 0, -0.126669 )
 shape = SubResource( 41 )
 
 [node name="GroundTransform" type="Spatial" parent="Player"]
