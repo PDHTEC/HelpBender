@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=45 format=2]
 
 [ext_resource path="res://3D models/Scenes/Hellbender.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/FollowingCamera.gd" type="Script" id=2]
@@ -7,7 +7,7 @@
 [ext_resource path="res://3D models/Scenes/Map_1.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Underwater_earth.tres" type="Material" id=6]
 [ext_resource path="res://Scripts/Main.gd" type="Script" id=7]
-[ext_resource path="res://Sound.gd" type="Script" id=8]
+[ext_resource path="res://Scripts/Sound.gd" type="Script" id=8]
 [ext_resource path="res://Scenes/Creatures/RainbowTrout.tscn" type="PackedScene" id=9]
 [ext_resource path="res://SFX/Water ambientv3.mp3" type="AudioStream" id=10]
 [ext_resource path="res://SFX/underwater-movement- v3.mp3" type="AudioStream" id=11]
@@ -15,6 +15,15 @@
 [ext_resource path="res://SFX/punch-boxingv2.mp3" type="AudioStream" id=13]
 [ext_resource path="res://Scenes/Creatures/CrayFish.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Scenes/NyPause.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Scripts/UI.gd" type="Script" id=16]
+[ext_resource path="res://UI Textures/not hunger.png" type="Texture" id=17]
+[ext_resource path="res://UI Textures/hunger bar.png" type="Texture" id=18]
+[ext_resource path="res://UI Textures/hui helpbender.png" type="Texture" id=19]
+[ext_resource path="res://UI Textures/not slow.png" type="Texture" id=20]
+[ext_resource path="res://UI Textures/health bar.png" type="Texture" id=21]
+[ext_resource path="res://UI Textures/not eye.png" type="Texture" id=22]
+[ext_resource path="res://Misrow.ttf" type="DynamicFontData" id=23]
+[ext_resource path="res://Scenes/Creatures/BrownTrout.tscn" type="PackedScene" id=24]
 
 [sub_resource type="ProceduralSky" id=32]
 
@@ -1077,6 +1086,13 @@ tracks/32/keys = PoolRealArray( 0, 1, 0, 0, 0, 2.32831e-10, 1.29247e-26, 5.55112
 [sub_resource type="BoxShape" id=41]
 extents = Vector3( 0.4, 0.2, 0.3 )
 
+[sub_resource type="DynamicFont" id=1]
+size = 48
+font_data = ExtResource( 23 )
+
+[sub_resource type="Theme" id=47]
+default_font = SubResource( 1 )
+
 [sub_resource type="BoxShape" id=11]
 
 [sub_resource type="PlaneMesh" id=10]
@@ -1088,6 +1104,7 @@ size = Vector2( 500, 500 )
 [node name="Main" type="Spatial"]
 script = ExtResource( 7 )
 water_height = 67.0
+load_dist = 150.0
 
 [node name="ParticleOverlay" type="Spatial" parent="."]
 
@@ -1100,8 +1117,11 @@ color = Color( 0, 0.564, 0.94, 0.0980392 )
 polygon = PoolVector2Array( 0, 0, 1028, 0, 1028, 600, 0, 600 )
 
 [node name="Player" type="KinematicBody" parent="."]
-transform = Transform( 0.999083, 0, 0.0428172, 0, 1, 0, -0.0428173, 0, 0.999082, 41.167, -5.40901, 12.3373 )
+transform = Transform( 0.841652, 0, 0.54002, 0, 1, 0, -0.54002, 0, 0.841651, 40.1944, -5.30016, 12.12 )
 script = ExtResource( 3 )
+heal_speed = 0.5
+food_drain = 0.2
+hunger_damage = 0.4
 movement_speed = 0.5
 creature_level = 3
 animations_path = NodePath("Hellbender")
@@ -1119,7 +1139,7 @@ cast_to = Vector3( 0, 0, 4 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4 )
 environment = SubResource( 33 )
 current = true
-far = 1000.0
+far = 700.0
 
 [node name="WaterPollution" type="Particles" parent="Player/Camera/Camera"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.35611, -4 )
@@ -1190,6 +1210,61 @@ volume_db = -10.0
 stream = ExtResource( 11 )
 volume_db = -15.0
 
+[node name="UI" type="Node2D" parent="Player"]
+scale = Vector2( 2.06467, 1.77304 )
+script = ExtResource( 16 )
+
+[node name="Empty UI" type="Node2D" parent="Player/UI"]
+
+[node name="Sprite" type="Sprite" parent="Player/UI/Empty UI"]
+position = Vector2( 147.693, 487.473 )
+scale = Vector2( 0.159594, 0.159594 )
+texture = ExtResource( 19 )
+
+[node name="Health bar" type="Node2D" parent="Player/UI"]
+
+[node name="Health" type="Sprite" parent="Player/UI/Health bar"]
+position = Vector2( 81.6933, 501.473 )
+scale = Vector2( 0.038805, 0.0388798 )
+texture = ExtResource( 21 )
+centered = false
+
+[node name="Hunger bar" type="Node2D" parent="Player/UI"]
+
+[node name="Hunger" type="Sprite" parent="Player/UI/Hunger bar"]
+position = Vector2( 81.6934, 541.473 )
+scale = Vector2( 0.0386243, 0.0386386 )
+texture = ExtResource( 18 )
+centered = false
+
+[node name="Hazard icons" type="Node2D" parent="Player/UI"]
+
+[node name="slow icon" type="Sprite" parent="Player/UI/Hazard icons"]
+position = Vector2( 230.512, 474.617 )
+scale = Vector2( 0.0720253, 0.0720253 )
+texture = ExtResource( 20 )
+
+[node name="hungering icon" type="Sprite" parent="Player/UI/Hazard icons"]
+position = Vector2( 174.846, 474.889 )
+scale = Vector2( 0.218841, 0.218841 )
+texture = ExtResource( 17 )
+
+[node name="cant see icon" type="Sprite" parent="Player/UI/Hazard icons"]
+position = Vector2( 118.179, 474.889 )
+scale = Vector2( 0.0987492, 0.0987492 )
+texture = ExtResource( 22 )
+
+[node name="Control" type="Control" parent="Player/UI"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="season" type="Label" parent="Player/UI/Control"]
+margin_left = 94.446
+margin_top = 406.645
+margin_right = 257.446
+margin_bottom = 451.645
+theme = SubResource( 47 )
+
 [node name="StaticBody" type="StaticBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9999, -4.26, 0 )
 
@@ -1208,54 +1283,133 @@ skeleton = NodePath("../..")
 [node name="Map_1" parent="." instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 184.404, 74.9089, 150.669 )
 
-[node name="Predators" type="Spatial" parent="."]
+[node name="Creatures" type="Spatial" parent="."]
 
-[node name="RainbowTrout" parent="Predators" instance=ExtResource( 9 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.36473, 6.85348, -9.49228 )
+[node name="Predators" type="Spatial" parent="Creatures"]
 
-[node name="RainbowTrout2" parent="Predators" instance=ExtResource( 9 )]
-transform = Transform( 0.355401, 0, -0.934714, 0, 1, 0, 0.934714, 0, 0.355401, 6.95817, 0.48565, 68.0815 )
+[node name="RainbowTrout" parent="Creatures/Predators" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 37.2774, 8.67035, -59.6374 )
 
-[node name="Prey" type="Spatial" parent="."]
+[node name="RainbowTrout2" parent="Creatures/Predators" instance=ExtResource( 9 )]
+transform = Transform( 0.983527, 0, 0.18076, 0, 1, 0, -0.18076, 0, 0.983527, -22.7649, 0.485654, 169.568 )
 
-[node name="Worm" parent="Prey" instance=ExtResource( 4 )]
+[node name="RainbowTrout3" parent="Creatures/Predators" instance=ExtResource( 9 )]
+transform = Transform( -0.534338, 0, 0.845271, 0, 1, 0, -0.845271, 0, -0.534338, 1.39867, -4.82168, 177.829 )
+
+[node name="BrownTrout" parent="Creatures/Predators" instance=ExtResource( 24 )]
+transform = Transform( 0.270936, 0, 0.962597, 0, 1, 0, -0.962597, 0, 0.270936, -56.8644, 14.9534, -10.3888 )
+
+[node name="RainbowTrout4" parent="Creatures/Predators" instance=ExtResource( 9 )]
+transform = Transform( -0.782173, 0, -0.623061, 0, 1, 0, 0.623061, 0, -0.782173, -73.4413, 8.67035, 195.475 )
+
+[node name="RainbowTrout5" parent="Creatures/Predators" instance=ExtResource( 9 )]
+transform = Transform( 0.983527, 0, 0.18076, 0, 1, 0, -0.18076, 0, 0.983527, 117.088, 0.485654, -108.744 )
+
+[node name="RainbowTrout6" parent="Creatures/Predators" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.48247, -4.82168, 270.066 )
+
+[node name="BrownTrout2" parent="Creatures/Predators" instance=ExtResource( 24 )]
+transform = Transform( 0.270936, 0, 0.962597, 0, 1, 0, -0.962597, 0, 0.270936, -63.4932, 2.16151, 289.845 )
+animations_path = NodePath("")
+
+[node name="BrownTrout3" parent="Creatures/Predators" instance=ExtResource( 24 )]
+transform = Transform( 0.270936, 0, 0.962597, 0, 1, 0, -0.962597, 0, 0.270936, 27.7259, 2.16151, 396.806 )
+animations_path = NodePath("")
+
+[node name="BrownTrout4" parent="Creatures/Predators" instance=ExtResource( 24 )]
+transform = Transform( 0.656388, 0, -0.754423, 0, 1, 0, 0.754423, 0, 0.656388, -63.4932, 2.16151, 441.903 )
+animations_path = NodePath("")
+
+[node name="RainbowTrout7" parent="Creatures/Predators" instance=ExtResource( 9 )]
+transform = Transform( 0.983527, 0, 0.18076, 0, 1, 0, -0.18076, 0, 0.983527, -152.445, 29.0831, 350.311 )
+
+[node name="RainbowTrout8" parent="Creatures/Predators" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.94816, 49.4742, 544.707 )
+
+[node name="BrownTrout5" parent="Creatures/Predators" instance=ExtResource( 24 )]
+transform = Transform( 0.270936, 0, 0.962597, 0, 1, 0, -0.962597, 0, 0.270936, 106.138, 57.1554, 651.151 )
+animations_path = NodePath("")
+
+[node name="BrownTrout6" parent="Creatures/Predators" instance=ExtResource( 24 )]
+transform = Transform( 0.270936, 0, 0.962597, 0, 1, 0, -0.962597, 0, 0.270936, 274.468, 40.1186, 667.273 )
+animations_path = NodePath("")
+
+[node name="BrownTrout7" parent="Creatures/Predators" instance=ExtResource( 24 )]
+transform = Transform( 0.656388, 0, -0.754423, 0, 1, 0, 0.754423, 0, 0.656388, 397.433, 36.4871, 769.213 )
+animations_path = NodePath("")
+
+[node name="BrownTrout8" parent="Creatures/Predators" instance=ExtResource( 24 )]
+transform = Transform( 0.270936, 0, 0.962597, 0, 1, 0, -0.962597, 0, 0.270936, 475.621, 47.1282, 893.476 )
+animations_path = NodePath("")
+
+[node name="BrownTrout9" parent="Creatures/Predators" instance=ExtResource( 24 )]
+transform = Transform( 0.656388, 0, -0.754423, 0, 1, 0, 0.754423, 0, 0.656388, 598.587, 59.8215, 995.416 )
+animations_path = NodePath("")
+
+[node name="RainbowTrout9" parent="Creatures/Predators" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 153.002, 25.8854, -182.057 )
+
+[node name="RainbowTrout10" parent="Creatures/Predators" instance=ExtResource( 9 )]
+transform = Transform( -0.521843, 0, -0.853041, 0, 1, 0, 0.853041, 0, -0.521843, 252.292, 29.0235, -372.924 )
+
+[node name="RainbowTrout11" parent="Creatures/Predators" instance=ExtResource( 9 )]
+transform = Transform( -0.452777, 0, -0.891624, 0, 1, 0, 0.891624, 0, -0.452777, 110.332, 35.1001, -259.03 )
+
+[node name="BrownTrout10" parent="Creatures/Predators" instance=ExtResource( 24 )]
+transform = Transform( 0.270936, 0, 0.962597, 0, 1, 0, -0.962597, 0, 0.270936, 219.269, 2.16151, -268.616 )
+animations_path = NodePath("")
+
+[node name="RainbowTrout12" parent="Creatures/Predators" instance=ExtResource( 9 )]
+transform = Transform( -0.782173, 0, -0.623061, 0, 1, 0, 0.623061, 0, -0.782173, 372.556, 32.6657, -475.769 )
+
+[node name="RainbowTrout13" parent="Creatures/Predators" instance=ExtResource( 9 )]
+transform = Transform( 0.983527, 0, 0.18076, 0, 1, 0, -0.18076, 0, 0.983527, 361.625, 0.485654, -597.71 )
+
+[node name="Prey" type="Spatial" parent="Creatures"]
+
+[node name="Worm" parent="Creatures/Prey" instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.84854, -1.18549, -29.0635 )
 
-[node name="Worm2" parent="Prey" instance=ExtResource( 4 )]
+[node name="Worm2" parent="Creatures/Prey" instance=ExtResource( 4 )]
 transform = Transform( -0.576732, 0, 0.816934, 0, 1, 0, -0.816934, 0, -0.576732, -42.6973, -8.04569, 62.0962 )
 
-[node name="Worm3" parent="Prey" instance=ExtResource( 4 )]
+[node name="Worm3" parent="Creatures/Prey" instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24.6472, -10.4584, 91.6731 )
 
-[node name="Worm4" parent="Prey" instance=ExtResource( 4 )]
+[node name="Worm4" parent="Creatures/Prey" instance=ExtResource( 4 )]
 transform = Transform( 0.884622, 0, -0.466309, 0, 1, 0, 0.466309, 0, 0.884622, -86.2482, -9.69185, 148.15 )
 
-[node name="Worm5" parent="Prey" instance=ExtResource( 4 )]
+[node name="Worm5" parent="Creatures/Prey" instance=ExtResource( 4 )]
 transform = Transform( 0.957551, 0, -0.288263, 0, 1, 0, 0.288263, 0, 0.957551, -73.127, -15.6929, 203.279 )
 
-[node name="CrayFish" parent="Prey" instance=ExtResource( 14 )]
+[node name="CrayFish" parent="Creatures/Prey" instance=ExtResource( 14 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 28.688, 1.66875, -68.2422 )
 
-[node name="CrayFish2" parent="Prey" instance=ExtResource( 14 )]
+[node name="CrayFish2" parent="Creatures/Prey" instance=ExtResource( 14 )]
 transform = Transform( -0.95586, 0, 0.293823, 0, 1, 0, -0.293823, 0, -0.95586, 27.3567, 1.56176, -66.5399 )
 
-[node name="CrayFish3" parent="Prey" instance=ExtResource( 14 )]
+[node name="CrayFish3" parent="Creatures/Prey" instance=ExtResource( 14 )]
 transform = Transform( -0.776761, 0, -0.629795, 0, 1, 0, 0.629795, 0, -0.776761, 28.7788, 1.60751, -66.9064 )
 
-[node name="CrayFish4" parent="Prey" instance=ExtResource( 14 )]
+[node name="CrayFish4" parent="Creatures/Prey" instance=ExtResource( 14 )]
 transform = Transform( -0.857131, 0, -0.515098, 0, 1, 0, 0.515098, 0, -0.857131, 28.3041, 1.56176, -66.041 )
 
-[node name="CrayFish5" parent="Prey" instance=ExtResource( 14 )]
+[node name="CrayFish5" parent="Creatures/Prey" instance=ExtResource( 14 )]
 transform = Transform( -0.847576, 0, 0.530674, 0, 1, 0, -0.530674, 0, -0.847576, 26.5697, 1.88668, -68.2947 )
 
-[node name="CrayFish6" parent="Prey" instance=ExtResource( 14 )]
+[node name="CrayFish6" parent="Creatures/Prey" instance=ExtResource( 14 )]
 transform = Transform( -0.993164, 0, -0.116723, 0, 1, 0, 0.116723, 0, -0.993164, 27.9371, 1.78572, -67.7497 )
 
-[node name="CrayFish7" parent="Prey" instance=ExtResource( 14 )]
+[node name="CrayFish7" parent="Creatures/Prey" instance=ExtResource( 14 )]
 transform = Transform( 0.910099, 0, 0.414391, 0, 1, 0, -0.414391, 0, 0.910099, -15.6545, -20.7787, 176.679 )
 
 [node name="CanvasLayer" parent="." instance=ExtResource( 15 )]
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 300.0
+autostart = true
+
 [connection signal="timeout" from="Player/AttackTimer" to="Player" method="_on_AttackTimer_timeout"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 
 [editable path="Player/Hellbender"]

@@ -5,6 +5,11 @@
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=3]
 [ext_resource path="res://Scripts/Main.gd" type="Script" id=5]
 [ext_resource path="res://Scenes/Creatures/CrayFish.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scripts/Sound.gd" type="Script" id=7]
+[ext_resource path="res://SFX/Water ambientv3.mp3" type="AudioStream" id=8]
+[ext_resource path="res://SFX/underwater-movement- v3.mp3" type="AudioStream" id=9]
+[ext_resource path="res://SFX/bones-breaking-v1.mp3" type="AudioStream" id=10]
+[ext_resource path="res://SFX/punch-boxingv2.mp3" type="AudioStream" id=11]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 50, 0.5, 50 )

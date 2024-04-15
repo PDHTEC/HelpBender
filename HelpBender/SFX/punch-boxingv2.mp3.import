@@ -11,5 +11,5 @@ dest_files=[ "res://.import/punch-boxingv2.mp3-859ee9f72197a407679ed2af0e10bc97.
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

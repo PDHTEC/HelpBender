@@ -11,5 +11,5 @@ dest_files=[ "res://.import/bones-breaking-v1.mp3-bee6c3e186489119e1752244abc342
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0
