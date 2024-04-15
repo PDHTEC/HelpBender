@@ -56,6 +56,7 @@ margin_left = 44.0
 margin_top = 147.0
 margin_right = 119.0
 margin_bottom = 187.0
+action_mode = 0
 text = "Settings"
 
 [node name="quit" type="Button" parent="Knapper"]

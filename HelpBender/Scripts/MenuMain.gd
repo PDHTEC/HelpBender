@@ -16,8 +16,8 @@ func _ready():
 
 func handle_connecting_signals():
 	start_button.connect("pressed",self,"_on_start_button_down")
-	settings_button.connect("pressed",self,"_on_settings_button_down")
 	quit_button.connect("pressed",self,"_on_quit_button_down")
+	settings_button.connect("pressed", self, "_on_settings_button_down")
 	refresh_button.connect("pressed", self, "_on_refresh_button_down")
 	settings_menu.connect("exit_settings_menu",self,"on_exit_options_menu")
 
@@ -29,8 +29,10 @@ func _on_start_button_down():
 func _on_settings_button_down():
 	Knapper.visible = false
 	settings_menu.set_process(true)
-	settings_menu.visible = true
 	leaderboard.visible = false
+	settings_menu.visible = true
+	print("DOWN")
+
 
 func _on_quit_button_down():
 	get_tree().quit()

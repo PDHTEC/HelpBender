@@ -44,8 +44,6 @@ func request_nonce():
 	if err != OK:
 		printerr("HTTPRequest error: " + String(err))
 		return
-		
-	print("Requeste nonce")
 
 func _send_request(request: Dictionary):
 	var client = HTTPClient.new()
@@ -55,7 +53,6 @@ func _send_request(request: Dictionary):
 	var cnonce = String(Crypto.new().generate_random_bytes(32)).sha256_text()
 	
 	var client_hash = (nonce + cnonce + body + String(SECRET_KEY)).sha256_text()
-	print(client_hash)
 	nonce = null
 	
 	var headers = SERVER_HEADERS.duplicate()
@@ -67,9 +64,6 @@ func _send_request(request: Dictionary):
 	if err != OK:
 		printerr("HTTPRequest error: " + String(err))
 		return
-		
-	#$TextEdit.set_text(body)
-	print("Requesting...\n\tCommand: " + request['command'] + "\n\tBody: " + body)
 
 func _http_request_completed(_result, _response_code, _headers, _body):
 	is_requesting = false
@@ -78,11 +72,8 @@ func _http_request_completed(_result, _response_code, _headers, _body):
 		return
 	var response_body = _body.get_string_from_utf8()
 	if response_body.length()<1:
-		print(0)
 		return
-	#$TextEdit.set_text(response_body)
 	var response = parse_json(response_body)
-	print(response_body)
 	
 	if response['command'] =="add_Player":
 		get_tree().change_scene_to(load("res://Scenes/MenuMain.tscn"))
@@ -93,7 +84,6 @@ func _http_request_completed(_result, _response_code, _headers, _body):
 	
 	if response['command'] == "get_nonce":
 		nonce = response['response']['nonce']
-		print("Get nonce: " + response['response']['nonce'])
 		return
 	
 	if response['response']['size'] > 0:
