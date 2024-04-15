@@ -1,8 +1,9 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://3D models/Scenes/Hellbender.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/FollowingCamera.gd" type="Script" id=2]
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=3]
+[ext_resource path="res://Misrow.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://Scripts/Main.gd" type="Script" id=5]
 [ext_resource path="res://Scenes/Creatures/CrayFish.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scripts/Sound.gd" type="Script" id=7]
@@ -10,6 +11,13 @@
 [ext_resource path="res://SFX/underwater-movement- v3.mp3" type="AudioStream" id=9]
 [ext_resource path="res://SFX/bones-breaking-v1.mp3" type="AudioStream" id=10]
 [ext_resource path="res://SFX/punch-boxingv2.mp3" type="AudioStream" id=11]
+[ext_resource path="res://Scripts/UI.gd" type="Script" id=12]
+[ext_resource path="res://UI Textures/not hunger.png" type="Texture" id=13]
+[ext_resource path="res://UI Textures/hunger bar.png" type="Texture" id=14]
+[ext_resource path="res://UI Textures/hui helpbender.png" type="Texture" id=15]
+[ext_resource path="res://UI Textures/not eye.png" type="Texture" id=16]
+[ext_resource path="res://UI Textures/health bar.png" type="Texture" id=17]
+[ext_resource path="res://UI Textures/not slow.png" type="Texture" id=18]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 50, 0.5, 50 )
@@ -1050,6 +1058,13 @@ tracks/32/keys = PoolRealArray( 0, 1, 0, 0, 0, 2.32831e-10, 1.29247e-26, 5.55112
 [sub_resource type="BoxShape" id=50]
 extents = Vector3( 0.4, 0.2, 0.3 )
 
+[sub_resource type="DynamicFont" id=54]
+size = 48
+font_data = ExtResource( 4 )
+
+[sub_resource type="Theme" id=55]
+default_font = SubResource( 54 )
+
 [sub_resource type="CubeMesh" id=52]
 size = Vector3( 10, 1, 10 )
 
@@ -1148,6 +1163,81 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.017, 0, -0.126675 )
 shape = SubResource( 50 )
 
 [node name="GroundTransform" type="Spatial" parent="Player"]
+
+[node name="sound" type="Spatial" parent="Player"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.35611, 0 )
+script = ExtResource( 7 )
+
+[node name="GetHit SFX" type="AudioStreamPlayer" parent="Player/sound"]
+stream = ExtResource( 10 )
+volume_db = 5.0
+
+[node name="Hit SFX" type="AudioStreamPlayer" parent="Player/sound"]
+stream = ExtResource( 11 )
+volume_db = 5.0
+
+[node name="Water Ambient SFX" type="AudioStreamPlayer" parent="Player/sound"]
+stream = ExtResource( 8 )
+volume_db = -10.0
+
+[node name="Movment SFX" type="AudioStreamPlayer" parent="Player/sound"]
+stream = ExtResource( 9 )
+volume_db = -15.0
+
+[node name="UI" type="Node2D" parent="Player"]
+scale = Vector2( 2.06467, 1.77304 )
+script = ExtResource( 12 )
+
+[node name="Empty UI" type="Node2D" parent="Player/UI"]
+
+[node name="Sprite" type="Sprite" parent="Player/UI/Empty UI"]
+position = Vector2( 147.693, 487.473 )
+scale = Vector2( 0.159594, 0.159594 )
+texture = ExtResource( 15 )
+
+[node name="Health bar" type="Node2D" parent="Player/UI"]
+
+[node name="Health" type="Sprite" parent="Player/UI/Health bar"]
+position = Vector2( 81.6933, 501.473 )
+scale = Vector2( 0.038805, 0.0388798 )
+texture = ExtResource( 17 )
+centered = false
+
+[node name="Hunger bar" type="Node2D" parent="Player/UI"]
+
+[node name="Hunger" type="Sprite" parent="Player/UI/Hunger bar"]
+position = Vector2( 81.6934, 541.473 )
+scale = Vector2( 0.0386243, 0.0386386 )
+texture = ExtResource( 14 )
+centered = false
+
+[node name="Hazard icons" type="Node2D" parent="Player/UI"]
+
+[node name="slow icon" type="Sprite" parent="Player/UI/Hazard icons"]
+position = Vector2( 230.512, 474.617 )
+scale = Vector2( 0.0720253, 0.0720253 )
+texture = ExtResource( 18 )
+
+[node name="hungering icon" type="Sprite" parent="Player/UI/Hazard icons"]
+position = Vector2( 174.846, 474.889 )
+scale = Vector2( 0.218841, 0.218841 )
+texture = ExtResource( 13 )
+
+[node name="cant see icon" type="Sprite" parent="Player/UI/Hazard icons"]
+position = Vector2( 118.179, 474.889 )
+scale = Vector2( 0.0987492, 0.0987492 )
+texture = ExtResource( 16 )
+
+[node name="Control" type="Control" parent="Player/UI"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="season" type="Label" parent="Player/UI/Control"]
+margin_left = 94.446
+margin_top = 406.645
+margin_right = 257.446
+margin_bottom = 451.645
+theme = SubResource( 55 )
 
 [node name="StaticBody" type="StaticBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 0.985214, -0.171327, 0, 0.171327, 0.985214, 13.9501, 0.612205, 0 )
