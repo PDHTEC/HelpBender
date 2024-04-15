@@ -8,6 +8,11 @@ func _ready():
 	var creatures = load("res://Scenes/Creature Collections/"+Global.season+".tscn")
 	add_child(creatures.instance())
 	$Player/Camera.water_visibility(Global.limited_vision)
+	if Global.pollution:
+		$Player.const_dmg = 0.1
+	if Global.hungry:
+		pass
+	
 
 func _on_Timer_timeout():
 	var player = $Player

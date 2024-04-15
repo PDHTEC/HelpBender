@@ -10,7 +10,6 @@ func _process(delta):
 	if food>=heal_threshold:
 		change_health(delta*heal_speed)
 	elif food <= 0:
-		print("uhoh")
 		change_health(-delta*hunger_damage)
 	if dead:
 		get_tree().change_scene("res://Scenes/end game scene.tscn")
