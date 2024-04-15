@@ -43,19 +43,20 @@ margin_bottom = 40.0
 rect_scale = Vector2( 2.67182, 2.67182 )
 
 [node name="start" type="Button" parent="Knapper"]
-margin_left = 44.1646
-margin_top = 76.7266
-margin_right = 107.165
-margin_bottom = 116.727
+margin_left = 44.0
+margin_top = 77.0
+margin_right = 119.0
+margin_bottom = 117.0
 action_mode = 0
 text = "Start"
 
 [node name="settings" type="Button" parent="Knapper"]
 pause_mode = 2
-margin_left = 44.1646
-margin_top = 146.727
-margin_right = 107.165
-margin_bottom = 186.727
+margin_left = 44.0
+margin_top = 147.0
+margin_right = 119.0
+margin_bottom = 187.0
+action_mode = 0
 text = "Settings"
 
 [node name="quit" type="Button" parent="Knapper"]
