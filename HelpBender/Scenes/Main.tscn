@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=2]
+[gd_scene load_steps=46 format=2]
 
 [ext_resource path="res://3D models/Scenes/Hellbender.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/FollowingCamera.gd" type="Script" id=2]
@@ -24,6 +24,7 @@
 [ext_resource path="res://UI Textures/not eye.png" type="Texture" id=22]
 [ext_resource path="res://Misrow.ttf" type="DynamicFontData" id=23]
 [ext_resource path="res://Scenes/Creatures/BrownTrout.tscn" type="PackedScene" id=24]
+[ext_resource path="res://UI Textures/hazard-1.png" type="Texture" id=25]
 
 [sub_resource type="ProceduralSky" id=32]
 
@@ -1239,19 +1240,28 @@ centered = false
 [node name="Hazard icons" type="Node2D" parent="Player/UI"]
 
 [node name="slow icon" type="Sprite" parent="Player/UI/Hazard icons"]
+visible = false
 position = Vector2( 230.512, 474.617 )
 scale = Vector2( 0.0720253, 0.0720253 )
 texture = ExtResource( 20 )
 
 [node name="hungering icon" type="Sprite" parent="Player/UI/Hazard icons"]
+visible = false
 position = Vector2( 174.846, 474.889 )
 scale = Vector2( 0.218841, 0.218841 )
 texture = ExtResource( 17 )
 
 [node name="cant see icon" type="Sprite" parent="Player/UI/Hazard icons"]
+visible = false
 position = Vector2( 118.179, 474.889 )
 scale = Vector2( 0.0987492, 0.0987492 )
 texture = ExtResource( 22 )
+
+[node name="pollution" type="Sprite" parent="Player/UI/Hazard icons"]
+visible = false
+position = Vector2( 54.7303, 474.891 )
+scale = Vector2( 0.167146, 0.167146 )
+texture = ExtResource( 25 )
 
 [node name="Control" type="Control" parent="Player/UI"]
 margin_right = 40.0
