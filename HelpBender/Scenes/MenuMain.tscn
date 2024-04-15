@@ -111,7 +111,11 @@ text = "Global Leaderboard"
 [node name="List" type="RichTextLabel" parent="Leaderboard"]
 margin_left = 490.0
 margin_top = 242.0
-margin_right = 939.0
+margin_right = 1787.0
 margin_bottom = 946.0
+focus_mode = 2
 theme = SubResource( 5 )
-text = "Loading..."
+text = "Name			Score
+
+Loading..."
+selection_enabled = true
