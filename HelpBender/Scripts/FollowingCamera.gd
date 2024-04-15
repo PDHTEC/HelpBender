@@ -29,15 +29,14 @@ func _process(_delta):
 	elif rotation_degrees.y<-180:
 		rotation_degrees.y += 360
 
-func water_visibility(can_see):
+func water_visibility(cant_see):
 	var cam = $Camera
-	if (can_see):
-		$"../UI/Hazard icons/cant see icon".visible = true 
+	$"../UI/Hazard icons/cant see icon".visible = cant_see 
+	if (cant_see):
 		cam.environment.set_fog_color("#4a412a")
 		cam.environment.fog_depth_begin = 10
 		cam.environment.fog_depth_end = 33
-	else :
-		$"../UI/Hazard icons/cant see icon".visible = false 
+	else:
 		cam.environment.set_fog_color("#4c6477")
 		cam.environment.fog_depth_begin = 30
 		cam.environment.fog_depth_end = 100

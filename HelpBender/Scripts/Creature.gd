@@ -47,7 +47,6 @@ func attack(attacker, damage : float):
 	if dead:
 		attacker.change_food(food_value)
 		attacker.kills += 1
-		queue_free()
 
 func change_food(amount : float):
 	set_food(food+amount)
