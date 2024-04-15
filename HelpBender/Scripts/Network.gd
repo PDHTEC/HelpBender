@@ -7,6 +7,7 @@ const SECRET_KEY = 1234567890
 var nonce = null
 var request_queue : Array = []
 var is_requesting : bool = false
+onready var Player = $Name.text
 var score = 0
 var Season = 0
 var Year = 0
@@ -19,6 +20,7 @@ func _ready():
 	http_request.connect("request_completed",self,"_http_request_completed")
 
 func _process(_delta):
+	Player = $Name.text
 	
 	if is_requesting:
 		return
@@ -93,14 +95,14 @@ func _http_request_completed(_result, _response_code, _headers, _body):
 		return	
 	
 	if response['response']['size'] > 0:
-		var text_felt = $"../List"
-		text_felt.set_text("")
 		for n in (response['response']['size']):
-			text_felt.add_text(String(response['response'][String(n)]['Player']) + "\t\t" + String(response['response'][String(n)]['score']) + "\n")
+			Player = String(response['response'][String(n)]['Player'])
+			score = int(String(response['response'][String(n)]['score']))
+			Season = int(String(response['response'][String(n)]['Season']))
+			Year = int(String(response['response'][String(n)]['Year']))
 
 
 func _submit_score():
-	var Player = $Name.text
 	var command = "add_Player"
 	var data = {"Player" : Player, "score" : score, "Season" : Season, "Year" : Year }
 	request_queue.push_back({"command" : command, "data" : data})
@@ -108,6 +110,6 @@ func _submit_score():
 
 func _get_player():
 	var command = "get_player"
-	var data = {}
+	var data = {"Player" : Player}
 	request_queue.push_back({"command" : command, "data" : data})
 

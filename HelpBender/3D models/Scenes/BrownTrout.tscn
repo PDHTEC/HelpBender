@@ -601,7 +601,7 @@ nodes/animation_speed/position = Vector2( -340, -20 )
 nodes/movement/node = SubResource( 17 )
 nodes/movement/position = Vector2( -580, -40 )
 nodes/output/position = Vector2( 300, 120 )
-node_connections = [ "output", 0, "Hurt_shot", "animation_speed", 0, "movement", "Attack_shot", 0, "animation_speed", "Attack_shot", 1, "Attack", "Hurt_shot", 0, "Attack_shot", "Hurt_shot", 1, "Hurt" ]
+node_connections = [ "output", 0, "Hurt_shot", "Hurt_shot", 0, "Attack_shot", "Hurt_shot", 1, "Hurt", "Attack_shot", 0, "animation_speed", "Attack_shot", 1, "Attack", "animation_speed", 0, "movement" ]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=18]
 
