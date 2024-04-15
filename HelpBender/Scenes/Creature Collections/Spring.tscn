@@ -1,0 +1,933 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Scripts/Pred.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Prey.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/Creatures/Worm.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Creatures/BrownTrout.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Creatures/RainbowTrout.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Creatures/CrayFish.tscn" type="PackedScene" id=6]
+
+[node name="Spring" type="Spatial"]
+
+[node name="Predators" type="Spatial" parent="."]
+
+[node name="RainbowTrout" type="KinematicBody" parent="Predators" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 36.6754, 10.6999, -60.0224 )
+script = ExtResource( 1 )
+movement_speed = 0.5
+attack_power = 10.0
+creature_level = 5
+animations_path = NodePath("RainbowTrout")
+
+[node name="BrownTrout" type="KinematicBody" parent="Predators" instance=ExtResource( 4 )]
+transform = Transform( 0.270936, 0, 0.962597, 0, 1, 0, -0.962597, 0, 0.270936, -56.8644, 14.9534, -10.3888 )
+script = ExtResource( 1 )
+movement_speed = 0.5
+creature_level = 5
+animations_path = NodePath("BrownTrout")
+
+[node name="RainbowTrout4" type="KinematicBody" parent="Predators" instance=ExtResource( 5 )]
+transform = Transform( -0.782173, 0, -0.623061, 0, 1, 0, 0.623061, 0, -0.782173, -73.4413, 8.67035, 195.475 )
+script = ExtResource( 1 )
+movement_speed = 0.5
+attack_power = 10.0
+creature_level = 5
+animations_path = NodePath("RainbowTrout")
+
+[node name="RainbowTrout6" type="KinematicBody" parent="Predators" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.48247, -4.82168, 270.066 )
+script = ExtResource( 1 )
+movement_speed = 0.5
+attack_power = 10.0
+creature_level = 5
+animations_path = NodePath("RainbowTrout")
+
+[node name="BrownTrout4" type="KinematicBody" parent="Predators" instance=ExtResource( 4 )]
+transform = Transform( 0.656388, 0, -0.754423, 0, 1, 0, 0.754423, 0, 0.656388, -63.4932, 2.16151, 441.903 )
+script = ExtResource( 1 )
+movement_speed = 0.5
+creature_level = 5
+
+[node name="RainbowTrout7" type="KinematicBody" parent="Predators" instance=ExtResource( 5 )]
+transform = Transform( 0.983527, 0, 0.18076, 0, 1, 0, -0.18076, 0, 0.983527, -152.445, 29.0831, 350.311 )
+script = ExtResource( 1 )
+movement_speed = 0.5
+attack_power = 10.0
+creature_level = 5
+animations_path = NodePath("RainbowTrout")
+
+[node name="BrownTrout5" type="KinematicBody" parent="Predators" instance=ExtResource( 4 )]
+transform = Transform( 0.270936, 0, 0.962597, 0, 1, 0, -0.962597, 0, 0.270936, 106.138, 57.1554, 651.151 )
+script = ExtResource( 1 )
+movement_speed = 0.5
+creature_level = 5
+
+[node name="BrownTrout7" type="KinematicBody" parent="Predators" instance=ExtResource( 4 )]
+transform = Transform( 0.656388, 0, -0.754423, 0, 1, 0, 0.754423, 0, 0.656388, 397.433, 36.4871, 769.213 )
+script = ExtResource( 1 )
+movement_speed = 0.5
+creature_level = 5
+
+[node name="BrownTrout8" type="KinematicBody" parent="Predators" instance=ExtResource( 4 )]
+transform = Transform( 0.270936, 0, 0.962597, 0, 1, 0, -0.962597, 0, 0.270936, 475.621, 47.1282, 893.476 )
+script = ExtResource( 1 )
+movement_speed = 0.5
+creature_level = 5
+
+[node name="BrownTrout9" type="KinematicBody" parent="Predators" instance=ExtResource( 4 )]
+transform = Transform( 0.656388, 0, -0.754423, 0, 1, 0, 0.754423, 0, 0.656388, 598.587, 59.8215, 995.416 )
+script = ExtResource( 1 )
+movement_speed = 0.5
+creature_level = 5
+
+[node name="RainbowTrout9" type="KinematicBody" parent="Predators" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 153.002, 25.8854, -182.057 )
+script = ExtResource( 1 )
+movement_speed = 0.5
+attack_power = 10.0
+creature_level = 5
+animations_path = NodePath("RainbowTrout")
+
+[node name="BrownTrout10" type="KinematicBody" parent="Predators" instance=ExtResource( 4 )]
+transform = Transform( 0.270936, 0, 0.962597, 0, 1, 0, -0.962597, 0, 0.270936, 219.269, 12.3131, -268.616 )
+script = ExtResource( 1 )
+movement_speed = 0.5
+creature_level = 5
+
+[node name="RainbowTrout13" type="KinematicBody" parent="Predators" instance=ExtResource( 5 )]
+transform = Transform( 0.983527, 0, 0.18076, 0, 1, 0, -0.18076, 0, 0.983527, 361.625, 15.6809, -597.71 )
+script = ExtResource( 1 )
+movement_speed = 0.5
+attack_power = 10.0
+creature_level = 5
+animations_path = NodePath("RainbowTrout")
+
+[node name="RainbowTrout15" type="KinematicBody" parent="Predators" instance=ExtResource( 5 )]
+transform = Transform( -0.782173, 0, -0.623061, 0, 1, 0, 0.623061, 0, -0.782173, 333.185, 32.6657, -453.29 )
+script = ExtResource( 1 )
+movement_speed = 0.5
+attack_power = 10.0
+creature_level = 5
+animations_path = NodePath("RainbowTrout")
+
+[node name="RainbowTrout16" type="KinematicBody" parent="Predators" instance=ExtResource( 5 )]
+transform = Transform( 0.983527, 0, 0.18076, 0, 1, 0, -0.18076, 0, 0.983527, 361.625, 59.7465, -716.236 )
+script = ExtResource( 1 )
+movement_speed = 0.5
+attack_power = 10.0
+creature_level = 5
+animations_path = NodePath("RainbowTrout")
+
+[node name="Prey" type="Spatial" parent="."]
+
+[node name="Worm" type="KinematicBody" parent="Prey" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.84854, -1.18549, -29.0635 )
+script = ExtResource( 2 )
+max_health = 5.0
+movement_speed = 0.05
+cowers = false
+blind = true
+grounded = true
+max_spin = 2.0
+
+[node name="Worm2" type="KinematicBody" parent="Prey" instance=ExtResource( 3 )]
+transform = Transform( -0.576732, 0, 0.816934, 0, 1, 0, -0.816934, 0, -0.576732, -42.6973, -8.04569, 62.0962 )
+script = ExtResource( 2 )
+max_health = 5.0
+movement_speed = 0.05
+cowers = false
+blind = true
+grounded = true
+max_spin = 2.0
+
+[node name="Worm3" type="KinematicBody" parent="Prey" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24.6472, -10.4584, 91.6731 )
+script = ExtResource( 2 )
+max_health = 5.0
+movement_speed = 0.05
+cowers = false
+blind = true
+grounded = true
+max_spin = 2.0
+
+[node name="Worm4" type="KinematicBody" parent="Prey" instance=ExtResource( 3 )]
+transform = Transform( 0.884622, 0, -0.466309, 0, 1, 0, 0.466309, 0, 0.884622, -86.2482, -9.69185, 148.15 )
+script = ExtResource( 2 )
+max_health = 5.0
+movement_speed = 0.05
+cowers = false
+blind = true
+grounded = true
+max_spin = 2.0
+
+[node name="Worm5" type="KinematicBody" parent="Prey" instance=ExtResource( 3 )]
+transform = Transform( 0.957551, 0, -0.288263, 0, 1, 0, 0.288263, 0, 0.957551, -73.127, -15.6929, 203.279 )
+script = ExtResource( 2 )
+max_health = 5.0
+movement_speed = 0.05
+cowers = false
+blind = true
+grounded = true
+max_spin = 2.0
+
+[node name="CrayFish" type="KinematicBody" parent="Prey" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 28.688, 1.66875, -68.2422 )
+script = ExtResource( 2 )
+max_health = 5.0
+food_value = 1.0
+movement_speed = 0.02
+rotation_speed = 2.0
+mesh_path = NodePath("CrayFish")
+cowers = false
+grounded = true
+max_spin = 2.0
+
+[node name="CrayFish2" type="KinematicBody" parent="Prey" instance=ExtResource( 6 )]
+transform = Transform( -0.95586, 0, 0.293823, 0, 1, 0, -0.293823, 0, -0.95586, 27.3567, 1.56176, -66.5399 )
+script = ExtResource( 2 )
+max_health = 5.0
+food_value = 1.0
+movement_speed = 0.02
+rotation_speed = 2.0
+mesh_path = NodePath("CrayFish")
+cowers = false
+grounded = true
+max_spin = 2.0
+
+[node name="CrayFish3" type="KinematicBody" parent="Prey" instance=ExtResource( 6 )]
+transform = Transform( -0.776761, 0, -0.629795, 0, 1, 0, 0.629795, 0, -0.776761, 28.7788, 1.60751, -66.9064 )
+script = ExtResource( 2 )
+max_health = 5.0
+food_value = 1.0
+movement_speed = 0.02
+rotation_speed = 2.0
+mesh_path = NodePath("CrayFish")
+cowers = false
+grounded = true
+max_spin = 2.0
+
+[node name="CrayFish4" type="KinematicBody" parent="Prey" instance=ExtResource( 6 )]
+transform = Transform( -0.857131, 0, -0.515098, 0, 1, 0, 0.515098, 0, -0.857131, 28.3041, 1.56176, -66.041 )
+script = ExtResource( 2 )
+max_health = 5.0
+food_value = 1.0
+movement_speed = 0.02
+rotation_speed = 2.0
+mesh_path = NodePath("CrayFish")
+cowers = false
+grounded = true
+max_spin = 2.0
+
+[node name="CrayFish5" type="KinematicBody" parent="Prey" instance=ExtResource( 6 )]
+transform = Transform( -0.847576, 0, 0.530674, 0, 1, 0, -0.530674, 0, -0.847576, 26.5697, 1.88668, -68.2947 )
+script = ExtResource( 2 )
+max_health = 5.0
+food_value = 1.0
+movement_speed = 0.02
+rotation_speed = 2.0
+mesh_path = NodePath("CrayFish")
+cowers = false
+grounded = true
+max_spin = 2.0
+
+[node name="CrayFish6" type="KinematicBody" parent="Prey" instance=ExtResource( 6 )]
+transform = Transform( -0.993164, 0, -0.116723, 0, 1, 0, 0.116723, 0, -0.993164, 27.9371, 1.78572, -67.7497 )
+script = ExtResource( 2 )
+max_health = 5.0
+food_value = 1.0
+movement_speed = 0.02
+rotation_speed = 2.0
+mesh_path = NodePath("CrayFish")
+cowers = false
+grounded = true
+max_spin = 2.0
+
+[node name="CrayFish7" type="KinematicBody" parent="Prey" instance=ExtResource( 6 )]
+transform = Transform( 0.910099, 0, 0.414391, 0, 1, 0, -0.414391, 0, 0.910099, -15.6545, -20.7787, 176.679 )
+script = ExtResource( 2 )
+max_health = 5.0
+food_value = 1.0
+movement_speed = 0.02
+rotation_speed = 2.0
+mesh_path = NodePath("CrayFish")
+cowers = false
+grounded = true
+max_spin = 2.0
+
+[node name="Worm6" type="KinematicBody" parent="Prey" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 166.813, 16.7377, -261.288 )
+script = ExtResource( 2 )
+max_health = 5.0
+movement_speed = 0.05
+cowers = false
+blind = true
+grounded = true
+max_spin = 2.0
+
+[node name="Worm7" type="KinematicBody" parent="Prey" instance=ExtResource( 3 )]
+transform = Transform( -0.576732, 0, 0.816934, 0, 1, 0, -0.816934, 0, -0.576732, 270.248, 4.69736, -309.044 )
+script = ExtResource( 2 )
+max_health = 5.0
+movement_speed = 0.05
+cowers = false
+blind = true
+grounded = true
+max_spin = 2.0
+
+[node name="Worm8" type="KinematicBody" parent="Prey" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 235.739, 11.7781, -355.34 )
+script = ExtResource( 2 )
+max_health = 5.0
+movement_speed = 0.05
+cowers = false
+blind = true
+grounded = true
+max_spin = 2.0
+
+[node name="Worm9" type="KinematicBody" parent="Prey" instance=ExtResource( 3 )]
+transform = Transform( 0.884622, 0, -0.466309, 0, 1, 0, 0.466309, 0, 0.884622, 353.354, 12.3671, -499.026 )
+script = ExtResource( 2 )
+max_health = 5.0
+movement_speed = 0.05
+cowers = false
+blind = true
+grounded = true
+max_spin = 2.0
+
+[node name="Worm10" type="KinematicBody" parent="Prey" instance=ExtResource( 3 )]
+transform = Transform( 0.957551, 0, -0.288263, 0, 1, 0, 0.288263, 0, 0.957551, -73.127, -15.6929, 203.279 )
+script = ExtResource( 2 )
+max_health = 5.0
+movement_speed = 0.05
+cowers = false
+blind = true
+grounded = true
+max_spin = 2.0
+
+[node name="CrayFish8" type="KinematicBody" parent="Prey" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 270.584, 11.0025, -336.904 )
+script = ExtResource( 2 )
+max_health = 5.0
+food_value = 1.0
+movement_speed = 0.02
+rotation_speed = 2.0
+mesh_path = NodePath("CrayFish")
+cowers = false
+grounded = true
+max_spin = 2.0
+
+[node name="CrayFish9" type="KinematicBody" parent="Prey" instance=ExtResource( 6 )]
+transform = Transform( -0.95586, 0, 0.293823, 0, 1, 0, -0.293823, 0, -0.95586, 436.432, 15.8686, -751.387 )
+script = ExtResource( 2 )
+max_health = 5.0
+food_value = 1.0
+movement_speed = 0.02
+rotation_speed = 2.0
+mesh_path = NodePath("CrayFish")
+cowers = false
+grounded = true
+max_spin = 2.0
+
+[node name="CrayFish10" type="KinematicBody" parent="Prey" instance=ExtResource( 6 )]
+transform = Transform( -0.776761, 0, -0.629795, 0, 1, 0, 0.629795, 0, -0.776761, 337.211, 11.4036, -475.202 )
+script = ExtResource( 2 )
+max_health = 5.0
+food_value = 1.0
+movement_speed = 0.02
+rotation_speed = 2.0
+mesh_path = NodePath("CrayFish")
+cowers = false
+grounded = true
+max_spin = 2.0
+
+[node name="CrayFish11" type="KinematicBody" parent="Prey" instance=ExtResource( 6 )]
+transform = Transform( -0.857131, 0, -0.515098, 0, 1, 0, 0.515098, 0, -0.857131, 294.612, 1.7328, -349.125 )
+script = ExtResource( 2 )
+max_health = 5.0
+food_value = 1.0
+movement_speed = 0.02
+rotation_speed = 2.0
+mesh_path = NodePath("CrayFish")
+cowers = false
+grounded = true
+max_spin = 2.0
+
+[node name="CrayFish12" type="KinematicBody" parent="Prey" instance=ExtResource( 6 )]
+transform = Transform( -0.847576, 0, 0.530674, 0, 1, 0, -0.530674, 0, -0.847576, 398.016, 16.4505, -721.32 )
+script = ExtResource( 2 )
+max_health = 5.0
+food_value = 1.0
+movement_speed = 0.02
+rotation_speed = 2.0
+mesh_path = NodePath("CrayFish")
+cowers = false
+grounded = true
+max_spin = 2.0
+
+[node name="CrayFish13" type="KinematicBody" parent="Prey" instance=ExtResource( 6 )]
+transform = Transform( -0.993164, 0, -0.116723, 0, 1, 0, 0.116723, 0, -0.993164, -88.188, -1.62308, 435.796 )
+script = ExtResource( 2 )
+max_health = 5.0
+food_value = 1.0
+movement_speed = 0.02
+rotation_speed = 2.0
+mesh_path = NodePath("CrayFish")
+cowers = false
+grounded = true
+max_spin = 2.0
+
+[node name="CrayFish14" type="KinematicBody" parent="Prey" instance=ExtResource( 6 )]
+transform = Transform( 0.910099, 0, 0.414391, 0, 1, 0, -0.414391, 0, 0.910099, 34.5665, -8.86514, 450.405 )
+script = ExtResource( 2 )
+max_health = 5.0
+food_value = 1.0
+movement_speed = 0.02
+rotation_speed = 2.0
+mesh_path = NodePath("CrayFish")
+cowers = false
+grounded = true
+max_spin = 2.0
+
+[node name="Worm11" type="KinematicBody" parent="Prey" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 258.492, 32.7428, 756.856 )
+script = ExtResource( 2 )
+max_health = 5.0
+movement_speed = 0.05
+cowers = false
+blind = true
+grounded = true
+max_spin = 2.0
+
+[node name="Worm12" type="KinematicBody" parent="Prey" instance=ExtResource( 3 )]
+transform = Transform( -0.576732, 0, 0.816934, 0, 1, 0, -0.816934, 0, -0.576732, 303.384, 29.2955, 721.104 )
+script = ExtResource( 2 )
+max_health = 5.0
+movement_speed = 0.05
+cowers = false
+blind = true
+grounded = true
+max_spin = 2.0
+
+[node name="Worm13" type="KinematicBody" parent="Prey" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 324.346, 29.4732, 774.865 )
+script = ExtResource( 2 )
+max_health = 5.0
+movement_speed = 0.05
+cowers = false
+blind = true
+grounded = true
+max_spin = 2.0
+
+[node name="Worm14" type="KinematicBody" parent="Prey" instance=ExtResource( 3 )]
+transform = Transform( 0.884622, 0, -0.466309, 0, 1, 0, 0.466309, 0, 0.884622, 435.97, 12.0497, 775.004 )
+script = ExtResource( 2 )
+max_health = 5.0
+movement_speed = 0.05
+cowers = false
+blind = true
+grounded = true
+max_spin = 2.0
+
+[node name="Worm15" type="KinematicBody" parent="Prey" instance=ExtResource( 3 )]
+transform = Transform( 0.957551, 0, -0.288263, 0, 1, 0, 0.288263, 0, 0.957551, 464.459, 8.07081, 817.655 )
+script = ExtResource( 2 )
+max_health = 5.0
+movement_speed = 0.05
+cowers = false
+blind = true
+grounded = true
+max_spin = 2.0
+
+[node name="CrayFish15" type="KinematicBody" parent="Prey" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 88.5517, 19.8987, 634.242 )
+script = ExtResource( 2 )
+max_health = 5.0
+food_value = 1.0
+movement_speed = 0.02
+rotation_speed = 2.0
+mesh_path = NodePath("CrayFish")
+cowers = false
+grounded = true
+max_spin = 2.0
+
+[node name="CrayFish16" type="KinematicBody" parent="Prey" instance=ExtResource( 6 )]
+transform = Transform( -0.95586, 0, 0.293823, 0, 1, 0, -0.293823, 0, -0.95586, 550.06, 11.0213, 1026.12 )
+script = ExtResource( 2 )
+max_health = 5.0
+food_value = 1.0
+movement_speed = 0.02
+rotation_speed = 2.0
+mesh_path = NodePath("CrayFish")
+cowers = false
+grounded = true
+max_spin = 2.0
+
+[node name="CrayFish17" type="KinematicBody" parent="Prey" instance=ExtResource( 6 )]
+transform = Transform( -0.776761, 0, -0.629795, 0, 1, 0, 0.629795, 0, -0.776761, 550.834, 27.0295, 1125.73 )
+script = ExtResource( 2 )
+max_health = 5.0
+food_value = 1.0
+movement_speed = 0.02
+rotation_speed = 2.0
+mesh_path = NodePath("CrayFish")
+cowers = false
+grounded = true
+max_spin = 2.0
+
+[node name="CrayFish18" type="KinematicBody" parent="Prey" instance=ExtResource( 6 )]
+transform = Transform( -0.857131, 0, -0.515098, 0, 1, 0, 0.515098, 0, -0.857131, 556.478, 8.73449, 973.712 )
+script = ExtResource( 2 )
+max_health = 5.0
+food_value = 1.0
+movement_speed = 0.02
+rotation_speed = 2.0
+mesh_path = NodePath("CrayFish")
+cowers = false
+grounded = true
+max_spin = 2.0
+
+[node name="Worm16" type="KinematicBody" parent="Prey" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 264.129, 6.13985, -271.145 )
+script = ExtResource( 2 )
+max_health = 5.0
+movement_speed = 0.05
+cowers = false
+blind = true
+grounded = true
+max_spin = 2.0
+
+[node name="Worm17" type="KinematicBody" parent="Prey" instance=ExtResource( 3 )]
+transform = Transform( -0.576732, 0, 0.816934, 0, 1, 0, -0.816934, 0, -0.576732, 119.67, 17.9318, -226.027 )
+script = ExtResource( 2 )
+max_health = 5.0
+movement_speed = 0.05
+cowers = false
+blind = true
+grounded = true
+max_spin = 2.0
+
+[node name="Worm18" type="KinematicBody" parent="Prey" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 267.467, 9.51419, -373.682 )
+script = ExtResource( 2 )
+max_health = 5.0
+movement_speed = 0.05
+cowers = false
+blind = true
+grounded = true
+max_spin = 2.0
+
+[node name="Worm19" type="KinematicBody" parent="Prey" instance=ExtResource( 3 )]
+transform = Transform( 0.884622, 0, -0.466309, 0, 1, 0, 0.466309, 0, 0.884622, 378.3, 12.858, -435.359 )
+script = ExtResource( 2 )
+max_health = 5.0
+movement_speed = 0.05
+cowers = false
+blind = true
+grounded = true
+max_spin = 2.0
+
+[node name="Worm20" type="KinematicBody" parent="Prey" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.16132, -2.47437, -32.7025 )
+script = ExtResource( 2 )
+max_health = 5.0
+movement_speed = 0.05
+cowers = false
+blind = true
+grounded = true
+max_spin = 2.0
+
+[node name="Worm21" type="KinematicBody" parent="Prey" instance=ExtResource( 3 )]
+transform = Transform( -0.576732, 0, 0.816934, 0, 1, 0, -0.816934, 0, -0.576732, -35.6874, -9.33457, 58.4572 )
+script = ExtResource( 2 )
+max_health = 5.0
+movement_speed = 0.05
+cowers = false
+blind = true
+grounded = true
+max_spin = 2.0
+
+[node name="Worm22" type="KinematicBody" parent="Prey" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 31.6571, -11.7473, 88.0341 )
+script = ExtResource( 2 )
+max_health = 5.0
+movement_speed = 0.05
+cowers = false
+blind = true
+grounded = true
+max_spin = 2.0
+
+[node name="Worm23" type="KinematicBody" parent="Prey" instance=ExtResource( 3 )]
+transform = Transform( 0.884622, 0, -0.466309, 0, 1, 0, 0.466309, 0, 0.884622, -79.2383, -10.9807, 144.511 )
+script = ExtResource( 2 )
+max_health = 5.0
+movement_speed = 0.05
+cowers = false
+blind = true
+grounded = true
+max_spin = 2.0
+
+[node name="Worm24" type="KinematicBody" parent="Prey" instance=ExtResource( 3 )]
+transform = Transform( 0.957551, 0, -0.288263, 0, 1, 0, 0.288263, 0, 0.957551, -66.1171, -16.9818, 199.64 )
+script = ExtResource( 2 )
+max_health = 5.0
+movement_speed = 0.05
+cowers = false
+blind = true
+grounded = true
+max_spin = 2.0
+
+[node name="CrayFish19" type="KinematicBody" parent="Prey" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 35.6979, 0.379871, -71.8812 )
+script = ExtResource( 2 )
+max_health = 5.0
+food_value = 1.0
+movement_speed = 0.02
+rotation_speed = 2.0
+mesh_path = NodePath("CrayFish")
+cowers = false
+grounded = true
+max_spin = 2.0
+
+[node name="CrayFish20" type="KinematicBody" parent="Prey" instance=ExtResource( 6 )]
+transform = Transform( -0.95586, 0, 0.293823, 0, 1, 0, -0.293823, 0, -0.95586, 34.3666, 0.272881, -70.1789 )
+script = ExtResource( 2 )
+max_health = 5.0
+food_value = 1.0
+movement_speed = 0.02
+rotation_speed = 2.0
+mesh_path = NodePath("CrayFish")
+cowers = false
+grounded = true
+max_spin = 2.0
+
+[node name="CrayFish21" type="KinematicBody" parent="Prey" instance=ExtResource( 6 )]
+transform = Transform( -0.776761, 0, -0.629795, 0, 1, 0, 0.629795, 0, -0.776761, 35.7887, 0.318631, -70.5454 )
+script = ExtResource( 2 )
+max_health = 5.0
+food_value = 1.0
+movement_speed = 0.02
+rotation_speed = 2.0
+mesh_path = NodePath("CrayFish")
+cowers = false
+grounded = true
+max_spin = 2.0
+
+[node name="CrayFish22" type="KinematicBody" parent="Prey" instance=ExtResource( 6 )]
+transform = Transform( -0.857131, 0, -0.515098, 0, 1, 0, 0.515098, 0, -0.857131, 35.314, 0.272881, -69.68 )
+script = ExtResource( 2 )
+max_health = 5.0
+food_value = 1.0
+movement_speed = 0.02
+rotation_speed = 2.0
+mesh_path = NodePath("CrayFish")
+cowers = false
+grounded = true
+max_spin = 2.0
+
+[node name="CrayFish23" type="KinematicBody" parent="Prey" instance=ExtResource( 6 )]
+transform = Transform( -0.847576, 0, 0.530674, 0, 1, 0, -0.530674, 0, -0.847576, 33.5796, 0.597801, -71.9337 )
+script = ExtResource( 2 )
+max_health = 5.0
+food_value = 1.0
+movement_speed = 0.02
+rotation_speed = 2.0
+mesh_path = NodePath("CrayFish")
+cowers = false
+grounded = true
+max_spin = 2.0
+
+[node name="CrayFish24" type="KinematicBody" parent="Prey" instance=ExtResource( 6 )]
+transform = Transform( -0.993164, 0, -0.116723, 0, 1, 0, 0.116723, 0, -0.993164, 34.947, 0.496841, -71.3887 )
+script = ExtResource( 2 )
+max_health = 5.0
+food_value = 1.0
+movement_speed = 0.02
+rotation_speed = 2.0
+mesh_path = NodePath("CrayFish")
+cowers = false
+grounded = true
+max_spin = 2.0
+
+[node name="CrayFish25" type="KinematicBody" parent="Prey" instance=ExtResource( 6 )]
+transform = Transform( 0.910099, 0, 0.414391, 0, 1, 0, -0.414391, 0, 0.910099, -8.64464, -22.0676, 173.04 )
+script = ExtResource( 2 )
+max_health = 5.0
+food_value = 1.0
+movement_speed = 0.02
+rotation_speed = 2.0
+mesh_path = NodePath("CrayFish")
+cowers = false
+grounded = true
+max_spin = 2.0
+
+[node name="Worm25" type="KinematicBody" parent="Prey" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 173.823, 15.4488, -264.927 )
+script = ExtResource( 2 )
+max_health = 5.0
+movement_speed = 0.05
+cowers = false
+blind = true
+grounded = true
+max_spin = 2.0
+
+[node name="Worm26" type="KinematicBody" parent="Prey" instance=ExtResource( 3 )]
+transform = Transform( -0.576732, 0, 0.816934, 0, 1, 0, -0.816934, 0, -0.576732, 277.258, 3.40848, -312.683 )
+script = ExtResource( 2 )
+max_health = 5.0
+movement_speed = 0.05
+cowers = false
+blind = true
+grounded = true
+max_spin = 2.0
+
+[node name="Worm27" type="KinematicBody" parent="Prey" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 242.749, 10.4892, -358.979 )
+script = ExtResource( 2 )
+max_health = 5.0
+movement_speed = 0.05
+cowers = false
+blind = true
+grounded = true
+max_spin = 2.0
+
+[node name="Worm28" type="KinematicBody" parent="Prey" instance=ExtResource( 3 )]
+transform = Transform( 0.884622, 0, -0.466309, 0, 1, 0, 0.466309, 0, 0.884622, 360.364, 11.0782, -502.665 )
+script = ExtResource( 2 )
+max_health = 5.0
+movement_speed = 0.05
+cowers = false
+blind = true
+grounded = true
+max_spin = 2.0
+
+[node name="Worm29" type="KinematicBody" parent="Prey" instance=ExtResource( 3 )]
+transform = Transform( 0.957551, 0, -0.288263, 0, 1, 0, 0.288263, 0, 0.957551, -66.1171, -16.9818, 199.64 )
+script = ExtResource( 2 )
+max_health = 5.0
+movement_speed = 0.05
+cowers = false
+blind = true
+grounded = true
+max_spin = 2.0
+
+[node name="CrayFish26" type="KinematicBody" parent="Prey" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 277.594, 9.71362, -340.543 )
+script = ExtResource( 2 )
+max_health = 5.0
+food_value = 1.0
+movement_speed = 0.02
+rotation_speed = 2.0
+mesh_path = NodePath("CrayFish")
+cowers = false
+grounded = true
+max_spin = 2.0
+
+[node name="CrayFish27" type="KinematicBody" parent="Prey" instance=ExtResource( 6 )]
+transform = Transform( -0.95586, 0, 0.293823, 0, 1, 0, -0.293823, 0, -0.95586, 443.442, 14.5797, -755.026 )
+script = ExtResource( 2 )
+max_health = 5.0
+food_value = 1.0
+movement_speed = 0.02
+rotation_speed = 2.0
+mesh_path = NodePath("CrayFish")
+cowers = false
+grounded = true
+max_spin = 2.0
+
+[node name="CrayFish28" type="KinematicBody" parent="Prey" instance=ExtResource( 6 )]
+transform = Transform( -0.776761, 0, -0.629795, 0, 1, 0, 0.629795, 0, -0.776761, 344.221, 10.1147, -478.841 )
+script = ExtResource( 2 )
+max_health = 5.0
+food_value = 1.0
+movement_speed = 0.02
+rotation_speed = 2.0
+mesh_path = NodePath("CrayFish")
+cowers = false
+grounded = true
+max_spin = 2.0
+
+[node name="CrayFish29" type="KinematicBody" parent="Prey" instance=ExtResource( 6 )]
+transform = Transform( -0.857131, 0, -0.515098, 0, 1, 0, 0.515098, 0, -0.857131, 301.622, 0.443921, -352.764 )
+script = ExtResource( 2 )
+max_health = 5.0
+food_value = 1.0
+movement_speed = 0.02
+rotation_speed = 2.0
+mesh_path = NodePath("CrayFish")
+cowers = false
+grounded = true
+max_spin = 2.0
+
+[node name="CrayFish30" type="KinematicBody" parent="Prey" instance=ExtResource( 6 )]
+transform = Transform( -0.847576, 0, 0.530674, 0, 1, 0, -0.530674, 0, -0.847576, 405.026, 15.1616, -724.959 )
+script = ExtResource( 2 )
+max_health = 5.0
+food_value = 1.0
+movement_speed = 0.02
+rotation_speed = 2.0
+mesh_path = NodePath("CrayFish")
+cowers = false
+grounded = true
+max_spin = 2.0
+
+[node name="CrayFish31" type="KinematicBody" parent="Prey" instance=ExtResource( 6 )]
+transform = Transform( -0.993164, 0, -0.116723, 0, 1, 0, 0.116723, 0, -0.993164, -81.1781, -2.91196, 432.157 )
+script = ExtResource( 2 )
+max_health = 5.0
+food_value = 1.0
+movement_speed = 0.02
+rotation_speed = 2.0
+mesh_path = NodePath("CrayFish")
+cowers = false
+grounded = true
+max_spin = 2.0
+
+[node name="CrayFish32" type="KinematicBody" parent="Prey" instance=ExtResource( 6 )]
+transform = Transform( 0.910099, 0, 0.414391, 0, 1, 0, -0.414391, 0, 0.910099, 41.5764, -10.154, 446.766 )
+script = ExtResource( 2 )
+max_health = 5.0
+food_value = 1.0
+movement_speed = 0.02
+rotation_speed = 2.0
+mesh_path = NodePath("CrayFish")
+cowers = false
+grounded = true
+max_spin = 2.0
+
+[node name="Worm30" type="KinematicBody" parent="Prey" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 265.502, 31.4539, 753.217 )
+script = ExtResource( 2 )
+max_health = 5.0
+movement_speed = 0.05
+cowers = false
+blind = true
+grounded = true
+max_spin = 2.0
+
+[node name="Worm31" type="KinematicBody" parent="Prey" instance=ExtResource( 3 )]
+transform = Transform( -0.576732, 0, 0.816934, 0, 1, 0, -0.816934, 0, -0.576732, 310.394, 28.0066, 717.465 )
+script = ExtResource( 2 )
+max_health = 5.0
+movement_speed = 0.05
+cowers = false
+blind = true
+grounded = true
+max_spin = 2.0
+
+[node name="Worm32" type="KinematicBody" parent="Prey" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 331.356, 28.1843, 771.226 )
+script = ExtResource( 2 )
+max_health = 5.0
+movement_speed = 0.05
+cowers = false
+blind = true
+grounded = true
+max_spin = 2.0
+
+[node name="Worm33" type="KinematicBody" parent="Prey" instance=ExtResource( 3 )]
+transform = Transform( 0.884622, 0, -0.466309, 0, 1, 0, 0.466309, 0, 0.884622, 442.98, 10.7608, 771.365 )
+script = ExtResource( 2 )
+max_health = 5.0
+movement_speed = 0.05
+cowers = false
+blind = true
+grounded = true
+max_spin = 2.0
+
+[node name="Worm34" type="KinematicBody" parent="Prey" instance=ExtResource( 3 )]
+transform = Transform( 0.957551, 0, -0.288263, 0, 1, 0, 0.288263, 0, 0.957551, 471.469, 6.78193, 814.016 )
+script = ExtResource( 2 )
+max_health = 5.0
+movement_speed = 0.05
+cowers = false
+blind = true
+grounded = true
+max_spin = 2.0
+
+[node name="CrayFish33" type="KinematicBody" parent="Prey" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 95.5616, 18.6098, 630.603 )
+script = ExtResource( 2 )
+max_health = 5.0
+food_value = 1.0
+movement_speed = 0.02
+rotation_speed = 2.0
+mesh_path = NodePath("CrayFish")
+cowers = false
+grounded = true
+max_spin = 2.0
+
+[node name="CrayFish34" type="KinematicBody" parent="Prey" instance=ExtResource( 6 )]
+transform = Transform( -0.95586, 0, 0.293823, 0, 1, 0, -0.293823, 0, -0.95586, 557.07, 9.73242, 1022.48 )
+script = ExtResource( 2 )
+max_health = 5.0
+food_value = 1.0
+movement_speed = 0.02
+rotation_speed = 2.0
+mesh_path = NodePath("CrayFish")
+cowers = false
+grounded = true
+max_spin = 2.0
+
+[node name="CrayFish35" type="KinematicBody" parent="Prey" instance=ExtResource( 6 )]
+transform = Transform( -0.776761, 0, -0.629795, 0, 1, 0, 0.629795, 0, -0.776761, 557.844, 25.7406, 1122.09 )
+script = ExtResource( 2 )
+max_health = 5.0
+food_value = 1.0
+movement_speed = 0.02
+rotation_speed = 2.0
+mesh_path = NodePath("CrayFish")
+cowers = false
+grounded = true
+max_spin = 2.0
+
+[node name="CrayFish36" type="KinematicBody" parent="Prey" instance=ExtResource( 6 )]
+transform = Transform( -0.857131, 0, -0.515098, 0, 1, 0, 0.515098, 0, -0.857131, 563.488, 7.44561, 970.073 )
+script = ExtResource( 2 )
+max_health = 5.0
+food_value = 1.0
+movement_speed = 0.02
+rotation_speed = 2.0
+mesh_path = NodePath("CrayFish")
+cowers = false
+grounded = true
+max_spin = 2.0
+
+[node name="Worm35" type="KinematicBody" parent="Prey" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 271.139, 4.85097, -274.784 )
+script = ExtResource( 2 )
+max_health = 5.0
+movement_speed = 0.05
+cowers = false
+blind = true
+grounded = true
+max_spin = 2.0
+
+[node name="Worm36" type="KinematicBody" parent="Prey" instance=ExtResource( 3 )]
+transform = Transform( -0.576732, 0, 0.816934, 0, 1, 0, -0.816934, 0, -0.576732, 126.68, 16.643, -229.666 )
+script = ExtResource( 2 )
+max_health = 5.0
+movement_speed = 0.05
+cowers = false
+blind = true
+grounded = true
+max_spin = 2.0
+
+[node name="Worm37" type="KinematicBody" parent="Prey" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 274.476, 8.22531, -377.321 )
+script = ExtResource( 2 )
+max_health = 5.0
+movement_speed = 0.05
+cowers = false
+blind = true
+grounded = true
+max_spin = 2.0
+
+[node name="Worm38" type="KinematicBody" parent="Prey" instance=ExtResource( 3 )]
+transform = Transform( 0.884622, 0, -0.466309, 0, 1, 0, 0.466309, 0, 0.884622, 385.31, 11.5691, -438.998 )
+script = ExtResource( 2 )
+max_health = 5.0
+movement_speed = 0.05
+cowers = false
+blind = true
+grounded = true
+max_spin = 2.0

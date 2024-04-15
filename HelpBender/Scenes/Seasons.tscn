@@ -60,7 +60,6 @@ scale = Vector2( 4.5, 4.5 )
 [node name="Pollution" type="Node2D" parent="Hazard icons"]
 visible = false
 position = Vector2( 0, -48.2222 )
-scale = Vector2( 1, 1 )
 
 [node name="Label" type="Label" parent="Hazard icons/Pollution"]
 margin_left = -75.6
@@ -90,7 +89,6 @@ texture = ExtResource( 5 )
 
 [node name="Visibility" type="Node2D" parent="Hazard icons"]
 visible = false
-scale = Vector2( 1, 1 )
 
 [node name="Label" type="Label" parent="Hazard icons/Visibility"]
 margin_left = -75.6
@@ -121,7 +119,6 @@ texture = ExtResource( 5 )
 [node name="Hunger" type="Node2D" parent="Hazard icons"]
 visible = false
 position = Vector2( 1.39999, 47.8 )
-scale = Vector2( 1, 1 )
 
 [node name="hungering icon" type="Sprite" parent="Hazard icons/Hunger"]
 position = Vector2( -102.183, 17.2206 )
@@ -152,7 +149,6 @@ autowrap = true
 [node name="Slow" type="Node2D" parent="Hazard icons"]
 visible = false
 position = Vector2( 0.799988, 94.6 )
-scale = Vector2( 1, 1 )
 
 [node name="slow icon" type="Sprite" parent="Hazard icons/Slow"]
 position = Vector2( -101.383, 19.0902 )
