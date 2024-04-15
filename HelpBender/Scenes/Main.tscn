@@ -1104,6 +1104,7 @@ size = Vector2( 500, 500 )
 [node name="Main" type="Spatial"]
 script = ExtResource( 7 )
 water_height = 67.0
+load_dist = 150.0
 
 [node name="ParticleOverlay" type="Spatial" parent="."]
 
@@ -1116,7 +1117,7 @@ color = Color( 0, 0.564, 0.94, 0.0980392 )
 polygon = PoolVector2Array( 0, 0, 1028, 0, 1028, 600, 0, 600 )
 
 [node name="Player" type="KinematicBody" parent="."]
-transform = Transform( 0.999083, 0, 0.0428172, 0, 1, 0, -0.0428173, 0, 0.999082, 2.97213, -3.36284, 29.4365 )
+transform = Transform( 0.841652, 0, 0.54002, 0, 1, 0, -0.54002, 0, 0.841651, 40.1944, -5.30016, 12.12 )
 script = ExtResource( 3 )
 heal_speed = 0.5
 food_drain = 0.2
@@ -1138,7 +1139,7 @@ cast_to = Vector3( 0, 0, 4 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4 )
 environment = SubResource( 33 )
 current = true
-far = 1000.0
+far = 700.0
 
 [node name="WaterPollution" type="Particles" parent="Player/Camera/Camera"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.35611, -4 )
