@@ -17,7 +17,7 @@ color = Color( 0, 0.564, 0.94, 0.0980392 )
 polygon = PoolVector2Array( 0, 0, 1028, 0, 1028, 600, 0, 600 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-transform = Transform( 0.00281021, 0, -0.999995, 0, 1, 0, 0.999996, 0, 0.00281069, 40.0006, -5.30016, 12.6536 )
+transform = Transform( 0.526036, 0, 0.850462, 0, 1, 0, -0.850462, 0, 0.526035, 40.3263, -5.30016, 13.4333 )
 
 [node name="Map" parent="." instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 184.404, 74.9089, 150.669 )
@@ -25,7 +25,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 184.404, 74.9089, 150.669 )
 [node name="CanvasLayer" parent="." instance=ExtResource( 15 )]
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 300.0
 autostart = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
