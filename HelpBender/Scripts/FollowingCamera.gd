@@ -4,17 +4,15 @@ export var distance : float = 8
 export var max_look : float = 50
 export var mouse_sens : float = 0.5
 
+onready var player := $".."
 
-var player
 var forward : Vector3
 
 func _ready():
-	player = $".."
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	$RayCast.cast_to.z = distance
 
-func _process(_delta):
-	
+func _process(_delta : float):
 	var cam = $Camera
 	cam.translation.z = distance
 	if $RayCast.is_colliding():
@@ -28,7 +26,7 @@ func _process(_delta):
 	elif rotation_degrees.y<-180:
 		rotation_degrees.y += 360
 
-func water_visibility(cant_see):
+func water_visibility(cant_see : bool):
 	var cam = $Camera
 	$"../UI/Hazard icons/cant see icon".visible = cant_see 
 	if (cant_see):
@@ -40,7 +38,7 @@ func water_visibility(cant_see):
 		cam.environment.fog_depth_begin = 30
 		cam.environment.fog_depth_end = 100
 
-func _input(event):
+func _input(event : InputEvent):
 	if event is InputEventMouseMotion:
 		rotation_degrees.y += -event.relative.x*mouse_sens
 		var changev = -event.relative.y*mouse_sens

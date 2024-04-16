@@ -1,15 +1,16 @@
 [gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Scripts/Seasons.gd" type="Script" id=1]
-[ext_resource path="res://hui_helpbender.png" type="Texture" id=2]
-[ext_resource path="res://seasons.png" type="Texture" id=3]
-[ext_resource path="res://Misrow.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://UI Textures/hui_helpbender.png" type="Texture" id=2]
+[ext_resource path="res://Misc2D/seasons.png" type="Texture" id=3]
+[ext_resource path="res://Fonts/Misrow.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://UI Textures/not eye.png" type="Texture" id=5]
 [ext_resource path="res://UI Textures/not slow.png" type="Texture" id=6]
 [ext_resource path="res://UI Textures/not hunger.png" type="Texture" id=7]
-[ext_resource path="res://Roboto-Regular.ttf" type="DynamicFontData" id=8]
-[ext_resource path="res://Roboto-Bold.ttf" type="DynamicFontData" id=9]
+[ext_resource path="res://Fonts/Roboto-Regular.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://Fonts/Roboto-Bold.ttf" type="DynamicFontData" id=9]
 [ext_resource path="res://UI Textures/hazard-1.png" type="Texture" id=10]
+
 
 [sub_resource type="DynamicFont" id=1]
 size = 200

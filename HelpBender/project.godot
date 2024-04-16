@@ -28,7 +28,7 @@ _global_script_class_icons={
 
 config/name="HelpBender"
 run/main_scene="res://Scenes/MenuMain.tscn"
-config/icon="res://icon.png"
+config/icon="res://Misc2D/icon.png"
 
 [autoload]
 
