@@ -1,23 +1,13 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=19 format=2]
 
-[ext_resource path="res://Misrow.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Scenes/UI.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=2]
-[ext_resource path="res://Scripts/UI.gd" type="Script" id=3]
 [ext_resource path="res://Scripts/Sound.gd" type="Script" id=4]
-[ext_resource path="res://UI Textures/not hunger.png" type="Texture" id=5]
 [ext_resource path="res://SFX/underwater-movement- v3.mp3" type="AudioStream" id=6]
 [ext_resource path="res://SFX/Water ambientv3.mp3" type="AudioStream" id=7]
 [ext_resource path="res://SFX/punch-boxingv2.mp3" type="AudioStream" id=8]
 [ext_resource path="res://SFX/bones-breaking-v1.mp3" type="AudioStream" id=9]
-[ext_resource path="res://UI Textures/hunger bar.png" type="Texture" id=10]
-[ext_resource path="res://UI Textures/health bar.png" type="Texture" id=11]
-[ext_resource path="res://UI Textures/hui helpbender.png" type="Texture" id=12]
-[ext_resource path="res://UI Textures/not slow.png" type="Texture" id=13]
-[ext_resource path="res://UI Textures/not eye.png" type="Texture" id=14]
-[ext_resource path="res://UI Textures/hazard-1.png" type="Texture" id=15]
-[ext_resource path="res://Scripts/AnimationHandlers/HellbenderAnimations.gd" type="Script" id=16]
 [ext_resource path="res://Scripts/FollowingCamera.gd" type="Script" id=17]
-[ext_resource path="res://Roboto-Regular.ttf" type="DynamicFontData" id=18]
 [ext_resource path="res://3D models/Scenes/Hellbender.tscn" type="PackedScene" id=19]
 
 [sub_resource type="ProceduralSky" id=32]
@@ -77,19 +67,8 @@ extents = Vector3( 0.4, 0.2, 1.7 )
 [sub_resource type="BoxShape" id=41]
 extents = Vector3( 0.5, 0.35, 0.6 )
 
-[sub_resource type="DynamicFont" id=48]
-size = 48
-font_data = ExtResource( 1 )
-
-[sub_resource type="Theme" id=47]
-default_font = SubResource( 48 )
-
-[sub_resource type="DynamicFont" id=49]
-size = 64
-font_data = ExtResource( 18 )
-
 [node name="Player" type="KinematicBody"]
-transform = Transform( 0.841652, 0, 0.54002, 0, 1, 0, -0.54002, 0, 0.841651, 40.1944, -5.30016, 12.12 )
+transform = Transform( 0.841652, 0, 0.54002, 0, 1, 0, -0.54002, 0, 0.841651, 0, 0, 0 )
 script = ExtResource( 2 )
 heal_speed = 0.5
 food_drain = 0.2
@@ -137,9 +116,8 @@ cast_to = Vector3( 0, -4, 0 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.017, 0, -0.368 )
 shape = SubResource( 34 )
 
-[node name="Hellbender" type="Spatial" parent="." instance=ExtResource( 19 )]
-transform = Transform( -0.25, 0, 2.14204e-08, 0, 0.25, 0, -2.14204e-08, 0, -0.25, 0, -0.224, 0 )
-script = ExtResource( 16 )
+[node name="Hellbender" parent="." instance=ExtResource( 19 )]
+transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, -0.224, 0 )
 
 [node name="AttackArea" type="Area" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.24533 )
@@ -170,77 +148,6 @@ volume_db = -10.0
 stream = ExtResource( 6 )
 volume_db = -15.0
 
-[node name="UI" type="Node2D" parent="."]
-scale = Vector2( 2.06467, 1.77304 )
-script = ExtResource( 3 )
-
-[node name="Empty UI" type="Node2D" parent="UI"]
-
-[node name="Sprite" type="Sprite" parent="UI/Empty UI"]
-position = Vector2( 147.693, 487.473 )
-scale = Vector2( 0.159594, 0.159594 )
-texture = ExtResource( 12 )
-
-[node name="Health bar" type="Node2D" parent="UI"]
-
-[node name="Health" type="Sprite" parent="UI/Health bar"]
-position = Vector2( 81.6933, 501.473 )
-scale = Vector2( 0.038805, 0.0388798 )
-texture = ExtResource( 11 )
-centered = false
-
-[node name="Hunger bar" type="Node2D" parent="UI"]
-
-[node name="Hunger" type="Sprite" parent="UI/Hunger bar"]
-position = Vector2( 81.6934, 541.473 )
-scale = Vector2( 0.0386243, 0.0386386 )
-texture = ExtResource( 10 )
-centered = false
-
-[node name="Hazard icons" type="Node2D" parent="UI"]
-
-[node name="slow icon" type="Sprite" parent="UI/Hazard icons"]
-visible = false
-position = Vector2( 230.512, 474.617 )
-scale = Vector2( 0.0720253, 0.0720253 )
-texture = ExtResource( 13 )
-
-[node name="hungering icon" type="Sprite" parent="UI/Hazard icons"]
-visible = false
-position = Vector2( 174.846, 474.889 )
-scale = Vector2( 0.218841, 0.218841 )
-texture = ExtResource( 5 )
-
-[node name="cant see icon" type="Sprite" parent="UI/Hazard icons"]
-visible = false
-position = Vector2( 118.179, 474.889 )
-scale = Vector2( 0.0987492, 0.0987492 )
-texture = ExtResource( 14 )
-
-[node name="pollution" type="Sprite" parent="UI/Hazard icons"]
-visible = false
-position = Vector2( 54.7303, 474.891 )
-scale = Vector2( 0.167146, 0.167146 )
-texture = ExtResource( 15 )
-
-[node name="Control" type="Control" parent="UI"]
-margin_right = 40.0
-margin_bottom = 40.0
-
-[node name="season" type="Label" parent="UI/Control"]
-margin_left = 94.446
-margin_top = 406.645
-margin_right = 257.446
-margin_bottom = 451.645
-theme = SubResource( 47 )
-
-[node name="RichTextLabel" type="RichTextLabel" parent="UI"]
-margin_left = 12.5928
-margin_top = 18.0481
-margin_right = 740.593
-margin_bottom = 106.048
-rect_scale = Vector2( 0.5, 0.5 )
-custom_fonts/normal_font = SubResource( 49 )
-text = "Time left: 300s"
+[node name="UI" parent="." instance=ExtResource( 1 )]
 
 [connection signal="timeout" from="AttackTimer" to="." method="_on_AttackTimer_timeout"]
