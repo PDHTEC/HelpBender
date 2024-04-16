@@ -19,6 +19,7 @@ color = Color( 0, 0.564, 0.94, 0.0980392 )
 polygon = PoolVector2Array( 0, 0, 1028, 0, 1028, 600, 0, 600 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
+transform = Transform( 0.841652, 0, 0.54002, 0, 1, 0, -0.54002, 0, 0.841651, 40.1944, -5.30016, 12.12 )
 
 [node name="Map_1" parent="." instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 184.404, 74.9089, 150.669 )
