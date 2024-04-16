@@ -10,7 +10,7 @@ func set_animation(animation_in : String, speed : float = 1):
 	animation = animation_in
 
 func set_attacking(state : bool):
-	$AnimationTree.set("parameters/Attack_shot/active",state)
+	$AnimationTree.set("parameters/Hurt_shot/active",state)
 
 func set_hurting(state : bool):
 	$AnimationTree.set("parameters/Hurt_shot/active",state)

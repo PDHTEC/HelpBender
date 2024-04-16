@@ -605,7 +605,7 @@ node_connections = [ "output", 0, "Hurt_shot", "Attack_shot", 0, "animation_spee
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=18]
 
-[node name="BrownTrout" type="Spatial"]
+[node name="BrownTrout2" type="Spatial"]
 script = ExtResource( 2 )
 
 [node name="Armature" type="Spatial" parent="."]
