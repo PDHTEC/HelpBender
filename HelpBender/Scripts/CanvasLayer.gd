@@ -5,7 +5,7 @@ func _ready():
 	get_tree().paused = false
 	visible = false
 
-func _process(delta):
+func _process(_delta):
 	pause_mode=Node.PAUSE_MODE_PROCESS
 	if get_tree().paused:
 		visible=true

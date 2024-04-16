@@ -13,3 +13,4 @@ func _ready():
 func _process(_delta):
 	$"Health bar/Health".scale.x= ($"..".health/$"..".max_health)*start_scale
 	$"Hunger bar/Hunger".scale.x= ($"..".food/$"..".max_food)*start_scale
+	$RichTextLabel.text = "Time left: "+str(int($"../../Timer".time_left))+"s"
