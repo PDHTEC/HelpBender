@@ -1,6 +1,6 @@
 extends Spatial
 
-var animation = "idle"
+var animation : String = "idle"
 
 func set_animation(animation_in : String, speed : float = 1):
 	$AnimationTree.set("parameters/movement/conditions/swim",false)
