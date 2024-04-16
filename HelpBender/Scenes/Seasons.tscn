@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Scripts/Seasons.gd" type="Script" id=1]
 [ext_resource path="res://hui_helpbender.png" type="Texture" id=2]
@@ -15,12 +15,20 @@
 size = 200
 font_data = ExtResource( 4 )
 
+[sub_resource type="DynamicFont" id=5]
+size = 75
+font_data = ExtResource( 8 )
+
 [sub_resource type="DynamicFont" id=2]
 size = 40
 font_data = ExtResource( 9 )
 
 [sub_resource type="DynamicFont" id=3]
 size = 20
+font_data = ExtResource( 8 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 50
 font_data = ExtResource( 8 )
 
 [node name="Seasons" type="Node2D"]
@@ -50,8 +58,18 @@ custom_fonts/font = SubResource( 1 )
 text = "PLACEHOLDER"
 align = 1
 
+[node name="Continue" type="Label" parent="."]
+visible = false
+margin_left = 32.0
+margin_top = 402.0
+margin_right = 939.0
+margin_bottom = 503.0
+rect_pivot_offset = Vector2( 939, 82 )
+custom_fonts/font = SubResource( 5 )
+text = "Press Space to continue"
+
 [node name="Timer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 3.0
 autostart = true
 
 [node name="Hazard icons" type="Node2D" parent="."]
@@ -59,28 +77,27 @@ position = Vector2( 1499, 451 )
 scale = Vector2( 4.5, 4.5 )
 
 [node name="Pollution" type="Node2D" parent="Hazard icons"]
-visible = false
 position = Vector2( 0, -48.2222 )
 
 [node name="Label" type="Label" parent="Hazard icons/Pollution"]
-margin_left = -75.6
-margin_top = -6.00002
-margin_right = 314.4
-margin_bottom = 65.0
+margin_left = -75.1111
+margin_top = -9.11114
+margin_right = 314.889
+margin_bottom = 61.8889
 rect_scale = Vector2( 0.4, 0.4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 2 )
 text = "Constant damage"
 
 [node name="Label2" type="Label" parent="Hazard icons/Pollution"]
-margin_left = -73.0
-margin_top = 10.0
-margin_right = 313.0
-margin_bottom = 88.0
+margin_left = -73.1111
+margin_top = 8.44443
+margin_right = 312.889
+margin_bottom = 86.4444
 rect_scale = Vector2( 0.4, 0.4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 3 )
-text = "A combination of many different pollutions that are now found in the water cause damage to DNA and internal organs"
+text = "A dam has been installed further up the river, causing decreaed oxygen in the water. You can barely breathe."
 autowrap = true
 
 [node name="Hazard-1" type="Sprite" parent="Hazard icons/Pollution"]
@@ -89,23 +106,22 @@ scale = Vector2( 0.15, 0.15 )
 texture = ExtResource( 10 )
 
 [node name="Visibility" type="Node2D" parent="Hazard icons"]
-visible = false
 
 [node name="Label" type="Label" parent="Hazard icons/Visibility"]
-margin_left = -75.6
-margin_top = -6.00002
-margin_right = 314.4
-margin_bottom = 65.0
+margin_left = -75.1111
+margin_top = -9.11113
+margin_right = 314.889
+margin_bottom = 61.8889
 rect_scale = Vector2( 0.4, 0.4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 2 )
 text = "Vision is shorter"
 
 [node name="Label2" type="Label" parent="Hazard icons/Visibility"]
-margin_left = -73.4
-margin_top = 10.0
-margin_right = 312.6
-margin_bottom = 88.0
+margin_left = -72.9111
+margin_top = 6.88889
+margin_right = 313.089
+margin_bottom = 84.8889
 rect_scale = Vector2( 0.4, 0.4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 3 )
@@ -113,12 +129,11 @@ text = "Fertilizers and pesticides have leaked into the water. These pollutants 
 autowrap = true
 
 [node name="cant see icon" type="Sprite" parent="Hazard icons/Visibility"]
-position = Vector2( -102.578, 16.2414 )
+position = Vector2( -102.889, 18.4444 )
 scale = Vector2( 0.0987492, 0.0987492 )
 texture = ExtResource( 5 )
 
 [node name="Hunger" type="Node2D" parent="Hazard icons"]
-visible = false
 position = Vector2( 1.39999, 47.8 )
 
 [node name="hungering icon" type="Sprite" parent="Hazard icons/Hunger"]
@@ -127,20 +142,20 @@ scale = Vector2( 0.218841, 0.218841 )
 texture = ExtResource( 7 )
 
 [node name="Label" type="Label" parent="Hazard icons/Hunger"]
-margin_left = -75.6
-margin_top = -6.00002
-margin_right = 314.4
-margin_bottom = 65.0
+margin_left = -75.1334
+margin_top = -10.9111
+margin_right = 314.867
+margin_bottom = 60.0889
 rect_scale = Vector2( 0.4, 0.4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 2 )
 text = "Starving"
 
 [node name="Label2" type="Label" parent="Hazard icons/Hunger"]
-margin_left = -73.4
-margin_top = 10.0
-margin_right = 312.6
-margin_bottom = 88.0
+margin_left = -72.9111
+margin_top = 6.88889
+margin_right = 313.089
+margin_bottom = 84.8889
 rect_scale = Vector2( 0.4, 0.4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 3 )
@@ -148,7 +163,6 @@ text = "Diseases run rampant in the dirty waters. The immunesystems fight is cos
 autowrap = true
 
 [node name="Slow" type="Node2D" parent="Hazard icons"]
-visible = false
 position = Vector2( 0.799988, 94.6 )
 
 [node name="slow icon" type="Sprite" parent="Hazard icons/Slow"]
@@ -157,24 +171,34 @@ scale = Vector2( 0.0720253, 0.0720253 )
 texture = ExtResource( 6 )
 
 [node name="Label" type="Label" parent="Hazard icons/Slow"]
-margin_left = -75.6
-margin_top = -6.00002
-margin_right = 314.4
-margin_bottom = 65.0
+margin_left = -75.1111
+margin_top = -9.11115
+margin_right = 314.889
+margin_bottom = 61.8889
 rect_scale = Vector2( 0.4, 0.4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 2 )
 text = "Slowness"
 
 [node name="Label2" type="Label" parent="Hazard icons/Slow"]
-margin_left = -73.4
-margin_top = 10.0
-margin_right = 312.6
-margin_bottom = 88.0
+margin_left = -72.9111
+margin_top = 6.88889
+margin_right = 313.089
+margin_bottom = 84.8889
 rect_scale = Vector2( 0.4, 0.4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 3 )
-text = "Microplastics are everywhere and have a multitude of effects on all life. You move slower. "
+text = "Microplastics are everywhere and have a multitude of effects on all life. As a result you now move slower. "
 autowrap = true
 
+[node name="EndGame" type="Button" parent="."]
+visible = false
+margin_left = 521.0
+margin_top = 874.0
+margin_right = 872.0
+margin_bottom = 999.0
+custom_fonts/font = SubResource( 4 )
+text = "End Game"
+
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="pressed" from="EndGame" to="." method="_on_End_Game_pressed"]

@@ -35,7 +35,6 @@ func _on_settings_button_down():
 	settings_menu.visible = true
 	print("DOWN")
 
-
 func _on_quit_button_down():
 	get_tree().quit()
 
