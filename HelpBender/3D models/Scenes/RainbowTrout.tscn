@@ -550,16 +550,16 @@ tracks/16/keys = PoolRealArray( 0, 1, -0.116674, -0.0238887, -0.000386715, 1.129
 [sub_resource type="AnimationNodeAnimation" id=10]
 animation = "Attack"
 
-[sub_resource type="AnimationNodeOneShot" id=12]
+[sub_resource type="AnimationNodeOneShot" id=11]
 filter_enabled = true
-filters = [ "Armature/Skeleton:head", "Armature/Skeleton:jaw" ]
+filters = [ "Armature/Skeleton:backwards_fin.R", "Armature/Skeleton:bottom_mouth", "Armature/Skeleton:front_fin.L", "Armature/Skeleton:front_fin.R", "Armature/Skeleton:head", "Armature/Skeleton:jaw", "Armature/Skeleton:middle_fin.L", "Armature/Skeleton:middle_fin.R", "Armature/Skeleton:spine_1", "Armature/Skeleton:spine_2", "Armature/Skeleton:spine_5", "Armature/Skeleton:spine_6", "Armature/Skeleton:spine_7", "Armature/Skeleton:spine_8", "Armature/Skeleton:upper_fin" ]
 
 [sub_resource type="AnimationNodeAnimation" id=9]
 animation = "Hurt"
 
-[sub_resource type="AnimationNodeOneShot" id=11]
+[sub_resource type="AnimationNodeOneShot" id=12]
 filter_enabled = true
-filters = [ "Armature/Skeleton:backwards_fin.R", "Armature/Skeleton:bottom_mouth", "Armature/Skeleton:front_fin.L", "Armature/Skeleton:front_fin.R", "Armature/Skeleton:head", "Armature/Skeleton:jaw", "Armature/Skeleton:middle_fin.L", "Armature/Skeleton:middle_fin.R", "Armature/Skeleton:spine_1", "Armature/Skeleton:spine_2", "Armature/Skeleton:spine_5", "Armature/Skeleton:spine_6", "Armature/Skeleton:spine_7", "Armature/Skeleton:spine_8", "Armature/Skeleton:upper_fin" ]
+filters = [ "Armature/Skeleton:head", "Armature/Skeleton:jaw" ]
 
 [sub_resource type="AnimationNodeTimeScale" id=19]
 
@@ -587,21 +587,21 @@ start_node = "Idle"
 graph_offset = Vector2( -319, -6 )
 
 [sub_resource type="AnimationNodeBlendTree" id=8]
-graph_offset = Vector2( -411.861, -51.2569 )
+graph_offset = Vector2( -615.044, -47.0924 )
 nodes/Attack/node = SubResource( 10 )
 nodes/Attack/position = Vector2( -320, 180 )
-nodes/Attack_shot/node = SubResource( 12 )
-nodes/Attack_shot/position = Vector2( -100, 0 )
+nodes/Attack_shot/node = SubResource( 11 )
+nodes/Attack_shot/position = Vector2( 100, 120 )
 nodes/Hurt/node = SubResource( 9 )
 nodes/Hurt/position = Vector2( -100, 240 )
-nodes/Hurt_shot/node = SubResource( 11 )
-nodes/Hurt_shot/position = Vector2( 100, 120 )
+nodes/Hurt_shot/node = SubResource( 12 )
+nodes/Hurt_shot/position = Vector2( -100, 0 )
 nodes/animation_speed/node = SubResource( 19 )
 nodes/animation_speed/position = Vector2( -340, -20 )
 nodes/movement/node = SubResource( 17 )
 nodes/movement/position = Vector2( -580, -40 )
 nodes/output/position = Vector2( 300, 120 )
-node_connections = [ "output", 0, "Hurt_shot", "Attack_shot", 0, "animation_speed", "Attack_shot", 1, "Attack", "animation_speed", 0, "movement", "Hurt_shot", 0, "Attack_shot", "Hurt_shot", 1, "Hurt" ]
+node_connections = [ "output", 0, "Attack_shot", "Attack_shot", 0, "Hurt_shot", "Attack_shot", 1, "Hurt", "animation_speed", 0, "movement", "Hurt_shot", 0, "animation_speed", "Hurt_shot", 1, "Attack" ]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=18]
 

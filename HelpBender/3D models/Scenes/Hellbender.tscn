@@ -1205,10 +1205,10 @@ states/Walk/node = SubResource( 25 )
 states/Walk/position = Vector2( 615, 73 )
 transitions = [ "Idle_stand", "Walk", SubResource( 26 ), "Walk", "Idle_stand", SubResource( 27 ), "Walk", "Swim", SubResource( 32 ), "Swim", "Walk", SubResource( 33 ), "Swim", "Falling", SubResource( 34 ), "Falling", "Swim", SubResource( 35 ), "Falling", "Idle_stand", SubResource( 36 ), "Falling", "Walk", SubResource( 38 ), "Swim", "Idle_stand", SubResource( 41 ), "Idle_stand", "Swim", SubResource( 42 ), "Idle_stand", "Falling", SubResource( 37 ), "Walk", "Falling", SubResource( 43 ) ]
 start_node = "Idle_stand"
-graph_offset = Vector2( -134, -23 )
+graph_offset = Vector2( -150, -115 )
 
 [sub_resource type="AnimationNodeBlendTree" id=9]
-graph_offset = Vector2( -268.968, 18.8711 )
+graph_offset = Vector2( -402.924, -27.24 )
 nodes/Attack/node = SubResource( 19 )
 nodes/Attack/position = Vector2( 40, 260 )
 nodes/Attack_shot/node = SubResource( 40 )
