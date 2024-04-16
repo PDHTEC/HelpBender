@@ -42,7 +42,7 @@ func _update():
 	if global_translation.y > get_tree().get_root().get_node("Main").water_height:
 		velocity += gravity_vector*gravity_magnitude
 
-func attack(attacker, damage : float):
+func attack(attacker : Node, damage : float):
 	change_health(-damage)
 	if dead:
 		attacker.change_food(food_value)
