@@ -117,3 +117,6 @@ shape = SubResource( 12 )
 
 [node name="AttackTimer" type="Timer" parent="."]
 one_shot = true
+
+[connection signal="body_entered" from="VisionArea" to="." method="_on_body_entered_VisionArea"]
+[connection signal="body_entered" from="AttackArea" to="." method="_on_AttackArea_body_entered"]
