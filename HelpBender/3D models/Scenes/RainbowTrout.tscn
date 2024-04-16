@@ -587,7 +587,7 @@ start_node = "Idle"
 graph_offset = Vector2( -319, -6 )
 
 [sub_resource type="AnimationNodeBlendTree" id=8]
-graph_offset = Vector2( -634.356, 16.6979 )
+graph_offset = Vector2( -615.044, -47.0924 )
 nodes/Attack/node = SubResource( 10 )
 nodes/Attack/position = Vector2( -320, 180 )
 nodes/Attack_shot/node = SubResource( 11 )
