@@ -10,16 +10,14 @@ script = ExtResource( 7 )
 water_height = 67.0
 load_dist = 200.0
 
-[node name="Overlay" type="Node2D" parent="."]
-
-[node name="Water" type="Polygon2D" parent="Overlay"]
+[node name="WaterOverlay" type="Polygon2D" parent="."]
 position = Vector2( -276, -311 )
 scale = Vector2( 3.92607, 4.83333 )
 color = Color( 0, 0.564, 0.94, 0.0980392 )
 polygon = PoolVector2Array( 0, 0, 1028, 0, 1028, 600, 0, 600 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-transform = Transform( 0.841652, 0, 0.54002, 0, 1, 0, -0.54002, 0, 0.841651, 40.1944, -5.30016, 12.12 )
+transform = Transform( 0.00281021, 0, -0.999995, 0, 1, 0, 0.999996, 0, 0.00281069, 40.0006, -5.30016, 12.6536 )
 
 [node name="Map_1" parent="." instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 184.404, 74.9089, 150.669 )

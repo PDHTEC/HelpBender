@@ -1,23 +1,22 @@
 extends "res://Scripts/Creature.gd"
 
-export var mesh_path : NodePath
 export var cowers : bool = true
 export var blind : bool = false
 export var grounded : bool = false
 export var vision_range : float = 20
 export var max_spin : float = 5
 
+onready var main := get_tree().get_root().get_node("Main")
+
 var y_heading : float
-var mesh : Spatial
-onready var main = get_tree().get_root().get_node("Main")
+var rotation_acceleration : Vector3
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _ready():
 	$VisionArea/CollisionShape.shape.radius = vision_range
-	if str(mesh_path).length()>0:
-		mesh = get_node(mesh_path)
+	._ready()
 
-func _process(delta):
+func _process(delta : float):
 	if dead:
 		queue_free()
 	if main.get_node("Player") == null:
@@ -36,15 +35,14 @@ func _process(delta):
 		$VisionArea.monitoring = true
 		$Vision.enabled = true
 	
-	if on_ground && grounded && mesh != null:
+	if on_ground && grounded && animations != null:
 		var ground_normal : Vector3 = $DownRay.get_collision_normal()
-		var xform = align_with_y(mesh.global_transform, ground_normal)
-		mesh.global_transform = mesh.global_transform.interpolate_with(xform, 0.2)
+		var xform = align_with_y(animations.global_transform, ground_normal)
+		animations.global_transform = animations.global_transform.interpolate_with(xform, 0.2)
 	
 	movement(delta)
 
-var rotation_acceleration : Vector3
-func movement(delta):
+func movement(delta : float):
 	var forwardx = cos(deg2rad(-rotation_degrees.y)-PI/2) * cos(deg2rad(-rotation_degrees.x))
 	var forwardz = sin(deg2rad(-rotation_degrees.y)-PI/2) * cos(deg2rad(-rotation_degrees.x))
 	if grounded:
@@ -67,20 +65,11 @@ func movement(delta):
 	rotation_velocity += rotation_acceleration
 	rotation_velocity *= 0.9
 	rotation_degrees += rotation_velocity*delta
-	
-	if animations != null:
-		if acceleration.length()>0:
-			animations.set_animation("swim")
-		else:
-			animations.set_animation("idle")
 
 func random_movement():
 	rotation_acceleration.y += rand_range(-rotation_speed,rotation_speed)
 
-func move_from(_creature):
-	pass
-
-func align_with_y(xform, new_y):
+func align_with_y(xform : Transform, new_y : Vector3):
 	xform.basis.y = new_y
 	xform.basis.x = -xform.basis.z.cross(new_y)
 	xform.basis = xform.basis.orthonormalized()

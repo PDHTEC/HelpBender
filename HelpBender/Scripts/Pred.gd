@@ -3,8 +3,16 @@ extends "res://Scripts/Creature.gd"
 export var vision_scale : float = 1
 export var max_vertical_acc : float = 0.2
 export var max_spin : float = 10
+
+onready var main := get_tree().get_root().get_node("Main")
+
 var target : Spatial
-onready var main = get_tree().get_root().get_node("Main")
+var can_attack : bool = true
+var attacking : bool = false
+
+var x_heading : float
+var acceleration : Vector3
+var rotation_acceleration : Vector3
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -24,9 +32,6 @@ func _process(delta):
 func scale_vision(set_scale : float):
 	$VisionArea/CollisionShape.scale = Vector3(set_scale,set_scale,set_scale)
 
-var x_heading : float
-var acceleration : Vector3
-var rotation_acceleration : Vector3
 func movement(delta):
 	var forwardx = cos(deg2rad(-rotation_degrees.y)-PI/2) * cos(deg2rad(-rotation_degrees.x))
 	var forwardz = sin(deg2rad(-rotation_degrees.y)-PI/2) * cos(deg2rad(-rotation_degrees.x))
@@ -87,7 +92,7 @@ func move_to(target_pos : Vector3):
 	rotation_acceleration.y = target_angle_y
 	acceleration.y += clamp(target_pos.y - translation.y,-max_vertical_acc,max_vertical_acc)
 
-func _on_body_entered_VisionArea(body):
+func _on_body_entered_VisionArea(body : PhysicsBody):
 	if body!=self && "creature_level" in body:
 		$Vision.rotation.y = -rotation.y
 		$Vision.cast_to = body.global_translation-$Vision.global_translation
@@ -100,12 +105,10 @@ func _on_body_entered_VisionArea(body):
 			else:
 				target = body
 
-func closest_body(body_1, body_2):
+func closest_body(body_1 : PhysicsBody, body_2 : PhysicsBody):
 	if translation.distance_squared_to(body_1.translation)>translation.distance_squared_to(body_2.translation):
 		return body_2
 
-var can_attack : bool = true
-var attacking : bool = false
 func _on_AttackTimer_timeout():
 	if attacking:
 		attacking = false
@@ -114,7 +117,7 @@ func _on_AttackTimer_timeout():
 	else:
 		can_attack = true
 
-func _on_AttackArea_body_entered(body):
+func _on_AttackArea_body_entered(body : PhysicsBody):
 	if can_attack && body.has_method("attack"):
 		$AttackTimer.start(attack_time)
 		animations.set_attacking(true)

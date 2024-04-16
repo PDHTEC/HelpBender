@@ -1,10 +1,15 @@
 extends "res://Scripts/Creature.gd"
+
 var const_dmg : float
+var can_attack : bool = true
+var attacking : bool = false
+
+var acceleration = Vector3.ZERO
 
 func _ready():
 	randomize()
 
-func _process(delta):
+func _process(delta : float):
 	change_health(-delta*const_dmg)
 	change_food(-delta*food_drain)
 	if food>=heal_threshold:
@@ -40,9 +45,7 @@ func attempt_attack():
 	can_attack = false
 	attacking = true
 
-var acceleration = Vector3.ZERO
-
-func movement(delta):
+func movement(delta : float):
 	var cam = $Camera
 	var forwardx = cos(deg2rad(-rotation_degrees.y)-PI/2) * cos(deg2rad(-rotation_degrees.x))
 	var forwardz = sin(deg2rad(-rotation_degrees.y)-PI/2) * cos(deg2rad(-rotation_degrees.x))
@@ -93,7 +96,8 @@ func movement(delta):
 		$Hellbender.scale = Vector3(0.25,0.25,0.25)
 		$Hellbender.rotation_degrees.y = 180
 	else:
-		rotate_to(Vector2(0,0))
+		$Hellbender.rotation_degrees.x = 0
+		$Hellbender.rotation_degrees.z = 0
 		$CollisionShape.rotation_degrees = Vector3(0,0,0)
 		$Hellbender.rotation_degrees.x = velocity.y*-2
 	var accel_length = acceleration.length()
@@ -124,25 +128,16 @@ func movement(delta):
 	rotation_degrees += rotation_velocity*delta
 	cam.rotation_degrees.y -= rotation_velocity.y*delta
 
-func attack(attacker, damage : float):
+func attack(attacker : Node, damage : float):
 	$"sound/GetHit SFX".play()
 	.attack(attacker, damage)
 
-func health_set(amount : float):
-	.health_set(amount)
-
-func rotate_to(rotation_target : Vector2):
-	$Hellbender.rotation_degrees.x = rotation_target.x
-	$Hellbender.rotation_degrees.z = rotation_target.y
-
-func align_with_y(xform, new_y):
+func align_with_y(xform : Transform, new_y : Vector3):
 	xform.basis.y = new_y
 	xform.basis.x = -xform.basis.z.cross(new_y)
 	xform.basis = xform.basis.orthonormalized()
 	return xform
 
-var can_attack : bool = true
-var attacking : bool = false
 func _on_AttackTimer_timeout():
 	if attacking:
 		$AttackArea.monitoring = false

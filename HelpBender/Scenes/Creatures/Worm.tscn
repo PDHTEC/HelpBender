@@ -12,6 +12,7 @@ radius = 0.1
 script = ExtResource( 2 )
 max_health = 5.0
 movement_speed = 0.05
+animations_path = NodePath("Worm")
 cowers = false
 blind = true
 grounded = true
