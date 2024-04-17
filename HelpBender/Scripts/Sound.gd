@@ -6,7 +6,7 @@ func _ready():
 
 
 
-func _process(_delta):
+func _process(_delta : float):
 	if $"..".acceleration.length()>0:
 		if$"Movment SFX".playing==false:
 			$"Movment SFX".play()

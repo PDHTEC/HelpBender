@@ -68,7 +68,7 @@ extents = Vector3( 0.4, 0.2, 1.7 )
 extents = Vector3( 0.5, 0.35, 0.6 )
 
 [node name="Player" type="KinematicBody"]
-transform = Transform( 0.841652, 0, 0.54002, 0, 1, 0, -0.54002, 0, 0.841651, 0, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 0.999999, 0, 0, 0 )
 script = ExtResource( 2 )
 heal_speed = 0.5
 food_drain = 0.2
