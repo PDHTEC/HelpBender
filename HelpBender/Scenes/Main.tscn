@@ -8,7 +8,7 @@
 [node name="Main" type="Spatial"]
 script = ExtResource( 7 )
 water_height = 67.0
-load_dist = 200.0
+load_dist = 150.0
 
 [node name="WaterOverlay" type="Polygon2D" parent="."]
 position = Vector2( -276, -311 )

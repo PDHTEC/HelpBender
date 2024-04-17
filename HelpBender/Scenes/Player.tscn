@@ -90,7 +90,7 @@ cast_to = Vector3( 0, 0, 4 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4 )
 environment = SubResource( 33 )
 current = true
-far = 1000.0
+far = 750.0
 
 [node name="WaterPollution" type="Particles" parent="Camera/Camera"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.35611, -4 )
@@ -143,6 +143,7 @@ volume_db = 5.0
 [node name="Water Ambient SFX" type="AudioStreamPlayer" parent="sound"]
 stream = ExtResource( 7 )
 volume_db = -10.0
+autoplay = true
 
 [node name="Movment SFX" type="AudioStreamPlayer" parent="sound"]
 stream = ExtResource( 6 )

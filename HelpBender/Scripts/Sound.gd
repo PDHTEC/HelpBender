@@ -4,8 +4,6 @@ extends Spatial
 func _ready():
 	$"Water Ambient SFX".play()
 
-
-
 func _process(_delta : float):
 	if $"..".acceleration.length()>0:
 		if$"Movment SFX".playing==false:
