@@ -11,7 +11,6 @@
 [ext_resource path="res://Fonts/Roboto-Bold.ttf" type="DynamicFontData" id=9]
 [ext_resource path="res://UI Textures/hazard-1.png" type="Texture" id=10]
 
-
 [sub_resource type="DynamicFont" id=1]
 size = 200
 font_data = ExtResource( 4 )
@@ -78,6 +77,7 @@ position = Vector2( 1499, 451 )
 scale = Vector2( 4.5, 4.5 )
 
 [node name="Pollution" type="Node2D" parent="Hazard icons"]
+visible = false
 position = Vector2( 0, -48.2222 )
 
 [node name="Label" type="Label" parent="Hazard icons/Pollution"]
@@ -107,6 +107,7 @@ scale = Vector2( 0.15, 0.15 )
 texture = ExtResource( 10 )
 
 [node name="Visibility" type="Node2D" parent="Hazard icons"]
+visible = false
 
 [node name="Label" type="Label" parent="Hazard icons/Visibility"]
 margin_left = -75.1111
@@ -135,6 +136,7 @@ scale = Vector2( 0.0987492, 0.0987492 )
 texture = ExtResource( 5 )
 
 [node name="Hunger" type="Node2D" parent="Hazard icons"]
+visible = false
 position = Vector2( 1.39999, 47.8 )
 
 [node name="hungering icon" type="Sprite" parent="Hazard icons/Hunger"]
@@ -164,6 +166,7 @@ text = "Diseases run rampant in the dirty waters. The immunesystems fight is cos
 autowrap = true
 
 [node name="Slow" type="Node2D" parent="Hazard icons"]
+visible = false
 position = Vector2( 0.799988, 94.6 )
 
 [node name="slow icon" type="Sprite" parent="Hazard icons/Slow"]
