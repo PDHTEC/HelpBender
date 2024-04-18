@@ -7,10 +7,8 @@ onready var Knapper = $Knapper as Control
 onready var paused = $"." as Control
 onready var is_paused = false setget set_is_paused
 
-
 func _ready():
 	handle_connecting_signals()
-
 
 func _unhandled_input(event):
 	if event.is_action_pressed("pause_game"):
@@ -42,4 +40,5 @@ func on_exit_options_menu():
 	settings_menu.visible=false
 
 func _on_quit_button_down():
+	get_tree().paused = false
 	get_tree().change_scene("res://Scenes/MenuMain.tscn")
