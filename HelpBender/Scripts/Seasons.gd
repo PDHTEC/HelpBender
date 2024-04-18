@@ -2,9 +2,11 @@ extends Node2D
 
 onready var season = $Seasons
 onready var label = $Label
+onready var continue_label = $Continue
 onready var main_scene = preload("res://Scenes/Main.tscn")
 
 var continue_allowed : bool
+var change_scene : bool
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -17,9 +19,15 @@ func _ready():
 
 func _process(_delta : float):
 	if continue_allowed:
+		if change_scene:
+			get_tree().change_scene_to(main_scene)
+			
 		$Continue.visible = true
 		if Input.is_action_just_pressed("up"):
-			get_tree().change_scene_to(main_scene)
+			continue_label.text = "Loading..."
+			change_scene = true
+			
+
 
 func change_season():
 	match Global.season:

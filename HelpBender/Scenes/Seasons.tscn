@@ -34,25 +34,30 @@ font_data = ExtResource( 8 )
 [node name="Seasons" type="Node2D"]
 script = ExtResource( 1 )
 
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 1930.0
+margin_bottom = 1089.0
+color = Color( 0.592157, 0.847059, 0.92549, 1 )
+
 [node name="Seasons" type="Sprite" parent="."]
-position = Vector2( 437, 635 )
+position = Vector2( 437, 638 )
 scale = Vector2( 3.70108, 2.9918 )
 texture = ExtResource( 3 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 240, 375 )
 
 [node name="HuiHelpbender" type="Sprite" parent="."]
-position = Vector2( 182, 198 )
-scale = Vector2( 1.02847, 1.02847 )
+position = Vector2( 227.15, 171.49 )
+scale = Vector2( 0.81932, 0.81932 )
 texture = ExtResource( 2 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 295.23, 330 )
 
 [node name="Label" type="Label" parent="."]
-margin_left = -2.0
-margin_top = 17.0
-margin_right = 1914.0
-margin_bottom = 348.0
+margin_left = -17.0
+margin_top = 51.0
+margin_right = 1899.0
+margin_bottom = 382.0
 rect_pivot_offset = Vector2( 939, 82 )
 custom_fonts/font = SubResource( 1 )
 text = "PLACEHOLDER"
@@ -74,7 +79,7 @@ one_shot = true
 autostart = true
 
 [node name="Hazard icons" type="Node2D" parent="."]
-position = Vector2( 1499, 451 )
+position = Vector2( 1497, 467 )
 scale = Vector2( 4.5, 4.5 )
 
 [node name="Pollution" type="Node2D" parent="Hazard icons"]
