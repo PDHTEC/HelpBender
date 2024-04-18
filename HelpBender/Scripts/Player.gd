@@ -20,11 +20,6 @@ func _process(delta : float):
 		Global.score += kills*3
 		get_tree().change_scene("res://Scenes/end game scene.tscn")
 	
-	if rotation_degrees.y>180:
-		rotation_degrees.y -= 360
-	elif rotation_degrees.y<-180:
-		rotation_degrees.y += 360
-	
 	movement(delta)
 	
 	if Input.is_action_just_pressed("left_click") && can_attack:

@@ -23,10 +23,6 @@ func _process(delta : float):
 		return
 	if main.get_node("Player").translation.distance_squared_to(translation)>main.load_dist:
 		return
-	if rotation_degrees.y>180:
-		rotation_degrees.y -= 360
-	elif rotation_degrees.y<-180:
-		rotation_degrees.y += 360
 	
 	if blind:
 		$VisionArea.monitoring = false

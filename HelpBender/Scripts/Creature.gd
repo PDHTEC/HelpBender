@@ -41,6 +41,11 @@ func _update():
 		velocity += gravity_vector*gravity_magnitude*0.01
 	if global_translation.y > get_tree().get_root().get_node("Main").water_height:
 		velocity += gravity_vector*gravity_magnitude
+	
+	if rotation_degrees.y>180:
+		rotation_degrees.y -= 360
+	elif rotation_degrees.y<-180:
+		rotation_degrees.y += 360
 
 func attack(attacker : Node, damage : float):
 	change_health(-damage)

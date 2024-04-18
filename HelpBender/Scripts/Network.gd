@@ -1,5 +1,5 @@
 extends Control
-# Declare member variables here. Examples:
+
 var http_request : HTTPRequest = HTTPRequest.new()
 const SERVER_URL = "https://rupelume.dk/db_test.php"
 const SERVER_HEADERS = ["Content-Type: application/x-www-form-urlencoded", "Cache-Control: max-age=0"]
@@ -9,7 +9,6 @@ var request_queue : Array = []
 var is_requesting : bool = false
 var Season = 0
 var Year = 0
-
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
