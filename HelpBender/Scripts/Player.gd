@@ -88,7 +88,6 @@ func movement(delta : float):
 		var xform = align_with_y($Hellbender.global_transform, ground_normal)
 		$Hellbender.global_transform = $Hellbender.global_transform.interpolate_with(xform, 0.2)
 		$CollisionShape.global_transform.interpolate_with(xform, 0.2)
-		$Hellbender.scale = Vector3(0.25,0.25,0.25)
 		$Hellbender.rotation_degrees.y = 180
 	else:
 		$Hellbender.rotation_degrees.x = 0
@@ -128,9 +127,9 @@ func attack(attacker : Node, damage : float):
 	.attack(attacker, damage)
 
 func align_with_y(xform : Transform, new_y : Vector3):
-	xform.basis.y = new_y
+	xform.basis.y = new_y.normalized()*xform.basis.y.length()
 	xform.basis.x = -xform.basis.z.cross(new_y)
-	xform.basis = xform.basis.orthonormalized()
+	xform.basis.z = xform.basis.x.cross(new_y)
 	return xform
 
 func _on_AttackTimer_timeout():
