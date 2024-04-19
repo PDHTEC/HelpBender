@@ -118,30 +118,34 @@ theme = SubResource( 3 )
 text = "Global Leaderboard"
 
 [node name="ListLables" type="RichTextLabel" parent="Leaderboard"]
-margin_left = 490.0
+margin_left = 497.0
 margin_top = 242.0
-margin_right = 941.0
+margin_right = 948.0
 margin_bottom = 287.0
 focus_mode = 2
 theme = SubResource( 5 )
-text = "Name						Score"
+text = "	Name					  Score"
 selection_enabled = true
 
 [node name="NameList" type="RichTextLabel" parent="Leaderboard"]
-margin_left = 490.0
-margin_top = 299.0
-margin_right = 771.0
-margin_bottom = 971.0
+margin_left = 477.0
+margin_top = 304.0
+margin_right = 778.0
+margin_bottom = 960.0
 focus_mode = 2
 theme = SubResource( 5 )
+bbcode_enabled = true
+bbcode_text = "Loading..."
 text = "Loading..."
+scroll_active = false
 selection_enabled = true
 
 [node name="ScoreList" type="RichTextLabel" parent="Leaderboard"]
-margin_left = 770.0
-margin_top = 301.0
-margin_right = 1782.0
-margin_bottom = 970.0
+margin_left = 802.0
+margin_top = 304.0
+margin_right = 929.0
+margin_bottom = 960.0
 focus_mode = 2
 theme = SubResource( 5 )
+scroll_active = false
 selection_enabled = true

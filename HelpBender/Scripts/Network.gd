@@ -85,11 +85,13 @@ func _http_request_completed(_result, _response_code, _headers, _body):
 	if response['response']['size'] > 0:
 		var name_felt = $"../NameList"
 		var score_felt = $"../ScoreList"
-		name_felt.set_text("")
+		var rank_number = 1
+		name_felt.parse_bbcode("")
 		score_felt.set_text("")
 		for n in (response['response']['size']):
-			name_felt.add_text(String(response['response'][String(n)]['Player']) + "\n")
+			name_felt.append_bbcode("[color=#FFEFD5]" + str(rank_number) + "[/color]\t" + String(response['response'][String(n)]['Player']) + "\n")
 			score_felt.add_text(String(response['response'][String(n)]['score']) + "\n")
+			rank_number = rank_number + 1
 
 func _submit_score():
 	var Player = $Name.text
