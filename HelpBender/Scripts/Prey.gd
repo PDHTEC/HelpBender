@@ -66,7 +66,7 @@ func random_movement():
 	rotation_acceleration.y += rand_range(-rotation_speed,rotation_speed)
 
 func align_with_y(xform : Transform, new_y : Vector3):
-	xform.basis.y = new_y
+	xform.basis.y = new_y.normalized()*xform.basis.y.length()
 	xform.basis.x = -xform.basis.z.cross(new_y)
-	xform.basis = xform.basis.orthonormalized()
+	xform.basis.z = xform.basis.x.cross(new_y)
 	return xform
